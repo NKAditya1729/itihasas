@@ -1,0 +1,84 @@
+"""Phase 2a: seed padaccheda from DCS for verses linked to a CE verse.
+
+The DCS words of the linked CE verse and of its neighbours are searched for a
+contiguous run that re-joins to the verse (DCS blocks and vulgate verses are
+often cut at different places).
+A seed is kept only if the re-join check passes. Idempotent: verses already
+seeded (with an unchanged mūla hash) are skipped.
+
+Usage: uv run python scripts/seed_dcs.py
+"""
+from __future__ import annotations
+
+import collections
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from vrtools.dcs import parse_dcs, pausal_candidates  # noqa: E402
+from vrtools.sandhi import to_deva  # noqa: E402
+from vrtools.seed import seed_window  # noqa: E402
+
+DCS = ROOT / "sources" / "upstream" / "ambuda-dcs" / "ramayanam.txt"
+
+
+def neighbours(ce: str) -> list[list[str]]:
+    """DCS verse blocks are not cut where the CE verses are (DCS R.1.1.4 holds only the
+    second half of CE 1.1.4), so runs of neighbouring blocks are searched."""
+    k, s, v = ce.split(".")
+    key = lambda d: f"{k}.{s}.{int(v) + d}"
+    return [[key(0)], [key(-1), key(0)], [key(0), key(1)], [key(-1), key(0), key(1)],
+            [key(-2), key(-1), key(0)], [key(0), key(1), key(2)]]
+
+
+def main() -> None:
+    dcs = parse_dcs(DCS.read_text())
+    hashes = json.loads((ROOT / "data" / "meta" / "mula_hashes.json").read_text())
+    stats = collections.Counter()
+    for f in sorted((ROOT / "data" / "vr").glob("*/*.json")):
+        d = json.loads(f.read_text())
+        changed = False
+        for v in d["verses"] + (d["appendix"]["verses"] if d["appendix"] else []):
+            seed = v.get("seed") or {}
+            if seed.get("source") == "dcs" and seed.get("mula_hash") == hashes[v["id"]]:
+                stats["already"] += 1
+                continue
+            cw = v["crosswalk"]
+            if cw["relation"] == "absent" or not cw["ce"]:
+                stats["no_ce"] += 1
+                continue
+            windows = neighbours(cw["ce"])
+            result, best = None, None
+            for keys in windows:
+                words = [w for key in keys for w in dcs.get(key, [])]
+                if not words:
+                    continue
+                r = seed_window(v["lines"], words)
+                if r["ok"]:
+                    result = (keys, r)
+                    break
+                f0 = (r.get("failures") or [{}])[0]
+                if best is None or f0.get("pos", -1) > best[1].get("pos", -1):
+                    best = (keys, f0, " ".join(to_deva(pausal_candidates(w)[0]) for w in words))
+            if result is None:
+                stats[f"fail_{cw['relation']}"] += 1
+                v["seed"] = {"source": None, "dcs_tried": True}
+                if best:
+                    v["seed"].update({"dcs_verses": best[0], "dcs_failure": best[1], "dcs_candidate": best[2]})
+                changed = True
+                continue
+            keys, r = result
+            v["padaccheda_lines"], v["groups"] = r["padaccheda_lines"], r["groups"]
+            v["seed"] = {"source": "dcs", "dcs_verses": keys, "mula_hash": hashes[v["id"]]}
+            stats[f"ok_{cw['relation']}"] += 1
+            changed = True
+        if changed:
+            f.write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")) + "\n")
+    print(dict(stats))
+    (ROOT / "data" / "meta" / "seed_dcs.json").write_text(json.dumps(dict(stats), indent=1) + "\n")
+
+
+if __name__ == "__main__":
+    main()

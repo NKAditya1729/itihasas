@@ -51,7 +51,8 @@
   }
   const num = v => v.id.split('.').pop();
   function verse(v) {
-    return `<div class="mula-box" id="${esc(v.id)}">${badges(v)}${vlines(v)}` +
+    const pending = v.groups ? '' : '<span class="sarga-note pada-pending">पदच्छेदः सज्जीक्रियते</span>';
+    return `<div class="mula-box" id="${esc(v.id)}">${badges(v)}${vlines(v)}${pending}` +
       `<a class="verse-ref" href="#${esc(v.id)}">${deva(num(v))}</a></div>${study(v)}`;
   }
 
@@ -102,7 +103,6 @@
     let h = `<h1 class="chapter-heading">${esc(d.kanda_name)} · सर्गः ${deva(d.sarga)}</h1>`;
     h += `<p class="chapter-sub">${d.title ? esc(d.title) + ' · ' : ''}${deva(d.verse_count)} श्लोकाः</p>`;
     if (d.flags.includes('source_presplit')) h += '<p class="sarga-note">अस्य सर्गस्य मूलपाठः स्रोतसि अंशतः पदच्छेदरूपेण दत्तः; शोधनं पश्चात् भविष्यति।</p>';
-    if (!d.verses.some(v => v.groups)) h += '<p class="sarga-note pada-pending">अस्य सर्गस्य पदच्छेदः सज्जीक्रियते।</p>';
     h += d.verses.map(verse).join('');
     if (d.colophon) h += `<p class="colophon">${esc(d.colophon)}</p>`;
     if (d.appendix) {

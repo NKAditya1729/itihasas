@@ -1,0 +1,117 @@
+"""Phase 2a: seed padaccheda with the Dharmamitra ByT5-Sanskrit segmenter for verses
+that DCS could not seed.
+
+The dharmamitra-sanskrit-grammar package (0.1.7) no longer matches the live API
+(it sends ``input_sentence``; the API now wants ``texts``) and Devanagari input
+comes back garbled, so the endpoint is called directly with IAST input. No
+credentials are sent. One request at a time, at least GAP seconds apart; every
+response is cached in cache/dharmamitra/ (git-ignored) and reused.
+
+Dharmamitra does not mark compound members, so its padaccheda uses spaces only
+and the verse is flagged ``compound_boundaries_unknown``.
+
+Usage: uv run python scripts/seed_dharmamitra.py
+"""
+from __future__ import annotations
+
+import collections
+import hashlib
+import json
+import sys
+import time
+from pathlib import Path
+
+import requests
+from vidyut.lipi import Scheme, transliterate
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from vrtools.seed import seed_window  # noqa: E402
+
+API = "https://dharmamitra.org/api/tagging/"
+CACHE = ROOT / "cache" / "dharmamitra"
+BATCH, GAP = 50, 3.0
+_last = 0.0
+
+
+def verse_text(lines: list[str]) -> str:
+    return transliterate(" ".join(l.replace("।", " ").replace("॥", " ") for l in lines), Scheme.Devanagari, Scheme.Iast)
+
+
+def segment(texts: list[str]) -> list[str]:
+    global _last
+    key = hashlib.sha256(json.dumps(texts, ensure_ascii=False).encode()).hexdigest()[:20]
+    path = CACHE / f"{key}.json"
+    if path.exists():
+        return json.loads(path.read_text())["results"]
+    for attempt in range(5):
+        wait = GAP - (time.monotonic() - _last)
+        if wait > 0:
+            time.sleep(wait)
+        try:
+            r = requests.post(API, json={"texts": texts, "mode": "unsandhied", "input_encoding": "auto",
+                                         "human_readable_tags": False}, timeout=180)
+            _last = time.monotonic()
+            if r.status_code in (429, 502, 503, 504):
+                time.sleep(30 * (attempt + 1))
+                continue
+            r.raise_for_status()
+            res = r.json()["results"]
+            if len(res) != len(texts):
+                raise RuntimeError(f"{len(res)} results for {len(texts)} texts")
+            path.write_text(json.dumps({"texts": texts, "results": res}, ensure_ascii=False))
+            return res
+        except requests.RequestException as e:
+            _last = time.monotonic()
+            print("retry after", e)
+            time.sleep(15 * (attempt + 1))
+    raise RuntimeError("Dharmamitra: repeated failures")
+
+
+def words_of(result: str) -> list[dict]:
+    out = []
+    for tok in result.split("_"):
+        tok = tok.strip()
+        if tok:
+            slp = transliterate(tok, Scheme.Iast, Scheme.Slp1)
+            out.append({"form": slp, "lemma": slp, "tags": {}, "comp": False})
+    return out
+
+
+def main() -> None:
+    CACHE.mkdir(parents=True, exist_ok=True)
+    hashes = json.loads((ROOT / "data" / "meta" / "mula_hashes.json").read_text())
+    stats = collections.Counter()
+    files = sorted((ROOT / "data" / "vr").glob("*/*.json"))
+    for n, f in enumerate(files, 1):
+        d = json.loads(f.read_text())
+        todo = [v for v in d["verses"] + (d["appendix"]["verses"] if d["appendix"] else [])
+                if (v.get("seed") or {}).get("source") != "dcs"
+                and not ((v.get("seed") or {}).get("source") == "dharmamitra"
+                         and v["seed"].get("mula_hash") == hashes[v["id"]])]
+        for i in range(0, len(todo), BATCH):
+            chunk = todo[i:i + BATCH]
+            results = segment([verse_text(v["lines"]) for v in chunk])
+            for v, res in zip(chunk, results):
+                seed = v.get("seed") or {}
+                seed["dharmamitra"] = res
+                r = seed_window(v["lines"], words_of(res))
+                if r["ok"]:
+                    v["padaccheda_lines"], v["groups"] = r["padaccheda_lines"], r["groups"]
+                    seed.update({"source": "dharmamitra", "mula_hash": hashes[v["id"]]})
+                    if "compound_boundaries_unknown" not in v["review"]["flags"]:
+                        v["review"]["flags"].append("compound_boundaries_unknown")
+                    stats["ok"] += 1
+                else:
+                    seed.update({"source": None, "dharmamitra_failure": r["failures"][0] if r.get("failures") else None})
+                    stats["fail"] += 1
+                v["seed"] = seed
+        f.write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")) + "\n")
+        if n % 25 == 0:
+            print(n, "/", len(files), dict(stats), flush=True)
+    print(dict(stats))
+    (ROOT / "data" / "meta" / "seed_dharmamitra.json").write_text(json.dumps(dict(stats), indent=1) + "\n")
+
+
+if __name__ == "__main__":
+    main()
