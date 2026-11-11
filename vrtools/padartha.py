@@ -11,7 +11,8 @@
 4. A qualifier (``anvita``) agrees with what it qualifies in case, number and gender.
 5. The anvaya has every pada exactly once; any other word stands in parentheses.
 6. The vyākhyā reuses at least 80% of the significant padas (bold words), has 3–8
-   sentences of at most 12 words, and no Sanskrit field has Latin letters.
+   sentences of at most 12 words, glosses at most three words with अर्थात् (§5.7), and
+   no Sanskrit field has Latin letters.
 
 The word list over-generates (it knows च also as a noun form), so it can only say that an
 analysis is impossible, never that it is the right one. That judgment is the reviewer's.
@@ -38,7 +39,7 @@ LAKARA = {"लट्": "la~w", "लिट्": "li~w", "लुट्": "lu~w", "
           "विधिलिङ्": "viDili~N", "आशीर्लिङ्": "ASIrli~N", "लुङ्": "lu~N", "लृङ्": "lf~N"}
 NO_LINGA = {"अस्मद्", "युष्मद्"}                 # the personal pronouns have no gender
 CASE_FIELDS = ("linga", "vibhakti", "lakara", "purusha")
-MIN_REUSE, MIN_SENTENCES, MAX_SENTENCES, MAX_WORDS = 0.8, 3, 8, 12
+MIN_REUSE, MIN_SENTENCES, MAX_SENTENCES, MAX_WORDS, MAX_ARTHAT = 0.8, 3, 8, 12, 3
 
 _DANDA = re.compile(r"[।॥]")
 _PUNCT = re.compile(r"[।॥,;:?!—–\"“”'‘’()\[\]]")
@@ -222,6 +223,8 @@ def _vyakhya_report(entries: list[dict], vyakhya: str) -> tuple[list[str], list[
     long = [s.strip() for s in sentences if len(_PUNCT.sub(" ", s).split()) > MAX_WORDS]
     if long:
         errs.append(f"vyākhyā: a sentence has more than {MAX_WORDS} words: {long[0][:60]}…")
+    if vyakhya.count("अर्थात्") > MAX_ARTHAT:      # §5.7: gloss only the 2–3 hard words; do not repeat the padārtha
+        errs.append(f"vyākhyā: अर्थात् is used {vyakhya.count('अर्थात्')} times (at most {MAX_ARTHAT})")
     return errs, used
 
 

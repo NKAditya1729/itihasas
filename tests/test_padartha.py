@@ -233,3 +233,14 @@ def test_merge_refuses_a_draft_that_fails_the_checks():
     with pytest.raises(ValueError, match="वरम्"):
         merge_verse(v, bad, gen={"model": "m", "date": "d", "prompt_version": "p"}, verdict="pass")
     assert v["padaccheda_status"] == "seed" and v["padartha"] == []     # nothing was written
+
+
+# ---- rulings after pilot verses 1–5 (Aditya, 2026-11-11; CLAUDE.md §5.7) ---------------------
+
+def test_vyakhya_may_gloss_at_most_three_words_with_arthat():
+    v = good()                                       # the old worked example glosses four words
+    v["vyakhya_sa"] = ("वाल्मीकिः **तपस्वी** मुनिः आसीत् । **नारदः** **तपसि** — अर्थात् तपःकर्मणि — **स्वाध्याये** — अर्थात् वेदपठने — च **निरतः** आसीत् । "
+                       "सः **वाग्विदां** — अर्थात् वाचं जानतां — **वरः** — अर्थात् श्रेष्ठः — **मुनिपुङ्गवः** च आसीत् । तं **नारदं** **वाल्मीकिः** **परिपप्रच्छ** ।")
+    assert any("अर्थात्" in e for e in errors(v))
+    v["vyakhya_sa"] = v["vyakhya_sa"].replace(" — अर्थात् श्रेष्ठः —", "")
+    assert errors(v) == []

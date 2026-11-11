@@ -138,6 +138,7 @@ Rules: `padaccheda_lines` must have the same line count as `lines`. `padartha` i
 - **Reuse every significant pada** (nouns, verbs, adjectives) of the verse, bolded with `**…**`, in its original form or the form the new sentence needs. Gloss hard words in apposition with "— अर्थात् …".
 - Continue the story: open with a link to the previous verse, using `context_in_sa` and the previous verse's `vyakhya_sa`. Name the speaker in dialogues ("नारदः वदति — …").
 - Add nothing the verse does not say beyond minimal connective context. No philosophy, no commentary debates, no other recensions or later works.
+- **Do not repeat the padārtha.** Use the verse's words in natural connected sentences, and gloss with "अर्थात्" at most 2–3 hard words per verse (ruling of 2026-11-11, see §5.7).
 
 ### 5.5 Sarga summary
 After a sarga is finished, write `summary_sa` (2–4 simple sentences). The next sarga's `context_in_sa` = the previous `summary_sa` plus the last 3 verses' vyākhyā. This is how the story context carries forward.
@@ -159,6 +160,43 @@ After a sarga is finished, write `summary_sa` (2–4 simple sentences). The next
 - speaker: वाल्मीकिः (to नारदम्).
 - anvaya: (हे नारद,) साम्प्रतम् अस्मिन् लोके गुणवान् कः नु (अस्ति)? वीर्यवान् च कः? धर्मज्ञः च कृतज्ञः च सत्यवाक्यः दृढव्रतः च (कः)?
 - vyākhyā: वाल्मीकिः नारदं पृच्छति — "**अस्मिन् लोके** **साम्प्रतम्** अर्थात् इदानीं **गुणवान्** **कः** अस्ति? **वीर्यवान्** **कः**? **धर्मज्ञः** **कृतज्ञः** च कः? **सत्यवाक्यः** — सदा सत्यं वदति, **दृढव्रतः** — स्वनियमं न त्यजति — तादृशः पुरुषः कः?"
+
+### 5.7 Rulings from the pilot (Aditya, 2026-11-11)
+These were decided on verses 1–5 of VR.1.1 and hold for every verse. Where the
+worked examples of §4 and §5.6 differ, **these rulings win**.
+
+**Padaccheda (§5.1)**
+- Hyphenate at every member boundary, with each member in its pausal form:
+  `वाक्-विदाम्`, `महा-ऋषे`, `कृत-ज्ञः`, `एवम्-विधम्`.
+- A नञ्-compound is **not** hyphenated (`अनसूयकः`, `अदीनात्मा` → `अदीन-आत्मा`): अ / अन्
+  is not a pada. Its vigraha is still given (न असूयकः).
+
+**Padārtha (§5.2)**
+- **A gloss must be simpler than the word.** If the word is already simple
+  (देवाः, इच्छामि, ज्ञातुम्), give a short paraphrase, never a rarer synonym
+  (not सुराः, वाञ्छामि, अवगन्तुम्).
+- The gloss stays in the pada's own vibhakti and vacana (धर्मज्ञः → धर्मं जानन्);
+  the clause form (धर्मं जानाति इति) belongs in the vigraha.
+- **Gender:** follow the **Amarakośa first, then Apte**. So संयुग is पुं.
+- **नु** is glossed as a question particle (प्रश्नार्थकम् अव्ययम्), not as खलु.
+- A word the gloss supplies beyond the pada stands in round brackets:
+  एकप्रियदर्शनः → यस्य दर्शनं (सर्वेषां) प्रियम्, तादृशः अद्वितीयः.
+- A vocative gloss has the form `हे …, (सम्बोधनम्)`.
+- An epic usage is recorded as the form requires and explained in the gloss:
+  कस्य (with बिभ्यति) is षष्ठी, gloss कस्य पुरुषस्य (कस्मात् इति अर्थः).
+- Compounds of the व्याघ्रादि kind are explained as such: मुनिपुङ्गवः = मुनिः पुङ्गवः इव.
+- एकप्रियदर्शनः is read as एकः (अद्वितीयः) प्रियदर्शनः.
+
+**Anvaya (§5.3)**
+- Every pada exactly once. Anything supplied, even a च, stands in parentheses.
+
+**Vyākhyā (§5.4): do not repeat the padārtha**
+- Tell the verse in natural, connected sentences that use the verse's own
+  words. It is a retelling, not a word list.
+- Use "— अर्थात् …" for **at most 2–3 hard words per verse** (`make check`
+  fails on more than three). The other words are explained by the padārtha.
+- A word before a pause (dash, comma, daṇḍa, question mark) or before a vowel
+  ends in म्, not in anusvāra.
 
 ## 6. Pipeline and phases
 - **Phase 0 – Inspect.** Do §1 and write `docs/EXISTING_DESIGN.md`. Set up the Python env (`uv init`; `uv add vidyut dharmamitra-sanskrit-grammar indic-transliteration jsonschema`). Download vidyut data per its docs.
