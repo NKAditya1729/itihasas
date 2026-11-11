@@ -1,8 +1,10 @@
 {
- "ok_same": 4783,
- "fail_same": 9693,
- "fail_partial": 3766,
- "ok_partial": 997,
+ "already": 5776,
+ "fail_same": 9687,
+ "fail_partial": 3762,
  "no_ce": 4213,
- "fail_variant": 163
+ "ok_partial": 1,
+ "fail_variant": 163,
+ "avagraha_mismatch": 23,
+ "ok_same": 13
 }

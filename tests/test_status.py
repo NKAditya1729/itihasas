@@ -118,3 +118,28 @@ def test_dharmamitra_is_not_called_unless_explicitly_allowed(monkeypatch):
     assert sd.segment(["known"]) == ["kno wn"]
     with pytest.raises(RuntimeError, match="DHARMAMITRA_ALLOW_NETWORK"):
         sd.segment(["a text that is not in the cache"])
+
+
+# ---- avagraha_mismatch flag (review M2) --------------------------------------------
+
+def _verse_with_seed(split, **seed):
+    v = sarga()["verses"][0]
+    v["padaccheda_lines"], v["seed"] = split, seed
+    return v
+
+
+def test_avagraha_mismatch_is_flagged_even_when_another_source_seeded_the_verse():
+    # VR.2.100.25: the mūla prints एकोप्यमात्यो without ऽ; the DCS split एकः अपि is rejected and
+    # Dharmamitra's (different) split is shown, so the reviewer must be told
+    from scripts.check_rejoin import flag_avagraha
+    v = _verse_with_seed(SPLIT, source="dharmamitra", dcs_avagraha_mismatch=["एकः अपि अमात्यः ।"])
+    flag_avagraha(v, v["seed"])
+    assert "avagraha_mismatch" in v["review"]["flags"] and "एकः अपि अमात्यः" in v["review"]["notes"]
+
+
+def test_avagraha_flag_is_removed_when_the_mismatch_is_gone():
+    from scripts.check_rejoin import flag_avagraha
+    v = _verse_with_seed(None, source=None, dcs_avagraha_mismatch=["क ।"])
+    flag_avagraha(v, v["seed"])
+    flag_avagraha(v, {"source": "dcs"})
+    assert "avagraha_mismatch" not in v["review"]["flags"] and v["review"]["notes"] == ""

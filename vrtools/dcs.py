@@ -113,7 +113,9 @@ def _pausal(w: dict) -> list[str]:
                     return [f + "H", f]
                 if (c == "7" and n == "s") or (nom and n == "p"):
                     return [f[:-1] + "e", f]      # yugAnta iva ← yugānte; sarva eva ← sarve
-                return [f]                        # dative, vocative …: an a-stem has no other form in -aḥ
+                if c == "8":
+                    return [f, f + "H"]           # the vulgate often has a nominative where the CE has a vocative
+                return [f]                        # dative …: an a-stem has no other form in -aḥ
             if last == "A":
                 if ((c in ("1", "8") and n == "p" and g != "n") or (c == "2" and n == "p" and g == "f")
                         or (c in ("5", "6") and n == "s" and g == "f") or (nom and n == "s" and lemma.endswith("as"))):

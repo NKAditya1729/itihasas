@@ -8,8 +8,8 @@
 * The mūla hash is compared with data/meta/mula_hashes.json (§7.2).
 * padaccheda_status is set: "seed" for a machine split, None without a split;
   a "reviewed" split is kept as it is and, if it fails, reported, never cleared.
-* A verse left without a split whose only machine split differs from the mūla
-  in the avagraha gets the flag avagraha_mismatch (Stage B review, M2).
+* A verse with a machine split that differs from the mūla only in the avagraha
+  (so that the split was rejected) gets the flag avagraha_mismatch (Stage B review, M2).
 
 Writes queue/padaccheda_fix.jsonl (one JSON object per line) and
 data/meta/rejoin.json. Nothing in the queue is resolved here (Stage A).
@@ -38,7 +38,7 @@ def flag_avagraha(v: dict, seed: dict) -> None:
     review["flags"] = [f for f in review["flags"] if f != AVAGRAHA]
     review["notes"] = " | ".join(n for n in (review.get("notes") or "").split(" | ") if n and not n.startswith(AVAGRAHA + ":"))
     rejected = seed.get("dcs_avagraha_mismatch") or seed.get("dharmamitra_avagraha_mismatch")
-    if rejected and not v["padaccheda_lines"]:
+    if rejected:      # also when the other source seeded the verse: the two then disagree on an अ
         add_flag(v, AVAGRAHA, "the machine split agrees with the mūla except where an initial अ is elided "
                               "(ऽ printed without अ in the split, or अ in the split without ऽ): " + " / ".join(rejected))
 

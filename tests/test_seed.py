@@ -197,10 +197,20 @@ def _d(form, lemma, **tags):
     return {"form": form, "lemma": lemma, "tags": tags, "comp": False}
 
 
-def test_no_visarga_is_invented_for_a_dative_or_a_vocative():
-    # VR.1.67.1 रामाय इति was seeded as रामायः इति; VR.2.34.6 व्याघ्र (voc.)
+def test_no_visarga_is_invented_for_a_dative():
+    # VR.1.67.1 रामाय इति was seeded as रामायः इति
     assert pausal_candidates(_d("rAmAya", "rAma", pos="n", g="m", c="4", n="s")) == ["rAmAya"]
-    assert pausal_candidates(_d("vyAGra", "vyAGra", pos="n", g="m", c="8", n="s")) == ["vyAGra"]
+
+
+def test_a_vocative_in_dcs_may_be_a_nominative_in_the_vulgate():
+    # VR.2.34.6: the Critical Edition has the vocative पुरुषव्याघ्र, the vulgate the nominative
+    # पुरुषव्याघ्रो द्वारि. The vocative comes first; the nominative is taken only if the mūla needs it.
+    voc = _d("vyAGra", "vyAGra", pos="n", g="m", c="8", n="s")
+    assert pausal_candidates(voc) == ["vyAGra", "vyAGraH"]
+    r = seed_verse(["पुरुषव्याघ्रो द्वारि ।"], [{**_d("puruza", "puruza", pos="n"), "comp": True}, voc, _d("dvAri", "dvAr", pos="n", g="f", c="7", n="s")])
+    assert r["ok"] and r["padaccheda_lines"] == ["पुरुष-व्याघ्रः द्वारि ।"]
+    r = seed_verse(["पुरुषव्याघ्र द्वारि ।"], [{**_d("puruza", "puruza", pos="n"), "comp": True}, voc, _d("dvAri", "dvAr", pos="n", g="f", c="7", n="s")])
+    assert r["ok"] and r["padaccheda_lines"] == ["पुरुष-व्याघ्र द्वारि ।"]
 
 
 def test_a_stem_nominative_singular_still_prefers_the_visarga():
