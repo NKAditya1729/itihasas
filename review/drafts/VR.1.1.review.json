@@ -1,61 +1,32 @@
 {
- "VR.1.1.1": {
-  "verdict": "pass",
-  "rules": [
-   "§5.2",
-   "§5.4",
-   "§5.7"
-  ],
-  "note": "Second review. Correct as it stands. Vyākhyā: five connected sentences, a real retelling and no longer a word list; अर्थात् twice (वाग्विदां वरः, परिपप्रच्छ), both on hard words; every sentence grammatical; anusvāra only before consonants; nothing added except पुरा and मुनिः as connective context; all bold words are the verse's own (तपसि, स्वाध्याये, निरतः, वरः, मुनिपुङ्गवः correctly re-inflected). Glosses: तपस्वी → तपः कुर्वन् and नारदम् → नारदनामकं मुनिम् are simpler and in the pada's case; the rest are unchanged and right. Padaccheda, analyses, vigrahas, anvaya, context note and speaker (null) are unchanged from the version passed before and remain correct.",
-  "fixes": []
- },
- "VR.1.1.2": {
-  "verdict": "pass",
-  "rules": [
-   "§5.2",
-   "§5.4",
-   "§5.7"
-  ],
-  "note": "One small mechanical fix (लोके); everything else is right. Vyākhyā: natural and connected, अर्थात् twice (साम्प्रतम्, कृतज्ञः), grammar faultless (कः वीर्यवान् अस्ति, कः च धर्मज्ञः; न विस्मरति; स्वव्रतं च न त्यजति), pausal म् correct before the dashes, speaker named and linked to verse 1, nothing added. Glosses: नु → प्रश्नार्थकम् अव्ययम् follows the ruling; वीर्यवान् → बलवान्, शूरः is simpler; धर्मं जानन् etc. keep the pada's case. Padaccheda, analyses, vigrahas, anvaya, context note and speaker are unchanged and correct. FOR THE SCHOLAR (not a ruled point, applies to verses 2 and 3): च is now glossed अपि everywhere. In verse 4 that is exactly right (देवाः च = even the gods, च in the sense of अपि). In verses 2 and 3 च is the plain connective (समुच्चये). अपि can also mean 'and also', so the gloss is not wrong, but it is not simpler than च, it hides the real difference from verse 4, and a beginner who substitutes it gets कः अपि, which he has learnt as 'someone'. I recommend तथा for the connective च (or, on the model of the नु ruling, योजकम् अव्ययम्), keeping अपि only where च means 'even'. Also for the scholar: how far the bracket rule reaches. The draft brackets (तेषां), (कार्यं कर्तुं), (सर्वेषां), (ये स्वर्गे वसन्ति) but leaves उत्तमैः in उत्तमैः गुणैः युक्तः, सदा in सदा सत्यं वदन् and सम्यक् in verse 1 unbracketed; I read these as part of a natural paraphrase and have not counted them as faults. OPTIONAL: the first vyākhyā sentence has 11 words (§5.4 says 4–10; the checker allows 12) and three dashes in a row; अस्मिन् लोके साम्प्रतम् — अर्थात् इदानीम् — गुणवान् कः अस्ति ? reads more easily.",
-  "fixes": [
-   {
-    "where": "padartha: लोके",
-    "problem": "§5.7: a word the gloss supplies beyond the pada stands in round brackets. The gloss repeats the pada and adds मनुष्याणाम्, which the word does not say (it is the same kind of addition as (सर्वेषां) in the ruling and as (ये स्वर्गे वसन्ति) under देवाः). The gloss itself is correct and helpful.",
-    "replace_with": "(मनुष्याणां) लोके"
-   }
-  ],
-  "round": "fix round: the bracket fix was applied exactly as the reviewer prescribed (verified mechanically)"
- },
- "VR.1.1.3": {
-  "verdict": "flag",
-  "rules": [
-   "§5.2",
-   "§5.4",
-   "§5.7"
-  ],
-  "note": "No definite error. Vyākhyā: connected, अर्थात् twice (चारित्रेण युक्तः, सर्वभूतेषु हितः), all sentences grammatical, pausal म् right (शोभनम् ?), linked by पुनः and speaker named; the last sentence explains एकप्रियदर्शनः exactly as ruled, with (सर्वेषां) in brackets; विद्वान् and समर्थः are joined in one question, which is harmless. Glosses checked: चारित्रेण → शोभनेन आचरणेन (right, तृतीया); हितः → (तेषां) शुभं कुर्वन् (right, natural, प्रथमा); विद्वान् → बहु जानन्, ज्ञानी (right); समर्थः → यः (कार्यं कर्तुं) शक्नोति सः (right and clear; शक्तः would be shorter); एकप्रियदर्शनः as ruled. Padaccheda, analyses, vigrahas, anvaya, context note and speaker unchanged and correct. FOR THE SCHOLAR: (1) च → अपि, three times: here च is the plain connective, see the note on verse 2; I recommend तथा. (2) युक्तः → यस्य (तत्) अस्ति सः: correct in sense and formally in the pada's case, but awkward. The pada governs the instrumental चारित्रेण and the gloss cannot be put in its place, and (तत्) has nothing to point to when the entry is read alone. Recommended: (तेन) सहितः, which is everyday and keeps the instrumental. (3) Linga, all from memory, I could not open the kośas: चारित्र नपुं — I do not recall it in the Amarakośa; Apte gives चारित्रम् as neuter; confirmed on Apte. भूत in सर्वभूतेषु नपुं — as I recall, the Amarakośa nānārtha line (युक्ते क्ष्मादावृते भूतं प्राण्यतीते समे त्रिषु) gives the sense 'living being' as त्रिषु, that is, without a fixed gender, so the Amarakośa does not settle it; Apte gives भूतम् neuter for 'a being' and सर्वाणि भूतानि is the constant usage, so नपुं stands on Apte. The form भूतेषु does not show gender. The scholar should verify the Amarakośa line.",
-  "fixes": [],
-  "round": "the reviewer's two gloss recommendations (च → तथा, युक्तः → (तेन) सहितः) were adopted; the flag stands for the kośa check"
- },
- "VR.1.1.4": {
-  "verdict": "pass",
-  "rules": [
-   "§5.2",
-   "§5.3",
-   "§5.4",
-   "§5.7"
-  ],
-  "note": "Correct as it stands. Vyākhyā: grammatical throughout (मनः स्ववशे भवति; सः क्रोधं जितवान्; क्रुद्धात् कस्मात् … भीताः भवन्ति with the ablative that the ruling's gloss requires); अर्थात् twice (अनसूयकः, and the restatement of the last question); nothing added, no name given to the man asked about; speaker named, linked by अन्यत् अपि. Glosses: आत्मवान् → यस्य मनः स्वस्य वशे अस्ति सः, द्युतिमान् → तेजस्वी (the commoner word), अनसूयकः → ईर्ष्यां न कुर्वन् …, बिभ्यति → भीताः भवन्ति, जातरोषस्य → क्रुद्धस्य … तस्य are all right and in the pada's case. देवाः → देवाः (ये स्वर्गे वसन्ति) is right and follows the ruling for an already simple word. च → अपि is right here: this च means 'even'. कस्य is षष्ठी with (कस्मात् इति अर्थः) as ruled. संयुग is now पुं as ruled (Amarakośa, from memory: it stands in the masculine list … कलिसंस्फोटसंयुगाः). अनसूयकः unhyphenated with vigraha न असूयकः as ruled. Anvaya has the supplied च in parentheses. OPTIONAL: in कस्य जातरोषस्य संयुगे देवाः अपि बिभ्यति the genitive stands next to संयुगे and can be read as 'in whose battle'; the order of the anvaya, संयुगे जातरोषस्य कस्य देवाः अपि बिभ्यति ?, avoids that. The explanatory statement तादृशस्य पुरुषस्य … जितवान् stands in the middle of Vālmīki's questions; it would sit better after them.",
-  "fixes": []
- },
- "VR.1.1.5": {
-  "verdict": "pass",
-  "rules": [
-   "§5.2",
-   "§5.4",
-   "§5.7"
-  ],
-  "note": "Correct as it stands; both faults of the first review are gone. Vyākhyā: four sentences, अर्थात् once (कौतूहलम्), grammar faultless, हि in second place, anusvāra now only before consonants (परं कौतूहलम्, एवंविधं नरं ज्ञातुं) and म् before the vowel (कौतूहलम् अस्ति); एवंविधः नरः correctly re-inflected and explained by नाम; linked by एवं पृष्ट्वा, speaker named. Glosses: इच्छामि → इच्छां करोमि and ज्ञातुम् → ज्ञानं प्राप्तुम् are paraphrases, not rarer synonyms; कौतूहलम् → ज्ञातुम् इच्छा is प्रथमा एकवचन like the pada; हि → यतः (कारणं वदति) is right and helpful; महा-ऋषे → हे महामुने नारद, (सम्बोधनम्) has the prescribed form; अहम् (वाल्मीकिः), त्वम् (नारदः) bracketed correctly; नरम् → मनुष्यम् is fine. कौतूहल नपुं is confirmed by the Amarakośa (from memory: कौतूहलं कौतुकं च कुतुकं च कुतूहलम्). Padaccheda, analyses, vigrahas, anvaya, context note and speaker unchanged and correct. OPTIONAL: समर्थः → यः (ज्ञातुं) शक्नोति सः is right but sits oddly beside त्वम् … असि; शक्तः would do. असि → भवसि is a synonym of the same level, not a simpler word; it could simply be left as (त्वम्) असि. The first vyākhyā sentence has 11 words (§5.4 says 4–10; the checker allows 12).",
-  "fixes": []
- }
+  "VR.1.1.1": {
+    "verdict": "pass",
+    "rules": ["§5.4 rule 1", "§5.4 rule 2", "§5.4 rule 3", "§5.4 rule 4", "§5.4 rule 5", "§5.4 rule 6", "§5.4 rule 7"],
+    "note": "Third review, vyākhyā only (new §5.4). Correct as it stands. Rule 1: connected prose, no dash chains. Rule 2: every word boundary checked by hand; no external sandhi (तपस्वी इति उच्यते, सम्यक् जानतां), anusvāra only before consonants, म् before vowel and pause (वाग्विदाम् इत्युक्ते, जनानाम् ;). Rule 3: यः … सः (यः मुनिषु श्रेष्ठः सः मुनिपुङ्गवः), अतः, किञ्च, इति आशयः, all used correctly. Rule 4: स्वाध्यायः इत्युक्ते वेदस्य पठनम् (nominative with nominative), वाग्विदाम् इत्युक्ते … जनानाम् (genitive with genitive), परिपप्रच्छ, इत्युक्ते प्रश्नं पृष्टवान् are all right. Rule 5: two stretching constructions, the finite passive उच्यते and the present participle जानताम्. (Following the owner's sample I do not count the fixed इत्युक्ते, nor क्त/क्तवतु forms such as पृष्टवान्.) Rule 6: no compound but the verse's own. Rule 7: all eight significant padas in bold (the long compound through तपसि, स्वाध्याये, निरतः); 5 sentences; nothing added beyond the verse. On the connective inference सः सदा तपः करोति स्म, अतः तपस्वी इति उच्यते: this is the meaning of तपस्वी put as a sentence and is acceptable. OPTIONAL: सदा is slightly more than the word says of Vālmīki (the verse has निरत only of Nārada, and the padārtha has plain तपः कुर्वन्); it can be dropped. The explanation स्वाध्यायः इत्युक्ते वेदस्य पठनम् hangs on a comma after आसीत्; a semicolon, as elsewhere, would read better.",
+    "fixes": []
+  },
+  "VR.1.1.2": {
+    "verdict": "pass",
+    "rules": ["§5.4 rule 1", "§5.4 rule 2", "§5.4 rule 3", "§5.4 rule 4", "§5.4 rule 5", "§5.4 rule 6", "§5.4 rule 7"],
+    "note": "Correct as it stands. Rule 1: connected prose. Rule 2: all boundaries clean (साम्प्रतम् अस्मिन्, कृतम् उपकारं स्मरन् पुरुषः, कदाचित् अपि, इदानीं लोके); no anusvāra before a vowel or pause. Rule 3: यः … सः three times and यस्य … सः, correlatives matched; किञ्च; the closing इति वाल्मीकेः प्रश्नस्य आशयः gathers the questions well. Rule 4: साम्प्रतम् इत्युक्ते इदानीम्; … स्मरन् पुरुषः कृतज्ञः इति उच्यते; the explanations of धर्मज्ञः, सत्यवाक्यः and दृढव्रतः are correct and say no more than the words. Rule 5: two, the present participle स्मरन् and the finite passive उच्यते (कृतम् is a क्त form, not counted). Rule 6: only the verse's compounds. Rule 7: all significant padas bold; speaker named and linked to परिपप्रच्छ of verse 1; 5 sentences; nothing added. The two questions गुणवान् कः and कः च वीर्यवान् are joined into one (गुणवान् वीर्यवान् च कः अस्ति), which is harmless since all the questions seek one man, as the last sentence says. OPTIONAL: गुणवान् and वीर्यवान् are left to the padārtha; that is allowed.",
+    "fixes": []
+  },
+  "VR.1.1.3": {
+    "verdict": "flag",
+    "rules": ["§5.4 rule 1", "§5.4 rule 2", "§5.4 rule 3", "§5.4 rule 4", "§5.4 rule 5", "§5.4 rule 6", "§5.4 rule 7", "§5.7"],
+    "note": "The vyākhyā itself is correct and needs no change; the flag only carries forward the standing points for the scholar (below). Rule 1: connected prose. Rule 2: boundaries clean (चारित्रम् इत्युक्ते शोभनम् आचरणम्, न अस्ति चेत् सः). Rule 3: यः … सः, यं … सः, and चेत् correctly placed at the end of its clause (तादृशः अन्यः न अस्ति चेत् सः …); तथा च, ततः, इति आशयः. Rule 4: चारित्रम् इत्युक्ते शोभनम् आचरणम् (both neuter nominative); यं दृष्ट्वा (सर्वे) जनाः प्रीताः भवन्ति सः प्रियदर्शनः is a correct explanation, and the last clause renders एकः = अद्वितीयः exactly as ruled, with (सर्वे) in brackets. Rule 5: two, the finite passive पृच्छ्यते and the gerund दृष्ट्वा. पृच्छ्यते is correctly formed (प्रच्छ् takes samprasāraṇa before यक्, 6.1.16); दृष्ट्वा has the same agent as प्रीताः भवन्ति, as it must. Rule 6: only the verse's compounds and its member प्रियदर्शनः. Rule 7: all significant padas bold; linked by पुनः, speaker named; 5 sentences; nothing added. STANDING POINTS FOR THE SCHOLAR, unchanged from the second review: (1) एकप्रियदर्शनः is read by the owner's ruling as एकः (अद्वितीयः) प्रियदर्शनः; the alternative, a bahuvrīhi एकम् (केवलम् / सदा) प्रियं दर्शनं यस्य सः, exists in the tradition and is recorded here only for completeness. (2) Linga still to be verified in the kośas (I am working from memory): चारित्र नपुं rests on Apte (चारित्रम्), I do not recall it in the Amarakośa; भूत in सर्वभूतेषु नपुं rests on Apte and on the constant usage सर्वाणि भूतानि, while the Amarakośa nānārtha line as I recall it (… भूतं प्राण्यतीते समे त्रिषु) gives the sense 'living being' without a fixed gender.",
+    "fixes": []
+  },
+  "VR.1.1.4": {
+    "verdict": "pass",
+    "rules": ["§5.4 rule 1", "§5.4 rule 2", "§5.4 rule 3", "§5.4 rule 4", "§5.4 rule 5", "§5.4 rule 6", "§5.4 rule 7"],
+    "note": "Correct as it stands, and not a copy of the owner's sample (every explanation is worded differently). Rule 1: connected prose. Rule 2: boundaries clean (नारदम् अन्यत् अपि, तस्मात् भीताः, युद्धम् ;). Rule 3: यः … सः, यस्य … सः, यदा … तदा with matched correlatives; तथा च, किञ्च, इति आशयः. Rule 4: आत्मवान् इत्युक्ते स्वस्य मनसः स्वामी; यस्य तेजः अस्ति सः द्युतिमान्; यः अन्येषां गुणान् न निन्दति, ईर्ष्यां च न करोति, सः अनसूयकः इति उच्यते; संयुगः इत्युक्ते युद्धम् (संयुगः masculine as ruled) are all correct. The last sentence turns the epic genitive कस्य into the ablative तस्मात्, as the ruling requires. Rule 5: two, the gerund जित्वा (क्रोधं जित्वा वर्तते) and the finite passive उच्यते. Rule 6: only the verse's compounds. Rule 7: all significant padas bold; linked by अन्यत् अपि, speaker named; 6 sentences. On इति अन्तिमः प्रश्नः: it is true of the text (verse 5 asks nothing more) and matches the owner's own अन्ते वाल्मीकिः पृच्छति; acceptable as connective context. OPTIONAL: (a) in यदा सः पुरुषः युद्धे क्रुद्धः भवति … the सः has nothing before it to point to; युद्धे क्रुद्धात् यस्मात् देवाः अपि भीताः भवन्ति, सः कः इति आशयः is tighter. (b) तु in यः तु क्रोधं जित्वा वर्तते marks a contrast that is not there; च would be more exact.",
+    "fixes": []
+  },
+  "VR.1.1.5": {
+    "verdict": "pass",
+    "rules": ["§5.4 rule 1", "§5.4 rule 2", "§5.4 rule 3", "§5.4 rule 4", "§5.4 rule 5", "§5.4 rule 6", "§5.4 rule 7"],
+    "note": "Correct as it stands. Rule 1: connected prose. Rule 2: boundaries clean (पृष्टं तत् एव अत्र एतत् इति, कारणम् अपि, कौतूहलम् अस्ति, एवंविधं नरं ज्ञातुं). Rule 3: यत् … तत्, यः … सः, अतएव, ततः, इति आशयः twice. Rule 4: कौतूहलम् इत्युक्ते ज्ञातुम् इच्छा, सा च महती इति आशयः explains कौतूहलम् and परम् together, with सा महती agreeing with इच्छा; यत् पूर्वं पृष्टं तत् एव अत्र एतत् इति उच्यते is a good way to explain the pronoun; सः कारणम् अपि वदति brings out हि. Rule 5: two, the gerund पृष्ट्वा and the finite passive उच्यते (पृष्टम् is a क्त form, not counted, as in the owner's sample). Rule 6: only the verse's compounds. Rule 7: all fourteen significant padas bold; linked by एवं प्रश्नान् पृष्ट्वा, speaker named; 5 sentences. On the inference नारदः तं ज्ञातुं शक्नोति, अतएव वाल्मीकिः नारदं पृच्छति इति आशयः: the verse says only that Nārada is able to know such a man; that this is why he is asked is the plain purpose of the line and is marked as आशयः, so it stays within connective context. The five vyākhyās read as one piece: verse 1 sets the scene, 2–4 open with पृच्छति / पुनः / अन्यत् अपि, 5 closes with एवं प्रश्नान् पृष्ट्वा.",
+    "fixes": []
+  }
 }
