@@ -27,7 +27,7 @@ def _mula_spelling(word: str, mula_raw: str) -> str:
     return word
 
 
-def seed_verse(lines: list[str], words: list[dict], allow_trailing: bool = False) -> dict:
+def seed_verse(lines: list[str], words: list[dict], allow_trailing: bool = False, avagraha: bool = True) -> dict:
     """words: [{form, lemma, tags, comp}], in verse order (comp=True: a member followed by
     another member of the same compound). With allow_trailing, words after the verse's
     last unit are ignored (``used`` says how many were taken)."""
@@ -41,19 +41,19 @@ def seed_verse(lines: list[str], words: list[dict], allow_trailing: bool = False
     w0, failures = 0, []
     unit_list = units(lines)
     for ui, unit in enumerate(unit_list):
-        line_norm = [mula_norm(to_slp1(lines[i])) for i in unit]
+        line_norm = [mula_norm(to_slp1(lines[i]), avagraha) for i in unit]
         target = "".join(line_norm)
         # how many words belong to this unit: try every end point, prefer the one that matches
         found = None
         last = ui == len(unit_list) - 1
         ends = range(w0 + 1, len(words) + 1) if (not last or allow_trailing) else [len(words)]
         for w1 in ends:
-            r = rejoin(alts[w0:w1], target, comp_before[w0:w1])
+            r = rejoin(alts[w0:w1], target, comp_before[w0:w1], avagraha)
             if r["ok"]:
                 found = (w1, r)
                 break
         if not found:
-            r = rejoin(alts[w0:], target, comp_before[w0:])
+            r = rejoin(alts[w0:], target, comp_before[w0:], avagraha)
             failures.append({"reason": "mismatch", "line": unit[0], "pos": r["best"],
                              "expected": target[max(0, r["best"] - 8):r["best"] + 12],
                              "got": r["got"][max(0, r["best"] - 8):r["best"] + 12]})
@@ -77,7 +77,7 @@ def seed_verse(lines: list[str], words: list[dict], allow_trailing: bool = False
             failures.append({"reason": "leftover_words", "count": len(words) - w0})
         return {"ok": False, "failures": failures}
     chosen = [_mula_spelling(w, mula_raw) for w in chosen]
-    _mark_sa_prefix(lines, words, line_words, starts, chosen, sep_after)
+    _mark_sa_prefix(lines, words, line_words, starts, chosen, sep_after, avagraha)
     pada_lines, groups = [], []
     for i, line in enumerate(lines):
         idx = line_words[i]
@@ -86,27 +86,27 @@ def seed_verse(lines: list[str], words: list[dict], allow_trailing: bool = False
         pada_lines.append(text + (" " + d if d else ""))
         if non_pausal(pada_lines[-1]):          # same pausal rule as check_rejoin
             return {"ok": False, "failures": [{"reason": "non_pausal", "line": i, "word": non_pausal(pada_lines[-1])[0]}]}
-        groups.append(_groups(line, idx, starts, chosen, sep_after))
+        groups.append(_groups(line, idx, starts, chosen, sep_after, avagraha))
     return {"ok": True, "padaccheda_lines": pada_lines, "groups": groups, "words": chosen, "used": w0}
 
 
-def _token_offsets(line: str) -> tuple[list[str], list[int]]:
+def _token_offsets(line: str, avagraha: bool = True) -> tuple[list[str], list[int]]:
     """The printed tokens of a mūla line and where each starts in the line's ``mula_norm`` text."""
     tokens = re.sub(r"\s*[।॥]\s*$", "", line).strip().split()
     offs, acc = [], 0
     for t in tokens:
         offs.append(acc)
-        acc += len(mula_norm(to_slp1(t)))
+        acc += len(mula_norm(to_slp1(t), avagraha))
     return tokens, offs
 
 
-def _mark_sa_prefix(lines, words, line_words, starts, chosen, sep_after) -> None:
+def _mark_sa_prefix(lines, words, line_words, starts, chosen, sep_after, avagraha=True) -> None:
     """Dharmamitra returns ``sa`` both for the pronoun सः and for the prefix स-. The mūla
     tells them apart: the pronoun is printed as a word of its own (स ददर्श), the prefix is
     printed joined to its word (सगन्धर्वैः). An untagged ``sa`` followed, inside the same
     printed token, by a consonant-initial word becomes the compound member स-."""
     for i, line in enumerate(lines):
-        _, offs = _token_offsets(line)
+        _, offs = _token_offsets(line, avagraha)
         token_of = lambda wi: max(k for k, o in enumerate(offs) if o <= starts[wi])
         for a, b in zip(line_words[i], line_words[i][1:]):
             if (not words[a]["tags"] and words[a]["form"] == "sa" and chosen[a] == "saH"
@@ -114,26 +114,27 @@ def _mark_sa_prefix(lines, words, line_words, starts, chosen, sep_after) -> None
                 chosen[a], sep_after[a] = "sa", "-"
 
 
-def seed_window(lines: list[str], words: list[dict]) -> dict:
+def seed_window(lines: list[str], words: list[dict], avagraha: bool = True) -> dict:
     """Seed from the exact word list if possible, else from the first contiguous run of
     ``words`` that re-joins to the verse (for verses regrouped against the CE)."""
-    r = seed_verse(lines, words)
+    r = seed_verse(lines, words, avagraha=avagraha)
     if r["ok"]:
         return {**r, "window": [0, len(words)]}
     target = norm(to_slp1(lines[0])) if lines else ""
     for i in range(len(words)):
         if not any(norm(a)[:1] == target[:1] for a in pausal_candidates(words[i])):   # 1st letter is never changed
             continue
-        ri = seed_verse(lines, words[i:], allow_trailing=True)
+        ri = seed_verse(lines, words[i:], allow_trailing=True, avagraha=avagraha)
         if ri["ok"]:
             return {**ri, "window": [i, i + ri["used"]]}
     return {**r, "window": None}
 
 
-def _groups(line: str, idx: list[int], starts: dict[int, int], chosen: list[str], sep_after: list[str]) -> list:
+def _groups(line: str, idx: list[int], starts: dict[int, int], chosen: list[str], sep_after: list[str],
+            avagraha: bool = True) -> list:
     """[[sandhi token(s), pada text, flag], " ", …, " ।"] for one line."""
     d = _end_danda(line)
-    tokens, offs = _token_offsets(line)
+    tokens, offs = _token_offsets(line, avagraha)
     owner: dict[int, list[int]] = {j: [] for j in range(len(tokens))}
     for wi in idx:
         j = max(k for k, o in enumerate(offs) if o <= starts[wi]) if tokens else 0

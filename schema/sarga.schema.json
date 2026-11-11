@@ -128,7 +128,8 @@
         "en_simple",
         "en_mixed",
         "review",
-        "crosswalk"
+        "crosswalk",
+        "padaccheda_status"
       ],
       "properties": {
         "id": {
@@ -206,7 +207,58 @@
             "human",
             "flags"
           ]
+        },
+        "padaccheda_status": {
+          "enum": [
+            null,
+            "seed",
+            "reviewed"
+          ],
+          "description": "null: no split; seed: machine split, unreviewed (shown as असमीक्षितम्); reviewed: finalised in a sarga review"
+        },
+        "lines_corrected": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/line"
+          },
+          "description": "CLAUDE.md §12: an approved correction of lines; lines itself is never changed"
+        },
+        "correction": {
+          "type": "object",
+          "required": [
+            "what",
+            "evidence",
+            "approved_by",
+            "date"
+          ],
+          "properties": {
+            "what": {
+              "type": "string",
+              "minLength": 1
+            },
+            "evidence": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approved_by": {
+              "type": "string",
+              "minLength": 1
+            },
+            "date": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
         }
+      },
+      "dependentRequired": {
+        "lines_corrected": [
+          "correction"
+        ],
+        "correction": [
+          "lines_corrected"
+        ]
       }
     },
     "mula_line": {

@@ -6,6 +6,10 @@
 * A verse with no accepted seed, or whose DCS and Dharmamitra splits disagree,
   is queued with every candidate and the failure position.
 * The mūla hash is compared with data/meta/mula_hashes.json (§7.2).
+* padaccheda_status is set: "seed" for a machine split, None without a split;
+  a "reviewed" split is kept as it is and, if it fails, reported, never cleared.
+* A verse left without a split whose only machine split differs from the mūla
+  in the avagraha gets the flag avagraha_mismatch (Stage B review, M2).
 
 Writes queue/padaccheda_fix.jsonl (one JSON object per line) and
 data/meta/rejoin.json. Nothing in the queue is resolved here (Stage A).
@@ -21,10 +25,22 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from vrtools.build import mula_hash  # noqa: E402
+from vrtools.build import add_flag, mula_hash, padaccheda_status  # noqa: E402
 from vrtools.sandhi import check_rejoin  # noqa: E402
 
 INSTRUCTION = "Do not change the mūla. Give a padaccheda (CLAUDE.md §5.1) that re-joins to it."
+AVAGRAHA = "avagraha_mismatch"
+
+
+def flag_avagraha(v: dict, seed: dict) -> None:
+    """Flag (or unflag) a verse whose machine split disagrees with the printed avagraha."""
+    review = v["review"]
+    review["flags"] = [f for f in review["flags"] if f != AVAGRAHA]
+    review["notes"] = " | ".join(n for n in (review.get("notes") or "").split(" | ") if n and not n.startswith(AVAGRAHA + ":"))
+    rejected = seed.get("dcs_avagraha_mismatch") or seed.get("dharmamitra_avagraha_mismatch")
+    if rejected and not v["padaccheda_lines"]:
+        add_flag(v, AVAGRAHA, "the machine split agrees with the mūla except where an initial अ is elided "
+                              "(ऽ printed without अ in the split, or अ in the split without ऽ): " + " / ".join(rejected))
 
 
 def main() -> None:
@@ -42,7 +58,9 @@ def main() -> None:
                 r = check_rejoin(v["lines"], v["padaccheda_lines"])
                 v["review"]["auto_checks"]["rejoin"] = r["ok"]
                 stats[src]["pass" if r["ok"] else "fail"] += 1
-                if not r["ok"]:
+                if not r["ok"] and v.get("padaccheda_status") == "reviewed":
+                    entry = {"reason": "reviewed_padaccheda_fails", "failure": r["failures"][0]}   # kept, for a human
+                elif not r["ok"]:
                     entry = {"reason": "stored_padaccheda_fails", "failure": r["failures"][0],
                              "rejected": v["padaccheda_lines"]}
                     v["padaccheda_lines"], v["groups"] = None, None
@@ -61,6 +79,8 @@ def main() -> None:
                                              "dharmamitra": seed.get("dharmamitra")},
                               **entry, "instruction": INSTRUCTION})
             v["seed"] = seed
+            v["padaccheda_status"] = padaccheda_status(v)
+            flag_avagraha(v, seed)
         d["status"]["padaccheda"] = "seeded" if all(v["padaccheda_lines"] for v in d["verses"]) else "partial"
         f.write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")) + "\n")
     (ROOT / "queue").mkdir(exist_ok=True)

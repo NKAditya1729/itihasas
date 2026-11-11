@@ -15,6 +15,38 @@ def mula_hash(lines: list[str]) -> str:
     return hashlib.sha256("\n".join(lines).encode()).hexdigest()
 
 
+def padaccheda_status(v: dict) -> str | None:
+    """None without a split; "reviewed" once a split has been finalised in a sarga review
+    (never downgraded); otherwise "seed" (a machine split, shown as असमीक्षितम्)."""
+    if not v.get("padaccheda_lines"):
+        return None
+    return "reviewed" if v.get("padaccheda_status") == "reviewed" else "seed"
+
+
+def status_errors(v: dict) -> list[str]:
+    """Consistency of the Stage B fields of one verse (for scripts/validate.py)."""
+    errors, status = [], v.get("padaccheda_status")
+    if v.get("padaccheda_lines") and not status:
+        errors.append(f"{v['id']}: padaccheda without padaccheda_status")
+    if status and not v.get("padaccheda_lines"):
+        errors.append(f"{v['id']}: padaccheda_status is {status} but there is no padaccheda")
+    if "lines_corrected" in v and not (v.get("correction") or {}).get("approved_by"):
+        errors.append(f"{v['id']}: lines_corrected without an approved correction record")
+    return errors
+
+
+def add_flag(v: dict, flag: str, note: str = "") -> None:
+    """Add a review flag (once) and its note to review.notes (once)."""
+    review = v["review"]
+    if flag not in review["flags"]:
+        review["flags"].append(flag)
+    entry = f"{flag}: {note}" if note else ""
+    notes = [n for n in (review.get("notes") or "").split(" | ") if n]
+    if entry and entry not in notes:
+        notes.append(entry)
+    review["notes"] = " | ".join(notes)
+
+
 def make_verse(p: dict, vid: str) -> dict:
     lines, norm = [], {}
     for raw in p["lines"]:
@@ -29,7 +61,7 @@ def make_verse(p: dict, vid: str) -> dict:
     return {
         "id": vid, "n": p["n"], "src_ref": p["src_ref"], "half": p["half"],
         "lines": lines, "norm": norm, **({"invalid_chars": bad} if bad else {}),
-        "padaccheda_lines": None, "groups": None,
+        "padaccheda_lines": None, "groups": None, "padaccheda_status": None,
         "metre": {**identify(lines), "checked_by": "vidyut.chandas+vrtools.metre"},
         "speaker": None, "context_note_sa": None, "crosswalk": None,
         "padartha": [], "anvaya": None, "vyakhya_sa": None, "vyakhya_used_padas": [],

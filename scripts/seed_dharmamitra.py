@@ -17,6 +17,7 @@ from __future__ import annotations
 import collections
 import hashlib
 import json
+import os
 import re
 import sys
 import time
@@ -65,6 +66,10 @@ def segment(texts: list[str]) -> list[str]:
 
 def _request(texts: list[str]) -> list[str]:
     global _last
+    if os.environ.get("DHARMAMITRA_ALLOW_NETWORK") != "1":
+        # Stage B: the service's terms of use are not confirmed (docs/STAGE_B_BRIEF.md §4)
+        raise RuntimeError(f"{len(texts)} text(s) are not in cache/dharmamitra/ and network calls are off; "
+                           "set DHARMAMITRA_ALLOW_NETWORK=1 only with the user's approval")
     key = hashlib.sha256(json.dumps(texts, ensure_ascii=False).encode()).hexdigest()[:20]
     path = CACHE / f"{key}.json"
     for attempt in range(5):
@@ -107,7 +112,8 @@ def main() -> None:
     files = sorted((ROOT / "data" / "vr").glob("*/*.json"))
     docs = {f: json.loads(f.read_text()) for f in files}
     todo = [v for d in docs.values() for v in d["verses"] + (d["appendix"]["verses"] if d["appendix"] else [])
-            if (v.get("seed") or {}).get("source") != "dcs"
+            if v.get("padaccheda_status") != "reviewed"
+            and (v.get("seed") or {}).get("source") != "dcs"
             and not ((v.get("seed") or {}).get("source") == "dharmamitra"
                      and v["seed"].get("mula_hash") == hashes[v["id"]]
                      and v["seed"].get("checker") == CHECKER_VERSION)]
@@ -122,12 +128,19 @@ def main() -> None:
                 v["padaccheda_lines"], v["groups"] = r["padaccheda_lines"], r["groups"]
                 seed.update({"source": "dharmamitra", "mula_hash": hashes[v["id"]], "checker": CHECKER_VERSION})
                 seed.pop("dharmamitra_failure", None)
+                seed.pop("dharmamitra_avagraha_mismatch", None)
                 if "compound_boundaries_unknown" not in v["review"]["flags"]:
                     v["review"]["flags"].append("compound_boundaries_unknown")
                 stats["ok"] += 1
             else:
                 v["padaccheda_lines"], v["groups"] = None, None
                 seed.update({"source": None, "dharmamitra_failure": r["failures"][0] if r.get("failures") else None})
+                loose = seed_window(v["lines"], words_of(res), avagraha=False)   # fails only on the avagraha?
+                if loose["ok"]:
+                    seed["dharmamitra_avagraha_mismatch"] = loose["padaccheda_lines"]
+                    stats["avagraha_mismatch"] += 1
+                else:
+                    seed.pop("dharmamitra_avagraha_mismatch", None)
                 stats["fail"] += 1
             v["seed"] = seed
         if (i // (BATCH * 4)) % 20 == 0:

@@ -318,3 +318,10 @@ def test_untagged_sa_printed_apart_is_still_the_pronoun():
 def test_a_pronoun_tagged_by_dcs_is_not_turned_into_a_prefix():
     r = seed_verse(["सगच्छति ।"], [_d("sa", "tad", pos="n", g="m", c="1", n="s"), _d("gacCati", "gam", pos="v", p="3", n="s")])
     assert r["ok"] and r["padaccheda_lines"] == ["सः गच्छति ।"]
+
+
+def test_loose_avagraha_seeding_shows_what_the_strict_gate_rejected():
+    words = [_w("te", pos="n"), _w("asvasTAH", pos="a"), _w("vAnarAH", pos="n")]
+    assert not seed_verse(["ते स्वस्था वानराः ।"], words)["ok"]
+    r = seed_verse(["ते स्वस्था वानराः ।"], words, avagraha=False)
+    assert r["ok"] and r["padaccheda_lines"] == ["ते अस्वस्थाः वानराः ।"]

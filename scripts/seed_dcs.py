@@ -4,7 +4,9 @@ The DCS words of the linked CE verse and of its neighbours are searched for a
 contiguous run that re-joins to the verse (DCS blocks and vulgate verses are
 often cut at different places).
 A seed is kept only if the re-join check passes. Idempotent: verses already
-seeded (with an unchanged mūla hash) are skipped.
+seeded (with an unchanged mūla hash) are skipped. A verse whose padaccheda is
+``reviewed`` is never touched. If a DCS split fails only because of the avagraha
+(it would pass the loose check), it is recorded in seed.dcs_avagraha_mismatch.
 
 Usage: uv run python scripts/seed_dcs.py
 """
@@ -42,6 +44,9 @@ def main() -> None:
         changed = False
         for v in d["verses"] + (d["appendix"]["verses"] if d["appendix"] else []):
             seed = v.get("seed") or {}
+            if v.get("padaccheda_status") == "reviewed":
+                stats["reviewed_kept"] += 1
+                continue
             if (seed.get("source") == "dcs" and seed.get("mula_hash") == hashes[v["id"]]
                     and seed.get("checker") == CHECKER_VERSION):
                 stats["already"] += 1
@@ -72,6 +77,13 @@ def main() -> None:
                              "dcs_tried": True}
                 if best:
                     v["seed"].update({"dcs_verses": best[0], "dcs_failure": best[1], "dcs_candidate": best[2]})
+                for keys in windows:                         # would it pass with the avagraha ignored?
+                    words = [w for key in keys for w in dcs.get(key, [])]
+                    loose = seed_window(v["lines"], words, avagraha=False) if words else {"ok": False}
+                    if loose["ok"]:
+                        v["seed"]["dcs_avagraha_mismatch"] = loose["padaccheda_lines"]
+                        stats["avagraha_mismatch"] += 1
+                        break
                 changed = True
                 continue
             keys, r = result
