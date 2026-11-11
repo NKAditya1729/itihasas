@@ -7,7 +7,9 @@
 3. Each entry is an indeclinable, a nominal or a finite verb, with the fields of its kind,
    and **its analysis fits the form**: the case and number (or tense, person and number)
    must be among those the vidyut word list gives for that form. A form the word list does
-   not know (a name, a rare compound) is listed under "unverified", not failed.
+   not know (a name, a rare compound) is listed under "unverified", not failed. Where
+   the word list wrongly rejects a correct form (an ārṣa form such as शंसत् for अशंसत्),
+   the entry carries a "fit_note" saying why; it is then listed, not failed.
 4. A qualifier (``anvita``) agrees with what it qualifies in case, number and gender.
 5. The anvaya has every pada exactly once; any other word stands in parentheses.
 6. The vyākhyā (§5.4) reuses at least 80% of the significant padas (bold words), has 3–7
@@ -137,6 +139,9 @@ def _fit_errors(e: dict, unverified: list[str]) -> list[str]:
     """Is the stated analysis possible for the form?"""
     pada, kind = e["pada"], _kind(e)
     slp = _plain(pada)
+    if (e.get("fit_note") or "").strip():      # a declared exception (an ārṣa form, a stem the list lacks):
+        unverified.append(pada)                # not failed, but listed for the reviewer and the scholar
+        return []
     if kind == "nominal":
         readings = _nominal_readings(slp) or _nominal_readings(to_slp1(pada.split("-")[-1]))
         if not readings:
@@ -273,7 +278,7 @@ def check_layers(lines: list[str], v: dict) -> dict:
     for e in entries:
         errs = _entry_errors(e)
         errors += errs or _fit_errors(e, unverified)
-        for field in ("pada", "artha", "vigraha"):
+        for field in ("pada", "artha", "vigraha", "fit_note"):
             if _LATIN.search(e.get(field) or ""):
                 errors.append(f"{e.get('pada', '?')}: Latin letters in {field}")
     if not any("entry without" in x or "is not one of" in x for x in errors):

@@ -267,3 +267,17 @@ def test_words_stay_separate_in_the_vyakhya(bad, why):
 def test_anusvara_before_a_consonant_is_fine():
     v = good()                                       # तं नारदं सः, वाग्विदां वरः
     assert not any("sandhi" in e for e in errors(v))
+
+
+# ---- a correct form the word list rejects (found in the pilot) --------------------------------
+
+def test_a_declared_exception_to_the_word_list_is_listed_not_failed():
+    # VR.1.1.59 शंसत्: augmentless imperfect (ārṣa); the word list knows the form only as a participle
+    lines = ["शंसद्रामः ।"]
+    v = {"id": "x", "padaccheda_lines": ["शंसत् रामः ।"], "anvaya": "रामः शंसत् ।", "vyakhya_sa": None,
+         "padartha": [{"pada": "शंसत्", "dhatu": "शंस्", "lakara": "लङ्", "purusha": "प्रथम", "vacana": "एक", "artha": "अकथयत्"},
+                      {"pada": "रामः", "pratipadika": "राम", "linga": "पुं", "vibhakti": "प्रथमा", "vacana": "एक", "artha": "दशरथस्य पुत्रः"}]}
+    assert any("शंसत्" in e for e in check_layers(lines, v)["errors"])
+    v["padartha"][0]["fit_note"] = "आर्षः प्रयोगः — अडागमं विना लङ् (अशंसत्)"
+    r = check_layers(lines, v)
+    assert r["errors"] == [] and r["unverified"] == ["शंसत्"]
