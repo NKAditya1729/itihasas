@@ -8,6 +8,9 @@
 B status   padaccheda_status agrees with the presence of a split; a corrected verse has
            its approved correction record (CLAUDE.md §12)
 B flags    every verse listed in data/meta/mula_flags.json carries its flag
+B corr.    a corrected verse holds exactly an approved correction of data/meta/corrections.json,
+           its source lines are untouched (check 2), and its metre is that of the corrected text
+Checks 3 (re-join) reads the corrected text where one exists.
 """
 from __future__ import annotations
 
@@ -20,7 +23,7 @@ import jsonschema
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from vrtools.build import mula_hash, status_errors  # noqa: E402
+from vrtools.build import correction_errors, mula_hash, status_errors, text_lines  # noqa: E402
 from vrtools.normalize import invalid_chars  # noqa: E402
 from vrtools.sandhi import check_rejoin  # noqa: E402
 
@@ -32,6 +35,7 @@ def main() -> int:
     wanted = {}
     for e in json.loads((ROOT / "data" / "meta" / "mula_flags.json").read_text()):
         wanted.setdefault(e["id"], []).append(e["flag"])
+    approved = {e["id"]: e for e in json.loads((ROOT / "data" / "meta" / "corrections.json").read_text())}
     errors, n_verses, n_pada, seen = [], 0, 0, set()
     for f in sorted((ROOT / "data" / "vr").glob("*/*.json")):
         d = json.loads(f.read_text())
@@ -44,15 +48,16 @@ def main() -> int:
                 errors.append(f"{v['id']}: mūla not NFC")
             if any(invalid_chars(l) for l in v["lines"]) and "invalid_char" not in v["review"]["flags"]:
                 errors.append(f"{v['id']}: unflagged non-Sanskrit characters in the mūla")
-            errors += status_errors(v)
+            errors += status_errors(v) + correction_errors(v, approved)
             seen.add(v["id"])
             errors += [f"{v['id']}: flag {flag} from mula_flags.json is missing (run scripts/flag_mula.py)"
                        for flag in wanted.get(v["id"], []) if flag not in v["review"]["flags"]]
             if v["padaccheda_lines"]:
                 n_pada += 1
-                if not check_rejoin(v["lines"], v["padaccheda_lines"])["ok"]:
+                if not check_rejoin(text_lines(v), v["padaccheda_lines"])["ok"]:
                     errors.append(f"{v['id']}: stored padaccheda does not re-join")
     errors += [f"{vid}: listed in mula_flags.json but not in the data" for vid in sorted(set(wanted) - seen)]
+    errors += [f"{vid}: listed in corrections.json but not in the data" for vid in sorted(set(approved) - seen)]
     print(f"checked {n_verses} verses, {n_pada} with padaccheda; {len(errors)} errors")
     for e in errors[:50]:
         print("  ", e)

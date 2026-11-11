@@ -77,5 +77,22 @@ def test_reader_hides_the_toggle_on_a_sarga_without_any_split(site):
 
 def test_shell_and_reader_ask_for_the_new_files(site):
     shell = (site / "ramayanam" / "index.html").read_text()
-    assert "vr.js?v=2" in shell and "vr.css?v=2" in shell
-    assert "'?v=2'" in (site / "ramayanam" / "vr.js").read_text()
+    assert "vr.js?v=3" in shell and "vr.css?v=3" in shell
+    assert "'?v=3'" in (site / "ramayanam" / "vr.js").read_text()
+
+
+# ---- approved corrections on the site (CLAUDE.md §12.5) -------------------------------
+
+def test_reader_shows_the_corrected_text_with_a_mark_and_the_source_text_on_tap(site):
+    js = (site / "ramayanam" / "vr.js").read_text()
+    css = (site / "ramayanam" / "vr.css").read_text()
+    assert "v.lines_corrected || v.lines" in js and "संशोधितम्" in js and "corr-orig" in js
+    assert "aria-expanded" in js and ".corr-mark" in css
+    assert "vr.js?v=3" in (site / "ramayanam" / "index.html").read_text() and "'?v=3'" in js
+
+
+def test_published_data_carries_the_corrections_beside_the_untouched_source(site):
+    d = json.loads((site / "ramayanam" / "data" / "vr" / "1" / "001.json").read_text())
+    v = next(x for x in d["verses"] if x["id"] == "VR.1.1.100")
+    assert v["lines"][1].startswith("त् क्षत्रियो") and v["lines_corrected"][1].startswith("स्यात् क्षत्रियो")
+    assert v["correction"]["approved_by"] == "Aditya"

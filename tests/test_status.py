@@ -171,3 +171,94 @@ def test_ingest_refuses_to_rebuild_a_sarga_that_has_reviewed_work():
     s = sarga()
     s["verses"][0]["anvaya"] = "तपस्वी वाल्मीकिः नारदं परिपप्रच्छ ।"
     assert has_reviewed_work(s)
+
+
+# ---- approved corrections (CLAUDE.md §12; Aditya, 2026-11-11) -------------------------
+
+def test_text_lines_is_the_corrected_text_where_one_exists():
+    from vrtools.build import text_lines
+    v = sarga()["verses"][0]
+    assert text_lines(v) == v["lines"]
+    v["lines_corrected"] = ["तपःस्वाध्यायनिरतं तपस्वी वाग्विदां वरम् ।", v["lines"][1]]
+    assert text_lines(v) == v["lines_corrected"]
+
+
+RECORD = {"what": "space removed inside the compound", "evidence": "one compound", "approved_by": "Aditya", "date": "2026-11-11"}
+
+
+def test_apply_correction_keeps_lines_and_records_the_approval_and_the_metre():
+    from vrtools.build import apply_correction, mula_hash
+    v = sarga()["verses"][0]
+    before = mula_hash(v["lines"])
+    apply_correction(v, {"id": v["id"], "lines_corrected": ["तपःस्वाध्यायनिरतं तपस्वी वाग्विदां वरम् ।", v["lines"][1]], "correction": RECORD})
+    assert mula_hash(v["lines"]) == before                       # the Wikisource text is untouched
+    assert v["lines_corrected"][0].startswith("तपःस्वाध्यायनिरतं")
+    assert v["correction"] == RECORD
+    assert v["metre"]["ok"] and v["metre"]["name"] == "अनुष्टुप्" and v["metre"]["of"] == "lines_corrected"
+    assert v["metre_source"]["of"] == "lines"                    # what the metre check said of the source text
+
+
+@pytest.mark.parametrize("entry,message", [
+    ({"lines_corrected": ["क ।"], "correction": RECORD}, "line count"),
+    ({"lines_corrected": None, "correction": RECORD}, "same as the source"),
+    ({"lines_corrected": ["तपःस्वाध्यायनिरतं तपस्वी वाग्विदां वरम् ।", None], "correction": {**RECORD, "approved_by": ""}}, "approved_by"),
+])
+def test_apply_correction_refuses_a_malformed_or_unapproved_entry(entry, message):
+    from vrtools.build import apply_correction
+    v = sarga()["verses"][0]
+    lines = entry["lines_corrected"] or list(v["lines"])
+    lines = [l if l is not None else v["lines"][i] for i, l in enumerate(lines)]
+    with pytest.raises(ValueError, match=message):
+        apply_correction(v, {"id": v["id"], "lines_corrected": lines, "correction": entry["correction"]})
+
+
+def test_a_correction_in_the_data_must_be_the_approved_one():
+    from vrtools.build import apply_correction, correction_errors
+    v = sarga()["verses"][0]
+    entry = {"id": v["id"], "lines_corrected": ["तपःस्वाध्यायनिरतं तपस्वी वाग्विदां वरम् ।", v["lines"][1]], "correction": RECORD}
+    assert correction_errors(v, {}) == []                        # no correction: nothing to check
+    apply_correction(v, entry)
+    assert correction_errors(v, {v["id"]: entry}) == []
+    assert correction_errors(v, {}) == [f"{v['id']}: lines_corrected is not in data/meta/corrections.json"]
+    v["lines_corrected"][0] = "तपःस्वाध्यायनिरतं तपस्वी वाग्विदां वरः ।"
+    assert correction_errors(v, {v["id"]: entry}) == [f"{v['id']}: lines_corrected differs from the approved correction"]
+
+
+def test_an_approved_correction_missing_from_the_data_is_an_error():
+    from vrtools.build import correction_errors
+    v = sarga()["verses"][0]
+    entry = {"id": v["id"], "lines_corrected": ["तपःस्वाध्यायनिरतं तपस्वी वाग्विदां वरम् ।", v["lines"][1]], "correction": RECORD}
+    assert correction_errors(v, {v["id"]: entry}) == [f"{v['id']}: approved correction not applied (run scripts/apply_corrections.py)"]
+
+
+def test_set_flag_note_replaces_the_earlier_note_of_the_same_flag():
+    from vrtools.build import set_flag_note
+    v = sarga()["verses"][0]
+    add_flag(v, "not_mula", "a commentary sentence")
+    add_flag(v, "mula_suspect", "proposed, not applied")
+    set_flag_note(v, "mula_suspect", "corrected in lines_corrected")
+    assert v["review"]["flags"].count("mula_suspect") == 1
+    assert v["review"]["notes"] == "not_mula: a commentary sentence | mula_suspect: corrected in lines_corrected"
+
+
+def test_the_approved_corrections_file_is_well_formed():
+    entries = json.loads((ROOT / "data" / "meta" / "corrections.json").read_text())
+    assert {e["id"] for e in entries} == {"VR.1.1.1", "VR.1.1.9", "VR.1.1.45", "VR.1.1.100"}
+    for e in entries:
+        assert set(e["correction"]) == {"what", "evidence", "approved_by", "date"} and e["correction"]["approved_by"] == "Aditya"
+
+
+def test_the_four_corrected_verses_keep_their_source_text_and_pass_the_metre():
+    from vrtools.build import mula_hash
+    hashes = json.loads((ROOT / "data" / "meta" / "mula_hashes.json").read_text())
+    d = json.loads((ROOT / "data" / "vr" / "1" / "001.json").read_text())
+    by = {v["id"]: v for v in d["verses"]}
+    for vid in ("VR.1.1.1", "VR.1.1.9", "VR.1.1.45", "VR.1.1.100"):
+        v = by[vid]
+        assert mula_hash(v["lines"]) == hashes[vid]
+        assert v["lines_corrected"] != v["lines"] and v["metre"]["ok"] and v["correction"]["approved_by"] == "Aditya"
+    assert by["VR.1.1.1"]["lines_corrected"][0] == "तपःस्वाध्यायनिरतं तपस्वी वाग्विदां वरम् ।"
+    assert by["VR.1.1.9"]["lines_corrected"][0].endswith("श्रीमाञ्छत्रुनिबर्हणः ।")
+    assert by["VR.1.1.45"]["lines_corrected"][1].startswith("ऋषीणामग्निकल्पानां दण्डकारण्यवासिनाम्")
+    assert by["VR.1.1.100"]["lines_corrected"][1].startswith("स्यात् क्षत्रियो भूमिपतित्वमीयात्")
+    assert sum("lines_corrected" in v for v in d["verses"]) == 4

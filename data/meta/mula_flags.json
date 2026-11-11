@@ -2,22 +2,22 @@
  {
   "id": "VR.1.1.1",
   "flag": "mula_suspect",
-  "note": "Wikisource prints a space inside the compound तपःस्वाध्यायनिरतम् (तपः स्वाध्यायनिरतं)."
+  "note": "Wikisource prints a space inside the compound तपःस्वाध्यायनिरतम् (तपः स्वाध्यायनिरतं). Corrected in lines_corrected (approved by Aditya, 2026-11-11)."
  },
  {
   "id": "VR.1.1.9",
   "flag": "mula_suspect",
-  "note": "श्रीमाञ्छ्त्रुनिबर्हणः: a stray virāma after छ; the line has 15 syllables. Proposed, not applied: श्रीमाञ्छत्रुनिबर्हणः."
+  "note": "श्रीमाञ्छ्त्रुनिबर्हणः: a stray virāma after छ; the verse has 31 syllables. Corrected in lines_corrected (approved by Aditya, 2026-11-11)."
  },
  {
   "id": "VR.1.1.45",
   "flag": "mula_suspect",
-  "note": "दण्डकारण्यवासीनाम्: long ī breaks the cadence of the pāda. Proposed, not applied: दण्डकारण्यवासिनाम्."
+  "note": "दण्डकारण्यवासीनाम्: long ī breaks the cadence of the pāda. Corrected in lines_corrected (approved by Aditya, 2026-11-11)."
  },
  {
   "id": "VR.1.1.100",
   "flag": "mula_suspect",
-  "note": "Line 2 has lost its first syllable on Wikisource (त् क्षत्रियो …; 10 syllables for 11). Proposed, not applied: स्यात् क्षत्रियो भूमिपतित्वमीयात्."
+  "note": "Line 2 has lost its first syllable on Wikisource (त् क्षत्रियो …; 10 syllables for 11). Corrected in lines_corrected (approved by Aditya, 2026-11-11)."
  },
  {
   "id": "VR.1.26.4",

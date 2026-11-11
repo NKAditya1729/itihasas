@@ -17,7 +17,7 @@
   const ANUSHTUP = 'अनुष्टुप्';
   let index = null;
   const cache = {};
-  const load = f => (cache[f] = cache[f] || fetch('data/' + f + '?v=2').then(r => { if (!r.ok) throw new Error(f); return r.json(); }));
+  const load = f => (cache[f] = cache[f] || fetch('data/' + f + '?v=3').then(r => { if (!r.ok) throw new Error(f); return r.json(); }));
   const sargaFile = (k, s) => `vr/${k}/${String(s).padStart(3, '0')}.json`;
   const kanda = k => index.kandas.find(x => x.k === k);
 
@@ -41,7 +41,13 @@
   const nobreak = h => h.replace(/ ([।॥])/g, ' $1');   // display only: a daṇḍa never wraps alone
   function vlines(v) {
     if (v.groups) return v.groups.map(l => `<span class="vl">${nobreak(l.map(item).join(''))}</span>`).join('');
-    return v.lines.map(l => `<span class="vl">${nobreak(esc(l))}</span>`).join('');
+    return (v.lines_corrected || v.lines).map(l => `<span class="vl">${nobreak(esc(l))}</span>`).join('');
+  }
+  /* an approved correction (lines_corrected) is what is shown; the mark opens the source text */
+  function corrected(v) {
+    if (!v.lines_corrected) return '';
+    return '<button type="button" class="sarga-note corr-mark" aria-expanded="false">संशोधितम्</button>' +
+      `<span class="sarga-note corr-orig" hidden>विकिस्रोतसि पाठः —<br>${v.lines.map(l => nobreak(esc(l))).join('<br>')}</span>`;
   }
   function badges(v) {
     let h = '';
@@ -55,7 +61,7 @@
   function verse(v) {
     const pending = v.groups ? '' : '<span class="sarga-note pada-pending">पदच्छेदः सज्जीक्रियते</span>';
     const seed = v.groups && v.padaccheda_status !== 'reviewed' ? SEED_MARK : '';
-    return `<div class="mula-box" id="${esc(v.id)}">${badges(v)}${vlines(v)}${pending}${seed}` +
+    return `<div class="mula-box" id="${esc(v.id)}">${badges(v)}${vlines(v)}${pending}${seed}${corrected(v)}` +
       `<a class="verse-ref" href="#${esc(v.id)}">${deva(num(v))}</a></div>${study(v)}`;
   }
 
@@ -185,6 +191,8 @@
     $('#menu').addEventListener('click', () => { const open = !$('#sidebar').classList.contains('open'); $('#sidebar').classList.toggle('open', open); $('#menu').setAttribute('aria-expanded', open); });
     $('#content').addEventListener('toggle', e => { const d = e.target; if (d.matches('details.st-block') && d.open && !d.querySelector('.sec')) openStudy(d); }, true);
     $('#content').addEventListener('click', e => {
+      const m = e.target.closest('.corr-mark');
+      if (m) { const o = m.nextElementSibling; o.hidden = !o.hidden; m.setAttribute('aria-expanded', String(!o.hidden)); return; }
       const b = e.target.closest('.study-tabs button'); if (!b) return;
       const d = b.closest('details'); d.dataset.tab = b.dataset.tab; openStudy(d);
     });

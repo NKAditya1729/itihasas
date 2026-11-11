@@ -1,0 +1,56 @@
+[
+ {
+  "id": "VR.1.1.1",
+  "lines_corrected": [
+   "तपःस्वाध्यायनिरतं तपस्वी वाग्विदां वरम् ।",
+   "नारदं परिपप्रच्छ वाल्मीकिर्मुनिपुङ्गवम् ॥"
+  ],
+  "correction": {
+   "what": "Line 1: the space inside the compound is removed (तपः स्वाध्यायनिरतं → तपःस्वाध्यायनिरतं). No letter is changed.",
+   "evidence": "तपःस्वाध्यायनिरत is one compound; the Digital Corpus of Sanskrit analyses tapaḥ-svādhyāya-niratam as compound members, and Critical Edition 1.1.1 has the same words. The metre is not affected (anuṣṭubh, 32 syllables, before and after).",
+   "approved_by": "Aditya",
+   "date": "2026-11-11"
+  }
+ },
+ {
+  "id": "VR.1.1.9",
+  "lines_corrected": [
+   "बुद्धिमान्नीतिमान्वाग्मी श्रीमाञ्छत्रुनिबर्हणः ।",
+   "विपुलांसो महाबाहुः कम्बुग्रीवो महाहनुः ॥"
+  ],
+  "correction": {
+   "what": "Line 1: श्रीमाञ्छ्त्रुनिबर्हणः → श्रीमाञ्छत्रुनिबर्हणः (a stray virāma after छ is removed).",
+   "evidence": "Metre: the Wikisource verse has 31 syllables and fails the śloka check; corrected, it has 32 and passes as anuṣṭubh. Critical Edition 1.1.9 reads śrīmāñ śatrunibarhaṇaḥ, the same word (with ś not assimilated to ch).",
+   "approved_by": "Aditya",
+   "date": "2026-11-11"
+  }
+ },
+ {
+  "id": "VR.1.1.45",
+  "lines_corrected": [
+   "प्रतिज्ञातश्च रामेण वधः संयति रक्षसाम् ।",
+   "ऋषीणामग्निकल्पानां दण्डकारण्यवासिनाम् ॥"
+  ],
+  "correction": {
+   "what": "Line 2: दण्डकारण्यवासीनाम् → दण्डकारण्यवासिनाम् (long ī → short i).",
+   "evidence": "Metre: with the long ī the fourth pāda breaks the śloka cadence (syllables 5–7 short–long–short); corrected, the verse passes as anuṣṭubh. Grammar: the genitive plural of -वासिन् is -वासिनाम्. The Critical Edition has no counterpart of this verse, so there is no Critical Edition evidence.",
+   "approved_by": "Aditya",
+   "date": "2026-11-11"
+  }
+ },
+ {
+  "id": "VR.1.1.100",
+  "lines_corrected": [
+   "पठन् द्विजो वागृषभत्वमीयात् ।",
+   "स्यात् क्षत्रियो भूमिपतित्वमीयात् ॥",
+   "वणिक् जनः पण्यफलत्वमीयात् ।",
+   "जनश्च शूद्रोऽपि महत्त्वमीयात् ॥"
+  ],
+  "correction": {
+   "what": "Line 2: त् क्षत्रियो भूमिपतित्वमीयात् → स्यात् क्षत्रियो भूमिपतित्वमीयात् (the lost first syllable स्या is restored).",
+   "evidence": "Metre: the Wikisource line has 10 syllables for 11 and the verse (43 syllables) matches no metre; corrected, it has 44 and passes as upajāti. Critical Edition 1.1.79 reads syāt kṣatriyo bhūmipatitvam īyāt.",
+   "approved_by": "Aditya",
+   "date": "2026-11-11"
+  }
+ }
+]

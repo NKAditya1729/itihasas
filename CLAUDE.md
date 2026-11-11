@@ -349,6 +349,18 @@ that are not verses. The rule:
 6. Padaccheda, padārtha, anvaya and vyākhyā of a corrected verse are written
    for `lines_corrected`, and the re-join check runs against it.
 
+7. **How a correction is stored.** Approved corrections live in
+   `data/meta/corrections.json` (one entry per verse: `id`, `lines_corrected`,
+   `correction`); `scripts/apply_corrections.py` writes them into the sarga
+   files. `make check` fails if the data holds a correction that is not in that
+   file, or the reverse. `metre` then describes the corrected text
+   (`"of": "lines_corrected"`) and `metre_source` keeps the result for the
+   Wikisource text. Use `vrtools.build.text_lines(v)` wherever a script needs
+   "the text of the verse".
+
 Verse fields added in Stage B: `padaccheda_status` (`"seed"`, `"reviewed"` or
-`null` when there is no split), `lines_corrected` and `correction` (absent
-until a correction is approved).
+`null` when there is no split), `lines_corrected`, `correction` and
+`metre_source` (absent until a correction is approved).
+
+Approved so far (Aditya, 2026-11-11): VR.1.1.1 (space inside a compound),
+VR.1.1.9, VR.1.1.45, VR.1.1.100.

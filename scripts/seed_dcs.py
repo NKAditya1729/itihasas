@@ -19,6 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from vrtools.build import mula_hash, text_lines  # noqa: E402
 from vrtools.dcs import parse_dcs, pausal_candidates  # noqa: E402
 from vrtools.sandhi import CHECKER_VERSION, to_deva  # noqa: E402
 from vrtools.seed import seed_window  # noqa: E402
@@ -47,7 +48,9 @@ def main() -> None:
             if v.get("padaccheda_status") == "reviewed":
                 stats["reviewed_kept"] += 1
                 continue
-            if (seed.get("source") == "dcs" and seed.get("mula_hash") == hashes[v["id"]]
+            lines = text_lines(v)                           # an approved correction, else the source text
+            text_hash = mula_hash(lines)
+            if (seed.get("source") == "dcs" and seed.get("mula_hash") == text_hash
                     and seed.get("checker") == CHECKER_VERSION):
                 stats["already"] += 1
                 continue
@@ -61,7 +64,7 @@ def main() -> None:
                 words = [w for key in keys for w in dcs.get(key, [])]
                 if not words:
                     continue
-                r = seed_window(v["lines"], words)
+                r = seed_window(lines, words)
                 if r["ok"]:
                     result = (keys, r)
                     break
@@ -79,7 +82,7 @@ def main() -> None:
                     v["seed"].update({"dcs_verses": best[0], "dcs_failure": best[1], "dcs_candidate": best[2]})
                 for keys in windows:                         # would it pass with the avagraha ignored?
                     words = [w for key in keys for w in dcs.get(key, [])]
-                    loose = seed_window(v["lines"], words, avagraha=False) if words else {"ok": False}
+                    loose = seed_window(lines, words, avagraha=False) if words else {"ok": False}
                     if loose["ok"]:
                         v["seed"]["dcs_avagraha_mismatch"] = loose["padaccheda_lines"]
                         stats["avagraha_mismatch"] += 1
@@ -89,7 +92,7 @@ def main() -> None:
             keys, r = result
             v["padaccheda_lines"], v["groups"] = r["padaccheda_lines"], r["groups"]
             v["seed"] = {**{k: x for k, x in seed.items() if k == "dharmamitra"},
-                         "source": "dcs", "dcs_verses": keys, "mula_hash": hashes[v["id"]], "checker": CHECKER_VERSION}
+                         "source": "dcs", "dcs_verses": keys, "mula_hash": text_hash, "checker": CHECKER_VERSION}
             if "compound_boundaries_unknown" in v["review"]["flags"]:
                 v["review"]["flags"].remove("compound_boundaries_unknown")
             stats[f"ok_{cw['relation']}"] += 1

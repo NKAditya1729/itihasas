@@ -28,6 +28,7 @@ from vidyut.lipi import Scheme, transliterate
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from vrtools.build import mula_hash, text_lines  # noqa: E402
 from vrtools.sandhi import CHECKER_VERSION  # noqa: E402
 from vrtools.seed import seed_window  # noqa: E402
 
@@ -115,7 +116,7 @@ def main() -> None:
             if v.get("padaccheda_status") != "reviewed"
             and (v.get("seed") or {}).get("source") != "dcs"
             and not ((v.get("seed") or {}).get("source") == "dharmamitra"
-                     and v["seed"].get("mula_hash") == hashes[v["id"]]
+                     and v["seed"].get("mula_hash") == mula_hash(text_lines(v))
                      and v["seed"].get("checker") == CHECKER_VERSION)]
     print(len(todo), "verses to seed", flush=True)
     for i in range(0, len(todo), BATCH * 4):           # batches cross sarga boundaries
@@ -123,10 +124,12 @@ def main() -> None:
         for v, res in zip(chunk, segment([verse_text(v["lines"]) for v in chunk])):
             seed = v.get("seed") or {}
             seed["dharmamitra"] = res
-            r = seed_window(v["lines"], words_of(res))
+            # Dharmamitra was asked about the source text (the cache key); the split must fit the
+            # text the verse is read in, i.e. an approved correction where one exists
+            r = seed_window(text_lines(v), words_of(res))
             if r["ok"]:
                 v["padaccheda_lines"], v["groups"] = r["padaccheda_lines"], r["groups"]
-                seed.update({"source": "dharmamitra", "mula_hash": hashes[v["id"]], "checker": CHECKER_VERSION})
+                seed.update({"source": "dharmamitra", "mula_hash": mula_hash(text_lines(v)), "checker": CHECKER_VERSION})
                 seed.pop("dharmamitra_failure", None)
                 seed.pop("dharmamitra_avagraha_mismatch", None)
                 if "compound_boundaries_unknown" not in v["review"]["flags"]:
@@ -135,7 +138,7 @@ def main() -> None:
             else:
                 v["padaccheda_lines"], v["groups"] = None, None
                 seed.update({"source": None, "dharmamitra_failure": r["failures"][0] if r.get("failures") else None})
-                loose = seed_window(v["lines"], words_of(res), avagraha=False)   # fails only on the avagraha?
+                loose = seed_window(text_lines(v), words_of(res), avagraha=False)   # fails only on the avagraha?
                 if loose["ok"]:
                     seed["dharmamitra_avagraha_mismatch"] = loose["padaccheda_lines"]
                     stats["avagraha_mismatch"] += 1

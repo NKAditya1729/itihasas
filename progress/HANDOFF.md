@@ -1,4 +1,4 @@
-# Handoff — Stage B, stopped after Step 3 (2026-11-11)
+# Handoff — Stage B, Step 4 (pilot) in progress (2026-11-11)
 
 **Read first:** `docs/STAGE_B_BRIEF.md` (the working instructions; it overrides
 CLAUDE.md where they differ), `CLAUDE.md` §11–§12, then `docs/STAGE_B_REVIEW.md`.
@@ -41,19 +41,19 @@ CLAUDE.md where they differ), `CLAUDE.md` §11–§12, then `docs/STAGE_B_REVIEW
   11 of the 17 errors found in the review's two samples are fixed; the other 6
   need a human reading (sarga review).
 
+## Since Step 3 (2026-11-11)
+- `stage-b` was merged to `main` and pushed on Aditya's word.
+- Branch `corrections` (merged to `main` on Aditya's word): the reader shows
+  `lines_corrected` with a संशोधितम् mark (tap: the Wikisource text); the checks and
+  the seeding scripts read the corrected text (`vrtools.build.text_lines`); four
+  approved corrections are stored in `data/meta/corrections.json` and applied by
+  `scripts/apply_corrections.py` (VR.1.1.1, 1.1.9, 1.1.45, 1.1.100). `lines` is
+  untouched; the mūla hashes still pass.
+
 ## Open, in order
-1. **Merge to `main`**: only on Aditya's explicit word.
-2. **Three proposed mūla corrections** (not applied; Aditya is checking a printed
-   edition): VR.1.1.9 श्रीमाञ्छ्त्रु- → श्रीमाञ्छत्रु-; VR.1.1.45 -वासीनाम् → -वासिनाम्;
-   VR.1.1.100 line 2 `त् क्षत्रियो` → `स्यात् क्षत्रियो`. All three pass the metre when
-   corrected. VR.1.1.1 (space inside a compound) is flagged only.
-3. **Before the first correction is applied** two things must be built
-   (CLAUDE.md §12.5–§12.6): the checks must read `lines_corrected` when present
-   (`scripts/check_rejoin.py`, `scripts/validate.py`, seed scripts), and the
-   reader must show the corrected text with a mark and the original on tap. The
-   look of that mark is Aditya's decision.
-4. Step 4: pilot, Bāla sarga 1 (now 75 seeds: 46 DCS, 29 Dharmamitra; 25 without).
-5. Owed: `docs/AYODHYA_PRESPLIT_OPTIONS.md` (one page, options only).
+1. **Step 4: pilot, Bāla sarga 1** — verses 1–5 with all layers go to Aditya
+   first; the rest only after his OK. Do not start sarga 2.
+2. Owed: `docs/AYODHYA_PRESPLIT_OPTIONS.md` (one page, options only).
 
 ## Known limits of the Step 3 fixes (from the independent code review)
 - At a pāda break a bare form can still pass where the mūla has an irregular
@@ -76,6 +76,6 @@ CLAUDE.md where they differ), `CLAUDE.md` §11–§12, then `docs/STAGE_B_REVIEW
 - Never push or merge to `main` without Aditya's explicit word.
 
 ## Pipeline (all offline)
-`seed_dcs.py` → `seed_dharmamitra.py` → `crosscheck_seeds.py` → `check_rejoin.py` →
-`flag_mula.py` → `make check` → `make site`. (`ingest_vulgate.py` and `crosswalk.py`
+`apply_corrections.py` → `seed_dcs.py` → `seed_dharmamitra.py` → `crosscheck_seeds.py` →
+`check_rejoin.py` → `flag_mula.py` → `make check` → `make site`. (`ingest_vulgate.py` and `crosswalk.py`
 come first on a fresh build only.)

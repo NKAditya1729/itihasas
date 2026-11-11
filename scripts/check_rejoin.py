@@ -25,7 +25,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from vrtools.build import add_flag, mula_hash, padaccheda_status  # noqa: E402
+from vrtools.build import add_flag, mula_hash, padaccheda_status, text_lines  # noqa: E402
 from vrtools.sandhi import check_rejoin  # noqa: E402
 
 INSTRUCTION = "Do not change the mūla. Give a padaccheda (CLAUDE.md §5.1) that re-joins to it."
@@ -58,7 +58,7 @@ def main() -> None:
                 raise SystemExit(f"mūla changed after ingest: {v['id']}")
             entry = None
             if v["padaccheda_lines"]:
-                r = check_rejoin(v["lines"], v["padaccheda_lines"])
+                r = check_rejoin(text_lines(v), v["padaccheda_lines"])   # the corrected text where one exists
                 v["review"]["auto_checks"]["rejoin"] = r["ok"]
                 stats[src]["pass" if r["ok"] else "fail"] += 1
                 if not r["ok"] and v.get("padaccheda_status") == "reviewed":
@@ -76,7 +76,7 @@ def main() -> None:
                 entry = {"reason": "no_seed_rejoins",
                          "dcs_failure": seed.get("dcs_failure"), "dharmamitra_failure": seed.get("dharmamitra_failure")}
             if entry:
-                queue.append({"id": v["id"], "lines": v["lines"], "flags": v["review"]["flags"],
+                queue.append({"id": v["id"], "lines": text_lines(v), "flags": v["review"]["flags"],
                               "candidates": {"dcs": seed.get("dcs_candidate") or (v["padaccheda_lines"] if src == "dcs" else None),
                                              "dcs_verses": seed.get("dcs_verses"),
                                              "dharmamitra": seed.get("dharmamitra")},

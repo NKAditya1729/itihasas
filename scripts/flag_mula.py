@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from vrtools.build import add_flag  # noqa: E402
+from vrtools.build import set_flag_note  # noqa: E402
 
 
 def main() -> None:
@@ -29,7 +29,7 @@ def main() -> None:
         before = json.dumps(d, ensure_ascii=False)
         for v in d["verses"] + (d["appendix"]["verses"] if d["appendix"] else []):
             for e in entries.get(v["id"], []):
-                add_flag(v, e["flag"], e["note"])
+                set_flag_note(v, e["flag"], e["note"])
                 stats[e["flag"]] += 1
         if json.dumps(d, ensure_ascii=False) != before:
             f.write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")) + "\n")
