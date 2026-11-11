@@ -293,3 +293,28 @@ def test_seed_keeps_a_hiatus_at_the_pada_break():
 def test_consonant_stem_participle_keeps_its_visarga_reading():
     # गच्छत इति ← गच्छतः (gen. sg. of the present participle): not an a-stem form
     assert pausal_candidates(_d("gacCata", "gam", pos="va", g="m", c="6", n="s", f="part")) == ["gacCata", "gacCataH"]
+
+
+# ---- Stage B review, M3: Dharmamitra's "sa" — prefix or pronoun, by the mūla's spacing ----
+
+def test_untagged_sa_joined_to_the_next_word_is_the_prefix():
+    # VR.6.20.12 देवैरपि सगन्धर्वैः was seeded as सः गन्धर्वैः
+    r = seed_verse(["देवैरपि सगन्धर्वैः ।"], [_w("devEH"), _w("api"), _w("sa"), _w("ganDarvEH")])
+    assert r["ok"] and r["padaccheda_lines"] == ["देवैः अपि स-गन्धर्वैः ।"]
+    assert [g[:2] for g in r["groups"][0] if not isinstance(g, str)] == [["देवैरपि", "देवैः अपि"], ["सगन्धर्वैः", "स-गन्धर्वैः"]]
+
+
+def test_untagged_sa_in_the_middle_of_a_printed_token_is_the_prefix():
+    # VR.7.79.19 तद्राज्यमकरोत्सपुरोहितः
+    r = seed_verse(["अकरोत्सपुरोहितः ।"], [_w("akarot"), _w("sa"), _w("purohitaH")])
+    assert r["ok"] and r["padaccheda_lines"] == ["अकरोत् स-पुरोहितः ।"]
+
+
+def test_untagged_sa_printed_apart_is_still_the_pronoun():
+    r = seed_verse(["स ददर्श महाकपिः ।"], [_w("sa"), _w("dadarSa"), _w("mahA"), _w("kapiH")])
+    assert r["ok"] and r["padaccheda_lines"][0].startswith("सः ददर्श")
+
+
+def test_a_pronoun_tagged_by_dcs_is_not_turned_into_a_prefix():
+    r = seed_verse(["सगच्छति ।"], [_d("sa", "tad", pos="n", g="m", c="1", n="s"), _d("gacCati", "gam", pos="v", p="3", n="s")])
+    assert r["ok"] and r["padaccheda_lines"] == ["सः गच्छति ।"]

@@ -8,7 +8,7 @@ from __future__ import annotations
 import re
 
 from .dcs import pausal_candidates
-from .sandhi import _end_danda, mula_norm, non_pausal, norm, rejoin, to_deva, to_slp1, units
+from .sandhi import VOWELS, _end_danda, mula_norm, non_pausal, norm, rejoin, to_deva, to_slp1, units
 
 _STOP_NASAL = {"k": "N", "K": "N", "g": "N", "G": "N", "c": "Y", "C": "Y", "j": "Y", "J": "Y",
                "w": "R", "W": "R", "q": "R", "Q": "R", "t": "n", "T": "n", "d": "n", "D": "n",
@@ -77,6 +77,7 @@ def seed_verse(lines: list[str], words: list[dict], allow_trailing: bool = False
             failures.append({"reason": "leftover_words", "count": len(words) - w0})
         return {"ok": False, "failures": failures}
     chosen = [_mula_spelling(w, mula_raw) for w in chosen]
+    _mark_sa_prefix(lines, words, line_words, starts, chosen, sep_after)
     pada_lines, groups = [], []
     for i, line in enumerate(lines):
         idx = line_words[i]
@@ -87,6 +88,30 @@ def seed_verse(lines: list[str], words: list[dict], allow_trailing: bool = False
             return {"ok": False, "failures": [{"reason": "non_pausal", "line": i, "word": non_pausal(pada_lines[-1])[0]}]}
         groups.append(_groups(line, idx, starts, chosen, sep_after))
     return {"ok": True, "padaccheda_lines": pada_lines, "groups": groups, "words": chosen, "used": w0}
+
+
+def _token_offsets(line: str) -> tuple[list[str], list[int]]:
+    """The printed tokens of a mūla line and where each starts in the line's ``mula_norm`` text."""
+    tokens = re.sub(r"\s*[।॥]\s*$", "", line).strip().split()
+    offs, acc = [], 0
+    for t in tokens:
+        offs.append(acc)
+        acc += len(mula_norm(to_slp1(t)))
+    return tokens, offs
+
+
+def _mark_sa_prefix(lines, words, line_words, starts, chosen, sep_after) -> None:
+    """Dharmamitra returns ``sa`` both for the pronoun सः and for the prefix स-. The mūla
+    tells them apart: the pronoun is printed as a word of its own (स ददर्श), the prefix is
+    printed joined to its word (सगन्धर्वैः). An untagged ``sa`` followed, inside the same
+    printed token, by a consonant-initial word becomes the compound member स-."""
+    for i, line in enumerate(lines):
+        _, offs = _token_offsets(line)
+        token_of = lambda wi: max(k for k, o in enumerate(offs) if o <= starts[wi])
+        for a, b in zip(line_words[i], line_words[i][1:]):
+            if (not words[a]["tags"] and words[a]["form"] == "sa" and chosen[a] == "saH"
+                    and chosen[b][:1] not in VOWELS and offs and token_of(a) == token_of(b)):
+                chosen[a], sep_after[a] = "sa", "-"
 
 
 def seed_window(lines: list[str], words: list[dict]) -> dict:
@@ -108,12 +133,7 @@ def seed_window(lines: list[str], words: list[dict]) -> dict:
 def _groups(line: str, idx: list[int], starts: dict[int, int], chosen: list[str], sep_after: list[str]) -> list:
     """[[sandhi token(s), pada text, flag], " ", …, " ।"] for one line."""
     d = _end_danda(line)
-    body = re.sub(r"\s*[।॥]\s*$", "", line).strip()
-    tokens = body.split()
-    offs, acc = [], 0
-    for t in tokens:
-        offs.append(acc)
-        acc += len(mula_norm(to_slp1(t)))
+    tokens, offs = _token_offsets(line)
     owner: dict[int, list[int]] = {j: [] for j in range(len(tokens))}
     for wi in idx:
         j = max(k for k, o in enumerate(offs) if o <= starts[wi]) if tokens else 0
