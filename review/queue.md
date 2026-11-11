@@ -106,6 +106,8 @@ the second pass). Generator and reviewer were separate sub-agents (claude-opus-5
 | VR.1.2.9 | Second pass: no definite error remains. तु → पादपूरणार्थम् अव्ययम् is applied as well. The coordinator's decision stands: चरन्तम् and अनपायिनम् carry no anvita (the checker refuses an anvita across genders), and each gloss ends (मिथुनस्य विशेषणम्; अत्र पुंलिङ्गम् आर्षम्). FOR THE HUMAN: decide the gender of मिथुन here. (a) As dr … |
 | VR.1.2.23 | Decide स्वयम् प्रभुः (two padas, as drafted; Dharmamitra; printed text has a space; 'the Lord came himself') or स्वयम्प्रभुः (one compound, DCS; 'self-luminous'). The verse already carries seed_disagreement and §5.1 says to flag it. The draft's choice follows the printed spacing and is consistently carried through padartha, anva … |
 
+**Ruled by Aditya (D17):** VR.1.2.9 मिथुन stays नपुं, the qualifiers marked आर्षप्रयोगः (vyākhyā उच्यते → उच्येते applied); VR.1.2.23 स्वयं प्रभुः stays two words.
+
 ### 2. Declared re-join exceptions
 
 | Verse | Note |

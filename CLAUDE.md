@@ -163,7 +163,16 @@ gives the beginner support.
 10. **Narrative verses** (where something happens): tell the event first, in
    order, as story. Define only the words a learner would not know. Do not
    define every pada.
-8. The reviewer checks rules 1–7, 9 and 10 as well as the grammar. `make check` enforces
+11. **The caps are limits, not targets** (Aditya, 2026-11-11, D18; from sarga 1.3 on).
+   Aim for under one इत्युक्ते per verse on average. Never end a vyākhyā with
+   stand-alone gloss sentences; explain a word where it is used.
+12. **No remarks about the verse itself**: not its metre, not "this verse
+   completes the sentence". One short linking clause is allowed when a sentence
+   spans verses.
+13. **Agreement:** every finite verb and participle in the vyākhyā and the anvaya
+   agrees in number and gender with its subject; watch duals (तौ … उच्येते).
+8. The reviewer checks rules 1–7 and 9–13 as well as the grammar; for rule 13 it
+   checks every finite verb and participle of the vyākhyā and the anvaya. `make check` enforces
    what a machine can see: 3–7 sentences, 80% of the significant padas in
    bold, no chain of dash glosses, at most two इत्युक्ते and one इति आशयः, no avagraha, no word ending in a sandhi
    consonant, no anusvāra before a vowel or a pause.

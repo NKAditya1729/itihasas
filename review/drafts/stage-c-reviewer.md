@@ -21,11 +21,17 @@ it and you see no reasoning of its writer: judge only the text. Project folder (
   gloss simpler than the word and in its case; vigraha correct; anvita right; ārṣa forms
   labelled; names per names.json (full identifier at first use in the sarga).
 - Anvaya (§5.3): every pada once; supplied words in brackets; order; agreement.
-- Vyākhyā (§5.4 rules 1–10, brief §7): grammar and agreement of every sentence; narrative
-  first; only needed definitions; ≤2 इत्युक्ते, ≤1 इति आशयः; every significant pada bold;
-  3–7 sentences; nothing added beyond the verse except connecting context; continuity with
-  the previous verse and the sarga map; for a sentence across verses, says which verse
-  completes it.
+- Vyākhyā (§5.4 rules 1–13, brief §7): grammar of every sentence; narrative first; only
+  needed definitions; ≤2 इत्युक्ते, ≤1 इति आशयः, and the batch should average **under one
+  इत्युक्ते per verse** (the caps are limits, not targets: a verse using both is a `fix` unless
+  each is needed); every significant pada bold; 3–7 sentences; nothing added beyond the verse
+  except connecting context; continuity with the previous verse and the sarga map.
+  **`fix` if** the vyākhyā ends with stand-alone gloss sentences, or makes any remark about
+  the verse itself (its metre, "this verse completes the sentence", "अस्मिन् श्लोके");
+  one short linking clause is allowed where a sentence spans verses.
+- **Agreement (rule 13), checked one by one:** for every finite verb and every participle in
+  the vyākhyā AND the anvaya, find its subject and check number and gender, especially duals
+  (तौ … उच्येते, not उच्यते) and plurals.
 - Speaker and context note match the verse.
 
 ## Verdict per verse
