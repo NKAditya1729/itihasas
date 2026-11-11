@@ -187,3 +187,16 @@ def test_loose_avagraha_mode_reports_what_the_old_checker_accepted():
     # used only to tell "split and printed ऽ disagree" from any other failure
     assert check_rejoin(["ततो धर्मः ।"], ["ततः अधर्मः ।"], avagraha=False)["ok"]
     assert not check_rejoin(["ततो धर्मः ।"], ["ततः धर्मम् ।"], avagraha=False)["ok"]
+
+
+# ---- Stage B review, M4: a hiatus the mūla prints at the pāda break ---------------
+
+def test_hiatus_at_the_pada_break_inside_a_line_passes():
+    # VR.1.67.1 (8 + 8 syllables), VR.1.35.21
+    assert ok("धनुर्दर्शय रामाय इति होवाच पार्थिवम् ॥", "धनुः दर्शय रामाय इति ह उवाच पार्थिवम् ॥")
+    assert ok("रुद्रायाप्रतिरूपाय उमां लोकनमस्कृताम् ॥", "रुद्राय अप्रतिरूपाय उमाम् लोक-नमस्कृताम् ॥")
+
+
+def test_hiatus_anywhere_else_still_fails():
+    assert not ok("रामाय इति धनुर्दर्शय होवाच पार्थिवम् ॥", "रामाय इति धनुः दर्शय ह उवाच पार्थिवम् ॥")
+    assert not ok("धनुर्दर्शय रामाय इति ।", "धनुः दर्शय रामाय इति ।")      # no second pāda: not a pāda break

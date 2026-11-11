@@ -12,7 +12,9 @@ from __future__ import annotations
 import re
 
 FINAL_STOP = {"g": "k", "d": "t", "q": "w", "b": "p", "j": "k", "c": "k", "l": "t", "D": "t", "G": "k", "B": "p"}
-GENUINE_O = {"aho", "atho", "bho", "no", "o"}
+GENUINE_O = {"aho", "aTo", "o"}              # SLP1; particles that really end in o
+PRONOUNS = {"tad", "yad", "etad", "kim", "idam", "adas", "enad"}
+T_BEFORE_NASAL_LEMMAS = {"tad", "yad", "etad"}
 
 
 def parse_dcs(text: str) -> dict[str, list[dict]]:
@@ -53,6 +55,12 @@ def _pausal(w: dict) -> list[str]:
         return _pausal({**w, "form": "a" + f[1:]})
     if not f:
         return [f]
+    if f.startswith("C") and lemma.startswith("S"):   # ś written ch after a final t: tac CrutvA
+        return _pausal({**w, "form": "S" + f[1:]})
+    if f == "Bo":                                 # bhoḥ (its visarga drops before voiced sounds)
+        return ["BoH", "Bo"]
+    if f in ("no", "so") and lemma not in ("no", "so") or (f in ("no", "so") and not tags):
+        return [f[:-1] + "aH", f]                 # naḥ, saḥ (the particle no = na + u has lemma no)
     if f in ("sa", "eza") and not w["comp"] and tags.get("pos") != "i":
         return [f + "H", f]                       # saḥ / eṣaḥ (sa, eṣa only before a consonant)
     last = f[-1]
@@ -63,6 +71,8 @@ def _pausal(w: dict) -> list[str]:
     if last == "o":
         if f in GENUINE_O or (tags.get("pos") == "i" and lemma == f) or (tags.get("c") == "8" and lemma.endswith("u")):
             return [f]
+        if not tags:      # an untagged (Dharmamitra) word is already unsandhied: -o is a vocative, go-, aho …
+            return [f, f[:-1] + "aH"]
         return [f[:-1] + "aH", f]
     if last in "rSzs":
         return [f[:-1] + "H"] + ([f] if last == "r" else [])
@@ -85,13 +95,45 @@ def _pausal(w: dict) -> list[str]:
         return [f[:-1] + "n", f[:-1] + "t"]
     if f.endswith("nn") and len(f) > 2:
         return [f[:-1]]
+    if last == "n" and len(f) > 2 and not w["comp"] and not lemma.endswith("n") and _t_before_nasal(f, lemma, tags):
+        return [f[:-1] + "t", f]                  # yan mAm ← yat; the join decides (t + nasal → n)
     if w["comp"] and f.endswith("n") and lemma.endswith("n"):
         return [f[:-1], f]                        # an/in-stems lose n in compounds
     if last in "aAiIuUeE" and not w["comp"] and tags.get("pos") in ("n", "a", "va", "v"):
-        # visarga lost before a vowel / voiced sound; the morphology says which is likelier
-        nom = tags.get("c") == "1"
-        visarga_first = ((last == "a" and nom and tags.get("n") == "s" and tags.get("g", "m") == "m")
-                         or (last == "A" and tags.get("c") in ("1", "8") and tags.get("n") == "p" and tags.get("g") != "n")
-                         or (last in "iu" and nom and tags.get("n") == "s" and tags.get("g") in ("m", "f")))
+        # visarga (or final e) lost before a vowel / voiced sound; the morphology says which forms are possible
+        c, n, g = tags.get("c"), tags.get("n"), tags.get("g")
+        nom = c == "1"
+        if c and tags.get("pos") != "v":
+            # a participle is tagged with its root as lemma; in the cases where a consonant
+            # stem ends in -aḥ (gen./abl. sg., nom./acc. pl.) a form in -a is not an a-stem form
+            cons_stem_ah = (c in ("5", "6") and n == "s") or (c in ("1", "2", "8") and n == "p")
+            a_stem = lemma.endswith("a") or lemma in PRONOUNS or (tags.get("pos") == "va" and not cons_stem_ah)
+            if last == "a" and a_stem:
+                if nom and n == "s" and g != "n":
+                    return [f + "H", f]
+                if (c == "7" and n == "s") or (nom and n == "p"):
+                    return [f[:-1] + "e", f]      # yugAnta iva ← yugānte; sarva eva ← sarve
+                return [f]                        # dative, vocative …: an a-stem has no other form in -aḥ
+            if last == "A":
+                if ((c in ("1", "8") and n == "p" and g != "n") or (c == "2" and n == "p" and g == "f")
+                        or (c in ("5", "6") and n == "s" and g == "f") or (nom and n == "s" and lemma.endswith("as"))):
+                    return [f + "H", f]
+                if c == "3" or (c in ("1", "8") and n == "s"):
+                    return [f]                    # instrumental; nom./voc. sg. (sītā, rājā)
+        visarga_first = ((last == "a" and nom and n == "s" and (g or "m") == "m")
+                         or (last == "A" and c in ("1", "8") and n == "p" and g != "n")
+                         or (last in "iu" and nom and n == "s" and g in ("m", "f")))
         return [f + "H", f] if visarga_first else [f, f + "H"]
     return [f]
+
+
+def _t_before_nasal(f: str, lemma: str, tags: dict) -> bool:
+    """Can this n-final DCS form be a final t assimilated to a following nasal?"""
+    c, n = tags.get("c"), tags.get("n")
+    if tags.get("pos") == "v":
+        return tags.get("p") == "3" and n == "s"                  # AsIn ← āsīt, pAtayen ← pātayet
+    if lemma in T_BEFORE_NASAL_LEMMAS:
+        return tags.get("g") == "n" and n == "s" and c in ("1", "2")   # yan ← yat (never tān, acc. pl.)
+    if lemma.endswith(("cit", "cid")) or f.endswith("cin"):
+        return True                                               # kaScin ← kaścit
+    return c == "5" and n == "s" and f.endswith("An")             # janasTAnAn ← -āt

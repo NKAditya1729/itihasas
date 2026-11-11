@@ -189,3 +189,107 @@ def test_seed_rejects_an_elided_a_that_the_mula_does_not_print():
 def test_seed_takes_a_compound_without_printed_avagraha():
     r = seed_verse(["रक्षोधिपतेः ।"], [_w("rakzaH", comp=True, pos="n"), _w("aDipateH", pos="n")])
     assert r["ok"] and r["padaccheda_lines"] == ["रक्षः-अधिपतेः ।"]
+
+
+# ---- Stage B review, M4: pausal forms follow the DCS morphology -------------------
+
+def _d(form, lemma, **tags):
+    return {"form": form, "lemma": lemma, "tags": tags, "comp": False}
+
+
+def test_no_visarga_is_invented_for_a_dative_or_a_vocative():
+    # VR.1.67.1 रामाय इति was seeded as रामायः इति; VR.2.34.6 व्याघ्र (voc.)
+    assert pausal_candidates(_d("rAmAya", "rAma", pos="n", g="m", c="4", n="s")) == ["rAmAya"]
+    assert pausal_candidates(_d("vyAGra", "vyAGra", pos="n", g="m", c="8", n="s")) == ["vyAGra"]
+
+
+def test_a_stem_nominative_singular_still_prefers_the_visarga():
+    assert pausal_candidates(_d("rAma", "rAma", pos="n", g="m", c="1", n="s"))[0] == "rAmaH"
+
+
+def test_locative_and_pronominal_plural_in_a_come_from_e():
+    # VR.7.32.39 युगान्त इव ← युगान्ते; VR.7.108.19 सर्व एव ← सर्वे; VR.2.105.24 उदित आदित्ये ← उदिते
+    assert pausal_candidates(_d("yugAnta", "yugAnta", pos="n", g="m", c="7", n="s"))[0] == "yugAnte"
+    assert pausal_candidates(_d("sarva", "sarva", pos="n", g="m", c="1", n="p"))[0] == "sarve"
+    assert pausal_candidates(_d("udita", "udi", pos="va", g="m", c="7", n="s", f="part"))[0] == "udite"
+
+
+def test_consonant_stem_forms_in_a_keep_both_readings():
+    # राज्ञ इति ← राज्ञः (gen. sg. of rājan)
+    assert pausal_candidates(_d("rAjYa", "rAjan", pos="n", g="m", c="6", n="s")) == ["rAjYa", "rAjYaH"]
+
+
+def test_feminine_long_a_follows_case_and_number():
+    # VR.5.13.8 आर्याया हृदयम् (gen.), VR.7.89.3 विद्रुता (acc. pl.), VR.2.26.14 सर्वा (nom. sg.)
+    assert pausal_candidates(_d("AryAyA", "Arya", pos="a", g="f", c="6", n="s"))[0] == "AryAyAH"
+    assert pausal_candidates(_d("vidrutA", "vidru", pos="va", g="f", c="2", n="p", f="part"))[0] == "vidrutAH"
+    assert pausal_candidates(_d("sarvA", "sarva", pos="n", g="f", c="1", n="s")) == ["sarvA"]
+    assert pausal_candidates(_d("tapasA", "tapas", pos="n", g="n", c="3", n="s")) == ["tapasA"]
+    assert pausal_candidates(_d("mahAtejA", "mahAtejas", pos="a", g="m", c="1", n="s"))[0] == "mahAtejAH"
+    assert pausal_candidates(_d("devA", "deva", pos="n", g="m", c="1", n="p"))[0] == "devAH"
+
+
+def test_final_t_written_n_before_a_nasal_is_restored():
+    # VR.3.43.38 यन्मां, VR.3.56.11 पातयेन्नाशयेत, VR.1.55.24 आसीन्महात्मनः, VR.4.36.11 कश्चिन्न, VR.3.22.17 जनस्थानान्महानादम्
+    assert pausal_candidates(_d("yan", "yad", pos="n", g="n", c="1", n="s"))[0] == "yat"
+    assert pausal_candidates(_d("pAtayen", "pAtay", pos="v", p="3", n="s", l="vidhilin"))[0] == "pAtayet"
+    assert pausal_candidates(_d("AsIn", "as", pos="v", p="3", n="s", l="lan"))[0] == "AsIt"
+    assert pausal_candidates(_d("kaScin", "kaScit", pos="n", g="m", c="1", n="s"))[0] == "kaScit"
+    assert pausal_candidates(_d("janasTAnAn", "janasTAna", pos="n", g="n", c="5", n="s"))[0] == "janasTAnAt"
+
+
+def test_a_genuine_final_n_is_left_alone():
+    # VR.6.71.96 तान्मोघान्: acc. pl. of tad; a plural verb; an n-stem
+    assert pausal_candidates(_d("tAn", "tad", pos="n", g="m", c="2", n="p")) == ["tAn"]
+    assert pausal_candidates(_d("aBavan", "BU", pos="v", p="3", n="p", l="lan")) == ["aBavan"]
+    assert pausal_candidates(_d("rAjan", "rAjan", pos="n", g="m", c="8", n="s")) == ["rAjan"]
+
+
+def test_seed_restores_t_before_a_nasal_and_keeps_it_elsewhere():
+    r = seed_verse(["यन्मां भवेत् ।"], [_d("yan", "yad", pos="n", g="n", c="1", n="s"), _d("mAm", "mad", pos="n", c="2", n="s"),
+                                        _d("Bavet", "BU", pos="v", p="3", n="s", l="vidhilin")])
+    assert r["ok"] and r["padaccheda_lines"] == ["यत् माम् भवेत् ।"]
+    r = seed_verse(["तान्मोघान् ।"], [_d("tAn", "tad", pos="n", g="m", c="2", n="p"), _d("moGAn", "moGa", pos="a", g="m", c="2", n="p")])
+    assert r["ok"] and r["padaccheda_lines"] == ["तान् मोघान् ।"]
+
+
+def test_sh_written_ch_after_t_is_restored():
+    # VR.1.57.7 तच्छ्रुत्वा was seeded as तत् छ्रुत्वा
+    assert pausal_candidates(_d("CrutvA", "Sru", pos="vi"))[0] == "SrutvA"
+    r = seed_verse(["तच्छ्रुत्वा ।"], [_d("tac", "tad", pos="n", g="n", c="2", n="s"), _d("CrutvA", "Sru", pos="vi")])
+    assert r["ok"] and r["padaccheda_lines"] == ["तत् श्रुत्वा ।"]
+    # a genuine छ stays
+    assert pausal_candidates(_d("Cattram", "Cattra", pos="n", g="n", c="1", n="s")) == ["Cattram"]
+
+
+def test_genuine_final_o_is_kept():
+    # VR.7.36.8 भो was seeded as भः; Dharmamitra vocatives (महाबाहो) became -अः
+    assert pausal_candidates(_w("Bo"))[0] == "BoH"
+    assert pausal_candidates(_d("Bo", "Bo", pos="i"))[0] == "BoH"
+    assert pausal_candidates(_w("bAho"))[0] == "bAho"
+    assert pausal_candidates(_w("aTo"))[0] == "aTo"
+    assert pausal_candidates(_d("aTo", "aTo", pos="i")) == ["aTo"]
+    r = seed_verse(["भो महाबाहो शृणु ।"], [_w("Bo"), _w("mahAbAho"), _w("SfRu")])
+    assert r["ok"] and r["padaccheda_lines"] == ["भोः महाबाहो शृणु ।"]
+
+
+def test_no_and_so_are_nah_and_sah():
+    # VR.3.24.6: DCS form "no", lemma mad (नः); untagged Dharmamitra "no" / "so"
+    assert pausal_candidates(_d("no", "mad", pos="n", c="6", n="p"))[0] == "naH"
+    assert pausal_candidates(_w("no"))[0] == "naH"
+    assert pausal_candidates(_w("so"))[0] == "saH"
+    assert pausal_candidates(_d("no", "no", pos="i")) == ["no"]
+
+
+def test_seed_keeps_a_hiatus_at_the_pada_break():
+    # VR.1.67.1: … रामाय | इति … (pāda break after 8 syllables; the mūla prints no sandhi there)
+    words = [_d("Danur", "Danus", pos="n", g="n", c="2", n="s"), _d("darSaya", "darSay", pos="v", p="2", n="s", l="lot"),
+             _d("rAmAya", "rAma", pos="n", g="m", c="4", n="s"), _d("iti", "iti", pos="i"), _d("ha", "ha", pos="i"),
+             _d("uvAca", "vac", pos="v", p="3", n="s", l="lit"), _d("pArTivam", "pArTiva", pos="n", g="m", c="2", n="s")]
+    r = seed_verse(["धनुर्दर्शय रामाय इति होवाच पार्थिवम् ॥"], words)
+    assert r["ok"] and r["padaccheda_lines"] == ["धनुः दर्शय रामाय इति ह उवाच पार्थिवम् ॥"]
+
+
+def test_consonant_stem_participle_keeps_its_visarga_reading():
+    # गच्छत इति ← गच्छतः (gen. sg. of the present participle): not an a-stem form
+    assert pausal_candidates(_d("gacCata", "gam", pos="va", g="m", c="6", n="s", f="part")) == ["gacCata", "gacCataH"]

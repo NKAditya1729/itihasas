@@ -270,23 +270,40 @@ def junction(L: str, R: str, left_word: str = "", comp: bool = False, avagraha: 
 
 
 # ---------------------------------------------------------------------------
+MIN_HIATUS_UNIT = 16   # a unit of two pādas has at least 2 × 8 syllables
+
+
+def _syllables(slp1: str) -> int:
+    return sum(ch in VOWELS for ch in slp1)
+
+
 def rejoin(words: list[list[str]], target: str, comp: list[bool] | None = None, avagraha: bool = True) -> dict:
     """Search joins of ``words`` (each a list of alternative SLP1 forms, first =
     preferred) that reproduce ``target`` (``mula_norm`` of the mūla, with the same
     ``avagraha`` setting). ``comp[i]``: word i continues the compound of word i-1.
+
+    One junction may also stay unjoined: a vowel–vowel hiatus exactly at the middle of
+    the unit by syllable count, i.e. at the break between its two pādas (रामाय | इति).
+    The epic text prints such a hiatus now and then; anywhere else it is an error.
 
     Returns {"ok", "starts" (index of each word in target), "choice" (alternative
     index per word), "best": longest matched prefix length, "got": best candidate}.
     """
     states: dict[str, tuple[tuple[int, ...], tuple[int, ...], str]] = {"": ((), (), "")}
     best, got = 0, ""
+    syllables = _syllables(target)
+    pada_break = syllables // 2 if syllables >= MIN_HIATUS_UNIT and syllables % 2 == 0 else None
     for wi, alts in enumerate(words):
         in_comp = bool(comp and comp[wi])
         nxt: dict[str, tuple[tuple[int, ...], tuple[int, ...], str]] = {}
         for acc, (starts, choice, last) in states.items():
             for ci, w0 in enumerate(alts):
                 w = _HOMORGANIC.sub("M", norm(w0))       # pada-internal spelling only
-                for new, st in junction(acc, w, last, in_comp, avagraha):
+                joins = junction(acc, w, last, in_comp, avagraha)
+                if (pada_break and acc and acc[-1] in VOWELS and w[0] in VOWELS and not in_comp
+                        and _syllables(acc) == pada_break):
+                    joins = joins + [(acc + w, len(acc))]   # the mūla may print a hiatus at the pāda break
+                for new, st in joins:
                     n = mula_norm(new, avagraha)
                     keep = n[:max(0, len(n) - PRUNE_SLACK)]
                     if match_len(keep, target) < len(keep):
