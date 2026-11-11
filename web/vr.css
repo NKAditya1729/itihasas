@@ -1,0 +1,39 @@
+/* Rāmāyaṇa reader: additions on top of base.css (the Viṣṇusahasranāma page's vsn.css, unchanged).
+   Only existing tokens are used. The index lists reuse the hub page's section.text / ul.parts component. */
+.page-name{color:var(--muted)}
+.page-name:hover{color:var(--accent)}
+
+/* hub list component (sarala-vedanta index.html), used for the kāṇḍa and sarga indexes */
+section.text{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;margin:0 0 24px}
+.text-head{padding:16px 22px 12px;border-bottom:1px solid var(--line);background:var(--tint)}
+.text-head h2{margin:0;font-size:24px;font-weight:400;color:var(--accent)}
+.text-head p{margin:2px 0 0;color:var(--muted);font-size:15px;line-height:1.7}
+ul.parts{list-style:none;margin:0;padding:4px 0}
+ul.parts li{border-top:1px solid var(--line)}
+ul.parts li:first-child{border-top:0}
+.part{display:flex;align-items:baseline;gap:14px;padding:11px 22px;text-decoration:none;color:var(--ink)}
+a.part:hover,a.part:focus-visible{background:var(--tint);outline:none;text-decoration:none}
+.part .num{flex:0 0 2.6em;color:var(--saffron);font-size:16px}
+.part .name{flex:1;font-size:19px;line-height:1.8}
+.part .note{color:var(--accent);font-size:14px;white-space:nowrap}
+
+/* sidebar: kāṇḍa picker + sarga grid (base.css .lesson-list / .lesson-link) */
+#unit-list{margin-bottom:12px}
+#verse-list .side-title{margin:14px 0 4px}
+#verse-list .verse-nav{margin-left:0}
+
+/* verses */
+.mula-box{position:relative}
+.metre-badge{display:inline-block;margin:0 0 2px;padding:0 9px;border:1px solid var(--line);border-radius:999px;font-size:12.5px;font-weight:400;line-height:1.8;color:var(--muted)}
+.mula-box .verse-ref{margin-top:0}
+.sarga-note{text-align:center;color:var(--muted);font-size:14px;font-style:italic;margin:-6px 0 14px}
+.pada-pending{display:none}
+body.pada .pada-pending{display:block}
+.appendix-head{text-align:center;color:var(--saffron);font-size:calc(var(--font-size)*.95);margin:30px 0 4px}
+
+/* per-verse अध्ययनसाहाय्यम् (base.css .vy-block.st-block, .study-tabs, .sec) */
+.st-block .study-tabs{justify-content:flex-start;margin:4px 0 6px}
+.st-block .sec p{text-align:left}
+.pd-row b{color:var(--blue);font-weight:600;margin-right:.4em}
+
+@media(max-width:560px){.part{padding:10px 14px;gap:10px;flex-wrap:wrap}.part .num{flex-basis:2em}.part .note{flex-basis:100%;padding-left:2.6em;white-space:normal}.text-head{padding:14px 14px 10px}}
