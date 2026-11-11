@@ -133,3 +133,37 @@ VR.1.2.12, VR.1.2.19, VR.1.2.25, VR.1.2.31
 The four approved corrections VR.1.1.15, 29, 65, 84 are applied (`lines_corrected`); their layers were redone by a
 generator and passed a separate reviewer with no fixes. VR.1.1.15 no longer needs its re-join exception. VR.1.1.85
 stays flagged, not corrected.
+
+## Bāla-kāṇḍa, sarga 3 (Stage C; 39 verses)
+
+Reviewer verdicts: first pass 30 pass, 6 fix, 3 flag; final 32 pass, 7 flag. Four of the flags (20, 22, 35, 37) are
+sentences changed in the fix round (a coordinator's style request and one substitute verb) that the second pass found
+wrong; the reviewer's exact corrected sentence is applied and the flag kept, as §5.7 says.
+
+### 1. Flagged by the reviewers (points for Swamiji)
+
+| Verse | Reviewer's note (shortened) |
+|---|---|
+| VR.1.3.11 | Decide the sense of विश्वामित्र-सहायने. The draft takes सहायन as सहायस्य कर्म (help in guarding the yajña), which has no regular derivation from सहाय. The transparent analysis is सह + अयन = going with Viśvāmitra; the कथाः are then the stories told on that journey, which fits नाना चित्राः कथाः. The yajña in the vyākhyā and the co … |
+| VR.1.3.20 | Second pass. Removing the rejoin_note is right: खर-त्रिशिरसोः उत्थानम् re-joins regularly (-सोरुत्थानं), and check_layers is OK. The new उत्तिष्ठति, though, has the wrong pada. In the sense 'set about, strive' (not physically rising), उद् + स्था takes the ātmanepada by 1.3.24 उदोऽनूर्ध्वकर्मणि (मुक्तौ उत्तिष्ठते), so the form is … |
+| VR.1.3.22 | Second pass. The reworked first sentence uses मिलति with the genitive (रामलक्ष्मणयोः … मिलति). That is a vernacular construction: मिल् takes सह with the instrumental, or the accusative. The coordinator should apply the corrected sentence below. The rest of the verse is right. Second pass. Clean. फल-मूल-अशनम्, हनूमत्-दर्शनम् righ … |
+| VR.1.3.25 | Second pass: unchanged in the draft; kept as flag for the human reviewer. Decide the case of दिशः. The draft takes it as द्वितीया बहु with an action noun ('दिशः (प्रति) प्रस्थापनम्'); with a kṛt noun like प्रस्थापन one would rather expect a genitive, so दिशः may be षष्ठी एक ('the sending towards the quarter(s)', collective). Bot … |
+| VR.1.3.28 | Second pass: unchanged in the draft; kept as flag for the human reviewer. Decide the analysis of लङ्का-मलय-दर्शनम्. The draft reads a dvandva (लङ्का च मलयः च), and the vyākhyā has Hanumān, after crossing, see 'लङ्कां मलयं नाम पर्वतं च'. But the Malaya range lies on the mainland; several commentators read the compound as the hill … |
+| VR.1.3.35 | Second pass. The reworked first sentence puts both agent and object of the action noun प्रतार (masculine) in the genitive (रामस्य सेनायाः समुद्रस्य प्रतारः). By 2.3.66 only the object takes the genitive and the agent goes to the instrumental. The coordinator should apply the corrected sentence below. The rest of the verse is rig … |
+| VR.1.3.37 | Second pass. The padārtha fixes were applied exactly. But Vibhīṣaṇa is still not named outside the compound, and the new first sentence makes 'रावणस्य अनुजस्य' qualify the member बिभीषण inside बिभीषणाभिषेकः. That is an असमर्थ (सापेक्ष) construction. The coordinator should apply the corrected sentence below. The rest of the verse … |
+
+### 2. Declared re-join exceptions
+
+None. 18, 26, 29 leave च + vowel unjoined at a pāda break, which the checker accepts (one hiatus at a pāda break, checker v7); lines without a closing daṇḍa (18, 24–38) are now read with a possible pause at the line break (checker v8).
+
+### 3. Doubtful source readings
+
+VR.1.3.18 and 24–38: line 1 lacks its closing । (kept as printed; Class B, `review/mula_queue.md`).
+
+### 4. Declared word-list exceptions (fit_note)
+
+none
+
+### 5. 10% sample of the verses that passed (fixed seed 20261111)
+
+VR.1.3.12, VR.1.3.19, VR.1.3.27, VR.1.3.34

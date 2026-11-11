@@ -104,5 +104,18 @@
    "approved_by": "Aditya",
    "date": "2026-11-11"
   }
+ },
+ {
+  "id": "VR.1.4.6",
+  "lines_corrected": [
+   "स तु मेधाविनौ दृष्ट्वा वेदेषु परिनिष्ठितौ ।",
+   "वेदोपबृह्मणार्थाय तावग्राहयत प्रभुः ॥"
+  ],
+  "correction": {
+   "what": "Line 2: वेदोपबृंह्मणार्थाय → वेदोपबृह्मणार्थाय (the anusvāra before ह्म removed; one akṣara).",
+   "evidence": "बृंह्मण (anusvāra and ह्म together) is not a possible spelling: the word is बृंहण, written बृह्मण in the old orthography. Critical Edition 1.4.5 reads vedopabṛhmaṇārthāya, exactly the corrected text. Metre: anuṣṭubh, 32 syllables, before and after. Stage C brief §8, rule A.",
+   "approved_by": "rule A, pending Aditya",
+   "date": "2026-11-11"
+  }
  }
 ]

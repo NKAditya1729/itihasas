@@ -1,0 +1,246 @@
+{
+ "VR.1.3.1": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "names.json"
+  ],
+  "note": "Clean. तत् धर्म-अर्थ-सहितम्, व्यक्तम् अन्वेषते, भूयः यत् are right; तस्य glossed with the full identifier of राम (first use in the sarga). Opens from the end of sarga 2 (ब्रह्मणः वचनम्). Dual वर्ण्येते (धर्मः अर्थः च) agrees. No इत्युक्ते.",
+  "fixes": []
+ },
+ "VR.1.3.2": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "names.json"
+  ],
+  "note": "Clean. सम्यक् मुनिः, कृत-अञ्जलिः, प्राचीन-अग्रेषु (bahuvrīhi, पुं with दर्भेषु), धर्मेण अन्वेषते are right. मुनिः carries the full identifier of वाल्मीकि. यानि … दर्भाः इति उच्यन्ते agrees. One इत्युक्ते (धर्मेण), needed.",
+  "fixes": []
+ },
+ "VR.1.3.3": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "names.json"
+  ],
+  "note": "Clean. सीताभी राज्ञा = सीताभिः राज्ञा (रो रि, ढ्रलोपे दीर्घः) re-joins; राम-लक्ष्मण-सीताभिः is स्त्री बहु (dvandva takes the last member's gender). यत् प्राप्तम् (प्रथमा, with the instrumental agents) is right, and the link to संप्रपश्यति of 4 is kept in the anvaya. Full identifiers for लक्ष्मण, सीता, दशरथ.",
+  "fixes": []
+ },
+ "VR.1.3.4": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. गतिः यावत् च, धर्म-वीर्येण, संप्रपश्यति (सम्+प्र+दृश्) are right; the nominatives are taken up by तत् सर्वम्, and the vyākhyā renders them with यत् … तत् clauses. Remark, no change required: the opening रामादीनां महान्ति कर्माणि एव न पश्यति would read more plainly as न केवलं महान्ति कर्माणि पश्यति.",
+  "fixes": []
+ },
+ "VR.1.3.5": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. स्त्री-तृतीयेन (bahuvrīhi, सीता तृतीया यस्य) and च अन्ववैक्षत (अनु+अव+ईक्ष्, लङ्) are right. Dual आस्ताम् (लक्ष्मणः सीता च) agrees. The closing सम्यक् दृष्टवान् is an appositive inside the last sentence, not a stand-alone gloss.",
+  "fixes": []
+ },
+ "VR.1.3.6": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. धर्म-आत्मा, योगम् आस्थितः, पाणौ आमलकम् यथा are right; the simile is told as a full यथा … तथा sentence. No इत्युक्ते.",
+  "fixes": []
+ },
+ "VR.1.3.7": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. सः महा-मतिः, कर्तुम् उद्यतः are right; यस्य मतिः महती सः महामतिः is a good relative clause. The last sentence (तत् काव्यं कीदृशम् इति अग्रे वर्ण्यते) is the one short link allowed by rule 12, since the sentence runs into verse 8.",
+  "fixes": []
+ },
+ "VR.1.3.8": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. All four compounds are analysed right (सर्व-श्रुति-मनः-हरम्, pausal मनः); neuter द्वितीया agreeing with तत् सर्वम् of 7. The vyākhyā opens with a question tying back to verse 7 and explains each epithet with a यतः/अतः clause. One इत्युक्ते.",
+  "fixes": []
+ },
+ "VR.1.3.9": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "names.json"
+  ],
+  "note": "Clean. सः यथा कथितम्, रघु-वंशस्य are right; नारद and रघु carry their identifiers. The last sentence is the permitted link to the list of 10–38.",
+  "fixes": []
+ },
+ "VR.1.3.10": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "§5.7 (taddhitas stay whole)"
+  ],
+  "note": "Clean. सु-महत् वीर्यम्, सर्व-अनुकूलताम् (ता kept with its stem) are right. Reads as connected prose (आरम्भे … ततः … अतएव), not a word list. One इत्युक्ते (क्षान्तिः).",
+  "fixes": []
+ },
+ "VR.1.3.11": {
+  "verdict": "flag",
+  "rules": [
+   "§5.2 (vigraha correct)",
+   "§5.4 rule 7 (nothing added beyond the verse)"
+  ],
+  "note": "Decide the sense of विश्वामित्र-सहायने. The draft takes सहायन as सहायस्य कर्म (help in guarding the yajña), which has no regular derivation from सहाय. The transparent analysis is सह + अयन = going with Viśvāmitra; the कथाः are then the stories told on that journey, which fits नाना चित्राः कथाः. The yajña in the vyākhyā and the context note is not in the verse. If the scholar confirms सहगमन, apply the replacements below. They add one इत्युक्ते, so the batch has 10 in 20 verses. Everything else in the verse (splits, जानक्याः, धनुषः विभेदनम्, narrative order) is right.",
+  "fixes": [
+   {
+    "where": "padartha: विश्वामित्र-सहायने",
+    "wrong": "vigraha = विश्वामित्रस्य सहायनम् (सहायस्य कर्म), तस्मिन् ; artha = विश्वामित्रस्य (विश्वामित्रनामकस्य महर्षेः) यज्ञस्य रक्षणे साहाय्ये",
+    "replace_with": "vigraha = विश्वामित्रेण सह अयनम् (गमनम्), तस्मिन् ; artha = विश्वामित्रेण (विश्वामित्रनामकेन महर्षिणा) सह गमने"
+   },
+   {
+    "where": "vyakhya_sa, sentence 1",
+    "wrong": "रामः विश्वामित्रस्य महर्षेः यज्ञस्य रक्षणे तस्य साहाय्यं करोति ; तस्मिन् **विश्वामित्रसहायने** **नाना** **चित्राः** **अन्याः** **कथाः** **च** श्रूयन्ते ।",
+    "replace_with": "रामः विश्वामित्रेण महर्षिणा सह गच्छति ; तस्मिन् **विश्वामित्रसहायने**, इत्युक्ते विश्वामित्रेण सह गमने, **नाना** **चित्राः** **अन्याः** **कथाः** **च** श्रूयन्ते ।"
+   },
+   {
+    "where": "context_note_sa",
+    "wrong": "काव्ये विश्वामित्रस्य यज्ञरक्षणे कथाः, धनुषः भङ्गः, सीतायाः विवाहः च वर्ण्यन्ते ।",
+    "replace_with": "काव्ये विश्वामित्रेण सह गमने श्रुताः कथाः, धनुषः भङ्गः, सीतायाः विवाहः च वर्ण्यन्ते ।"
+   }
+  ]
+ },
+ "VR.1.3.12": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "names.json"
+  ],
+  "note": "Clean. राम-राम-विवादम् is explained as the dispute of दाशरथि with जामदग्न्य राम (names.json identifiers); तथा अभिषेकम्, दुष्ट-भावताम् right. Told as story (विवाहात् परं … अतः … किन्तु). प्रकटा (भावता, स्त्री) and उत्पन्नः (भावः) agree. One इत्युक्ते (दाशरथेः).",
+  "fixes": []
+ },
+ "VR.1.3.13": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "§5.7 (hyphenate at every member boundary)"
+  ],
+  "note": "Clean. पर-लोकस्य: keep the split. §5.7 hyphenates every member boundary; परलोक is a transparent karmadhāraya (परः लोकः), not a proper name, a rite or a taddhita, and the project already splits देव-लोकम्, ब्रह्म-लोकम्, जीव-लोकस्य (VR.1.1, 1.2). Vyākhyā tells the events in order; प्रेष्यते, उत्पद्यते agree.",
+  "fixes": []
+ },
+ "VR.1.3.14": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "names.json"
+  ],
+  "note": "Clean. निषाद-अधिप-संवादम्, सूत-उपावर्तनम् right; गुह and सुमन्त्र identifiers per names.json. सति-सप्तमी (रामे वनं गच्छति सति) is the stretching construction. One इत्युक्ते (प्रकृतयः), needed.",
+  "fixes": []
+ },
+ "VR.1.3.15": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "names.json"
+  ],
+  "note": "Clean. गङ्गायाः च अपि, भरद्वाज-अभ्यनुज्ञानात् right; भरद्वाज identified as the muni of Prayāga, not Vālmīki's pupil. Story prose in order. No इत्युक्ते.",
+  "fixes": []
+ },
+ "VR.1.3.16": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. वास्तु-कर्म and निवेशम् as two words is right (the mūla prints a space: वास्तुकर्म निवेशं). The vyākhyā puts सलिलक्रिया before प्रसादन, which follows the story (rule 10). निर्मीयते, वसन्ति agree. One इत्युक्ते.",
+  "fixes": []
+ },
+ "VR.1.3.17": {
+  "verdict": "pass",
+  "rules": [
+   "§5.2 (vigraha correct)"
+  ],
+  "note": "Second pass. The fix is applied exactly: the vigraha is now अग्र्ये (श्रेष्ठे स्थाने, राज्ये) पादुकयोः अभिषेकः, and it agrees with the artha and the vyākhyā. check_layers OK. First pass (for the record): the vigraha took अग्र्य as an adjective of अभिषेक.",
+  "fixes": []
+ },
+ "VR.1.3.18": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 7",
+   "§5.7 (rejoin_note)",
+   "§5.7 (hyphenate at every member boundary)"
+  ],
+  "note": "Second pass. Both fixes are applied exactly: ततः **अनसूयासमाख्या** replaces the bolded तथा, which is not in the verse, and the rejoin_note now gives the metrical reason (a hiatus at the third/fourth pāda boundary). The rejoin_note is a valid declared exception. अङ्ग-रागस्य keeps its split. check_layers OK.",
+  "fixes": []
+ },
+ "VR.1.3.19": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "names.json"
+  ],
+  "note": "Clean. च अपि अगस्त्यस्य, धनुषः ग्रहणम्, शूर्पणख्याः च right; शूर्पणखी is labelled ārṣa in the gloss (the checker's word-list note is this form; as with कैकयी in VR.1.1.21 no fit_note is needed). Passive क्रियते agrees. Remark, no change required: the vigraha of विरूप-करणम् would be plainer as विरूपायाः (कुरूपायाः) करणम्.",
+  "fixes": []
+ },
+ "VR.1.3.20": {
+  "verdict": "flag",
+  "rules": [
+   "§5.4 rule 13 / grammar (pada)",
+   "§5.7 (rejoin_note)"
+  ],
+  "note": "Second pass. Removing the rejoin_note is right: खर-त्रिशिरसोः उत्थानम् re-joins regularly (-सोरुत्थानं), and check_layers is OK. The new उत्तिष्ठति, though, has the wrong pada. In the sense 'set about, strive' (not physically rising), उद् + स्था takes the ātmanepada by 1.3.24 उदोऽनूर्ध्वकर्मणि (मुक्तौ उत्तिष्ठते), so the form is उत्तिष्ठते. The safest wording uses a plain verb that raises no pada question. Apply the corrected text below; the flag stays for the human reviewer.",
+  "fixes": [
+   {
+    "where": "vyakhya_sa, sentence 2",
+    "wrong": "सः प्रतिकारं कर्तुम् उत्तिष्ठति ।",
+    "replace_with": "सः प्रतिकारं कर्तुं प्रयतते ।"
+   }
+  ]
+ }
+}

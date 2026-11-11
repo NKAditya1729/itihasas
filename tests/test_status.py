@@ -244,9 +244,10 @@ def test_set_flag_note_replaces_the_earlier_note_of_the_same_flag():
 def test_the_approved_corrections_file_is_well_formed():
     entries = json.loads((ROOT / "data" / "meta" / "corrections.json").read_text())
     assert {e["id"] for e in entries} == {"VR.1.1.1", "VR.1.1.9", "VR.1.1.15", "VR.1.1.29", "VR.1.1.45",
-                                          "VR.1.1.65", "VR.1.1.84", "VR.1.1.100"}
-    for e in entries:
-        assert set(e["correction"]) == {"what", "evidence", "approved_by", "date"} and e["correction"]["approved_by"] == "Aditya"
+                                          "VR.1.1.65", "VR.1.1.84", "VR.1.1.100", "VR.1.4.6"}
+    for e in entries:      # Aditya's own approvals, or rule A of the Stage C brief (§8), pending his review
+        assert set(e["correction"]) == {"what", "evidence", "approved_by", "date"}
+        assert e["correction"]["approved_by"] in ("Aditya", "rule A, pending Aditya")
 
 
 def test_the_corrected_verses_keep_their_source_text_and_pass_the_metre():

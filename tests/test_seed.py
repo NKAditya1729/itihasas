@@ -405,3 +405,12 @@ def test_groups_for_refuses_a_padaccheda_that_does_not_rejoin():
     import pytest
     with pytest.raises(ValueError):
         groups_for(["रामो वनं गतः ।"], ["रामः वनम् गतम् ।"])
+
+
+def test_groups_follow_a_pause_at_a_line_break_without_a_danda():
+    from vrtools.seed import groups_for
+    mula = ["वालिप्रमथनं चैव सुग्रीवप्रतिपादनम्", "ताराविलापं समयं वर्षरात्रनिवासनम् ॥"]
+    pada = ["वालि-प्रमथनम् च एव सुग्रीव-प्रतिपादनम्", "तारा-विलापम् समयम् वर्ष-रात्र-निवासनम् ॥"]
+    g = groups_for(mula, pada)
+    assert len(g) == 2
+    assert any(x[0] == "सुग्रीवप्रतिपादनम्" for x in g[0] if isinstance(x, list))

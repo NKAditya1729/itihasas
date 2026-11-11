@@ -123,5 +123,25 @@
   "id": "VR.1.2.43",
   "flag": "mula_suspect",
   "note": "रघुवरकरितं and दशशिरसश्क are not possible words (probably रघुवरचरितं and दशशिरसश्च). Explained as printed with that sense. Class B, not applied: the verse is not in the Critical Edition, so rule A does not apply."
+ },
+ {
+  "id": "VR.1.3.18",
+  "flag": "mula_suspect",
+  "note": "Line 1 lacks its closing । (so also in verses 24–38); च अङ्गरागस्य is left unjoined. Kept as printed (Class B, not applied)."
+ },
+ {
+  "id": "VR.1.4.6",
+  "flag": "mula_suspect",
+  "note": "वेदोपबृंह्मणार्थाय: anusvāra and ह्म together. Corrected to वेदोपबृह्मणार्थाय in lines_corrected under rule A (Critical Edition 1.4.5), pending Aditya."
+ },
+ {
+  "id": "VR.1.4.19",
+  "flag": "mula_suspect",
+  "note": "तपः श्लाघ्यैर्महर्षिभिः: a space inside the compound तपःश्लाघ्यैः (Critical Edition 1.4.18 has the compound). Kept as printed (Class B: spacing only, the verse is not impossible as printed)."
+ },
+ {
+  "id": "VR.1.4.25",
+  "flag": "mula_suspect",
+  "note": "ब्रुसीम्: probably for बृसीम् (as in verse 22). Kept as printed (Class B: the verse is not in the Critical Edition)."
  }
 ]

@@ -425,7 +425,19 @@ def _rejoin_unit(mula_lines, pada_lines, unit, avagraha, allow_unjoined):
     return rejoin([[w] for w, _ in members], target, [c for _, c in members], avagraha, allow_unjoined), target
 
 
-def _pause_at_a_line_break(mula_lines, pada_lines, unit, avagraha, allow_unjoined) -> bool:
+def rejoin_parts(mula_lines, pada_lines, avagraha: bool = True, allow_unjoined: bool = False) -> list[list[int]]:
+    """The sandhi units of a verse as the check found them to re-join: each daṇḍa unit, or,
+    where it re-joins only with a pause at a printed line break, its parts."""
+    out = []
+    for unit in units(mula_lines):
+        if _rejoin_unit(mula_lines, pada_lines, unit, avagraha, allow_unjoined)[0]["ok"]:
+            out.append(unit)
+        else:
+            out += _pause_at_a_line_break(mula_lines, pada_lines, unit, avagraha, allow_unjoined) or [unit]
+    return out
+
+
+def _pause_at_a_line_break(mula_lines, pada_lines, unit, avagraha, allow_unjoined) -> list[list[int]] | None:
     """A printed line break inside a unit (a line without a closing daṇḍa) is a half-verse
     boundary, so a pause may stand there (…-निवासनम् / ताराविलापं: the म् stays). Try the
     unit cut at every such break, alone and together, except where a word runs over the
@@ -435,5 +447,5 @@ def _pause_at_a_line_break(mula_lines, pada_lines, unit, avagraha, allow_unjoine
         cuts = [b for j, b in enumerate(breaks) if mask >> j & 1]
         parts = [unit[a:b] for a, b in zip([0] + cuts, cuts + [len(unit)])]
         if all(_rejoin_unit(mula_lines, pada_lines, part, avagraha, allow_unjoined)[0]["ok"] for part in parts):
-            return True
-    return False
+            return parts
+    return None

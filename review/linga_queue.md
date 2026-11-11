@@ -16,3 +16,9 @@ To be checked against the books.
 | रहस् | नपुं (noun) | VR.1.2.34 | the Amarakośa also lists रहः as an indeclinable |
 | प्रकाश | नपुं (adjective used as noun) | VR.1.2.33, 34 | |
 | मच्छन्द (छन्द = इच्छा) | पुं | VR.1.2.31 | |
+| संतार | पुं | VR.1.3.15 | Apte |
+| विश्वामित्रसहायन | नपुं | VR.1.3.11 | by the form |
+| पुष्पक | नपुं | VR.1.3.30, 37 | as in the pilot |
+| छायाग्राह | पुं (of सिंहिका) | VR.1.3.28 | by the form |
+| प्रतार | पुं | VR.1.3.35 | |
+| वर्षरात्र | पुं | VR.1.3.24 | |
