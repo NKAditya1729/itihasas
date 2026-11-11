@@ -157,9 +157,15 @@ gives the beginner support.
    speaker in dialogue); **nothing added beyond the verse** (no philosophy, no
    commentary debates, nothing from other recensions or later in the story);
    **3 to 7 sentences**.
-8. The reviewer checks rules 1–7 as well as the grammar. `make check` enforces
+9. **Variety:** at most two इत्युक्ते and one इति आशयः per verse. Use other
+   means for the rest: यः…सः clauses, apposition, a relative clause, or simply
+   a clear sentence.
+10. **Narrative verses** (where something happens): tell the event first, in
+   order, as story. Define only the words a learner would not know. Do not
+   define every pada.
+8. The reviewer checks rules 1–7, 9 and 10 as well as the grammar. `make check` enforces
    what a machine can see: 3–7 sentences, 80% of the significant padas in
-   bold, no chain of dash glosses, no avagraha, no word ending in a sandhi
+   bold, no chain of dash glosses, at most two इत्युक्ते and one इति आशयः, no avagraha, no word ending in a sandhi
    consonant, no anusvāra before a vowel or a pause.
 
 A sample in this style (VR.1.1.4, by Aditya, for the register; do not copy it):

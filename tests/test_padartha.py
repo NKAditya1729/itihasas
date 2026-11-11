@@ -281,3 +281,16 @@ def test_a_declared_exception_to_the_word_list_is_listed_not_failed():
     v["padartha"][0]["fit_note"] = "आर्षः प्रयोगः — अडागमं विना लङ् (अशंसत्)"
     r = check_layers(lines, v)
     assert r["errors"] == [] and r["unverified"] == ["शंसत्"]
+
+
+# ---- §5.4 rule 9 (variety; Aditya, 2026-11-11): at most two इत्युक्ते and one इति आशयः ------------
+
+def test_at_most_two_ityukte_and_one_iti_ashayah_per_verse():
+    v = good()
+    base = GOOD["vyakhya_sa"]
+    v["vyakhya_sa"] = base.replace("**नारदः** **वाग्विदां** **वरः** इति उच्यते ।", "**वाग्विदां** इत्युक्ते वाचं जानतां जनानाम् ; **वरः** इत्युक्ते श्रेष्ठः ; **नारदः** तादृशः ।")
+    assert any("इत्युक्ते" in e for e in errors(v))                      # three in one verse
+    v["vyakhya_sa"] = base.replace("मुनिषु श्रेष्ठः ।", "मुनिषु श्रेष्ठः इति आशयः । सः महान् इति आशयः ।")
+    assert any("इति आशयः" in e for e in errors(v))                       # two in one verse
+    v["vyakhya_sa"] = base.replace("मुनिषु श्रेष्ठः ।", "मुनिषु श्रेष्ठः इति आशयः ।")
+    assert errors(v) == []                                              # one of each is fine

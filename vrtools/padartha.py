@@ -251,6 +251,9 @@ def _vyakhya_report(entries: list[dict], vyakhya: str) -> tuple[list[str], list[
     dash_glosses = len(re.findall(r"[—–-]\s*अर्थात्", vyakhya))
     if dash_glosses > MAX_DASH_GLOSSES:               # §5.4 rule 1: prose, not a chain of "X — अर्थात् Y —"
         errs.append(f"vyākhyā: {dash_glosses} dash glosses with अर्थात् (explain a word inside the sentence: X इत्युक्ते Y)")
+    for phrase, most in (("इत्युक्ते", 2), ("इति आशयः", 1)):     # §5.4 rule 9: vary the means of explanation
+        if vyakhya.count(phrase) > most:
+            errs.append(f"vyākhyā: {phrase} is used {vyakhya.count(phrase)} times (at most {most}; use a यः…सः clause, apposition or a plain sentence)")
     errs += _sandhi_errors(vyakhya)
     return errs, used
 
