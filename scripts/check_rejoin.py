@@ -62,7 +62,8 @@ def main() -> None:
                 v["review"]["auto_checks"]["rejoin"] = r["ok"]
                 stats[src]["pass" if r["ok"] else "fail"] += 1
                 if not r["ok"] and v.get("padaccheda_status") == "reviewed":
-                    entry = {"reason": "reviewed_padaccheda_fails", "failure": r["failures"][0]}   # kept, for a human
+                    if not (v.get("rejoin_note") or "").strip():      # a declared exception is not queued
+                        entry = {"reason": "reviewed_padaccheda_fails", "failure": r["failures"][0]}   # kept, for a human
                 elif not r["ok"]:
                     entry = {"reason": "stored_padaccheda_fails", "failure": r["failures"][0],
                              "rejected": v["padaccheda_lines"]}

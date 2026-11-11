@@ -3,6 +3,9 @@
 ``check_layers(lines, verse)`` returns {"errors", "unverified", "vyakhya_used_padas"}.
 
 1. The padaccheda re-joins to the text (``lines``: the corrected text where one exists).
+   Exception: a verse whose printed text cannot be re-joined (two words left without
+   sandhi, an impossible sandhi) carries a "rejoin_note" saying why; it is then listed
+   ("rejoin_exception"), not failed, and its split is judged by the reviewer.
 2. Every pada of the padaccheda has exactly one padārtha entry, in verse order.
 3. Each entry is an indeclinable, a nominal or a finite verb, with the fields of its kind,
    and **its analysis fits the form**: the case and number (or tense, person and number)
@@ -262,7 +265,10 @@ def check_layers(lines: list[str], v: dict) -> dict:
     errors, unverified, used = [], [], []
     pada_lines, entries = v.get("padaccheda_lines") or [], v.get("padartha") or []
     r = check_rejoin(lines, pada_lines) if pada_lines else {"ok": False, "failures": [{"reason": "no padaccheda"}]}
-    if not r["ok"]:
+    # A declared exception: the printed text itself cannot be re-joined (two words left without
+    # sandhi, or an impossible sandhi). The note says why; the reviewer judges the split on its merits.
+    exception = bool(pada_lines) and not r["ok"] and bool((v.get("rejoin_note") or "").strip())
+    if not r["ok"] and not exception:
         f = r["failures"][0]
         errors.append(f"padaccheda does not re-join to the text ({f.get('reason')}"
                       + (f": expected …{f['expected']}, got …{f['got']}" if "expected" in f else "") + ")")
@@ -295,7 +301,24 @@ def check_layers(lines: list[str], v: dict) -> dict:
         errors += errs
         if _LATIN.search(v["vyakhya_sa"]):
             errors.append("vyākhyā: Latin letters")
-    return {"errors": errors, "unverified": unverified, "vyakhya_used_padas": used}
+    return {"errors": errors, "unverified": unverified, "vyakhya_used_padas": used, "rejoin_exception": exception}
+
+
+def _groups_or_fallback(lines: list[str], pada_lines: list[str], exception: bool) -> list:
+    """Groups for the Padaccheda toggle. For a declared re-join exception: aligned word by word
+    if the only trouble is unjoined words; otherwise one group per line."""
+    from .seed import groups_for
+    if not exception:
+        return groups_for(lines, pada_lines)
+    try:
+        return groups_for(lines, pada_lines, allow_unjoined=True)
+    except ValueError:
+        out = []
+        for line, pada in zip(lines, pada_lines):
+            danda = re.search(r"([।॥])\s*$", line)
+            body = lambda s: re.sub(r"\s*[।॥]\s*$", "", s).strip()
+            out.append([[body(line), body(pada), 0]] + ([" " + danda.group(1)] if danda else []))
+        return out
 
 
 SEED_FLAGS = ("seed_disagreement", "compound_boundaries_unknown", "avagraha_mismatch")   # settled by a sarga review
@@ -311,13 +334,17 @@ def merge_verse(v: dict, draft: dict, gen: dict, verdict: str) -> dict:
     if result["errors"]:
         raise ValueError(f"{v['id']}: " + "; ".join(result["errors"]))
     v["padaccheda_lines"] = list(draft["padaccheda_lines"])
-    v["groups"] = groups_for(lines, v["padaccheda_lines"])
+    v["groups"] = _groups_or_fallback(lines, v["padaccheda_lines"], result["rejoin_exception"])
+    if result["rejoin_exception"]:
+        v["rejoin_note"] = draft["rejoin_note"]
+    else:
+        v.pop("rejoin_note", None)
     v["padaccheda_status"] = "reviewed"
     v["padartha"], v["anvaya"], v["vyakhya_sa"] = draft["padartha"], draft["anvaya"], draft["vyakhya_sa"]
     v["vyakhya_used_padas"] = result["vyakhya_used_padas"]
     v["speaker"], v["context_note_sa"] = draft.get("speaker"), draft.get("context_note_sa")
     review = v["review"]
-    review["auto_checks"] = {"rejoin": True, "coverage": True, "padartha_fit": True, "metre": bool(v["metre"]["ok"]),
+    review["auto_checks"] = {"rejoin": not result["rejoin_exception"], "coverage": True, "padartha_fit": True, "metre": bool(v["metre"]["ok"]),
                              "schema": True, "unverified_forms": result["unverified"]}
     review["agent_review"] = verdict
     review["flags"] = [f for f in review["flags"] if f not in SEED_FLAGS]

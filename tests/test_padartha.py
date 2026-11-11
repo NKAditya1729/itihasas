@@ -294,3 +294,56 @@ def test_at_most_two_ityukte_and_one_iti_ashayah_per_verse():
     assert any("इति आशयः" in e for e in errors(v))                       # two in one verse
     v["vyakhya_sa"] = base.replace("मुनिषु श्रेष्ठः ।", "मुनिषु श्रेष्ठः इति आशयः ।")
     assert errors(v) == []                                              # one of each is fine
+
+
+# ---- a verse whose printed text cannot be re-joined (pilot: 11 verses of VR.1.1) ---------------
+
+UNJOINED = ["स नैच्छत् राज्यं महाबलः ।"]            # the mūla prints नैच्छत् राज्यं without sandhi (VR.1.1.34)
+
+
+def _unjoined():
+    return {"id": "x", "padaccheda_lines": ["सः न ऐच्छत् राज्यम् महा-बलः ।"], "vyakhya_sa": None,
+            "anvaya": "सः महाबलः राज्यं न ऐच्छत् ।",
+            "padartha": [{"pada": "सः", "pratipadika": "तद्", "linga": "पुं", "vibhakti": "प्रथमा", "vacana": "एक", "artha": "भरतः"},
+                         {"pada": "न", "avyaya": True, "artha": "निषेधे"},
+                         {"pada": "ऐच्छत्", "dhatu": "इष्", "lakara": "लङ्", "purusha": "प्रथम", "vacana": "एक", "artha": "इच्छां कृतवान्"},
+                         {"pada": "राज्यम्", "pratipadika": "राज्य", "linga": "नपुं", "vibhakti": "द्वितीया", "vacana": "एक", "artha": "राज्ञः पदम्"},
+                         {"pada": "महा-बलः", "pratipadika": "महाबल", "linga": "पुं", "vibhakti": "प्रथमा", "vacana": "एक",
+                          "vigraha": "महत् बलं यस्य सः", "artha": "यस्य बलं महत् अस्ति सः", "anvita": "सः"}]}
+
+
+def test_a_declared_rejoin_exception_is_listed_not_failed():
+    v = _unjoined()
+    assert any("re-join" in e for e in check_layers(UNJOINED, v)["errors"])
+    v["rejoin_note"] = "The printed text leaves नैच्छत् राज्यं unjoined; the padaccheda is right on its merits."
+    r = check_layers(UNJOINED, v)
+    assert r["errors"] == [] and r["rejoin_exception"] is True
+
+
+def test_no_exception_without_a_note():
+    assert check_layers(UNJOINED, _unjoined())["rejoin_exception"] is False
+    assert check_layers(LINES, good())["rejoin_exception"] is False
+
+
+def test_merge_keeps_the_note_and_builds_groups_for_an_unjoined_text():
+    from vrtools.padartha import merge_verse
+    v = _verse()
+    v["lines"], v["lines_corrected"] = list(UNJOINED), list(UNJOINED)
+    draft = {**_unjoined(), "rejoin_note": "The printed text leaves नैच्छत् राज्यं unjoined."}
+    merge_verse(v, draft, gen={"model": "m", "date": "d", "prompt_version": "p"}, verdict="flag")
+    assert v["rejoin_note"].startswith("The printed text") and v["review"]["auto_checks"]["rejoin"] is False
+    pairs = [g[:2] for g in v["groups"][0] if not isinstance(g, str)]
+    assert ["नैच्छत्", "न ऐच्छत्"] in pairs and ["राज्यं", "राज्यम्"] in pairs       # word-aligned despite the missing sandhi
+
+
+def test_merge_falls_back_to_one_group_per_line_when_nothing_aligns():
+    # VR.1.1.15 तत्त्वज्ञो स्मृतिमान्: the printed sandhi is impossible, so no joiner can align it
+    from vrtools.padartha import merge_verse
+    v = _verse()
+    v["lines"] = v["lines_corrected"] = ["तत्त्वज्ञो स्मृतिमान् ।"]
+    draft = {"id": "x", "padaccheda_lines": ["तत्त्व-ज्ञः स्मृतिमान् ।"], "vyakhya_sa": None, "anvaya": "तत्त्वज्ञः स्मृतिमान् ।",
+             "rejoin_note": "The printed तत्त्वज्ञो स्मृतिमान् is impossible sandhi.",
+             "padartha": [{"pada": "तत्त्व-ज्ञः", "pratipadika": "तत्त्वज्ञ", "linga": "पुं", "vibhakti": "प्रथमा", "vacana": "एक", "vigraha": "तत्त्वं जानाति इति", "artha": "सत्यं जानन्"},
+                          {"pada": "स्मृतिमान्", "pratipadika": "स्मृतिमत्", "linga": "पुं", "vibhakti": "प्रथमा", "vacana": "एक", "artha": "यः सर्वं स्मरति सः"}]}
+    merge_verse(v, draft, gen={"model": "m", "date": "d", "prompt_version": "p"}, verdict="flag")
+    assert v["groups"] == [[["तत्त्वज्ञो स्मृतिमान्", "तत्त्व-ज्ञः स्मृतिमान्", 0], " ।"]]

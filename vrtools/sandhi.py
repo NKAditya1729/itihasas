@@ -274,13 +274,15 @@ def junction(L: str, R: str, left_word: str = "", comp: bool = False, avagraha: 
 # ---------------------------------------------------------------------------
 MIN_HIATUS_UNIT = 16   # a unit of two pādas has at least 2 × 8 syllables
 ALT_COST, HIATUS_COST = 2, 1   # a hiatus ranks between a word's first and its second alternative
+UNJOINED_COST = 5               # last resort, and only where the caller asks for it
 
 
 def _syllables(slp1: str) -> int:
     return sum(ch in VOWELS for ch in slp1)
 
 
-def rejoin(words: list[list[str]], target: str, comp: list[bool] | None = None, avagraha: bool = True) -> dict:
+def rejoin(words: list[list[str]], target: str, comp: list[bool] | None = None, avagraha: bool = True,
+           allow_unjoined: bool = False) -> dict:
     """Search joins of ``words`` (each a list of alternative SLP1 forms, first =
     preferred) that reproduce ``target`` (``mula_norm`` of the mūla, with the same
     ``avagraha`` setting). ``comp[i]``: word i continues the compound of word i-1.
@@ -309,6 +311,10 @@ def rejoin(words: list[list[str]], target: str, comp: list[bool] | None = None, 
                 if (pada_break and acc and acc[-1] in VOWELS and w[:1] in VOWELS and not in_comp
                         and choice and choice[-1] == 0 and _syllables(acc) == pada_break):
                     joins.append((acc + w, len(acc), HIATUS_COST))   # the mūla may print a hiatus at the pāda break
+                if allow_unjoined and acc and acc[-1] not in VOWELS and not in_comp:
+                    # a declared exception: the mūla prints the two words without sandhi (नैच्छत् राज्यं).
+                    # It can only match where the mūla literally has the pausal form.
+                    joins.append((acc + w, len(acc), UNJOINED_COST))
                 for new, st, extra in joins:
                     n = mula_norm(new, avagraha)
                     keep = n[:max(0, len(n) - PRUNE_SLACK)]
@@ -387,7 +393,7 @@ def non_pausal(pada_line: str) -> list[str]:
     return bad
 
 
-def check_rejoin(mula_lines: list[str], pada_lines: list[str], avagraha: bool = True) -> dict:
+def check_rejoin(mula_lines: list[str], pada_lines: list[str], avagraha: bool = True, allow_unjoined: bool = False) -> dict:
     failures = []
     if len(mula_lines) != len(pada_lines):
         return {"ok": False, "failures": [{"reason": "line_count", "mula": len(mula_lines), "pada": len(pada_lines)}]}
@@ -404,7 +410,7 @@ def check_rejoin(mula_lines: list[str], pada_lines: list[str], avagraha: bool = 
     for unit in units(mula_lines):
         target = mula_norm(to_slp1(" ".join(mula_lines[i] for i in unit)), avagraha)
         members = [m for i in unit for m in pada_members(pada_lines[i])]
-        r = rejoin([[w] for w, _ in members], target, [c for _, c in members], avagraha)
+        r = rejoin([[w] for w, _ in members], target, [c for _, c in members], avagraha, allow_unjoined)
         if not r["ok"]:
             pos = r["best"]
             failures.append({"reason": "mismatch", "line": unit[0], "pos": pos,

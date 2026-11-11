@@ -216,3 +216,15 @@ def test_an_empty_word_does_not_crash_the_search():
     target = mula_norm(to_slp1("धनुर्दर्शय रामाय इति होवाच पार्थिवम्"))
     words = [[to_slp1(w)] for w in "धनुः दर्शय रामाय".split()] + [[""]] + [[to_slp1(w)] for w in "इति ह उवाच पार्थिवम्".split()]
     assert rejoin(words, target)["ok"]
+
+
+# ---- an unjoined junction that the mūla itself prints (used only for declared exceptions) ----------
+
+def test_unjoined_junctions_pass_only_in_the_special_mode():
+    mula, pada = ["स नैच्छत् राज्यं महाबलः ।"], ["सः न ऐच्छत् राज्यम् महा-बलः ।"]
+    assert not check_rejoin(mula, pada)["ok"]
+    assert check_rejoin(mula, pada, allow_unjoined=True)["ok"]
+    # the mode cannot make a wrong word pass: the letters must be the mūla's own
+    assert not check_rejoin(mula, ["सः न ऐच्छत् राज्यः महा-बलः ।"], allow_unjoined=True)["ok"]
+    # and a regular saṃhitā text is unaffected
+    assert check_rejoin(["नारदं परिपप्रच्छ वाल्मीकिर्मुनिपुङ्गवम् ॥"], ["नारदम् परिपप्रच्छ वाल्मीकिः मुनि-पुङ्गवम् ॥"], allow_unjoined=True)["ok"]

@@ -40,7 +40,7 @@ def main() -> int:
     for e in json.loads((ROOT / "data" / "meta" / "mula_flags.json").read_text()):
         wanted.setdefault(e["id"], []).append(e["flag"])
     approved = {e["id"]: e for e in json.loads((ROOT / "data" / "meta" / "corrections.json").read_text())}
-    errors, n_verses, n_pada, n_layers, seen = [], 0, 0, 0, set()
+    errors, n_verses, n_pada, n_layers, n_exceptions, seen = [], 0, 0, 0, 0, set()
     for f in sorted((ROOT / "data" / "vr").glob("*/*.json")):
         d = json.loads(f.read_text())
         errors += [f"{f.name}: schema: {e.message[:120]}" for e in validator.iter_errors(d)][:3]
@@ -63,11 +63,14 @@ def main() -> int:
                     errors.append(f"{v['id']}: has padārtha but its padaccheda is not reviewed")
             if v["padaccheda_lines"]:
                 n_pada += 1
-                if not check_rejoin(text_lines(v), v["padaccheda_lines"])["ok"]:
+                declared = v.get("padaccheda_status") == "reviewed" and (v.get("rejoin_note") or "").strip()
+                n_exceptions += bool(declared)
+                if not declared and not check_rejoin(text_lines(v), v["padaccheda_lines"])["ok"]:
                     errors.append(f"{v['id']}: stored padaccheda does not re-join")
     errors += [f"{vid}: listed in mula_flags.json but not in the data" for vid in sorted(set(wanted) - seen)]
     errors += [f"{vid}: listed in corrections.json but not in the data" for vid in sorted(set(approved) - seen)]
-    print(f"checked {n_verses} verses, {n_pada} with padaccheda, {n_layers} with padārtha; {len(errors)} errors")
+    print(f"checked {n_verses} verses, {n_pada} with padaccheda, {n_layers} with padārtha, "
+          f"{n_exceptions} declared re-join exceptions; {len(errors)} errors")
     for e in errors[:50]:
         print("  ", e)
     return 1 if errors else 0
