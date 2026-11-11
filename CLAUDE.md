@@ -296,15 +296,59 @@ Gate A: write `docs/STAGE_A_REPORT.md` and stop. It must contain:
 6. Answers recorded for D1–D7, and any deviation from this file.
 7. Known problems and anything you were unsure about.
 
-### Stage B: review (fresh session, Fable 5.2)
-- Read `docs/STAGE_A_REPORT.md`, then review the repo as a reviewer, not
-  as the author. Priorities, in order: the re-join checker (is the
-  normalisation too loose, so that wrong splits pass?), the crosswalk,
-  the mūla integrity and counts, the seeded padaccheda samples.
-- Write findings to `docs/STAGE_B_REVIEW.md` as must-fix / should-fix /
-  optional. Apply must-fix items only after the user approves.
-- Phase 2b: resolve `queue/padaccheda_fix.jsonl` following §5.1.
+### Stage B and after (replaces the earlier Stage B and C; decided 2026-11-11)
 
-### Stage C: Phase 3 (Fable 5.2)
-- Pilot VR.1.1 (100 verses), all layers, then stop for user review.
-- After approval, continue sarga by sarga as in §6.
+The working instructions for Stage B are in `docs/STAGE_B_BRIEF.md`. Where
+that brief and this file disagree, the brief wins.
+
+**Why the plan changed.** The Stage B review (`docs/STAGE_B_REVIEW.md`) found
+that passing the re-join check does not mean a split is correct: about 8–9%
+of the passing machine seeds have a wrong letter or word boundary. So the
+padaccheda is **not** fixed for the whole epic first.
+
+- **Machine seeds are hints only.** Every seeded verse carries
+  `padaccheda_status: "seed"` and the site marks it असमीक्षितम्.
+  `queue/padaccheda_fix.jsonl` is not resolved in bulk.
+- **Padaccheda is finalised sarga by sarga**, together with padārtha, anvaya
+  and vyākhyā (§5.1–§5.5), by a generator and a separate reviewer (§10.3). A
+  verse becomes `padaccheda_status: "reviewed"` only then. Seeding scripts
+  never overwrite a `reviewed` verse.
+- **Order of work:** review of Stage A → approved fixes → pilot VR.1.1 (100
+  verses, all layers) → stop for the user's and Swamiji's review → then sarga
+  by sarga as in §6, never starting a sarga before its predecessor's
+  `summary_sa` exists.
+- **Gates.** Stop after the review, after the approved fixes (before any
+  merge to `main`), after verses 1–5 of the pilot, and after the pilot sarga.
+  Never push or merge to `main` without the user's explicit word.
+- **Outside services.** No new calls to Dharmamitra until its terms are
+  confirmed; re-seeding uses `cache/dharmamitra/` only
+  (`scripts/seed_dharmamitra.py` refuses to call the network unless
+  `DHARMAMITRA_ALLOW_NETWORK=1`).
+
+## 12. Damaged or doubtful mūla (ruling of 2026-11-11)
+
+The Wikisource text has typos, lost letters, stray characters and a few lines
+that are not verses. The rule:
+
+1. **`lines` always holds the Wikisource text, untouched.** No script and no
+   generator may change it (§7.2 still checks its hash).
+2. A verse that looks wrong gets the flag `mula_suspect` and a note in
+   `review.notes`. A line that is not a verse at all (a commentary sentence
+   numbered as a verse) gets `not_mula`. A machine split that disagrees with
+   the printed avagraha gets `avagraha_mismatch`. Flags that must survive a
+   re-ingest are listed in `data/meta/mula_flags.json` and applied by
+   `scripts/flag_mula.py`.
+3. **A correction goes in a new field `lines_corrected`** (same shape as
+   `lines`), with
+   `correction: {"what": …, "evidence": …, "approved_by": …, "date": …}`.
+4. **No correction is applied without the user's approval, verse by verse.**
+   Propose it with the Wikisource text, the proposed text, the evidence and
+   the metre result; then wait.
+5. On the site a corrected verse shows the corrected text with a small mark;
+   the original stays visible on tap.
+6. Padaccheda, padārtha, anvaya and vyākhyā of a corrected verse are written
+   for `lines_corrected`, and the re-join check runs against it.
+
+Verse fields added in Stage B: `padaccheda_status` (`"seed"`, `"reviewed"` or
+`null` when there is no split), `lines_corrected` and `correction` (absent
+until a correction is approved).

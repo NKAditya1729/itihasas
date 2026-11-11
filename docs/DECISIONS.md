@@ -19,3 +19,13 @@ Answers given by Aditya on 2026-11-11, before Phase 1.
 - **Word-aligned padaccheda.** The existing Padaccheda toggle (see `EXISTING_DESIGN.md`) swaps per-word spans `[sandhi, pada]`, not whole lines. Each verse therefore also stores `groups`: per line, a list of `[sandhi_form, pada_form, flag]` triples. `lines` and `padaccheda_lines` remain exactly as in CLAUDE.md §4 and are derivable from `groups`.
 - **Routing.** One reader shell with hash routing (`#VR.1.1`, `#VR.1.1.5`), as `vsn.js` does. The path URLs of CLAUDE.md §3 (`/ramayanam/1/`, `/ramayanam/1/1/`) are generated as thin shells that open the same reader at the right hash, so both forms work.
 - **Python 3.12** via `uv` (the system Python is 3.15, too new for some wheels).
+
+## Stage B decisions (Aditya, 2026-11-11)
+
+| # | Question | Answer | Notes |
+|---|---|---|---|
+| D8 | Project folder | `~/Documents/Mac Mini Downloads/Ramayana website` | The brief first named `~/Documents/Ramayana website`; corrected the same day. |
+| D9 | When is the padaccheda fixed? | **Sarga by sarga**, together with padārtha, anvaya and vyākhyā. Machine seeds are hints only and are marked असमीक्षितम् on the site. | Replaces CLAUDE.md §11 Stage B/C. Reason: `docs/STAGE_B_REVIEW.md` (8–9% of passing seeds are wrong). |
+| D10 | Which review items to apply | **M1–M5 only**; M5 as flags, with no change to the text or to verse counts. | Should-fix and optional items of the review are not applied. |
+| D11 | Damaged or doubtful mūla | Keep the Wikisource text untouched in `lines`. A correction goes in a new field `lines_corrected`, with `correction` = {what changed, evidence, approved_by, date}. The site shows the corrected text with a small mark; the original stays visible on tap. **No correction is applied without Aditya's approval, verse by verse.** | CLAUDE.md §12. First candidates: VR.1.1.9, 1.1.45, 1.1.100 (proposed, not applied; Aditya is checking a printed edition). |
+| D12 | Outside services in Stage B | No new Dharmamitra calls (terms unconfirmed); no IIT Kanpur or valmikiramayan.net fetches. | Re-seeding runs from `cache/dharmamitra/` only. |
