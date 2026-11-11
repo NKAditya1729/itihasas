@@ -93,3 +93,41 @@ VR.1.1.7, VR.1.1.14, VR.1.1.21, VR.1.1.28, VR.1.1.33, VR.1.1.50, VR.1.1.58, VR.1
 Gender by the Amarakośa first, then Apte; नञ्-compounds and prefixes that are not words (दुस्, निस्, वि, प्र) are not
 hyphenated; स-, सु-, महा- and upapada compounds are; a gloss must be simpler than the word; नु is a question
 particle; the vyākhyā is connected expository prose (rules 1–10).
+
+## Bāla-kāṇḍa, sarga 2 (Stage C; 43 verses)
+
+Reviewer verdicts after one fix round: 41 pass, 2 flag (first pass: 33 pass, 9 fix, 1 flag; all fixes applied and passed on
+the second pass). Generator and reviewer were separate sub-agents (claude-opus-5-5, high effort; prompt stage-c-1).
+
+### 1. Flagged by the reviewers (points for Swamiji)
+
+| Verse | Reviewer's note (shortened) |
+|---|---|
+| VR.1.2.9 | Second pass: no definite error remains. तु → पादपूरणार्थम् अव्ययम् is applied as well. The coordinator's decision stands: चरन्तम् and अनपायिनम् carry no anvita (the checker refuses an anvita across genders), and each gloss ends (मिथुनस्य विशेषणम्; अत्र पुंलिङ्गम् आर्षम्). FOR THE HUMAN: decide the gender of मिथुन here. (a) As dr … |
+| VR.1.2.23 | Decide स्वयम् प्रभुः (two padas, as drafted; Dharmamitra; printed text has a space; 'the Lord came himself') or स्वयम्प्रभुः (one compound, DCS; 'self-luminous'). The verse already carries seed_disagreement and §5.1 says to flag it. The draft's choice follows the printed spacing and is consistently carried through padartha, anva … |
+
+### 2. Declared re-join exceptions
+
+| Verse | Note |
+|---|---|
+| VR.1.2.26 | The printed text leaves च ऋषये unjoined (the joiner gives चर्षये). The hiatus is the optional prakṛtibhāva of ऋत्यकः (6.1.128), which the joiner does not apply; the padaccheda is right on its merits. |
+| VR.1.2.38 | The printed third line has a stray र् in भगवान् र्मुनिर्विस्मयमाययौ (flagged mula_suspect, Class B, not corrected); the correct split is भगवान् मुनिः विस्मयम् आययौ, which re-joins to भगवान् मुनिर्विस्मयमाययौ. |
+| VR.1.2.43 | The printed text has two slips (flagged mula_suspect, Class B, not corrected): रघुवरकरितं for रघुवरचरितं, and दशशिरसश्क for दशशिरसश्च. Neither printed form is a possible word; the padaccheda gives the evident words (चरितम्, च) and the layers explain the verse in that sense. |
+
+### 3. Doubtful source readings (Class B, not corrected; see `review/mula_queue.md`)
+
+VR.1.2.27 and 28 (a stray । before ॥), VR.1.2.38 (stray र्), VR.1.2.43 (करितं, सश्क).
+
+### 4. Declared word-list exceptions (fit_note)
+
+7: प्रायच्छत, 16: वीक्षतः
+
+### 5. 10% sample of the verses that passed (fixed seed 20261111)
+
+VR.1.2.12, VR.1.2.19, VR.1.2.25, VR.1.2.31
+
+### Also changed in this round: VR.1.1
+
+The four approved corrections VR.1.1.15, 29, 65, 84 are applied (`lines_corrected`); their layers were redone by a
+generator and passed a separate reviewer with no fixes. VR.1.1.15 no longer needs its re-join exception. VR.1.1.85
+stays flagged, not corrected.

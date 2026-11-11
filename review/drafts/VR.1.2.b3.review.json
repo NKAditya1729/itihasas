@@ -1,0 +1,167 @@
+{
+ "VR.1.2.31": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. Splits right (एव अस्तु अयम्, न अत्र, मत्-छन्दात्, प्रवृत्ता इयम्). Vocative ब्रह्मन् = हे ब्राह्मण (वाल्मीके) is right (वाल्मीकि is addressed, per the sarga map). The opening sentence carries on from verse 30 (ब्रह्मा प्रहसन्). Two इत्युक्ते, at the limit. Remark, no change required: तत् अयं श्लोकः एव बद्धः अस्तु mixes a neuter तत् with a masculine predicate; it reads, but is slightly loose.",
+  "fixes": []
+ },
+ "VR.1.2.32": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "names.json"
+  ],
+  "note": "Clean. First use of राम in VR.1.2 (b1/b2 have none), so the full identifier from names.json is right; later रामस्य (34, 37, 42) are bare, as they should be. The genitives of 32cd are correctly tied to वृत्तम् of 33, and the vyākhyā says so.",
+  "fixes": []
+ },
+ "VR.1.2.33": {
+  "verdict": "pass",
+  "rules": [
+   "§5.2",
+   "§5.7 (gloss in the pada's own vibhakti; epic usage)",
+   "names.json (bare name after first use)"
+  ],
+  "note": "Second pass. Both fixes applied exactly: ते is now तव (त्वया इति अर्थः), नारदात् is now bare. Nothing else in the verse changed; check_layers OK. First-pass fixes kept below for the record. First pass: (1) ते is recorded as षष्ठी but glossed त्वया with the label कर्तरि षष्ठी. The gloss must stay in the pada's case, and कर्तरि षष्ठी with a past क्त like श्रुतम् is not the regular rule (क्तस्य च वर्तमाने covers present-sense क्त only). Use the form of the §5.7 ruling, as the draft itself does for ते in verse 35. (2) नारद is introduced with the full identifier at VR.1.2.1 (b1), so here he gets the bare name. Otherwise clean: the sentence of 33cd is said to finish in verse 35, as the sarga map has it.",
+  "first_pass_fixes": [
+   {
+    "where": "padartha: ते",
+    "problem": "artha in the third case, with a doubtful grammatical label.",
+    "replace_with": "artha = तव (त्वया इति अर्थः)"
+   },
+   {
+    "where": "padartha: नारदात्",
+    "problem": "Identifier repeated; नारद was introduced at VR.1.2.1.",
+    "replace_with": "artha = नारदात्"
+   }
+  ],
+  "fixes": []
+ },
+ "VR.1.2.34": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. सह-सौमित्रेः is right and re-joins to the printed सहसौमित्रे राक्षसानां (रेफ before रेफ dropped; ए is not lengthened), so no rejoin_note is needed; the seed's सह सौमित्रे was wrong. सहसौमित्रि as a सह-bahuvrīhi (तेन सहेति तुल्ययोगे, सह kept by वोपसर्जनस्य) is sound. First mentions of सौमित्रि and वैदेही get identifiers. Two इत्युक्ते, at the limit; the vyākhyā says the verb comes in verse 35.",
+  "fixes": []
+ },
+ "VR.1.2.35": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. ते with विदितम् as षष्ठी glossed तव (त्वया इति अर्थः) is right (a बुद्धि-sense क्त takes the genitive). अविदितम् and अनृता unhyphenated as नञ्-compounds with vigraha, per §5.7. काचित् is outside the word list but correct. The vyākhyā closes the sentence of 33cd-34 and says so.",
+  "fixes": []
+ },
+ "VR.1.2.36": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. मनः-रमाम् follows the upapada convention and re-joins (मनः + र → मनो र). The vyākhyā says 36cd is finished by तावत् in 37. Remark, no change required: पुण्या पवित्रा च भवतु reads as if पुण्या and पवित्रा were two qualities; पुण्या, इत्युक्ते पवित्रा would be clearer.",
+  "fixes": []
+ },
+ "VR.1.2.37": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. The यावत् / तावत् chain across 36-38 is analysed exactly as in the sarga map, and the vyākhyā says where each half is completed. आरभते (ātmanepada) right.",
+  "fixes": []
+ },
+ "VR.1.2.38": {
+  "verdict": "pass",
+  "rules": [
+   "names.json (bare name after first use)",
+   "§5.2"
+  ],
+  "note": "Second pass. Fix applied exactly: ब्रह्मा is now bare. Nothing else in the verse changed; the rejoin_note and the mula_suspect flag stand; check_layers OK. (b2 still repeats a short identifier at 27 and 30, outside this batch.) First pass: ब्रह्मा was introduced with the full identifier at VR.1.2.23 (b2: लोकस्य स्रष्टा चतुर्मुखः देवः), so here the bare name. (b2 also repeats a short identifier at 27 and 30; outside this batch.) Everything else is right: the three printed lines and daṇḍas are kept; मत्-लोकेषु re-joins to मल्लोकेषु; the rejoin_note is needed and its reason is right (stray र् in भगवान् र्मुनिः, flagged mula_suspect in the sarga file; the scholar's decision on the reading is carried by that flag). speaker ब्रह्मा for line 1 matches the sarga map. Two इत्युक्ते, at the limit.",
+  "first_pass_fixes": [
+   {
+    "where": "padartha: ब्रह्मा",
+    "problem": "Identifier repeated; ब्रह्मा was introduced at VR.1.2.23.",
+    "replace_with": "artha = ब्रह्मा"
+   }
+  ],
+  "fixes": []
+ },
+ "VR.1.2.39": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. प्राहुः as लट् of ब्रू (आह-substitute) with past sense, labelled; प्रीयमाण from प्री (दिवादि, शानच्). The सति-सप्तमी ब्रह्मणि अन्तर्हिते सति links to 38. The vyākhyā says their words follow in verse 40.",
+  "fixes": []
+ },
+ "VR.1.2.40": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 7 (nothing added beyond the verse)"
+  ],
+  "note": "Second pass. Fix applied exactly: the last sentence now reads तत् पुनः पुनः उच्चार्यमाणं श्लोकः अभवत्, with no agent added (it keeps the passive participle). Nothing else changed; check_layers OK. First pass: Padaccheda right (श्लोकत्वम् kept whole as a taddhita, against the seed's श्लोक-त्वम्; सः अनुव्याहरणात्). Padārtha and anvaya right. But the last sentence makes the disciples the agent of the repetition (अस्माभिः … गीयमानम्). The verse says only अनुव्याहरणात् भूयः, and the sarga map glosses it neutrally (पुनः पुनः उच्चारणात्). Commentators differ on whose repetition is meant (the disciples', or Brahmā's re-utterance in verse 31; from memory), so the vyākhyā should not decide it. Remark, no change required: अन्यैः पादैः समाना would be more exact as अन्येषां पादानां सङ्ख्यया समाना.",
+  "first_pass_fixes": [
+   {
+    "where": "vyakhya_sa, last sentence",
+    "problem": "अस्माभिः adds an agent that the verse does not name.",
+    "replace_with": "अतः यत् पूर्वं केवलं शोकस्य वचनम् आसीत्, तत् पुनः पुनः उच्चार्यमाणं श्लोकः अभवत् इति शिष्याणाम् अभिप्रायः ।"
+   }
+  ],
+  "fixes": []
+ },
+ "VR.1.2.41": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. भावित-आत्मनः, करवाणि अहम् right; रामायण kept whole as a name. वाल्मीकेः (मुनेः) follows the light gloss b2 uses for वाल्मीकि. The vyākhyā gives the thought of 41cd as the muni's own words.",
+  "fixes": []
+ },
+ "VR.1.2.42": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. The line-final मनोरमै- / स्तदा is split as मनः-रमैः / तदा अस्य, with no daṇḍa after line 1, as printed; re-join passes. The genders agree: सम-अक्षरैः and the compound adjectives are नपुं with श्लोकशतैः (against पुं in 40 with पादैः). Two इत्युक्ते, at the limit. Remarks, no change required: the anvaya puts the करण (श्लोकशतैः …) before the कर्म, against the strict §5.3 order; this follows the sarga map and reads naturally. The sentence naming the metre is meta, not story; the scholar may keep it or drop it (also 43).",
+  "fixes": []
+ },
+ "VR.1.2.43": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§12"
+  ],
+  "note": "Clean on the evident reading. The rejoin_note is needed and its reason is right: रघुवरकरितं and दशशिरसश्क are not possible words, and the padaccheda gives चरितम् and च, as the sarga file's mula_suspect note says. The decision on a §12 correction rests with that flag. निशामयध्वम् = नि + शम् (णिच्), लोट् मध्यम बहु, is right. रावण has his first pada use in the sarga here (34 has him only in a bracket), so the full names.json identifier is right. speaker कविः, addressed to the listeners, matches the map.",
+  "fixes": []
+ }
+}

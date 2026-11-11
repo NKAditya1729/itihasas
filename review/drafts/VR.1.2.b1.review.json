@@ -1,0 +1,149 @@
+{
+ "VR.1.2.1": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. Opening sentence is connecting context from context_in_sa; नारद gets the full identifier at first use; सहशिष्यः (सन्) in the anvaya is right.",
+  "fixes": []
+ },
+ "VR.1.2.2": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. आपृष्ट्वा is labelled आर्षप्रयोगः as in the map. विहायसम् पुं द्वितीया is right (Amara: आकाशविहायसी वा पुंसि, from memory). 'गन्तुम् ऐच्छत्' / 'प्रस्थानाय सज्जः अभवत्' are mild connecting additions, not errors.",
+  "fixes": []
+ },
+ "VR.1.2.3": {
+  "verdict": "pass",
+  "rules": [
+   "§5.7",
+   "§5.2"
+  ],
+  "note": "Second pass: both fixes applied (गते → गतवति सति; तु → पादपूरणार्थम् अव्ययम्). The checker prints OK. Clean.",
+  "fixes": []
+ },
+ "VR.1.2.4": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. समासाद्य सद् (णिच्) + सम्, आ, ल्यप्; आह = ब्रू लट् (भूतार्थे) right; the anvaya note pointing to 5–6 follows the pilot convention.",
+  "fixes": []
+ },
+ "VR.1.2.5": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. सत्-मनुष्य-मनः pausal and hyphenated right; taken as द्वितीया in agreement with तीर्थम् (upamāna in the upameya's case), while the vyākhyā paraphrases with a nominative clause, which is fine. भरद्वाज vocative has the names.json identifier. Minor: its artha repeats इव although यथा has its own entry; not an error.",
+  "fixes": []
+ },
+ "VR.1.2.6": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. वल्कलम् प्रथमा (passive subject) right; अवगाहिष्ये गाह् आत्मनेपद लृट् right. मम as possessive with (मह्यं) supplied under दीयताम् is consistent.",
+  "fixes": []
+ },
+ "VR.1.2.7": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 7",
+   "§5.2 names"
+  ],
+  "note": "Second pass: वाल्मीकेन now has the full identifier and is bolded (as वाल्मीकिना) in the vyākhyā. The checker prints OK. Clean.",
+  "fixes": []
+ },
+ "VR.1.2.8": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. पश्यन् तत् split right; three sentences (the minimum); one participle construction (विचरन्).",
+  "fixes": []
+ },
+ "VR.1.2.9": {
+  "verdict": "flag",
+  "rules": [
+   "§5.7 gender (Amarakośa first)",
+   "§5.7 epic usage",
+   "§5.2 anvita"
+  ],
+  "note": "Second pass: no definite error remains. तु → पादपूरणार्थम् अव्ययम् is applied as well. The coordinator's decision stands: चरन्तम् and अनपायिनम् carry no anvita (the checker refuses an anvita across genders), and each gloss ends (मिथुनस्य विशेषणम्; अत्र पुंलिङ्गम् आर्षम्). FOR THE HUMAN: decide the gender of मिथुन here. (a) As drafted: मिथुनम् नपुं by the Amarakośa (§5.7 order), with masculine ārṣa qualifiers (masculine by sense, standing for the pair). This is consistent with चारुनिःस्वनम् नपुं, तत् मिथुनं in the vyākhyā, and मिथुनात् (v.10). (b) Or मिथुनम् पुं by Apte (m. also). Then चरन्तम्, अनपायिनम् and चारु-निःस्वनम् are all पुं with anvita मिथुनम्, the ārṣa notes are dropped, and the vyākhyā's 'तत् मिथुनं' becomes 'तं मिथुनं'. The reviewer prefers (a).",
+  "fixes": []
+ },
+ "VR.1.2.10": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. पश्यतः as अनादरे षष्ठी, as in the map, glossed and explained; one इति आशयः; one सति-सप्तमी. पुमांसम् (पुंस् द्वितीया) is a correct form that the word list does not know.",
+  "fixes": []
+ },
+ "VR.1.2.11": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. The sentence continuation into 12 is stated in the anvaya and the vyākhyā. Minor style point: 'शोणितेन रुधिरेण परीतानि व्याप्तानि' pairs each word with its synonym in apposition, close to a gloss list; acceptable.",
+  "fixes": []
+ },
+ "VR.1.2.12": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. वियुक्ता has no anvita because its viśeṣya भार्या is in v.11; the gloss says so, which matches sarga 1, where no anvita points outside the verse. द्विजेन / पत्त्रिणा = पक्षी as in the map.",
+  "fixes": []
+ },
+ "VR.1.2.13": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 grammar",
+   "§5.4 rule 3"
+  ],
+  "note": "Second pass: sentence 1 is now the यदा…तदा clause exactly as given, and the gerund problem is gone. The checker prints OK. Clean.",
+  "fixes": []
+ },
+ "VR.1.2.14": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. द्विजः = ब्राह्मणः, said explicitly as in the map; निशाम्य शम् (णिच्, दर्शने) ल्यप् right; (मत्वा) supplied; two इत्युक्ते.",
+  "fixes": []
+ }
+}

@@ -1,3 +1,33 @@
+# Handoff — Stage C: building the whole Rāmāyaṇa (updated 2026-11-11)
+
+**Read first:** the Stage C brief (Aditya's message; its rules are summarised here), `CLAUDE.md` §4, §5, §7, §10.3,
+§12, then this file, `progress/state.json` and `progress/ORDER.md`. Resume from §0 of the brief: check the remote,
+the caches, a clean `main`, `make check`; then take the next unticked sarga in `ORDER.md`. Never redo a ticked sarga.
+
+## Where things stand
+- **Done:** VR.1.1 (pilot; corrections 15, 29, 65, 84 applied and re-done in Stage C) and **VR.1.2** (Stage C, all layers).
+- **STOP:** checkpoint after Bāla sarga 2 (brief §9). Waiting for Aditya's comparison with the pilot before sarga 3.
+- Next after "go": VR.1.3, 1.4, 1.5, then report time and tokens per verse and a projection (STOP).
+
+## How a sarga is made (Stage C)
+- Coordinator: preflight, the sarga map (`working_notes.sarga_map` in the sarga file), `context_in_sa`.
+- Generators (≤20 verses each, `review/drafts/stage-c-generator.md`, examples in `review/drafts/stage-c-examples.json`)
+  write `review/drafts/VR.k.s.bN.json` and self-check with `scripts/check_layers.py`.
+- Separate reviewers (`review/drafts/stage-c-reviewer.md`) write `…bN.review.json`; one fix round, then a second pass
+  (pass / flag). Combine to `review/drafts/VR.k.s.json` (+ `.review.json`, with title and summary_sa), then
+  `scripts/merge_layers.py`, `make check`, queue entries, ORDER tick, LOG line, state.json, commit `vr(k.s): all layers
+  [stage-c]`, merge to `main`, push. At most three sub-agents at a time.
+- Hand-kept files: `data/meta/names.json`, `docs/CONVENTION_LOG.md` (cases §5 does not cover; raise at checkpoints),
+  `review/mula_queue.md` (Class A/B mūla), `review/linga_queue.md`, `review/queue.md`.
+
+## Rules that are easy to forget
+- Never edit `lines`. Class A corrections only under all four conditions of brief §8; otherwise Class B (flag + queue).
+- No calls to Dharmamitra, IIT Kanpur, valmikiramayan.net or any other service; the only network use is `git push`.
+- No changes to the design, schema, checker or pipeline beyond a test-first bug fix (report it).
+- Never `git add -A` here; " 2"/" 3" duplicates are ignored, 5 tracked ones remain.
+
+---
+
 # Handoff — Stage B: pilot of Bāla sarga 1 complete, waiting for review (2026-11-11)
 
 **Read first:** `docs/STAGE_B_BRIEF.md` (the working instructions; it overrides

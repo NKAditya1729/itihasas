@@ -1,23 +1,23 @@
 {
 "VR.1.1": {
-"phase": "2a",
-"layer": "padaccheda",
-"status": "partial",
-"seeded": 74,
+"phase": "3",
+"layer": "all",
+"status": "done",
 "verses": 100,
 "attempts": 1,
 "last_error": null,
-"commit": null
+"commit": null,
+"stage": "B (pilot) + C corrections"
 },
 "VR.1.2": {
-"phase": "2a",
-"layer": "padaccheda",
-"status": "partial",
-"seeded": 33,
+"phase": "3",
+"layer": "all",
+"status": "done",
 "verses": 43,
 "attempts": 1,
 "last_error": null,
-"commit": null
+"commit": null,
+"stage": "C"
 },
 "VR.1.3": {
 "phase": "2a",
