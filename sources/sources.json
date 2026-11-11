@@ -1,0 +1,60 @@
+{
+ "base_text": {
+  "title": "Vālmīki Rāmāyaṇa (traditional vulgate), Sanskrit Wikisource",
+  "url": "https://sa.wikisource.org/wiki/रामायणम्",
+  "access": "MediaWiki API, 645 sarga pages, fetched 2026-11-11; raw responses with revision ids in cache/wikisource/",
+  "revisions": {
+   "oldest": "2016-01-20T04:27:40Z",
+   "newest": "2026-04-01T10:09:26Z",
+   "pages": 645
+  },
+  "licence": "CC BY-SA 4.0",
+  "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "credits": "Sanskrit Wikisource contributors",
+  "use": "published mūla (base text)"
+ },
+ "count_crosscheck": {
+  "title": "Ramayana_Book san/*_all.json",
+  "repository": "https://github.com/svenkatreddy/Ramayana_Book",
+  "commit": "77066a86abd0482221f939ae17dd0112aa53242d",
+  "licence": "CC BY-SA 4.0 (Wikisource text); 4.11, 6.25, 6.31 restored from IIT Kanpur (terms unstated)",
+  "use": "internal count cross-check only; not published (older half-split copy, see docs/DECISIONS.md D1)"
+ },
+ "padaccheda_seed": {
+  "title": "Digital Corpus of Sanskrit, Rāmāyaṇa",
+  "repository": "https://github.com/ambuda-org/dcs",
+  "file": "ramayanam.txt",
+  "commit": "7622c22f9c5fb1bf183af58951e96d7043edd699",
+  "credits": "Oliver Hellwig, DCS 2010–2024 (packaged by Ambuda)",
+  "licence": "CC BY 4.0",
+  "use": "padaccheda seed via crosswalk (Phase 2a)"
+ },
+ "critical_edition": {
+  "title": "Rāmāyaṇa, Baroda Critical Edition (GRETIL; Tokunaga, rev. J. Smith)",
+  "via": "hms-cap/Ramayana data/normalized/ce.jsonl",
+  "repository": "https://github.com/hms-cap/Ramayana",
+  "commit": "31a0e327db3a65f9ddf9cbc8a3de1cd3ee66198c",
+  "licence": "CC BY-NC-SA 4.0",
+  "use": "internal only (crosswalk to DCS); CE text never published"
+ },
+ "prior_art": {
+  "title": "hms-cap/Ramayana ETL (crosswalk, DCS ingest, metre)",
+  "repository": "https://github.com/hms-cap/Ramayana",
+  "commit": "31a0e327db3a65f9ddf9cbc8a3de1cd3ee66198c",
+  "licence": "MIT (code)",
+  "use": "methods reference"
+ },
+ "tools": {
+  "vidyut": "0.4.0 (lipi, chandas; data-0.4.0.zip)",
+  "dharmamitra-sanskrit-grammar": "0.1.7",
+  "sanscript.js": "1.3.3 (copied from the sarala-vedanta site)"
+ },
+ "private_crosscheck": {
+  "sites": [
+   "https://www.valmiki.iitk.ac.in/",
+   "https://www.valmikiramayan.net/"
+  ],
+  "licence": "no reuse grant",
+  "use": "never published; compare only"
+ }
+}

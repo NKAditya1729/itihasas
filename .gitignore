@@ -1,0 +1,9 @@
+# private caches (no reuse grant / re-fetchable)
+cache/iitk/
+cache/dharmamitra/
+sources/upstream/
+.venv/
+__pycache__/
+.pytest_cache/
+.DS_Store
+cache/vidyut-data/

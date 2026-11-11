@@ -1,0 +1,1829 @@
+[
+ {
+  "kanda": 1,
+  "sarga": 22,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 24,
+  "ramayana_book": 23
+ },
+ {
+  "kanda": 1,
+  "sarga": 26,
+  "type": "gap",
+  "n": 4,
+  "missing": [
+   3
+  ]
+ },
+ {
+  "kanda": 1,
+  "sarga": 26,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 35,
+  "ramayana_book": 36
+ },
+ {
+  "kanda": 1,
+  "sarga": 28,
+  "type": "duplicate_number",
+  "n": 21,
+  "src_ref": "॥१-२८-२१॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "gap",
+  "n": 25,
+  "missing": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24
+  ]
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "out_of_order",
+  "n": 2,
+  "after": 25
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "out_of_order",
+  "n": 10,
+  "after": 25
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "out_of_order",
+  "n": 11,
+  "after": 25
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "out_of_order",
+  "n": 12,
+  "after": 25
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "out_of_order",
+  "n": 13,
+  "after": 25
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "out_of_order",
+  "n": 14,
+  "after": 25
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "out_of_order",
+  "n": 15,
+  "after": 25
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "out_of_order",
+  "n": 16,
+  "after": 25
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "out_of_order",
+  "n": 17,
+  "after": 25
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "duplicate_number",
+  "n": 25,
+  "src_ref": "॥१-२९-२५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 29,
+  "type": "renumbered_sarga",
+  "reason": "31 duplicate/out-of-order printed numbers",
+  "printed": [
+   "॥१-२९-२५॥",
+   "॥१-२९-२॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-१०॥",
+   "॥१-२९-११॥",
+   "॥१-२९-१२॥",
+   "॥१-२९-१३॥",
+   "॥१-२९-१४॥",
+   "॥१-२९-१५॥",
+   "॥१-२९-१६॥",
+   "॥१-२९-१७॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥",
+   "॥१-२९-२५॥"
+  ]
+ },
+ {
+  "kanda": 1,
+  "sarga": 31,
+  "type": "gap",
+  "n": 14,
+  "missing": [
+   13
+  ]
+ },
+ {
+  "kanda": 1,
+  "sarga": 31,
+  "type": "duplicate_number",
+  "n": 19,
+  "src_ref": "॥१-३१-१९॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 34,
+  "type": "residue_after_marker",
+  "text": "१-३४-१६॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 36,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 27,
+  "ramayana_book": 26
+ },
+ {
+  "kanda": 1,
+  "sarga": 39,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 26,
+  "ramayana_book": 25
+ },
+ {
+  "kanda": 1,
+  "sarga": 42,
+  "type": "gap",
+  "n": 15,
+  "missing": [
+   14
+  ]
+ },
+ {
+  "kanda": 1,
+  "sarga": 42,
+  "type": "duplicate_number",
+  "n": 15,
+  "src_ref": "॥१-४२-१५॥"
+ },
+ {
+  "kanda": 1,
+  "sarga": 43,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 41,
+  "ramayana_book": 40
+ },
+ {
+  "kanda": 1,
+  "sarga": 48,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 33,
+  "ramayana_book": 34
+ },
+ {
+  "kanda": 1,
+  "sarga": 57,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 22,
+  "ramayana_book": 24
+ },
+ {
+  "kanda": 1,
+  "sarga": 58,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 24,
+  "ramayana_book": 22
+ },
+ {
+  "kanda": 2,
+  "sarga": 1,
+  "type": "text_after_colophon",
+  "text": "==वर्णना =="
+ },
+ {
+  "kanda": 2,
+  "sarga": 1,
+  "type": "text_after_colophon",
+  "text": "पाठकौ घनपाठी वि.श्रीरामः, घनपाठी हरिसीताराममूर्तिः च ।  उपलभ्यते ।"
+ },
+ {
+  "kanda": 2,
+  "sarga": 1,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 51,
+  "ramayana_book": 50
+ },
+ {
+  "kanda": 2,
+  "sarga": 10,
+  "type": "residue_after_marker",
+  "text": "(4)"
+ },
+ {
+  "kanda": 2,
+  "sarga": 10,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 40,
+  "ramayana_book": 41
+ },
+ {
+  "kanda": 2,
+  "sarga": 12,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 112,
+  "ramayana_book": 114
+ },
+ {
+  "kanda": 2,
+  "sarga": 13,
+  "type": "duplicate_number",
+  "n": 16,
+  "src_ref": "॥  १६॥"
+ },
+ {
+  "kanda": 2,
+  "sarga": 13,
+  "type": "gap",
+  "n": 18,
+  "missing": [
+   17
+  ]
+ },
+ {
+  "kanda": 2,
+  "sarga": 14,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 69,
+  "ramayana_book": 68
+ },
+ {
+  "kanda": 2,
+  "sarga": 15,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 48,
+  "ramayana_book": 49
+ },
+ {
+  "kanda": 2,
+  "sarga": 17,
+  "type": "gap",
+  "n": 16,
+  "missing": [
+   15
+  ]
+ },
+ {
+  "kanda": 2,
+  "sarga": 17,
+  "type": "duplicate_number",
+  "n": 16,
+  "src_ref": "॥ १६॥"
+ },
+ {
+  "kanda": 2,
+  "sarga": 21,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 64,
+  "ramayana_book": 63
+ },
+ {
+  "kanda": 2,
+  "sarga": 24,
+  "type": "gap",
+  "n": 24,
+  "missing": [
+   23
+  ]
+ },
+ {
+  "kanda": 2,
+  "sarga": 27,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 24,
+  "ramayana_book": 23
+ },
+ {
+  "kanda": 2,
+  "sarga": 31,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 37,
+  "ramayana_book": 35
+ },
+ {
+  "kanda": 2,
+  "sarga": 32,
+  "type": "gap",
+  "n": 5,
+  "missing": [
+   4
+  ]
+ },
+ {
+  "kanda": 2,
+  "sarga": 38,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 17,
+  "ramayana_book": 18
+ },
+ {
+  "kanda": 2,
+  "sarga": 42,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 35,
+  "ramayana_book": 34
+ },
+ {
+  "kanda": 2,
+  "sarga": 77,
+  "type": "unnumbered",
+  "after": 26,
+  "text": "अमात्याः त्वरयन्ति स्म तनयौ च अपराः क्रियाः ।"
+ },
+ {
+  "kanda": 2,
+  "sarga": 119,
+  "type": "text_after_colophon",
+  "text": "।। इत्ययोध्याकाण्ड: समाप्तः ।।"
+ },
+ {
+  "kanda": 2,
+  "sarga": 119,
+  "type": "text_after_colophon",
+  "text": "।। श्रीसीतारामचन्द्रार्पणमस्तु ।।"
+ },
+ {
+  "kanda": 3,
+  "sarga": 7,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 24,
+  "ramayana_book": 25
+ },
+ {
+  "kanda": 3,
+  "sarga": 15,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 31,
+  "ramayana_book": 30
+ },
+ {
+  "kanda": 3,
+  "sarga": 16,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 36,
+  "ramayana_book": 43
+ },
+ {
+  "kanda": 3,
+  "sarga": 19,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 26,
+  "ramayana_book": 27
+ },
+ {
+  "kanda": 3,
+  "sarga": 46,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 38,
+  "ramayana_book": 37
+ },
+ {
+  "kanda": 3,
+  "sarga": 73,
+  "type": "gap",
+  "n": 41,
+  "missing": [
+   40
+  ]
+ },
+ {
+  "kanda": 3,
+  "sarga": 73,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 45,
+  "ramayana_book": 46
+ },
+ {
+  "kanda": 4,
+  "sarga": 9,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 26,
+  "ramayana_book": 27
+ },
+ {
+  "kanda": 4,
+  "sarga": 22,
+  "type": "duplicate_number",
+  "n": 13,
+  "src_ref": "॥ १३॥"
+ },
+ {
+  "kanda": 4,
+  "sarga": 22,
+  "type": "gap",
+  "n": 15,
+  "missing": [
+   14
+  ]
+ },
+ {
+  "kanda": 4,
+  "sarga": 24,
+  "type": "duplicate_number",
+  "n": 33,
+  "src_ref": "॥ ३३॥"
+ },
+ {
+  "kanda": 4,
+  "sarga": 24,
+  "type": "gap",
+  "n": 35,
+  "missing": [
+   34
+  ]
+ },
+ {
+  "kanda": 4,
+  "sarga": 30,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 85,
+  "ramayana_book": 84
+ },
+ {
+  "kanda": 4,
+  "sarga": 39,
+  "type": "duplicate_number",
+  "n": 8,
+  "src_ref": "॥ ८॥"
+ },
+ {
+  "kanda": 4,
+  "sarga": 39,
+  "type": "gap",
+  "n": 10,
+  "missing": [
+   9
+  ]
+ },
+ {
+  "kanda": 5,
+  "sarga": 1,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 213,
+  "ramayana_book": 210
+ },
+ {
+  "kanda": 5,
+  "sarga": 6,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 44,
+  "ramayana_book": 45
+ },
+ {
+  "kanda": 5,
+  "sarga": 8,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 8,
+  "ramayana_book": 7
+ },
+ {
+  "kanda": 5,
+  "sarga": 11,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 48,
+  "ramayana_book": 47
+ },
+ {
+  "kanda": 5,
+  "sarga": 19,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 22,
+  "ramayana_book": 29
+ },
+ {
+  "kanda": 5,
+  "sarga": 20,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 36,
+  "ramayana_book": 42
+ },
+ {
+  "kanda": 5,
+  "sarga": 21,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 34,
+  "ramayana_book": 19
+ },
+ {
+  "kanda": 5,
+  "sarga": 22,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 46,
+  "ramayana_book": 42
+ },
+ {
+  "kanda": 5,
+  "sarga": 23,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 19,
+  "ramayana_book": 20
+ },
+ {
+  "kanda": 5,
+  "sarga": 24,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 47,
+  "ramayana_book": 49
+ },
+ {
+  "kanda": 5,
+  "sarga": 26,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 49,
+  "ramayana_book": 51
+ },
+ {
+  "kanda": 5,
+  "sarga": 27,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 54,
+  "ramayana_book": 51
+ },
+ {
+  "kanda": 5,
+  "sarga": 28,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 19,
+  "ramayana_book": 20
+ },
+ {
+  "kanda": 5,
+  "sarga": 30,
+  "type": "duplicate_number",
+  "n": 34,
+  "src_ref": "॥ ३४॥"
+ },
+ {
+  "kanda": 5,
+  "sarga": 30,
+  "type": "gap",
+  "n": 36,
+  "missing": [
+   35
+  ]
+ },
+ {
+  "kanda": 5,
+  "sarga": 33,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 31,
+  "ramayana_book": 32
+ },
+ {
+  "kanda": 5,
+  "sarga": 34,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 40,
+  "ramayana_book": 41
+ },
+ {
+  "kanda": 5,
+  "sarga": 35,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 90,
+  "ramayana_book": 89
+ },
+ {
+  "kanda": 5,
+  "sarga": 37,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 68,
+  "ramayana_book": 65
+ },
+ {
+  "kanda": 5,
+  "sarga": 38,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 70,
+  "ramayana_book": 73
+ },
+ {
+  "kanda": 5,
+  "sarga": 42,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 44,
+  "ramayana_book": 43
+ },
+ {
+  "kanda": 5,
+  "sarga": 43,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 25,
+  "ramayana_book": 24
+ },
+ {
+  "kanda": 5,
+  "sarga": 46,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 41,
+  "ramayana_book": 39
+ },
+ {
+  "kanda": 5,
+  "sarga": 48,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 61,
+  "ramayana_book": 62
+ },
+ {
+  "kanda": 5,
+  "sarga": 51,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 45,
+  "ramayana_book": 46
+ },
+ {
+  "kanda": 5,
+  "sarga": 52,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 28,
+  "ramayana_book": 26
+ },
+ {
+  "kanda": 5,
+  "sarga": 53,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 44,
+  "ramayana_book": 45
+ },
+ {
+  "kanda": 5,
+  "sarga": 56,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 51,
+  "ramayana_book": 34
+ },
+ {
+  "kanda": 5,
+  "sarga": 57,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 53,
+  "ramayana_book": 51
+ },
+ {
+  "kanda": 5,
+  "sarga": 58,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 169,
+  "ramayana_book": 167
+ },
+ {
+  "kanda": 5,
+  "sarga": 59,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 32,
+  "ramayana_book": 36
+ },
+ {
+  "kanda": 5,
+  "sarga": 60,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 20,
+  "ramayana_book": 7
+ },
+ {
+  "kanda": 5,
+  "sarga": 61,
+  "type": "missing_colophon"
+ },
+ {
+  "kanda": 5,
+  "sarga": 61,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 24,
+  "ramayana_book": 23
+ },
+ {
+  "kanda": 5,
+  "sarga": 62,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 38,
+  "ramayana_book": 40
+ },
+ {
+  "kanda": 5,
+  "sarga": 63,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 33,
+  "ramayana_book": 29
+ },
+ {
+  "kanda": 5,
+  "sarga": 64,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 45,
+  "ramayana_book": 39
+ },
+ {
+  "kanda": 5,
+  "sarga": 65,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 28,
+  "ramayana_book": 27
+ },
+ {
+  "kanda": 5,
+  "sarga": 67,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 44,
+  "ramayana_book": 38
+ },
+ {
+  "kanda": 6,
+  "sarga": 2,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 24,
+  "ramayana_book": 25
+ },
+ {
+  "kanda": 6,
+  "sarga": 3,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 33,
+  "ramayana_book": 34
+ },
+ {
+  "kanda": 6,
+  "sarga": 4,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 121,
+  "ramayana_book": 123
+ },
+ {
+  "kanda": 6,
+  "sarga": 6,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 18,
+  "ramayana_book": 19
+ },
+ {
+  "kanda": 6,
+  "sarga": 9,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 23,
+  "ramayana_book": 25
+ },
+ {
+  "kanda": 6,
+  "sarga": 10,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 29,
+  "ramayana_book": 33
+ },
+ {
+  "kanda": 6,
+  "sarga": 11,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 31,
+  "ramayana_book": 32
+ },
+ {
+  "kanda": 6,
+  "sarga": 16,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 26,
+  "ramayana_book": 27
+ },
+ {
+  "kanda": 6,
+  "sarga": 17,
+  "type": "duplicate_number",
+  "n": 63,
+  "src_ref": "॥ ६३॥"
+ },
+ {
+  "kanda": 6,
+  "sarga": 17,
+  "type": "gap",
+  "n": 65,
+  "missing": [
+   64
+  ]
+ },
+ {
+  "kanda": 6,
+  "sarga": 18,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 39,
+  "ramayana_book": 42
+ },
+ {
+  "kanda": 6,
+  "sarga": 19,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 41,
+  "ramayana_book": 44
+ },
+ {
+  "kanda": 6,
+  "sarga": 20,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 34,
+  "ramayana_book": 36
+ },
+ {
+  "kanda": 6,
+  "sarga": 21,
+  "type": "text_after_colophon",
+  "text": "==संबंधित कड़ियाँ=="
+ },
+ {
+  "kanda": 6,
+  "sarga": 22,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 89,
+  "ramayana_book": 87
+ },
+ {
+  "kanda": 6,
+  "sarga": 24,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 44,
+  "ramayana_book": 45
+ },
+ {
+  "kanda": 6,
+  "sarga": 25,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 33,
+  "ramayana_book": 34
+ },
+ {
+  "kanda": 6,
+  "sarga": 26,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 47,
+  "ramayana_book": 48
+ },
+ {
+  "kanda": 6,
+  "sarga": 27,
+  "type": "missing_colophon"
+ },
+ {
+  "kanda": 6,
+  "sarga": 28,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 42,
+  "ramayana_book": 44
+ },
+ {
+  "kanda": 6,
+  "sarga": 29,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 29,
+  "ramayana_book": 30
+ },
+ {
+  "kanda": 6,
+  "sarga": 30,
+  "type": "duplicate_number",
+  "n": 31,
+  "src_ref": "॥ ३१॥"
+ },
+ {
+  "kanda": 6,
+  "sarga": 30,
+  "type": "gap",
+  "n": 33,
+  "missing": [
+   32
+  ]
+ },
+ {
+  "kanda": 6,
+  "sarga": 31,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 45,
+  "ramayana_book": 46
+ },
+ {
+  "kanda": 6,
+  "sarga": 33,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 38,
+  "ramayana_book": 39
+ },
+ {
+  "kanda": 6,
+  "sarga": 35,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 37,
+  "ramayana_book": 38
+ },
+ {
+  "kanda": 6,
+  "sarga": 37,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 37,
+  "ramayana_book": 38
+ },
+ {
+  "kanda": 6,
+  "sarga": 38,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 20,
+  "ramayana_book": 19
+ },
+ {
+  "kanda": 6,
+  "sarga": 39,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 28,
+  "ramayana_book": 29
+ },
+ {
+  "kanda": 6,
+  "sarga": 43,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 46,
+  "ramayana_book": 45
+ },
+ {
+  "kanda": 6,
+  "sarga": 44,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 39,
+  "ramayana_book": 41
+ },
+ {
+  "kanda": 6,
+  "sarga": 47,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 24,
+  "ramayana_book": 23
+ },
+ {
+  "kanda": 6,
+  "sarga": 52,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 38,
+  "ramayana_book": 39
+ },
+ {
+  "kanda": 6,
+  "sarga": 54,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 37,
+  "ramayana_book": 38
+ },
+ {
+  "kanda": 6,
+  "sarga": 55,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 32,
+  "ramayana_book": 31
+ },
+ {
+  "kanda": 6,
+  "sarga": 57,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 44,
+  "ramayana_book": 46
+ },
+ {
+  "kanda": 6,
+  "sarga": 58,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 61,
+  "ramayana_book": 60
+ },
+ {
+  "kanda": 6,
+  "sarga": 60,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 98,
+  "ramayana_book": 99
+ },
+ {
+  "kanda": 6,
+  "sarga": 61,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 40,
+  "ramayana_book": 41
+ },
+ {
+  "kanda": 6,
+  "sarga": 64,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 36,
+  "ramayana_book": 58
+ },
+ {
+  "kanda": 6,
+  "sarga": 65,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 57,
+  "ramayana_book": 59
+ },
+ {
+  "kanda": 6,
+  "sarga": 66,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 33,
+  "ramayana_book": 59
+ },
+ {
+  "kanda": 6,
+  "sarga": 67,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 177,
+  "ramayana_book": 167
+ },
+ {
+  "kanda": 6,
+  "sarga": 68,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 24,
+  "ramayana_book": 25
+ },
+ {
+  "kanda": 6,
+  "sarga": 69,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 96,
+  "ramayana_book": 101
+ },
+ {
+  "kanda": 6,
+  "sarga": 70,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 67,
+  "ramayana_book": 63
+ },
+ {
+  "kanda": 6,
+  "sarga": 71,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 116,
+  "ramayana_book": 62
+ },
+ {
+  "kanda": 6,
+  "sarga": 72,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 19,
+  "ramayana_book": 20
+ },
+ {
+  "kanda": 6,
+  "sarga": 73,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 74,
+  "ramayana_book": 70
+ },
+ {
+  "kanda": 6,
+  "sarga": 74,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 77,
+  "ramayana_book": 79
+ },
+ {
+  "kanda": 6,
+  "sarga": 75,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 69,
+  "ramayana_book": 71
+ },
+ {
+  "kanda": 6,
+  "sarga": 77,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 24,
+  "ramayana_book": 26
+ },
+ {
+  "kanda": 6,
+  "sarga": 78,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 21,
+  "ramayana_book": 22
+ },
+ {
+  "kanda": 6,
+  "sarga": 80,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 43,
+  "ramayana_book": 44
+ },
+ {
+  "kanda": 6,
+  "sarga": 81,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 34,
+  "ramayana_book": 37
+ },
+ {
+  "kanda": 6,
+  "sarga": 82,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 28,
+  "ramayana_book": 30
+ },
+ {
+  "kanda": 6,
+  "sarga": 83,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 44,
+  "ramayana_book": 45
+ },
+ {
+  "kanda": 6,
+  "sarga": 85,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 36,
+  "ramayana_book": 37
+ },
+ {
+  "kanda": 6,
+  "sarga": 87,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 30,
+  "ramayana_book": 31
+ },
+ {
+  "kanda": 6,
+  "sarga": 88,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 77,
+  "ramayana_book": 41
+ },
+ {
+  "kanda": 6,
+  "sarga": 89,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 53,
+  "ramayana_book": 42
+ },
+ {
+  "kanda": 6,
+  "sarga": 90,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 94,
+  "ramayana_book": 55
+ },
+ {
+  "kanda": 6,
+  "sarga": 91,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 29,
+  "ramayana_book": 99
+ },
+ {
+  "kanda": 6,
+  "sarga": 92,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 68,
+  "ramayana_book": 29
+ },
+ {
+  "kanda": 6,
+  "sarga": 93,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 39,
+  "ramayana_book": 68
+ },
+ {
+  "kanda": 6,
+  "sarga": 94,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 41,
+  "ramayana_book": 40
+ },
+ {
+  "kanda": 6,
+  "sarga": 95,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 54,
+  "ramayana_book": 41
+ },
+ {
+  "kanda": 6,
+  "sarga": 96,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 36,
+  "ramayana_book": 47
+ },
+ {
+  "kanda": 6,
+  "sarga": 97,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 38,
+  "ramayana_book": 37
+ },
+ {
+  "kanda": 6,
+  "sarga": 98,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 26,
+  "ramayana_book": 37
+ },
+ {
+  "kanda": 6,
+  "sarga": 99,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 51,
+  "ramayana_book": 27
+ },
+ {
+  "kanda": 6,
+  "sarga": 100,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 62,
+  "ramayana_book": 52
+ },
+ {
+  "kanda": 6,
+  "sarga": 101,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 56,
+  "ramayana_book": 64
+ },
+ {
+  "kanda": 6,
+  "sarga": 102,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 70,
+  "ramayana_book": 44
+ },
+ {
+  "kanda": 6,
+  "sarga": 103,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 31,
+  "ramayana_book": 37
+ },
+ {
+  "kanda": 6,
+  "sarga": 104,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 27,
+  "ramayana_book": 33
+ },
+ {
+  "kanda": 6,
+  "sarga": 106,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 36,
+  "ramayana_book": 30
+ },
+ {
+  "kanda": 6,
+  "sarga": 107,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 67,
+  "ramayana_book": 32
+ },
+ {
+  "kanda": 6,
+  "sarga": 108,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 34,
+  "ramayana_book": 36
+ },
+ {
+  "kanda": 6,
+  "sarga": 109,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 25,
+  "ramayana_book": 30
+ },
+ {
+  "kanda": 6,
+  "sarga": 110,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 26,
+  "ramayana_book": 39
+ },
+ {
+  "kanda": 6,
+  "sarga": 111,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 124,
+  "ramayana_book": 34
+ },
+ {
+  "kanda": 6,
+  "sarga": 112,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 26,
+  "ramayana_book": 27
+ },
+ {
+  "kanda": 6,
+  "sarga": 113,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 53,
+  "ramayana_book": 27
+ },
+ {
+  "kanda": 6,
+  "sarga": 114,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 36,
+  "ramayana_book": 115
+ },
+ {
+  "kanda": 6,
+  "sarga": 115,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 25,
+  "ramayana_book": 26
+ },
+ {
+  "kanda": 6,
+  "sarga": 116,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 36,
+  "ramayana_book": 52
+ },
+ {
+  "kanda": 6,
+  "sarga": 117,
+  "type": "gap",
+  "n": 25,
+  "missing": [
+   24
+  ]
+ },
+ {
+  "kanda": 6,
+  "sarga": 117,
+  "type": "gap",
+  "n": 33,
+  "missing": [
+   31,
+   32
+  ]
+ },
+ {
+  "kanda": 6,
+  "sarga": 117,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 30,
+  "ramayana_book": 37
+ },
+ {
+  "kanda": 6,
+  "sarga": 118,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 22,
+  "ramayana_book": 26
+ },
+ {
+  "kanda": 6,
+  "sarga": 119,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 39,
+  "ramayana_book": 35
+ },
+ {
+  "kanda": 6,
+  "sarga": 120,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 24,
+  "ramayana_book": 35
+ },
+ {
+  "kanda": 6,
+  "sarga": 121,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 30,
+  "ramayana_book": 24
+ },
+ {
+  "kanda": 6,
+  "sarga": 122,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 27,
+  "ramayana_book": 38
+ },
+ {
+  "kanda": 6,
+  "sarga": 123,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 57,
+  "ramayana_book": 25
+ },
+ {
+  "kanda": 6,
+  "sarga": 124,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 23,
+  "ramayana_book": 28
+ },
+ {
+  "kanda": 6,
+  "sarga": 125,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 46,
+  "ramayana_book": 30
+ },
+ {
+  "kanda": 6,
+  "sarga": 126,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 55,
+  "ramayana_book": 52
+ },
+ {
+  "kanda": 6,
+  "sarga": 127,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 64,
+  "ramayana_book": 23
+ },
+ {
+  "kanda": 6,
+  "sarga": 128,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 125,
+  "ramayana_book": 46
+ },
+ {
+  "kanda": 7,
+  "sarga": 1,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 41,
+  "ramayana_book": 43
+ },
+ {
+  "kanda": 7,
+  "sarga": 5,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 46,
+  "ramayana_book": 47
+ },
+ {
+  "kanda": 7,
+  "sarga": 6,
+  "type": "residue_after_marker",
+  "text": "धन्ते समरोद्धर्षा ये च तेषां पुरःसराः ।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 6,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 69,
+  "ramayana_book": 71
+ },
+ {
+  "kanda": 7,
+  "sarga": 9,
+  "type": "residue_after_marker",
+  "text": "त्वं हि सर्वगुणोपेता श्रीः साक्षादिव पुत्रिके ।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 17,
+  "type": "residue_after_marker",
+  "text": "ैव भोगेन च बलेन च ।।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 20,
+  "type": "residue_after_marker",
+  "text": "्तम ।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 20,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 33,
+  "ramayana_book": 32
+ },
+ {
+  "kanda": 7,
+  "sarga": 22,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 51,
+  "ramayana_book": 50
+ },
+ {
+  "kanda": 7,
+  "sarga": 24,
+  "type": "residue_after_marker",
+  "text": "।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 26,
+  "type": "residue_after_marker",
+  "text": "भिरुद्भासितवनान्तरे ।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 26,
+  "type": "residue_after_marker",
+  "text": "स्मि यदवोचस्त्वमेकपत्नीष्वयं क्रमः ।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 27,
+  "type": "residue_after_marker",
+  "text": "यामि ज्ञात्वा कालमुपागतम् ।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 30,
+  "type": "residue_after_marker",
+  "text": "्वं हि कस्यचित्प्राणिनो भुवि ।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 32,
+  "type": "residue_after_marker",
+  "text": "चः श्रुत्वा मन्त्रिणो ऽथार्जुनस्य ते ।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 40,
+  "type": "residue_after_marker",
+  "text": "लोके च मामिका ।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 40,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 29,
+  "ramayana_book": 30
+ },
+ {
+  "kanda": 7,
+  "sarga": 51,
+  "type": "gap",
+  "n": 19,
+  "missing": [
+   18
+  ]
+ },
+ {
+  "kanda": 7,
+  "sarga": 51,
+  "type": "missing_colophon"
+ },
+ {
+  "kanda": 7,
+  "sarga": 51,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 31,
+  "ramayana_book": 32
+ },
+ {
+  "kanda": 7,
+  "sarga": 94,
+  "type": "residue_after_marker",
+  "text": "सोत्तराणि महात्मना ।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 95,
+  "type": "residue_after_marker",
+  "text": "परिषदो मध्ये रामो वचनमब्रवीत् ।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 95,
+  "type": "count_differs_from_ramayana_book",
+  "wikisource": 17,
+  "ramayana_book": 16
+ },
+ {
+  "kanda": 7,
+  "sarga": 110,
+  "type": "residue_after_marker",
+  "text": "ां विशालाक्षीं तव पूर्वपरिग्रहाम् ।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 111,
+  "type": "text_after_colophon",
+  "text": "।। इत्युत्तरकाण्डः समाप्तः ।।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 111,
+  "type": "text_after_colophon",
+  "text": "।। इत्यार्षे श्रीमद्वाल्मीकीये आदिकाव्ये श्रीमद्रामायणं सम्पूर्णम् ।।"
+ },
+ {
+  "kanda": 7,
+  "sarga": 111,
+  "type": "text_after_colophon",
+  "text": "।। श्रीसीतारामचन्द्रार्पणमस्तु ।।"
+ }
+]
