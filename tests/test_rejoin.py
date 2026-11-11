@@ -228,3 +228,23 @@ def test_unjoined_junctions_pass_only_in_the_special_mode():
     assert not check_rejoin(mula, ["सः न ऐच्छत् राज्यः महा-बलः ।"], allow_unjoined=True)["ok"]
     # and a regular saṃhitā text is unaffected
     assert check_rejoin(["नारदं परिपप्रच्छ वाल्मीकिर्मुनिपुङ्गवम् ॥"], ["नारदम् परिपप्रच्छ वाल्मीकिः मुनि-पुङ्गवम् ॥"], allow_unjoined=True)["ok"]
+
+
+# ---- Stage C: a printed line break without a daṇḍa is a possible pause (found in VR.1.3.24) -------
+
+def test_a_line_break_without_a_danda_may_be_a_pause():
+    mula = ["वालिप्रमथनं चैव सुग्रीवप्रतिपादनम्", "ताराविलापं समयं वर्षरात्रनिवासनम् ॥"]
+    pada = ["वालि-प्रमथनम् च एव सुग्रीव-प्रतिपादनम्", "तारा-विलापम् समयम् वर्ष-रात्र-निवासनम् ॥"]
+    assert check_rejoin(mula, pada)["ok"]
+
+
+def test_the_pause_at_a_line_break_does_not_excuse_a_wrong_word():
+    mula = ["वालिप्रमथनं चैव सुग्रीवप्रतिपादनम्", "ताराविलापं समयं वर्षरात्रनिवासनम् ॥"]
+    pada = ["वालि-प्रमथनम् च एव सुग्रीव-प्रतिपादनम्", "तारा-विलापम् समयम् वर्ष-रात्रि-निवासनम् ॥"]
+    assert not check_rejoin(mula, pada)["ok"]
+
+
+def test_sandhi_across_a_line_break_without_a_danda_still_rejoins():
+    mula = ["उदारवृत्तार्थपदैर्मनोरमै-", "स्तदास्य रामस्य चकार कीर्तिमान् ।"]
+    pada = ["उदार-वृत्त-अर्थ-पदैः मनः-रमैः", "तदा अस्य रामस्य चकार कीर्तिमान् ।"]
+    assert check_rejoin(mula, pada)["ok"]

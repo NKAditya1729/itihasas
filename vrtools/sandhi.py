@@ -45,7 +45,7 @@ _DROP = re.compile(r"[\s\-'।॥|.0-9०-९]")
 _DROP_KEEP_AVAGRAHA = re.compile(r"[\s\-।॥|.0-9०-९]")
 _HOMORGANIC = re.compile(r"N(?=[kKgG])|Y(?=[cCjJ])|R(?=[wWqQ])|n(?=[tTdD])|m(?=[pPbB])")
 _DANDAS = re.compile(r"[।॥]")
-CHECKER_VERSION = 7   # bump when the rules change; seeds from older versions are redone
+CHECKER_VERSION = 8   # bump when the rules change; seeds from older versions are redone
 PRUNE_SLACK = 3   # a junction can rewrite at most the last 3 characters of the joined text
 
 
@@ -408,11 +408,29 @@ def check_rejoin(mula_lines: list[str], pada_lines: list[str], avagraha: bool = 
     if failures:
         return {"ok": False, "failures": failures}
     for unit in units(mula_lines):
-        target = mula_norm(to_slp1(" ".join(mula_lines[i] for i in unit)), avagraha)
-        members = [m for i in unit for m in pada_members(pada_lines[i])]
-        r = rejoin([[w] for w, _ in members], target, [c for _, c in members], avagraha, allow_unjoined)
-        if not r["ok"]:
+        r, target = _rejoin_unit(mula_lines, pada_lines, unit, avagraha, allow_unjoined)
+        if not r["ok"] and not _pause_at_a_line_break(mula_lines, pada_lines, unit, avagraha, allow_unjoined):
             pos = r["best"]
             failures.append({"reason": "mismatch", "line": unit[0], "pos": pos,
                              "expected": target[max(0, pos - 8):pos + 12], "got": r["got"][max(0, pos - 8):pos + 12]})
     return {"ok": not failures, "failures": failures}
+
+
+def _rejoin_unit(mula_lines, pada_lines, unit, avagraha, allow_unjoined):
+    target = mula_norm(to_slp1(" ".join(mula_lines[i] for i in unit)), avagraha)
+    members = [m for i in unit for m in pada_members(pada_lines[i])]
+    return rejoin([[w] for w, _ in members], target, [c for _, c in members], avagraha, allow_unjoined), target
+
+
+def _pause_at_a_line_break(mula_lines, pada_lines, unit, avagraha, allow_unjoined) -> bool:
+    """A printed line break inside a unit (a line without a closing daṇḍa) is a half-verse
+    boundary, so a pause may stand there (…-निवासनम् / ताराविलापं: the म् stays). Try the
+    unit cut at every such break, alone and together, except where a word runs over the
+    break (the line ends in a hyphen, मनोरमै- / स्तदा). Every part must re-join."""
+    breaks = [k for k in range(1, len(unit)) if not mula_lines[unit[k - 1]].rstrip().endswith("-")]
+    for mask in range(1, 2 ** len(breaks)):
+        cuts = [b for j, b in enumerate(breaks) if mask >> j & 1]
+        parts = [unit[a:b] for a, b in zip([0] + cuts, cuts + [len(unit)])]
+        if all(_rejoin_unit(mula_lines, pada_lines, part, avagraha, allow_unjoined)[0]["ok"] for part in parts):
+            return True
+    return False
