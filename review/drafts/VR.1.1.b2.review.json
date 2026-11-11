@@ -1,0 +1,244 @@
+{
+ "VR.1.1.6": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 7",
+   "§5.4 rule 10",
+   "§5.1",
+   "§5.2",
+   "§5.3"
+  ],
+  "note": "Padaccheda, padartha, anvaya, speaker (null) and context note are correct. One fault in the vyakhya: sentence 4 carries a grammar remark on the verse's wording (karmani prayogah); that belongs in the padartha (where it already stands), not in the retelling. Minor, not counted as faults: the anvaya puts quotation marks round श्रूयताम् (verses 1-5 use none); the last sentence points to the following verses without giving their content, which is acceptable.",
+  "fixes": [
+   {
+    "where": "vyakhya_sa",
+    "problem": "Sentence 4 (आमन्त्र्य इत्युक्ते सम्बोध्य ; श्रूयताम् इति च कर्मणि प्रयोगः, मम वचनं शृणु इति आशयः ।) contains a grammatical remark about the verse's wording, which is an addition to a narrative retelling (§5.4 rules 7 and 10).",
+    "replace_with": "आमन्त्र्य इत्युक्ते सम्बोध्य ; श्रूयताम् इति पदस्य च, मम वचनं शृणु इति आशयः ।"
+   }
+  ],
+  "round": "fix round 1: the generator applied the reviewer's fixes as prescribed (generator's report; in 22 the spelling कैकेयी is used in the running prose on the coordinator's instruction)"
+ },
+ "VR.1.1.7": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "All layers correct; the anvaya (बुद्ध्वा वक्ष्यामि, supplied तथापि in brackets) agrees with the traditional construction. The sentence एकस्मिन् पुरुषे एतावतां गुणानां दर्शनं कठिनम् इति आशयः is an inference from दुर्लभाः in the context of Valmiki's question; I accept it as the import of the verse, not as an addition.",
+  "fixes": []
+ },
+ "VR.1.1.8": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Correct. Optional polish: महावीर्यः is explained only by restating the compound (यतः तस्य वीर्यं महत्); वीर्यम् itself could be glossed (बलम्) as the padartha does. इक्ष्वाकुः नाम पुरातनः राजा is a minimal identification of a name, acceptable.",
+  "fixes": []
+ },
+ "VR.1.1.9": {
+  "verdict": "flag",
+  "rules": [
+   "§5.7 gender ruling",
+   "§5.4 rule 4"
+  ],
+  "note": "Sound. Point for the scholar: हनु is treated as feminine (vigraha महत्यौ हनू; vyakhya हनू च पुष्टे). This follows the Amarakosa (तत्परा हनुः) as I recall it from memory; Apte gives m. and f. Please confirm against the kosa. Small teaching point: हनु (jaw) is used in the vyakhya without explanation, though the padartha explains it.",
+  "fixes": []
+ },
+ "VR.1.1.10": {
+  "verdict": "flag",
+  "rules": [
+   "§5.1",
+   "§5.7 padaccheda ruling",
+   "§5.4 rule 4",
+   "§5.4 rule 10"
+  ],
+  "note": "No definite error. Padaccheda points for the scholar: (1) अरिम्-दमः: the boundary is right and अरिम् is the first member as it stands in the compound (अरि + मुम् augment before खच्), so it is a principled split, not an accidental re-join; but the म् is not a second-case ending and the vigraha is अरीन् दमयति, so a learner may misread it; the seed kept अरिन्दमः whole. (2) महा-इषु-आसः: correct by the कृत-ज्ञः ruling (इषु + आस, an upapada compound; आसः is a real word); the seed had महा-इष्वासः. (3) आजानु-बाहुः: आजानु is itself an avyayibhava of आ (a real indeclinable) + जानु, as the vigraha says; by the letter of §5.7 it could be आ-जानु-बाहुः. Padartha: सुविक्रमः is taken as beautiful gait (Govindaraja's reading, from memory); the other reading is great valour. Vyakhya: grammatically clean (neuter duals right), but four of seven sentences end in the frame अतः / अतएव सः X, close to a template; इषवः is left unexplained.",
+  "fixes": []
+ },
+ "VR.1.1.11": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "",
+  "fixes": []
+ },
+ "VR.1.1.12": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "",
+  "fixes": []
+ },
+ "VR.1.1.13": {
+  "verdict": "flag",
+  "rules": [
+   "§5.1",
+   "§5.7 padaccheda ruling",
+   "§5.4 rule 3"
+  ],
+  "note": "Sound. Point for the scholar: प्रजा-पति-समः splits प्रजापति, which here stands for Brahma and works as a proper name (rule: proper names whole); the draft treats it as a transparent epithet, as it does धनद in verse 19. Decide the convention for name-like epithets. Style suggestion only: यत्र सर्वे जीवाः वसन्ति सः जीवलोकः would have a matched correlative as यस्मिन् सर्वे जीवाः वसन्ति सः जीवलोकः.",
+  "fixes": []
+ },
+ "VR.1.1.14": {
+  "verdict": "pass",
+  "rules": [
+   "§5.7 padartha ruling (gloss simpler than the word)",
+   "§5.2"
+  ],
+  "note": "Padaccheda (धनुः-वेदे, वेद-वेद-अङ्ग-तत्त्व-ज्ञः), analyses, anvaya and vyakhya are correct. Two glosses use a rarer word than the simple word they explain. कदापि in the vyakhya is taken as a fixed join.",
+  "fixes": [
+   {
+    "where": "padartha: स्वस्य",
+    "problem": "artha निजस्य is a rarer synonym of the simple word स्वस्य (§5.7: never a rarer synonym; give a short paraphrase).",
+    "replace_with": "artha: स्वस्य (रामस्य एव)"
+   },
+   {
+    "where": "padartha: स्व-जनस्य",
+    "problem": "artha begins with आत्मीयस्य, a harder word than स्व (§5.7).",
+    "replace_with": "artha: स्वस्य जनस्य (बन्धूनाम्, आश्रितानां च)"
+   }
+  ],
+  "round": "fix round 1: the generator applied the reviewer's fixes as prescribed (generator's report; in 22 the spelling कैकेयी is used in the running prose on the coordinator's instruction)"
+ },
+ "VR.1.1.15": {
+  "verdict": "flag",
+  "rules": [
+   "§12",
+   "§5.1",
+   "§5.7 padaccheda ruling"
+  ],
+  "note": "The draft is sound and the padaccheda is right on its own merits (तत्त्व-ज्ञः स्मृतिमान्; अदीन-आत्मा as ruled). The one checker error is the known fault of the printed text (तत्त्वज्ञो स्मृतिमान् for तत्त्वज्ञः स्मृतिमान्): the verse needs the mula_suspect flag and an approved lines_corrected (§12) before the re-join check can pass. Small teaching point: दीनम् is used to explain अदीनात्मा without itself being explained.",
+  "fixes": [],
+  "round": "declared re-join exception (rejoin_note); correction proposed to the owner, not applied"
+ },
+ "VR.1.1.16": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Correct. सिन्धु is feminine in the sense river (Amarakosa, from memory), so ताः सर्वाः is right. Suggestions only: (1) in sentence 2 तथा एव has no यथा; यथा ताः सर्वाः समुद्रं प्रति गच्छन्ति, तथा एव सन्तः ... would match the correlatives; (2) समुद्रः glossed as सागरः is a synonym, not a simpler word; a paraphrase would suit §5.7 better.",
+  "fixes": []
+ },
+ "VR.1.1.17": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Correct. The printed text has a stray space (सर्व गुणोपेतः); the draft rightly reads the compound सर्व-गुण-उपेतः. कौसल्या तस्य माता is an identification of a name, acceptable. कदापि is taken as a fixed join.",
+  "fixes": []
+ },
+ "VR.1.1.18": {
+  "verdict": "pass",
+  "rules": [
+   "§5.7 padartha ruling (gloss simpler than the word)"
+  ],
+  "note": "Everything else is correct (सोमवत् rightly left unhyphenated as a taddhita form; सति-सप्तमी and gerunds well formed). One gloss uses a rarer synonym.",
+  "fixes": [
+   {
+    "where": "padartha: क्रोधे",
+    "problem": "artha कोपे is a rarer synonym of the simple word क्रोधे (§5.7); verses 1-5 themselves use क्रोध as the plain word.",
+    "replace_with": "artha: क्रोधे (यदा सः क्रुद्धः भवति तदा)"
+   }
+  ],
+  "round": "fix round 1: the generator applied the reviewer's fixes as prescribed (generator's report; in 22 the spelling कैकेयी is used in the running prose on the coordinator's instruction)"
+ },
+ "VR.1.1.19": {
+  "verdict": "flag",
+  "rules": [
+   "§5.3",
+   "§5.1",
+   "§5.4 rule 7"
+  ],
+  "note": "Sound. Points for the scholar: (1) the sentence runs from 19cd to 21ab; the anvayas of 19, 20 and 21 mark this with a bracketed pointer (... इति अग्रे सम्बन्धः), and the vyakhyas point forward without telling what follows. This is honest; please confirm it as the convention for multi-verse sentences. (2) धन-देन splits an epithet that works as a name of Kubera (see verse 13). The opening sentence (अस्मिन् श्लोके ... वर्णनं समाप्यते) is a remark about the text, not story content; I let it stand.",
+  "fixes": []
+ },
+ "VR.1.1.20": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Correct. The verse has no finite verb of its own (see the note on verse 19 for the bracketed pointer in the anvaya). The printed दशरथस्सुतम् is only a spelling of दशरथः सुतम्.",
+  "fixes": []
+ },
+ "VR.1.1.21": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 3",
+   "§5.7 padartha ruling (epic usage)",
+   "§12"
+  ],
+  "note": "Padaccheda, analyses and anvaya are correct. One connector is misused in the vyakhya. Points for the scholar, not faults: (1) कैकयी is recorded as an arsa form of कैकेयी; the mula has कैकयी here and कैकेय्याः in verse 24, so decide whether this is an epic form (as the draft says) or a doubtful reading (§12), and which form the running prose of verses 21-24 should use (the draft uses कैकयी / कैकय्या in 21-23 and कैकेय्याः in 24). (2) अभिषेकः is not explained anywhere for the learner.",
+  "fixes": [
+   {
+    "where": "vyakhya_sa",
+    "problem": "Sentence 4 begins with अतः, which makes the naming of the things (… इति उच्यन्ते) a consequence of the king's wish; the connector is illogical (§5.4 rule 3). Drop it.",
+    "replace_with": "**तस्य** रामस्य अभिषेकाय ये पदार्थाः आनीताः, ते **अभिषेकसम्भाराः** इति उच्यन्ते ।"
+   }
+  ],
+  "round": "fix round 1: the generator applied the reviewer's fixes as prescribed (generator's report; in 22 the spelling कैकेयी is used in the running prose on the coordinator's instruction)"
+ },
+ "VR.1.1.22": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 7",
+   "§5.4 rule 10"
+  ],
+  "note": "Padaccheda, analyses and anvaya are correct. एनम् is taken as the king (याच् with two objects), which is the commentators' construction as I recall it from memory, and is the better reading since एनम् refers back to someone already mentioned; the scholar may confirm. Fault: the vyakhya stops the story for a commentary remark on the wording (श्लोके एनम् इति पदं ... बोधयति ; ... इति अन्वयः). Work एनम् into the event sentence instead.",
+  "fixes": [
+   {
+    "where": "vyakhya_sa",
+    "problem": "Sentence 3 is a grammatical / anvaya remark about the verse's wording, not retelling (§5.4 rules 7 and 10). Delete it and put एनं into sentence 1. The full corrected vyakhya (4 sentences) is given.",
+    "replace_with": "अभिषेकस्य सम्भारान् दृष्ट्वा **देवी** कैकयी **एनं** राजानं दशरथं **वरम्** **अयाचत** । **पूर्वं** राज्ञा तस्यै वरः दत्तः आसीत्, अतएव सा **दत्तवरा** इति उच्यते ; वरः इत्युक्ते तत् इष्टं वस्तु, यत् दातुं कश्चित् वचनं ददाति । सः वरः कः इति अपि उच्यते — **रामस्य** **विवासनं** **भरतस्य** **अभिषेचनं** **च** इति । विवासनम् इत्युक्ते राज्यात् बहिः प्रेषणम् ; भरतः तु कैकय्याः पुत्रः, तस्य अभिषेकः भवतु इति सा अयाचत ।"
+   }
+  ],
+  "round": "fix round 1: the generator applied the reviewer's fixes as prescribed (generator's report; in 22 the spelling कैकेयी is used in the running prose on the coordinator's instruction)"
+ },
+ "VR.1.1.23": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Correct. The vyakhya opens with a question and gives the cause before the act; this follows the order of the verse and of the events, so I accept it under rule 10. कैकय्या एवं याचिते सति is a well-formed सति-सप्तमी.",
+  "fixes": []
+ },
+ "VR.1.1.24": {
+  "verdict": "pass",
+  "rules": [
+   "§5.7 padartha ruling (gloss simpler than the word)"
+  ],
+  "note": "Padaccheda, anvaya and vyakhya are correct (इति चेत् and the सति-सप्तमी are rightly used). The two ablatives are taken as two causes with a supplied (च); the commentators also allow कैकेय्याः प्रियकारणात् to qualify the father's command (from memory); either stands. One gloss is wrong for a learner.",
+  "fixes": [
+   {
+    "where": "padartha: पितुः",
+    "problem": "artha जनकस्य is a rarer synonym of the simple word पितुः (§5.7), and misleading in this story, where जनकः is the name of Sita's father.",
+    "replace_with": "artha: पितुः (दशरथस्य)"
+   }
+  ],
+  "round": "fix round 1: the generator applied the reviewer's fixes as prescribed (generator's report; in 22 the spelling कैकेयी is used in the running prose on the coordinator's instruction)"
+ }
+}
