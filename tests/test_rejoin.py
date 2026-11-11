@@ -200,3 +200,19 @@ def test_hiatus_at_the_pada_break_inside_a_line_passes():
 def test_hiatus_anywhere_else_still_fails():
     assert not ok("रामाय इति धनुर्दर्शय होवाच पार्थिवम् ॥", "रामाय इति धनुः दर्शय ह उवाच पार्थिवम् ॥")
     assert not ok("धनुर्दर्शय रामाय इति ।", "धनुः दर्शय रामाय इति ।")      # no second pāda: not a pāda break
+
+
+# ---- findings of the independent code review (2026-11-11) ---------------------------
+
+def test_avagraha_printed_after_the_anusvara_is_accepted():
+    # VR.1.41.5 एवमुक्तोंऽशुमान्: Devanagari writes the anusvāra of अंशुमान् before the ऽ
+    assert ok("तस्य पुत्रोंऽशुमान् नाम ।", "तस्य पुत्रः अंशुमान् नाम ।")
+    assert ok("तस्य पुत्रोऽंशुमान् नाम ।", "तस्य पुत्रः अंशुमान् नाम ।")
+    assert not ok("तस्य पुत्रों शुमान् नाम ।", "तस्य पुत्रः अंशुमान् नाम ।")
+
+
+def test_an_empty_word_does_not_crash_the_search():
+    from vrtools.sandhi import mula_norm, rejoin
+    target = mula_norm(to_slp1("धनुर्दर्शय रामाय इति होवाच पार्थिवम्"))
+    words = [[to_slp1(w)] for w in "धनुः दर्शय रामाय".split()] + [[""]] + [[to_slp1(w)] for w in "इति ह उवाच पार्थिवम्".split()]
+    assert rejoin(words, target)["ok"]

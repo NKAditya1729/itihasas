@@ -1,6 +1,8 @@
 """Phase 1 ingest: cached Wikisource pages → data/vr/{k}/{sss}.json + meta files.
 
-Idempotent: rerunning rewrites the same files from the same cache.
+Idempotent: rerunning rewrites the same files from the same cache. It rebuilds every
+verse (seeds and flags are re-applied by the later scripts and scripts/flag_mula.py), so it
+refuses to run once any sarga holds reviewed or generated work.
 Usage: uv run python scripts/ingest_vulgate.py
 """
 from __future__ import annotations
@@ -14,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from vrtools.build import KANDA_NAMES, make_sarga, mula_hash  # noqa: E402
+from vrtools.build import KANDA_NAMES, has_reviewed_work, make_sarga, mula_hash  # noqa: E402
 from vrtools.parse import parse_sarga, to_int  # noqa: E402
 
 KANDA_OF = {name: k for k, name in KANDA_NAMES.items()}
@@ -42,6 +44,11 @@ def ramayana_book_counts() -> dict[tuple[int, int], int]:
 
 
 def main() -> None:
+    # A re-ingest rebuilds every verse from the cached pages and would drop reviewed work.
+    kept = [f for f in sorted((DATA / "vr").glob("*/[0-9]*.json")) if has_reviewed_work(json.loads(f.read_text()))]
+    if kept:
+        raise SystemExit(f"refusing to re-ingest: {len(kept)} sarga file(s) hold reviewed or generated work "
+                         f"(first: {kept[0].relative_to(ROOT)}). Ingest must merge, not rebuild.")
     pages = {}
     for f in sorted(glob.glob(str(ROOT / "cache" / "wikisource" / "batch_*.json"))):
         for p in json.loads(Path(f).read_text())["query"]["pages"]:

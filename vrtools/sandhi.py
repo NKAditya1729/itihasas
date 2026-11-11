@@ -45,7 +45,7 @@ _DROP = re.compile(r"[\s\-'।॥|.0-9०-९]")
 _DROP_KEEP_AVAGRAHA = re.compile(r"[\s\-।॥|.0-9०-९]")
 _HOMORGANIC = re.compile(r"N(?=[kKgG])|Y(?=[cCjJ])|R(?=[wWqQ])|n(?=[tTdD])|m(?=[pPbB])")
 _DANDAS = re.compile(r"[।॥]")
-CHECKER_VERSION = 5   # bump when the rules change; seeds from older versions are redone
+CHECKER_VERSION = 7   # bump when the rules change; seeds from older versions are redone
 PRUNE_SLACK = 3   # a junction can rewrite at most the last 3 characters of the joined text
 
 
@@ -99,6 +99,8 @@ def _elided(head: str, tail: str, start: int, mark: str) -> list[tuple[str, int]
     out = []
     if mark != "none":
         out.append((head + "'" + tail, start))
+        if tail.startswith("M"):     # Devanagari writes the anusvāra first: उक्तोंऽशुमान् ← उक्तः अंशुमान्
+            out.append((head + "M'" + tail[1:], start))
     if mark != "required":
         out.append((head + tail, start))
     return out
@@ -271,6 +273,7 @@ def junction(L: str, R: str, left_word: str = "", comp: bool = False, avagraha: 
 
 # ---------------------------------------------------------------------------
 MIN_HIATUS_UNIT = 16   # a unit of two pādas has at least 2 × 8 syllables
+ALT_COST, HIATUS_COST = 2, 1   # a hiatus ranks between a word's first and its second alternative
 
 
 def _syllables(slp1: str) -> int:
@@ -285,25 +288,28 @@ def rejoin(words: list[list[str]], target: str, comp: list[bool] | None = None, 
     One junction may also stay unjoined: a vowel–vowel hiatus exactly at the middle of
     the unit by syllable count, i.e. at the break between its two pādas (रामाय | इति).
     The epic text prints such a hiatus now and then; anywhere else it is an error.
+    Only a word's first (preferred) form may stand in hiatus, and a path with a hiatus
+    ranks after one that uses first forms and regular sandhi: राज्ञ आदेशम् is राज्ञः आदेशम्
+    (regular), not a hiatus after a bare stem.
 
     Returns {"ok", "starts" (index of each word in target), "choice" (alternative
     index per word), "best": longest matched prefix length, "got": best candidate}.
     """
-    states: dict[str, tuple[tuple[int, ...], tuple[int, ...], str]] = {"": ((), (), "")}
+    states: dict[str, tuple[tuple[int, ...], tuple[int, ...], str, int]] = {"": ((), (), "", 0)}
     best, got = 0, ""
     syllables = _syllables(target)
     pada_break = syllables // 2 if syllables >= MIN_HIATUS_UNIT and syllables % 2 == 0 else None
     for wi, alts in enumerate(words):
         in_comp = bool(comp and comp[wi])
-        nxt: dict[str, tuple[tuple[int, ...], tuple[int, ...], str]] = {}
-        for acc, (starts, choice, last) in states.items():
+        nxt: dict[str, tuple[tuple[int, ...], tuple[int, ...], str, int]] = {}
+        for acc, (starts, choice, last, cost) in states.items():
             for ci, w0 in enumerate(alts):
                 w = _HOMORGANIC.sub("M", norm(w0))       # pada-internal spelling only
-                joins = junction(acc, w, last, in_comp, avagraha)
-                if (pada_break and acc and acc[-1] in VOWELS and w[0] in VOWELS and not in_comp
-                        and _syllables(acc) == pada_break):
-                    joins = joins + [(acc + w, len(acc))]   # the mūla may print a hiatus at the pāda break
-                for new, st in joins:
+                joins = [(new, st, 0) for new, st in junction(acc, w, last, in_comp, avagraha)]
+                if (pada_break and acc and acc[-1] in VOWELS and w[:1] in VOWELS and not in_comp
+                        and choice and choice[-1] == 0 and _syllables(acc) == pada_break):
+                    joins.append((acc + w, len(acc), HIATUS_COST))   # the mūla may print a hiatus at the pāda break
+                for new, st, extra in joins:
                     n = mula_norm(new, avagraha)
                     keep = n[:max(0, len(n) - PRUNE_SLACK)]
                     if match_len(keep, target) < len(keep):
@@ -311,15 +317,16 @@ def rejoin(words: list[list[str]], target: str, comp: list[bool] | None = None, 
                         if lcp > best:
                             best, got = lcp, n
                         continue
-                    cand = (starts + (st,), choice + (ci,), norm(w0))   # unfolded, for saḥ / r-stem lookups
-                    if new not in nxt or sum(cand[1]) < sum(nxt[new][1]):
+                    cand = (starts + (st,), choice + (ci,), norm(w0),   # unfolded, for saḥ / r-stem lookups
+                            cost + ALT_COST * ci + extra)
+                    if new not in nxt or cand[3] < nxt[new][3]:
                         nxt[new] = cand
                     if len(keep) > best:
                         best, got = len(keep), n
         states = nxt
         if not states:
             break
-    for acc, (starts, choice, _) in sorted(states.items(), key=lambda x: sum(x[1][1])):
+    for acc, (starts, choice, _, _) in sorted(states.items(), key=lambda x: x[1][3]):
         if same(mula_norm(acc, avagraha), target):
             return {"ok": True, "starts": list(starts), "choice": list(choice), "best": len(target), "got": acc}
         lcp = match_len(mula_norm(acc, avagraha), target)

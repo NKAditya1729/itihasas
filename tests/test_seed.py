@@ -224,16 +224,19 @@ def test_locative_and_pronominal_plural_in_a_come_from_e():
     assert pausal_candidates(_d("udita", "udi", pos="va", g="m", c="7", n="s", f="part"))[0] == "udite"
 
 
-def test_consonant_stem_forms_in_a_keep_both_readings():
-    # राज्ञ इति ← राज्ञः (gen. sg. of rājan)
-    assert pausal_candidates(_d("rAjYa", "rAjan", pos="n", g="m", c="6", n="s")) == ["rAjYa", "rAjYaH"]
+def test_consonant_stem_forms_in_a_come_from_ah():
+    # राज्ञ इति ← राज्ञः (gen. sg. of rājan), मुनय ऊचुः ← मुनयः: the bare form is not a word
+    assert pausal_candidates(_d("rAjYa", "rAjan", pos="n", g="m", c="6", n="s")) == ["rAjYaH", "rAjYa"]
+    assert pausal_candidates(_d("munaya", "muni", pos="n", g="m", c="1", n="p")) == ["munayaH", "munaya"]
 
 
 def test_feminine_long_a_follows_case_and_number():
     # VR.5.13.8 आर्याया हृदयम् (gen.), VR.7.89.3 विद्रुता (acc. pl.), VR.2.26.14 सर्वा (nom. sg.)
     assert pausal_candidates(_d("AryAyA", "Arya", pos="a", g="f", c="6", n="s"))[0] == "AryAyAH"
     assert pausal_candidates(_d("vidrutA", "vidru", pos="va", g="f", c="2", n="p", f="part"))[0] == "vidrutAH"
-    assert pausal_candidates(_d("sarvA", "sarva", pos="n", g="f", c="1", n="s")) == ["sarvA"]
+    # nom. sg.: the bare form first; the visarga stays as a fallback because DCS tags are sometimes
+    # wrong (VR.2.93.10 नीला इव … घनाः is tagged f. sg. but is m. pl.)
+    assert pausal_candidates(_d("sarvA", "sarva", pos="n", g="f", c="1", n="s")) == ["sarvA", "sarvAH"]
     assert pausal_candidates(_d("tapasA", "tapas", pos="n", g="n", c="3", n="s")) == ["tapasA"]
     assert pausal_candidates(_d("mahAtejA", "mahAtejas", pos="a", g="m", c="1", n="s"))[0] == "mahAtejAH"
     assert pausal_candidates(_d("devA", "deva", pos="n", g="m", c="1", n="p"))[0] == "devAH"
@@ -253,6 +256,7 @@ def test_a_genuine_final_n_is_left_alone():
     assert pausal_candidates(_d("tAn", "tad", pos="n", g="m", c="2", n="p")) == ["tAn"]
     assert pausal_candidates(_d("aBavan", "BU", pos="v", p="3", n="p", l="lan")) == ["aBavan"]
     assert pausal_candidates(_d("rAjan", "rAjan", pos="n", g="m", c="8", n="s")) == ["rAjan"]
+    assert pausal_candidates(_d("ahan", "han", pos="v", p="3", n="s", l="lan")) == ["ahan"]   # 3sg imperfect of han
 
 
 def test_seed_restores_t_before_a_nasal_and_keeps_it_elsewhere():
@@ -302,7 +306,7 @@ def test_seed_keeps_a_hiatus_at_the_pada_break():
 
 def test_consonant_stem_participle_keeps_its_visarga_reading():
     # गच्छत इति ← गच्छतः (gen. sg. of the present participle): not an a-stem form
-    assert pausal_candidates(_d("gacCata", "gam", pos="va", g="m", c="6", n="s", f="part")) == ["gacCata", "gacCataH"]
+    assert pausal_candidates(_d("gacCata", "gam", pos="va", g="m", c="6", n="s", f="part")) == ["gacCataH", "gacCata"]
 
 
 # ---- Stage B review, M3: Dharmamitra's "sa" — prefix or pronoun, by the mūla's spacing ----
@@ -335,3 +339,38 @@ def test_loose_avagraha_seeding_shows_what_the_strict_gate_rejected():
     assert not seed_verse(["ते स्वस्था वानराः ।"], words)["ok"]
     r = seed_verse(["ते स्वस्था वानराः ।"], words, avagraha=False)
     assert r["ok"] and r["padaccheda_lines"] == ["ते अस्वस्थाः वानराः ।"]
+
+
+# ---- findings of the independent code review (2026-11-11) ---------------------------
+
+def test_a_lost_visarga_is_restored_at_the_pada_break_too():
+    # 8 + 8 syllables; राज्ञ आदेशम् at the break is regular sandhi of राज्ञः, not a hiatus of a word "राज्ञ"
+    words = [_w("tatra", pos="i"), _d("te", "tad", pos="n", g="m", c="1", n="p"), _d("vAnarA", "vAnara", pos="n", g="m", c="1", n="p"),
+             _d("rAjYa", "rAjan", pos="n", g="m", c="6", n="s"), _d("AdeSam", "AdeSa", pos="n", g="m", c="2", n="s"),
+             _d("cakrire", "kf", pos="v", p="3", n="p", l="lit"), _w("tadA", pos="i")]
+    r = seed_verse(["तत्र ते वानरा राज्ञ आदेशं चक्रिरे तदा ॥"], words)
+    assert r["ok"] and r["padaccheda_lines"] == ["तत्र ते वानराः राज्ञः आदेशम् चक्रिरे तदा ॥"]
+
+
+def test_no_seed_is_made_from_a_form_that_only_fits_as_a_bare_stem():
+    # VR.6.83.29 भवेद् भूत | अधर्मो: the mūla has an irregular hiatus for भूतः; भूत is not a pada
+    words = [_w("yadi", pos="i"), _d("Darmo", "Darma", pos="n", g="m", c="1", n="s"), _d("Baved", "BU", pos="v", p="3", n="s", l="vidhilin"),
+             _d("BUta", "BU", pos="va", g="m", c="1", n="s", f="part"), _d("aDarmo", "aDarma", pos="n", g="m", c="1", n="s"),
+             _w("vA", pos="i"), _d("paraMtapa", "paraMtapa", pos="n", g="m", c="8", n="s")]
+    assert not seed_verse(["यदि धर्मो भवेद् भूत अधर्मो वा परंतप ।"], words)["ok"]
+
+
+def test_t_before_a_nasal_also_for_ablative_pronouns_adverbs_and_roots_in_n():
+    assert pausal_candidates(_d("tasmAn", "tad", pos="n", g="m", c="5", n="s"))[0] == "tasmAt"
+    assert pausal_candidates(_d("tasmAn", "tasmAt", pos="i"))[0] == "tasmAt"
+    assert pausal_candidates(_d("yAvan", "yAvat", pos="i"))[0] == "yAvat"
+    assert pausal_candidates(_d("jagan", "jagat", pos="n", g="n", c="2", n="s"))[0] == "jagat"
+    assert pausal_candidates(_d("hanyAn", "han", pos="v", p="3", n="s", l="vidhilin"))[0] == "hanyAt"
+    r = seed_verse(["तस्मान्मम ।"], [_d("tasmAn", "tad", pos="n", g="m", c="5", n="s"), _d("mama", "mad", pos="n", c="6", n="s")])
+    assert r["ok"] and r["padaccheda_lines"] == ["तस्मात् मम ।"]
+
+
+def test_n_and_r_stem_nominatives_in_long_a_never_take_a_visarga():
+    # VR.1.21.7 धर्मात्मा इति was seeded as धर्म-आत्माः इति
+    assert pausal_candidates(_d("AtmA", "Atman", pos="n", g="m", c="1", n="s")) == ["AtmA"]
+    assert pausal_candidates(_d("kartA", "kartf", pos="n", g="m", c="1", n="s")) == ["kartA"]

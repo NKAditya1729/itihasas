@@ -41,10 +41,18 @@ def add_flag(v: dict, flag: str, note: str = "") -> None:
     if flag not in review["flags"]:
         review["flags"].append(flag)
     entry = f"{flag}: {note}" if note else ""
-    notes = [n for n in (review.get("notes") or "").split(" | ") if n]
+    notes = review.get("notes") or ""
     if entry and entry not in notes:
-        notes.append(entry)
-    review["notes"] = " | ".join(notes)
+        notes = f"{notes} | {entry}" if notes else entry
+    review["notes"] = notes
+
+
+def has_reviewed_work(sarga: dict) -> bool:
+    """True if a sarga file holds anything a re-ingest must not throw away: a reviewed
+    padaccheda, a generated layer, or an approved correction."""
+    verses = sarga["verses"] + (sarga["appendix"]["verses"] if sarga.get("appendix") else [])
+    return any(v.get("padaccheda_status") == "reviewed" or v.get("padartha") or v.get("anvaya")
+               or v.get("vyakhya_sa") or "lines_corrected" in v for v in verses)
 
 
 def make_verse(p: dict, vid: str) -> dict:

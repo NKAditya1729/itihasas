@@ -52,7 +52,7 @@ def main() -> None:
     files = sorted((ROOT / "data" / "vr").glob("*/*.json"))
     docs = {f: json.loads(f.read_text()) for f in files}
     dcs_seeded = [v for d in docs.values() for v in d["verses"] + (d["appendix"]["verses"] if d["appendix"] else [])
-                  if (v.get("seed") or {}).get("source") == "dcs"]
+                  if (v.get("seed") or {}).get("source") == "dcs" and v.get("padaccheda_status") != "reviewed"]
     for i in range(0, len(dcs_seeded), BATCH):        # batches cross sarga boundaries: fewer requests
         chunk = dcs_seeded[i:i + BATCH]
         for v, res in zip(chunk, segment([verse_text(v["lines"]) for v in chunk])):

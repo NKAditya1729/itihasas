@@ -143,3 +143,31 @@ def test_avagraha_flag_is_removed_when_the_mismatch_is_gone():
     flag_avagraha(v, v["seed"])
     flag_avagraha(v, {"source": "dcs"})
     assert "avagraha_mismatch" not in v["review"]["flags"] and v["review"]["notes"] == ""
+
+
+# ---- findings of the independent code review (2026-11-11) ---------------------------
+
+def test_add_flag_is_idempotent_for_a_note_that_contains_the_separator():
+    v = sarga()["verses"][0]
+    for _ in range(3):
+        add_flag(v, "mula_suspect", "reading a | reading b")
+    assert v["review"]["notes"] == "mula_suspect: reading a | reading b"
+
+
+def test_a_reviewed_verse_keeps_whatever_flags_its_reviewer_left():
+    from scripts.check_rejoin import flag_avagraha
+    v = _verse_with_seed(SPLIT, source="dcs", dcs_avagraha_mismatch=["क ।"])
+    v["padaccheda_status"] = "reviewed"
+    flag_avagraha(v, v["seed"])
+    assert "avagraha_mismatch" not in v["review"]["flags"]
+
+
+def test_ingest_refuses_to_rebuild_a_sarga_that_has_reviewed_work():
+    from vrtools.build import has_reviewed_work
+    s = sarga()
+    assert not has_reviewed_work(s)
+    s["verses"][0]["padaccheda_status"] = "reviewed"
+    assert has_reviewed_work(s)
+    s = sarga()
+    s["verses"][0]["anvaya"] = "तपस्वी वाल्मीकिः नारदं परिपप्रच्छ ।"
+    assert has_reviewed_work(s)

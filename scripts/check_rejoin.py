@@ -33,7 +33,10 @@ AVAGRAHA = "avagraha_mismatch"
 
 
 def flag_avagraha(v: dict, seed: dict) -> None:
-    """Flag (or unflag) a verse whose machine split disagrees with the printed avagraha."""
+    """Flag (or unflag) a verse whose machine split disagrees with the printed avagraha.
+    A reviewed verse is left as its reviewer left it."""
+    if v.get("padaccheda_status") == "reviewed":
+        return
     review = v["review"]
     review["flags"] = [f for f in review["flags"] if f != AVAGRAHA]
     review["notes"] = " | ".join(n for n in (review.get("notes") or "").split(" | ") if n and not n.startswith(AVAGRAHA + ":"))

@@ -95,7 +95,7 @@ def _pausal(w: dict) -> list[str]:
         return [f[:-1] + "n", f[:-1] + "t"]
     if f.endswith("nn") and len(f) > 2:
         return [f[:-1]]
-    if last == "n" and len(f) > 2 and not w["comp"] and not lemma.endswith("n") and _t_before_nasal(f, lemma, tags):
+    if last == "n" and len(f) > 2 and not w["comp"] and _t_before_nasal(f, lemma, tags):
         return [f[:-1] + "t", f]                  # yan mAm ← yat; the join decides (t + nasal → n)
     if w["comp"] and f.endswith("n") and lemma.endswith("n"):
         return [f[:-1], f]                        # an/in-stems lose n in compounds
@@ -116,12 +116,18 @@ def _pausal(w: dict) -> list[str]:
                 if c == "8":
                     return [f, f + "H"]           # the vulgate often has a nominative where the CE has a vocative
                 return [f]                        # dative …: an a-stem has no other form in -aḥ
+            if last == "a" and cons_stem_ah:
+                return [f + "H", f]               # rājña ← rājñaḥ, munaya ← munayaḥ: the bare form is not a word
             if last == "A":
                 if ((c in ("1", "8") and n == "p" and g != "n") or (c == "2" and n == "p" and g == "f")
                         or (c in ("5", "6") and n == "s" and g == "f") or (nom and n == "s" and lemma.endswith("as"))):
                     return [f + "H", f]
-                if c == "3" or (c in ("1", "8") and n == "s"):
-                    return [f]                    # instrumental; nom./voc. sg. (sītā, rājā)
+                if c == "3":
+                    return [f]                    # instrumental
+                if c in ("1", "8") and n == "s":
+                    if lemma.endswith(("n", "f")):
+                        return [f]                # ātmā, rājā, kartā: no form in -āḥ exists
+                    return [f, f + "H"]           # sītā; the visarga only if the mūla needs it (wrong DCS tag)
         visarga_first = ((last == "a" and nom and n == "s" and (g or "m") == "m")
                          or (last == "A" and c in ("1", "8") and n == "p" and g != "n")
                          or (last in "iu" and nom and n == "s" and g in ("m", "f")))
@@ -133,9 +139,15 @@ def _t_before_nasal(f: str, lemma: str, tags: dict) -> bool:
     """Can this n-final DCS form be a final t assimilated to a following nasal?"""
     c, n = tags.get("c"), tags.get("n")
     if tags.get("pos") == "v":
-        return tags.get("p") == "3" and n == "s"                  # AsIn ← āsīt, pAtayen ← pātayet
+        if lemma.endswith("han") and f.endswith("ahan"):
+            return False                                          # ahan: the imperfect of han really ends in n
+        return tags.get("p") == "3" and n == "s"                  # AsIn ← āsīt, pAtayen ← pātayet, hanyAn ← hanyāt
+    if lemma.endswith("n"):
+        return False                                              # rājan, the n is the stem's own
+    if f[:-1] + "t" == lemma:
+        return True                                               # tasmAn ← tasmāt (adverb), yAvan, jagan
+    if c == "5" and n == "s" and f.endswith("An"):
+        return True                                               # janasTAnAn, tasmAn ← -āt
     if lemma in T_BEFORE_NASAL_LEMMAS:
         return tags.get("g") == "n" and n == "s" and c in ("1", "2")   # yan ← yat (never tān, acc. pl.)
-    if lemma.endswith(("cit", "cid")) or f.endswith("cin"):
-        return True                                               # kaScin ← kaścit
-    return c == "5" and n == "s" and f.endswith("An")             # janasTAnAn ← -āt
+    return lemma.endswith(("cit", "cid")) or f.endswith("cin")    # kaScin ← kaścit
