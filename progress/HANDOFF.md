@@ -50,10 +50,39 @@ CLAUDE.md where they differ), `CLAUDE.md` §11–§12, then `docs/STAGE_B_REVIEW
   `scripts/apply_corrections.py` (VR.1.1.1, 1.1.9, 1.1.45, 1.1.100). `lines` is
   untouched; the mūla hashes still pass.
 
+## Step 4 (pilot, Bāla sarga 1): stopped after verses 1–5
+- Branch **`pilot-1-1`** (local, not pushed, not merged). `make check`: 279 tests,
+  5 verses with padārtha, 0 errors.
+- New tooling: `vrtools/padartha.py` (`check_layers`: one padārtha entry per pada
+  whose analysis fits its form, qualifier agreement, anvaya and vyākhyā coverage,
+  no Latin letters; `merge_verse`), `vrtools.seed.groups_for`,
+  `scripts/check_layers.py` (read-only check of a draft), `scripts/merge_layers.py`.
+  `make check` runs `check_layers` on every verse that has padārtha.
+- Process used (CLAUDE.md §10.3): a generator sub-agent wrote
+  `review/drafts/VR.1.1.json`; a separate reviewer sub-agent wrote
+  `review/drafts/VR.1.1.review.json` (1 pass, 2 pass, 3 flag, 4 flag, 5 fix → pass
+  after the one fix round); flagged points are in `review/queue.md`.
+- Verses 1–5 are merged into `data/vr/1/001.json` with
+  `padaccheda_status: reviewed`. **Waiting for Aditya's OK on verses 1–5** before
+  verses 6–100, the sarga summary and the title. Do not start sarga 2.
+- Open questions put to Aditya: gender of संयुग (पुं or नपुं, for the whole work);
+  reading of एकप्रियदर्शनः; नञ्-compounds unhyphenated; whether CLAUDE.md §4/§5.6
+  examples should be brought into line with the pilot (वाक्-विदाम्, the fourth च).
+- `gen.model` is left empty in the data (no model identifier in pushed files).
+- The reader's अध्ययनसाहाय्यम् panel (written in Stage A) has not yet been looked
+  at in a browser with real data.
+
 ## Open, in order
-1. **Step 4: pilot, Bāla sarga 1** — verses 1–5 with all layers go to Aditya
-   first; the rest only after his OK. Do not start sarga 2.
-2. Owed: `docs/AYODHYA_PRESPLIT_OPTIONS.md` (one page, options only).
+1. Aditya's answer on verses 1–5; then verses 6–100 in batches of 20–40 with the
+   same generator / reviewer process, `summary_sa`, the sarga title, 10% sample
+   into `review/queue.md`, mark the sarga as pilot, STOP.
+2. **Duplicate files:** something on this Mac creates copies named "… 2.py",
+   "… 3.json" whenever git switches branch. Five were pushed to `main` by mistake
+   (`tests/test_status 2.py`, `scripts/flag_mula 2.py`, `data/meta/mula_flags 2.json`,
+   `docs/STAGE_B_BRIEF 2.md`, `docs/STAGE_B_REVIEW 2.md`); more sit untracked.
+   Aditya has been asked whether to delete them. Until then: never `git add -A`;
+   stage exact paths.
+3. Owed: `docs/AYODHYA_PRESPLIT_OPTIONS.md` (one page, options only).
 
 ## Known limits of the Step 3 fixes (from the independent code review)
 - At a pāda break a bare form can still pass where the mūla has an irregular
