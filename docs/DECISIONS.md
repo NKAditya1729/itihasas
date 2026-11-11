@@ -11,7 +11,7 @@ Answers given by Aditya on 2026-11-11, before Phase 1.
 | D3 | Samāsa hyphens in padaccheda view | **Show hyphens**, as on the existing Viṣṇusahasranāma page. | |
 | D4 | Badges | **Metre badge only for non-Anuṣṭup verses**; **speaker badge from Phase 3**. | No metre badge on Anuṣṭup verses; no CE badge. |
 | D5 | Verse numbering | **Wikisource printed numbers.** Skips/duplicates get suffixes (`VR.6.25.12a`) and go to `data/meta/anomalies.json`; original marker kept in `src_ref`. | |
-| D6 | Deploy target | **Separate repo** built from this folder (`Ramayana website`), own GitHub Pages site, linked from the `sarala-vedanta` hub. | Repo name and push wait for Aditya's go-ahead. |
+| D6 | Deploy target | **Separate repo** `NKAditya1729/itihasas` (इतिहासाः), own GitHub Pages site: https://nkaditya1729.github.io/itihasas/ with the Rāmāyaṇa at `/ramayanam/`, room for the Mahābhārata. | Created and deployed 2026-11-11 at Aditya's request; not inside sarala-vedanta. |
 | D7 | Site content licence | **CC BY-SA 4.0**, attribution to Wikisource contributors and DCS (CC BY 4.0) on an आधाराः page. Code MIT. | |
 
 ## Other deviations / implementation choices
