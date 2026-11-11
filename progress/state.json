@@ -30,14 +30,14 @@
 "stage": "C"
 },
 "VR.1.4": {
-"phase": "2a",
-"layer": "padaccheda",
-"status": "partial",
-"seeded": 24,
+"phase": "3",
+"layer": "all",
+"status": "done",
 "verses": 36,
 "attempts": 1,
 "last_error": null,
-"commit": null
+"commit": null,
+"stage": "C"
 },
 "VR.1.5": {
 "phase": "2a",

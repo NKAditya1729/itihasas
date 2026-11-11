@@ -1,0 +1,128 @@
+{
+ "VR.1.4.14": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. महा-आत्मानौ, भावित-आत्मनाम् split per §5.7; all nominative duals tied to तौ, the genitives to मध्येसभं … अगायताम् of 15 (sarga map 14–15ab). Agreement checked: तौ … आस्ताम्, तौ … उच्येते, तौ गतवन्तौ (dual); ऋषयः … आसन् (plural). One इत्युक्ते; the opening clause links to 13 (यथोपदेशं जगतुः). Minor style only: तयोः देहे could be तयोः देहयोः. BATCH NOTE: 12 verses, first pass 9 pass, 3 fix; after the fix round 12 pass, 0 flag. check_layers OK on all. इत्युक्ते 6 in 12 verses (0.5 per verse), no इति आशयः: rule 11 met. No remarks about the verse itself. Every finite verb and participle of the vyākhyā, anvaya and context notes checked for agreement, the duals included (अगायताम्, आस्ताम्, उच्येते, गतवन्तौ, अकुरुताम्, कृतवन्तौ, गायतः); no agreement error. Class B readings (19 space, 25 ब्रुसीम्) handled as in VR.1.2.43: printed form kept in the padaccheda, layers explain the evident word.",
+  "fixes": []
+ },
+ "VR.1.4.15": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. मध्ये-सभम् as an अव्ययीभाव is right (the printed space in मध्ये सभं is only spacing: सभम् cannot stand alone, and पारे मध्ये षष्ठ्या वा makes the form regular, so no ārṣa label is needed, whatever the sarga map says). Duals समीपस्थौ … अगायताम्, plurals मुनयः … अभवन्, ईक्षणानि … आसन्, ते … आरभन्त (लङ् आत्मनेपद, correct). The last sentence is the one allowed linking clause into 16.",
+  "fixes": []
+ },
+ "VR.1.4.16": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. Splits right (साधु साधु इति तौ ऊचुः). ऊचुः लिट् बहु; परम् agrees with विस्मयम् (पुं). Agreement: ते … ऊचुः, मनांसि … अभवन्, ते … आसन्, मुनयः … आरभन्त. The closing clause links into 17ab (प्रशशंसुः). Style only: …आरभन्त ends both 15 and 16.",
+  "fixes": []
+ },
+ "VR.1.4.17": {
+  "verdict": "pass",
+  "rules": [
+   "§5.2",
+   "§5.7 (epic usage labelled)"
+  ],
+  "note": "Second pass. The fix is in: प्रशस्तव्यौ is now labelled ārṣa, with the Pāṇinian प्रशंसितव्यौ. Nothing else changed; all layers correct, check_layers OK. Duals गायमानौ आस्ताम्, तौ … आस्ताम्; plurals मुनयः … प्रशशंसुः … ऊचुः.",
+  "fixes": []
+ },
+ "VR.1.4.18": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. तथाभावम् as the object of प्रविश्य (\"entering into that mood/state\") is grammatical (प्र-विश् takes an accusative) and is the usual reading of the line; the alternative (प्रविश्य = entering the assembly, तथाभावम् adverbial to अगायताम्, as the sarga map's word order suggests) is weaker because the verse names no place to enter. सुष्ठु may go with either प्रविश्य or अगायताम्; the anvaya's choice is fine. Speech of the munis in 18ab, narrative in 18cd: speaker field right. Agreement: एतत् … दर्शितम् (नपुं एक), श्रोतारः … अपश्यन्, तौ … अगायताम्, कृतवन्तौ. Style only: the gloss of दर्शितम् (दृष्टिगोचरं कृतम्) is not simpler than the word; नेत्रयोः पुरतः स्थापितम् would be.",
+  "fixes": []
+ },
+ "VR.1.4.19": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 7 (pada in its sense)",
+   "§5.3"
+  ],
+  "note": "Second pass. The fix is in: एवम् now goes with प्रशस्यमानौ (गायन्तौ तौ यैः महर्षिभिः एवं प्रशस्यमानौ आस्ताम्), as in the verse and the anvaya. Agreement checked again (अकुरुताम्, आस्ताम् dual; आसन् plural). check_layers OK. A non-binding style point remains: the padārtha calls मधुरम् a क्रियाविशेषण, while the vyākhyā treats मधुरं रक्तं सम्पन्नम् as predicates of गानम्. Both readings are defensible.",
+  "fixes": []
+ },
+ "VR.1.4.20": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. संरक्ततरम्, मधुरम् adverbial; ताभ्याम् चतुर्थी with ददौ. Agreement: तौ … अगायताम् (dual), मुनिः … ददौ, दानानि आरब्धानि. Continuity with 19 (यदा मुनयः … प्रशंसन्ति स्म) good. One इत्युक्ते.",
+  "fixes": []
+ },
+ "VR.1.4.21": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. कृष्ण-अजिनम्, यज्ञ-सूत्रम्, तथा अपरः (re-joins to तथापरः). Genders right (वल्कल, कृष्णाजिन, यज्ञसूत्र नपुं). Agreement: प्रसन्नः सन्, कश्चित् … ददौ, अन्यः … अदात्, अपरः … अयच्छत्.",
+  "fixes": []
+ },
+ "VR.1.4.22": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. The seed's मौञ्जीमन्यः / बृसीमन्यः are correctly split. Genders: कमण्डलु पुं (Amarakośa कमण्डलुः), मौञ्जी, बृसी स्त्री, कौपीन नपुं. Agreement: यस्मिन् (कमण्डलौ) … धारयन्ति, यत् (आसनम्) … उच्यते, यत् वस्त्रं … धार्यते, each मुनिः with a singular verb.",
+  "fixes": []
+ },
+ "VR.1.4.23": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. कुठार पुं, काषायम् anvita वस्त्रम्. Agreement: येन … काष्ठानि छिद्यन्ते (passive plural), यत् … रञ्जितं भवति, each giver with ददौ / दत्तवान्.",
+  "fixes": []
+ },
+ "VR.1.4.24": {
+  "verdict": "pass",
+  "rules": [
+   "§5.2 (gloss in the pada's vacana)",
+   "§5.4 grammar"
+  ],
+  "note": "Second pass. All fixes are in: बन्द्धुम् is now in both padārtha glosses and in the vyākhyā; the काष्ठ-भारम् gloss is singular (वहनाय बद्धं काष्ठानां समूहम्), and the vyākhyā's इत्युक्ते phrase matches. The क्त form बद्धं is correct. Agreement checked again; check_layers OK.",
+  "fixes": []
+ },
+ "VR.1.4.25": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. ब्रुसीम् kept in the padaccheda with fit_note and stem बृसी (Class B, mula_queue); writing बृसीम् in the vyākhyā follows the VR.1.2.43 practice. प्राहुः as लट् of ब्रू (आह-आदेश) in past sense is right. Agreement: केचित् मुनयः … अवदन् … यच्छन्तः, महर्षयः … प्राहुः, ते … ऐच्छन्. Style only: आयुष्यम् means 'conducive to long life'; the gloss दीर्घम् आयुः is loose but the bracket (भवतु इति आशीः) carries the sense.",
+  "fixes": []
+ }
+}

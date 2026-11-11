@@ -167,3 +167,30 @@ none
 ### 5. 10% sample of the verses that passed (fixed seed 20261111)
 
 VR.1.3.12, VR.1.3.19, VR.1.3.27, VR.1.3.34
+
+## Bāla-kāṇḍa, sarga 4 (Stage C; 36 verses)
+
+Reviewer verdicts: first pass 24 pass, 10 fix, 2 flag; final 34 pass, 2 flag (35 प्रचक्षते reading; 36 बुभूषया).
+
+### 1. Flagged by the reviewers (points for Swamiji)
+
+| Verse | Reviewer's note (shortened) |
+|---|---|
+| VR.1.4.35 | Second pass. The agreement fix is applied: the vyākhyā now reads 'इमौ यत् चरितं **प्रचक्षाते**, कथयतः' (dual, right). The padārtha and anvaya keep the verse's own form प्रचक्षते with the ārṣa label, which is correct for that reading. check_layers OK. Still for a human (the reading choice only): ārṣa plural for the dual with इमौ  … |
+| VR.1.4.36 | Padaccheda right: the printed line-breaks प्रचोदिता-/वगायतां and शनै-/र्बुभूषया are re-assigned to whole words and re-join; रामवचः प्रचोदितौ, printed with a space, is correctly taken as one compound (रामवचः could not stand alone here). मार्ग as the classical (मार्ग, not देशी) style of singing, glossed शास्त्रीयं गानम्, is right  … |
+
+### 2. Declared re-join exceptions
+
+None.
+
+### 3. Doubtful source readings
+
+VR.1.4.6 corrected under rule A (वेदोपबृह्मण, pending Aditya); VR.1.4.19 space inside तपःश्लाघ्यैः and VR.1.4.25 ब्रुसीम् (Class B; `review/mula_queue.md`).
+
+### 4. Declared word-list exceptions (fit_note)
+
+2: सर्ग-शतान्, 2: पञ्च, 3: प्रयुञ्जीयात्, 25: ब्रुसीम्
+
+### 5. 10% sample of the verses that passed (fixed seed 20261111)
+
+VR.1.4.11, VR.1.4.18, VR.1.4.23, VR.1.4.29

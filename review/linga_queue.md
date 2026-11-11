@@ -22,3 +22,7 @@ To be checked against the books.
 | छायाग्राह | पुं (of सिंहिका) | VR.1.3.28 | by the form |
 | प्रतार | पुं | VR.1.3.35 | |
 | वर्षरात्र | पुं | VR.1.3.24 | |
+| कमण्डलु | पुं (Amarakośa also नपुं) | VR.1.4.22 | |
+| काष्ठरज्जु | स्त्री | VR.1.4.24 | |
+| आधार | नपुं here (kośas: पुं), ārṣa | VR.1.4.27 | predicate of आख्यानम् |
+| बिम्ब | पुं (Amarakośa: अस्त्री) | VR.1.4.11 | the form बिम्बौ requires पुं |

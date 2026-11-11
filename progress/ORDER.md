@@ -8,7 +8,7 @@ A sarga is finished when its line is ticked `[x]`. Skipped sargas are listed at 
 - [x] VR.1.1 (pilot)
 - [x] VR.1.2
 - [x] VR.1.3
-- [ ] VR.1.4
+- [x] VR.1.4
 - [ ] VR.1.5
 - [ ] VR.1.6
 - [ ] VR.1.7

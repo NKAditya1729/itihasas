@@ -1,0 +1,143 @@
+{
+ "VR.1.4.1": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "names.json"
+  ],
+  "note": "Clean. प्राप्त-राज्यस्य (बहुव्रीहि, प्राप्तं राज्यं येन सः) anvita रामस्य; full identifiers for राम and वाल्मीकि at first use in VR.1.4. यदा…तदा clause tells the event; चकार agrees with वाल्मीकिः. Batch note: 13 verses: after the second pass, 13 pass, 0 fix, 0 flag (fixes to 2, 3, 4, 13 applied and verified). check_layers OK on all (word-list misses सर्ग-शतान्, पञ्च, प्रयुञ्जीयात् are declared). इत्युक्ते 4 in 13 verses, no इति आशयः: rule 11 met. Agreement of every finite verb and participle in vyākhyā and anvaya checked, duals included (4, 5, 9, 10, 11, 12, 13): all right. No remarks about the verse itself. Cross-verse qualifiers in 8, 11, 13 carry no anvita and the gloss names the head (९ श्लोके काव्यस्य / १० श्लोके तौ इत्यस्य विशेषणम्): accepted, as in VR.1.2.12.",
+  "fixes": []
+ },
+ "VR.1.4.2": {
+  "verdict": "pass",
+  "rules": [
+   "§5.2 (gloss in the pada's case)",
+   "§5.7 epic usage",
+   "§5.7 fit_note"
+  ],
+  "note": "Second pass: the gloss is now चतुर्विंशतिसहस्राणि (…), in the pada's case. check_layers OK. First pass: Judged: (a) चतुर्विंशत्- for चतुर्विंशति- is rightly labelled आर्ष (ति-lopa in the compound; no Pāṇinian rule gives it); the vigraha is fine. But its gloss 'चतुर्विंशतिः सहस्राणि' puts the numeral in the nominative, while the pada is द्वितीया (object of उक्तवान्): give the regular compound instead. (b) सर्गशतान् as पुं द्वितीया बहु of शत (नपुं) is rightly labelled आर्ष and the fit_note is right (सर्गशतानि लौकिकम्). (c) पञ्च: पञ्चन्, द्वितीया बहु (षड्भ्यो लुक्, नलोपः), linga पुं to agree with सर्गशतान्; fit_note right. (d) षट् काण्डानि as two words is right: a numeral adjective with its noun, parallel to पञ्च सर्गशतान्; it re-joins without change, and a dvigu would be neuter singular (षट्काण्डी/षट्काण्डम्), not plural. Not errors: the numeral glosses पञ्चसङ्ख्याकान् / षट्सङ्ख्याकानि are longer than the word (the pilot glossed पञ्च (जनान्)); the short ārṣa clause in the vyākhyā explains a hard form where it is used (rule 4), not a remark on the verse.",
+  "fixes": []
+ },
+ "VR.1.4.3": {
+  "verdict": "pass",
+  "rules": [
+   "§5.2 (verb analysis; ārṣa label)",
+   "§5.7 epic usage",
+   "§5.7 fit_note"
+  ],
+  "note": "Second pass: the artha and fit_note now give प्रयुञ्जीत (1.3.64) as the regular form. check_layers OK. First pass: प्रयुञ्जीयात् is rightly called ārṣa, but the regular form is given wrongly. युज् is उभयपदी, and with प्र it is ātmanepada by प्रोपाभ्यां युजेरयज्ञपात्रेषु (1.3.64); so the regular विधिलिङ् is प्रयुञ्जीत, not the parasmaipada प्रयुञ्ज्यात्. The printed form mixes the ātmanepada ई (सीयुट्) with the parasmaipada यात् (यासुट्). Rest clean: स-भविष्यम्, सह-उत्तरम् are both bahuvrīhis (tulyayoga) with anvita तत्; नु as प्रश्नार्थकम् अव्ययम्; one gerund; चिन्तयामास agrees with वाल्मीकिः.",
+  "fixes": []
+ },
+ "VR.1.4.4": {
+  "verdict": "pass",
+  "rules": [
+   "§5.2 (case analysis)",
+   "§5.3",
+   "§5.4 (grammar)"
+  ],
+  "note": "Second pass: the genitive is now the possessor of पादौ; the anvaya is 'ततः मुनिवेषौ कुशीलवौ चिन्तयमानस्य भावितात्मनः तस्य महर्षेः पादौ अगृह्णीताम्', with no supplied (सतः)/(तस्य). The label is removed, and the vyākhyā sentence 2 is as given; agreement checked again (धारयन्तौ, अगृह्णीताम्, स्पृष्टवन्तौ, प्रणेमतुः). The gloss bracket (तस्य महर्षेः) on पादौ repeats padas of the verse; harmless. check_layers OK. First pass: Judged: 'भावलक्षणे षष्ठी' is not a valid label. यस्य च भावेन भावलक्षणम् (2.3.37) gives the सप्तमी; the षष्ठी is allowed only in disregard, षष्ठी चानादरे (2.3.38), and there is no disregard here: the boys bow to the sage. There is also no need for an absolute. तस्य … महर्षेः भावितात्मनः is simply the possessor of पादौ (सम्बन्धे षष्ठी), and चिन्तयमानस्य is its attribute ('the feet of the sage, who was thinking'). The anvaya must then stop supplying (सतः) and a second (तस्य). The vyākhyā keeps its present participle and its one इत्युक्ते. Rest clean: अगृह्णीताम् ग्रह् लङ् प्रथम द्वि; धारयन्तौ, अगृह्णीताम्, प्रणेमतुः agree with the dual कुशीलवौ; कुशीलवौ has the names.json identifier at first use. If the coordinator prefers an absolute reading, the label must be अनादरे षष्ठी (2.3.38), but disregard does not fit the scene.",
+  "fixes": []
+ },
+ "VR.1.4.5": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. All qualifiers द्वितीया द्वि with anvita कुशीलवौ; vigrahas in the dual (धर्मं जानीतः, आश्रमे वसतः). Agreement: आस्ताम्, वसतः स्म, उच्येते (dual, right), आस्ताम्. Bare कुशीलव after first use, as names.json wants.",
+  "fixes": []
+ },
+ "VR.1.4.6": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "§12 (lines_corrected)"
+  ],
+  "note": "Clean. Written for the approved correction वेदोपबृह्मणार्थाय; the split वेद-उपबृह्मण-अर्थाय re-joins to it, and the gloss notes उपबृह्मणम् = उपबृंहणम्. अग्राहयत: ग्रह् णिच् लङ् आत्मनेपद (णिचश्च) with two accusatives (तौ, काव्यम्) is right; अध्यापयत् (लङ्) agrees with सः. Not an error: the anvaya bracket '(यत् काव्यम्) … (तत् अग्रिमेण श्लोकेन सम्बध्यते)' differs from the brief's form; harmonise when merging, e.g. 'तौ (काव्यम्) अग्राहयत (यत् चकार इति अग्रिमेण श्लोकेन सम्बन्धः)'. The tumun gloss for -अर्थाय is acceptable (purpose).",
+  "fixes": []
+ },
+ "VR.1.4.7": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "names.json"
+  ],
+  "note": "Clean. Three names of the poem told in connected prose; सीता and पौलस्त्य have their names.json identifiers at first use. Passives ज्ञायते, वर्ण्यते, उच्यते, कथ्यते agree with singular तत् काव्यम्. चरित-व्रतः bahuvrīhi right. The anvaya bracket links back to अग्राहयत (v6), as the map has it.",
+  "fixes": []
+ },
+ "VR.1.4.8": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. मधुरम्, अन्वितम्, युक्तम्, तन्त्री-लय-समन्वितम् have no anvita because the head काव्यम् is in v9; each gloss names it (accepted precedent). त्रिभिः नपुं with प्रमाणैः, सप्तभिः स्त्री with जातिभिः. The technical terms (द्रुत/मध्य/विलम्बित, जाति) are explained in running prose; one इत्युक्ते. Agreement: पठ्यते, गीयते (तत्).",
+  "fixes": []
+ },
+ "VR.1.4.9": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. वीरादिभी रसैः → वीर-आदिभिः रसैः (रो रि, ढ्रलोपे दीर्घः) right; both रसैः padas covered; (च) supplied in brackets. The narrative comes first (अगायताम्, dual, agrees with तौ कुशीलवौ); the rasas are defined in one sentence; passives वर्ण्यते, आस्वाद्यते, उच्यते agree.",
+  "fixes": []
+ },
+ "VR.1.4.10": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. गन्धर्वाविव → गन्धर्वौ इव right. Agreement: आस्ताम्, जानीतः स्म, शोभेते स्म (ātmanepada dual, right), स्याताम् all dual. One इत्युक्ते. The anvaya marks the link to जगतुः in v13.",
+  "fixes": []
+ },
+ "VR.1.4.11": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Clean. रूप-लक्षण-सम्पन्नौ, मधुर-स्वर-भाषिणौ, अपरौ have no anvita; their head तौ is in v10 and the gloss names it (accepted). The vigraha भाषेते is right (भाष् ātmanepada). उत्थितौ anvita बिम्बौ. Agreement: भाषेते स्म, दर्शयतः (द्वौ बिम्बौ), आस्ताम्; singular उच्यते with बिम्बः. The यथा…तथा simile is right.",
+  "fixes": []
+ },
+ "VR.1.4.12": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Judged: वाचः विधेयम् as two words is right. वाचः (षष्ठी) + विधेयम् re-joins as वाचोविधेयम्; no aluk rule would make a compound with the genitive kept, and the sense 'subject to speech' (memorised) fits the two-word analysis. Agreement: सज्जौ अभवताम् (dual), वदति, स्थितम् आसीत्, वर्तते. Not errors: कृत्वा → विधाय is no simpler than the word (cf. अवलोक्य, passed in VR.1.2.24); the closing sentence on धर्म्यम् उत्तमम् आख्यानम् could be folded into sentence 1.",
+  "fixes": []
+ },
+ "VR.1.4.13": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 11 (no stand-alone closing gloss sentence)",
+   "§5.4 rule 1"
+  ],
+  "note": "Second pass: the closing gloss sentence is folded in; 3 sentences, no इत्युक्ते. Agreement checked again: जानन्तौ, सन्तौ, गायतः स्म (dual), उच्यते, आसन्. check_layers OK. First pass: Grammar right: जगतुः गै लिट् प्रथम द्वि; गीतवन्तौ, जानन्तौ, स्थितौ dual; आसन् plural. तत्त्व-ज्ञौ and सु-समाहितौ have no anvita (head तौ in v10, the gloss names it: accepted). But the vyākhyā ends with a sentence that only glosses यथोपदेशम्, and it repeats the singing already told, with a tautology ('यथा उपदिष्टम् … तथा एव यथोपदेशम्'). The sentence before it is also a pair of appositive glosses. Fold the qualifiers into the account of how they sang. The rewrite below keeps 3 sentences, no इत्युक्ते, and a participle (सन्तौ) as the stretch.",
+  "fixes": []
+ }
+}

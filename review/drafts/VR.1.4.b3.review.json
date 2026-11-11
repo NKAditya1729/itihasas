@@ -1,0 +1,110 @@
+{
+ "VR.1.4.26": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 11",
+   "§5.4 rule 10"
+  ],
+  "note": "Second pass. Fix applied exactly: the stand-alone definition of आख्यान is gone; 3 sentences, closing with the allowed linking clause. Agreement (ददुः, अवदन्, वदन्ति: plural) right. check_layers OK.",
+  "fixes": []
+ },
+ "VR.1.4.27": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "आधारम् as नपुं प्रथमा (ārṣa) accepted: the kośas give आधार as पुं, but a पुं form आधारम् could only be accusative and nothing in 26cd–28ab governs an accusative; read with आख्यानम् it must be nominative, so the noun is used adjectivally in the neuter (cf. the gloss आश्रयभूतम्). The ārṣa label in the gloss is right; list it in review/queue.md with the other ārṣa forms. कोविदौ as vocative dual, gloss in हे … (सम्बोधनम्) form. युवां … स्थः agrees. यथा-क्रमम् avyayībhāva with vigraha right."
+ },
+ "VR.1.4.28": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "मनः-हरम् split with pausal member right. प्रशस्यमानौ, गायकौ correctly द्वितीया द्वि (object of ददर्श, 29). Vyākhyā: प्रशस्यमानौ तौ गायकौ … दृष्टौ (dual) agrees; the closing 'इति कविः अग्रे वदति' is the one allowed linking clause, the sentence spanning 28cd–29ab."
+ },
+ "VR.1.4.29": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "names.json"
+  ],
+  "note": "सः कुशीलवौ correctly restored (the seed's स-कुशीलवौ was wrong). भरत gets its identifier inside the gloss of भरत-अग्रजः at its first use in the sarga. तौ … कुशीलवौ इति उच्येते: dual passive right. 'लघुषु वीथीषु' for रथ्यासु is a little more than the word says, but not an error. Batch style note: 28–31 all end 'इति अग्रे उच्यते/वदति'; each is allowed (the sentences span verses), but the repetition is mechanical."
+ },
+ "VR.1.4.30": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.7",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "सिंहासने kept whole is accepted under §5.7 (a lexicalised fixed term, not a transparent epithet; the vigraha is still given, as for नञ् compounds). राज-मार्गेषु being split in 29 is not inconsistent: that compound is transparent. सः च restored right. Style only: 'सम्मानस्य योग्यौ, अतएव पूजार्हौ' uses अतएव for a mere restatement (also 36 'प्रेरितौ, अतएव रामवचःप्रचोदितौ'); not a grammatical error."
+ },
+ "VR.1.4.31": {
+  "verdict": "pass",
+  "rules": [
+   "§5.2"
+  ],
+  "note": "Second pass. Fix applied: भ्रातृभिः glossed (स्वस्य) अनुजैः. The rest was already clean; आसन्, आसीत्, आस्ताम् agree. check_layers OK.",
+  "fixes": []
+ },
+ "VR.1.4.32": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 11",
+   "§5.4 rule 13 (checked: श्रूयताम् with आख्यानम्, singular, right)"
+  ],
+  "note": "Second pass. Fix applied exactly: देववर्चसोः now stands bold inside Rāma's speech, explained in the sentence before it; 3 sentences. Agreement checked: तौ … युक्तौ आस्ताम् (dual), सः … दर्शयन् अवदत् (sg), श्रूयताम् with आख्यानम् (sg) right. Coordinator: add शत्रुघ्न to names.json. check_layers OK.",
+  "fixes": []
+ },
+ "VR.1.4.33": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13",
+   "speaker"
+  ],
+  "note": "Speaker 'रामः (पूर्वार्धे, विचित्रार्थपदम् इति पदम्)' accepted: the map has null, but विचित्रार्थपदम् (प्रथमा, with आख्यानम् of 32) closes Rāma's words, while the rest of the first half (सम्यक् गायकौ समचोदयत्) is narration, so a plain 'रामः (पूर्वार्धे)' would mislead; the draft's note explains the departure. The coordinator should update sarga_map n=33 to match. Agreement checked: समचोदयत् (sg, रामः), तौ … आरब्धवन्तौ, ऐच्छताम्, अकुरुताम् (dual) right. Optional: add 'anvita': 'आख्यानम्' to विचित्र-अर्थ-पदम्."
+ },
+ "VR.1.4.34": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-13"
+  ],
+  "note": "Three-line verse; daṇḍas as printed. तन्त्री-लयवत् as matup neuter accusative (fit_note-free 'not in word list' warning only) is defensible; the वति-avyaya reading 'like the rhythm of the strings' would be the other one, no change of sense. ह्लादयत् neuter nominative with गेयम्, objects in द्वितीया right. Vyākhyā: प्रेरितौ … अगायताम्, ज्ञायते स्म, उच्यते, बभौ all agree. One इत्युक्ते."
+ },
+ "VR.1.4.35": {
+  "verdict": "flag",
+  "rules": [
+   "§5.4 rule 13",
+   "§5.2 (ārṣa)"
+  ],
+  "note": "Second pass. The agreement fix is applied: the vyākhyā now reads 'इमौ यत् चरितं **प्रचक्षाते**, कथयतः' (dual, right). The padārtha and anvaya keep the verse's own form प्रचक्षते with the ārṣa label, which is correct for that reading. check_layers OK. Still for a human (the reading choice only): ārṣa plural for the dual with इमौ as subject (the draft's), or the generic plural '(मुनयः/वृद्धाः) तत् मम अपि भूतिकरं प्रचक्षते' with no ārṣa. If the second is chosen, use: padārtha artha 'कथयन्ति (मुनयः)' without the ārṣa label; anvaya '(हे भ्रातरः सभासदः च,) इमौ मुनी कुशीलवौ पार्थिवलक्षणान्वितौ महातपस्विनौ च एव (स्तः) । तत् (चरितं) मम अपि भूतिकरं (इति मुनयः) प्रचक्षते ; (यूयं) महानुभावं चरितं निबोधत ।'; vyākhyā sentence 4 'इमौ यत् **चरितं** गायतः, **तत्** **मम** **अपि** **भूतिकरम्** इति मुनयः **प्रचक्षते**, यतः तत् कल्याणं समृद्धिं च करोति ।'",
+  "fixes": []
+ },
+ "VR.1.4.36": {
+  "verdict": "flag",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.4 rule 7 (nothing beyond the verse)"
+  ],
+  "note": "Padaccheda right: the printed line-breaks प्रचोदिता-/वगायतां and शनै-/र्बुभूषया are re-assigned to whole words and re-join; रामवचः प्रचोदितौ, printed with a space, is correctly taken as one compound (रामवचः could not stand alone here). मार्ग as the classical (मार्ग, not देशी) style of singing, glossed शास्त्रीयं गानम्, is right and enough. Agreement: तौ … प्रचोदितौ … अगायताम्, गीतवन्तौ (dual), सः … आसीत्/बभूव (sg) right. For a human: बुभूषया. The draft commits to 'श्रोतृभिः सह कथायां मग्नः भवितुम् इच्छया', which the verse does not say. The readings to choose from: (a) the commentarial one, as far as I recall it (not checked; no network): desire to be one of the audience, i.e. Rāma left the throne and joined the assembly as a listener; शनैः then goes with परिषद्गतः ('slowly came down into the assembly'); (b) desire for prosperity (बुभूषा = भवितुम्/भूतिम् इच्छा; cf. भूतिकरम् in 35); (c) the draft's. Suggested wording for (a): gloss 'श्रोतृषु एकः भवितुम् इच्छया'; vyākhyā sentences 2–3 '**सः** **च** **अपि** **रामः** श्रोतृषु एकः भवितुम् इच्छति स्म ; तया **बुभूषया** सः **शनैः** सिंहासनात् अवरुह्य **परिषद्गतः**, सभायां सर्वैः सह उपविष्टः, अभवत् । ततः सः तस्मिन् गाने **आसक्तमनाः** **बभूव** **ह**, तस्य मनः गाने लग्नम् अभवत् ।' (सिंहासनात् अवरुह्य is commentarial; drop it if the human prefers nothing beyond the verse).",
+  "fixes": []
+ }
+}
