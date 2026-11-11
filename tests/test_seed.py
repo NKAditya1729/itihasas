@@ -374,3 +374,34 @@ def test_n_and_r_stem_nominatives_in_long_a_never_take_a_visarga():
     # VR.1.21.7 धर्मात्मा इति was seeded as धर्म-आत्माः इति
     assert pausal_candidates(_d("AtmA", "Atman", pos="n", g="m", c="1", n="s")) == ["AtmA"]
     assert pausal_candidates(_d("kartA", "kartf", pos="n", g="m", c="1", n="s")) == ["kartA"]
+
+
+# ---- Step 4: word-aligned groups for a reviewed padaccheda --------------------------------
+
+def test_groups_for_a_reviewed_padaccheda_match_the_seeded_ones():
+    from vrtools.seed import groups_for
+    seeded = seed_verse(VR_1_1_2, parse_dcs(DCS)["1.1.2"])
+    assert groups_for(VR_1_1_2, seeded["padaccheda_lines"]) == seeded["groups"]
+
+
+def test_groups_for_keeps_the_reviewers_forms_exactly():
+    from vrtools.seed import groups_for
+    # भो stays as the reviewer wrote it (भोः); a hyphenated स- prefix stays a prefix
+    g = groups_for(["भो राम सलक्ष्मणः ।"], ["भोः राम स-लक्ष्मणः ।"])
+    assert [x[:2] for x in g[0] if not isinstance(x, str)] == [["भो", "भोः"], ["राम", "राम"], ["सलक्ष्मणः", "स-लक्ष्मणः"]]
+    assert g[0][-1] == " ।"
+
+
+def test_groups_for_a_verse_printed_over_several_lines_without_dandas():
+    from vrtools.seed import groups_for
+    lines = ["ते चापि पौरा नृपतेर्वचस्त-", "च्छ्रुत्वा तदा लाभमिवेष्टमाशु ।"]
+    g = groups_for(lines, ["ते च अपि पौराः नृपतेः वचः", "तत् श्रुत्वा तदा लाभम् इव इष्टम् आशु ।"])
+    assert [x[1] for x in g[0] if not isinstance(x, str)][-1].endswith("वचः")
+    assert [x[:2] for x in g[1] if not isinstance(x, str)][0] == ["च्छ्रुत्वा", "तत् श्रुत्वा"]
+
+
+def test_groups_for_refuses_a_padaccheda_that_does_not_rejoin():
+    from vrtools.seed import groups_for
+    import pytest
+    with pytest.raises(ValueError):
+        groups_for(["रामो वनं गतः ।"], ["रामः वनम् गतम् ।"])

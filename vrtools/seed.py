@@ -8,7 +8,7 @@ from __future__ import annotations
 import re
 
 from .dcs import pausal_candidates
-from .sandhi import VOWELS, _end_danda, mula_norm, non_pausal, norm, rejoin, to_deva, to_slp1, units
+from .sandhi import VOWELS, _end_danda, check_rejoin, mula_norm, non_pausal, norm, pada_members, rejoin, to_deva, to_slp1, units
 
 _STOP_NASAL = {"k": "N", "K": "N", "g": "N", "G": "N", "c": "Y", "C": "Y", "j": "Y", "J": "Y",
                "w": "R", "W": "R", "q": "R", "Q": "R", "t": "n", "T": "n", "d": "n", "D": "n",
@@ -159,3 +159,32 @@ def _groups(line: str, idx: list[int], starts: dict[int, int], chosen: list[str]
     if d:
         items.append(" " + d)
     return items
+
+
+def groups_for(lines: list[str], pada_lines: list[str]) -> list:
+    """Word-aligned groups (for the Padaccheda toggle) of a finished padaccheda, with every
+    pada kept exactly as written. Raises ValueError if the padaccheda does not re-join."""
+    r = check_rejoin(lines, pada_lines)
+    if not r["ok"]:
+        raise ValueError(f"padaccheda does not re-join: {r['failures'][0]}")
+    chosen, sep_after, line_words, starts = [], [], [[] for _ in lines], {}
+    for unit in units(lines):
+        first = len(chosen)
+        for i in unit:
+            members = pada_members(pada_lines[i])
+            for j, (m, _) in enumerate(members):
+                line_words[i].append(len(chosen))
+                chosen.append(m)
+                sep_after.append("-" if j + 1 < len(members) and members[j + 1][1] else " ")
+        line_norm = [mula_norm(to_slp1(lines[i])) for i in unit]
+        comp = [False] + [s == "-" for s in sep_after[first:-1]]
+        found = rejoin([[w] for w in chosen[first:]], "".join(line_norm), comp)
+        bounds, acc = [], 0
+        for ln in line_norm:
+            bounds.append(acc)
+            acc += len(ln)
+        for k, i in enumerate(unit):
+            for wi in line_words[i]:
+                # a word may begin with the last letter of the previous printed line (वचस्त- / च्छ्रुत्वा)
+                starts[wi] = max(0, found["starts"][wi - first] - bounds[k])
+    return [_groups(line, line_words[i], starts, chosen, sep_after) for i, line in enumerate(lines)]
