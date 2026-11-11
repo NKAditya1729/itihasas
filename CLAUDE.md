@@ -133,17 +133,47 @@ Rules: `padaccheda_lines` must have the same line count as `lines`. `padartha` i
 - In questions, put the interrogative where natural prose puts it.
 - Use joined forms, with minimal sandhi (only obligatory internal and compound sandhi). Every pada of the verse must appear exactly once, plus any supplied words.
 
-### 5.4 सरलसंस्कृतव्याख्या
-- Write 3–8 short sentences, each 4–10 words, in लट् or simple past (क्तवतु or लङ्), with minimal external sandhi.
-- **Reuse every significant pada** (nouns, verbs, adjectives) of the verse, bolded with `**…**`, in its original form or the form the new sentence needs. Gloss hard words in apposition with "— अर्थात् …".
-- Continue the story: open with a link to the previous verse, using `context_in_sa` and the previous verse's `vyakhya_sa`. Name the speaker in dialogues ("नारदः वदति — …").
-- Add nothing the verse does not say beyond minimal connective context. No philosophy, no commentary debates, no other recensions or later works.
-- **Do not repeat the padārtha.** Use the verse's words in natural connected sentences, and gloss with "अर्थात्" at most 2–3 hard words per verse (ruling of 2026-11-11, see §5.7).
+### 5.4 सरलसंस्कृतव्याख्या (new style; Aditya, 2026-11-11; replaces the earlier §5.4)
+The vyākhyā is **connected expository prose**, in the register of the Sanskrit
+explanations on ashtadhyayi.com (a copy of their data may be kept in the
+git-ignored `cache/ashtadhyayi/` for register only: copy no sentences, never
+commit it). It is a step harder than the padārtha, which stays simple and
+gives the beginner support.
+
+1. **Connected prose, not a gloss list.** No chains of "X — अर्थात् Y —".
+2. **Keep words separate:** no external sandhi, except fixed joins (अतएव,
+   इत्युक्ते, तद्यथा, अनेनैव and the like). An anusvāra for a final म् before a
+   consonant is fine (नारदं पृच्छति); before a vowel or a pause write म्.
+3. **Use real clauses:** यः…सः, यत्…तत्, यदा…तदा, यदि…तर्हि, चेत्, यतः, येन.
+   **Use connectors:** अतः, अतएव, किञ्च, तथा च, यथा, इति आशयः.
+4. **Explain a hard word inside the sentence:** "X इत्युक्ते Y", or
+   "यः … सः X इति उच्यते".
+5. **Each verse has one or two constructions that stretch the reader:** a
+   passive, a gerund, a सति-सप्तमी, or a present participle. Not more.
+6. **Compounds of at most three members, and transparent.**
+7. Unchanged: **every significant pada of the verse appears, bolded** with
+   `**…**` (in its own form or the form the sentence needs); continuity with
+   the previous verse (use `context_in_sa` and the previous vyākhyā; name the
+   speaker in dialogue); **nothing added beyond the verse** (no philosophy, no
+   commentary debates, nothing from other recensions or later in the story);
+   **3 to 7 sentences**.
+8. The reviewer checks rules 1–7 as well as the grammar. `make check` enforces
+   what a machine can see: 3–7 sentences, 80% of the significant padas in
+   bold, no chain of dash glosses, no avagraha, no word ending in a sandhi
+   consonant, no anusvāra before a vowel or a pause.
+
+A sample in this style (VR.1.1.4, by Aditya, for the register; do not copy it):
+वाल्मीकिः इतः परम् अपि नारदं पृच्छति । यस्य मनः स्ववशे वर्तते सः आत्मवान् इति
+उच्यते ; तादृशः कः अस्ति ? येन क्रोधः जितः सः जितक्रोधः ; सः अपि कः ? द्युतिमान्
+इत्युक्ते तेजस्वी । यः च अन्येषां गुणेषु दोषं न पश्यति सः अनसूयकः ; एतादृशः कः ?
+अन्ते वाल्मीकिः पृच्छति — संयुगे जातरोषस्य कस्य देवाः अपि बिभ्यति इति । इत्युक्ते,
+युद्धे यस्मिन् क्रुद्धे सति देवाः अपि भयं प्राप्नुवन्ति, सः पुरुषः कः इति आशयः ।
 
 ### 5.5 Sarga summary
 After a sarga is finished, write `summary_sa` (2–4 simple sentences). The next sarga's `context_in_sa` = the previous `summary_sa` plus the last 3 verses' vyākhyā. This is how the story context carries forward.
 
 ### 5.6 Second worked example (VR.1.1.2)
+*(The vyākhyā of this example and of the §4 example shows the earlier, simpler style; §5.4 and §5.7 now govern.)*
 - mūla: को न्वस्मिन् साम्प्रतं लोके गुणवान् कश्च वीर्यवान् । धर्मज्ञश्च कृतज्ञश्च सत्यवाक्यो दृढव्रतः ॥
 - padaccheda: कः नु अस्मिन् साम्प्रतम् लोके गुणवान् कः च वीर्यवान् । धर्म-ज्ञः च कृत-ज्ञः च सत्य-वाक्यः दृढ-व्रतः ॥
 - padārtha:
@@ -190,13 +220,8 @@ worked examples of §4 and §5.6 differ, **these rulings win**.
 **Anvaya (§5.3)**
 - Every pada exactly once. Anything supplied, even a च, stands in parentheses.
 
-**Vyākhyā (§5.4): do not repeat the padārtha**
-- Tell the verse in natural, connected sentences that use the verse's own
-  words. It is a retelling, not a word list.
-- Use "— अर्थात् …" for **at most 2–3 hard words per verse** (`make check`
-  fails on more than three). The other words are explained by the padārtha.
-- A word before a pause (dash, comma, daṇḍa, question mark) or before a vowel
-  ends in म्, not in anusvāra.
+**Vyākhyā:** the style is now given in §5.4 (expository prose; it replaced the
+earlier ruling "at most 2–3 अर्थात् glosses").
 
 ## 6. Pipeline and phases
 - **Phase 0 – Inspect.** Do §1 and write `docs/EXISTING_DESIGN.md`. Set up the Python env (`uv init`; `uv add vidyut dharmamitra-sanskrit-grammar indic-transliteration jsonschema`). Download vidyut data per its docs.

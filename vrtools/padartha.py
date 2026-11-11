@@ -10,9 +10,11 @@
    not know (a name, a rare compound) is listed under "unverified", not failed.
 4. A qualifier (``anvita``) agrees with what it qualifies in case, number and gender.
 5. The anvaya has every pada exactly once; any other word stands in parentheses.
-6. The vyākhyā reuses at least 80% of the significant padas (bold words), has 3–8
-   sentences of at most 12 words, glosses at most three words with अर्थात् (§5.7), and
-   no Sanskrit field has Latin letters.
+6. The vyākhyā (§5.4) reuses at least 80% of the significant padas (bold words), has 3–7
+   sentences, is not a chain of dash glosses, and keeps its words separate (no avagraha,
+   no sandhi consonant at a word end, no anusvāra before a vowel or a pause). No Sanskrit
+   field has Latin letters. The rest of §5.4 (real clauses, connectors, one or two
+   stretching constructions, short compounds) is the reviewer's to judge.
 
 The word list over-generates (it knows च also as a noun form), so it can only say that an
 analysis is impossible, never that it is the right one. That judgment is the reviewer's.
@@ -39,7 +41,7 @@ LAKARA = {"लट्": "la~w", "लिट्": "li~w", "लुट्": "lu~w", "
           "विधिलिङ्": "viDili~N", "आशीर्लिङ्": "ASIrli~N", "लुङ्": "lu~N", "लृङ्": "lf~N"}
 NO_LINGA = {"अस्मद्", "युष्मद्"}                 # the personal pronouns have no gender
 CASE_FIELDS = ("linga", "vibhakti", "lakara", "purusha")
-MIN_REUSE, MIN_SENTENCES, MAX_SENTENCES, MAX_WORDS, MAX_ARTHAT = 0.8, 3, 8, 12, 3
+MIN_REUSE, MIN_SENTENCES, MAX_SENTENCES, MAX_DASH_GLOSSES = 0.8, 3, 7, 1
 
 _DANDA = re.compile(r"[।॥]")
 _PUNCT = re.compile(r"[।॥,;:?!—–\"“”'‘’()\[\]]")
@@ -205,6 +207,27 @@ def _anvaya_errors(padas: list[str], anvaya: str) -> list[str]:
     return errs
 
 
+_NON_PAUSAL = set("rszSgGdDbBqQjJcCKTPWhyvl")      # a word cannot end in these when it stands alone
+
+
+def _sandhi_errors(vyakhya: str) -> list[str]:
+    """§5.4 rule 2: words stay separate. What a machine can see: an avagraha, a word that ends
+    in a sandhi consonant (श्रेष्ठश् च), an anusvāra before a vowel or a pause (श्रेष्ठं अस्ति).
+    Vowel sandhi between two words (मुनिर्महान्, चास्ति) is left to the reviewer."""
+    errs = []
+    if "ऽ" in vyakhya:
+        errs.append("vyākhyā: external sandhi (avagraha ऽ): keep the words separate")
+    for chunk in re.split(r"[।॥?!,;:—–]", vyakhya.replace("**", "")):
+        words = [w for w in _PUNCT.sub(" ", chunk).split() if w]
+        for i, w in enumerate(words):
+            s = to_slp1(w)
+            if s[-1:] in _NON_PAUSAL:
+                errs.append(f"vyākhyā: external sandhi: “{w}” does not end in a pausal sound")
+            elif s.endswith("M") and (i + 1 == len(words) or to_slp1(words[i + 1])[:1] in "aAiIuUfFxXeEoO"):
+                errs.append(f"vyākhyā: external sandhi: anusvāra in “{w}” before a vowel or a pause (write म्)")
+    return errs
+
+
 def _vyakhya_report(entries: list[dict], vyakhya: str) -> tuple[list[str], list[str]]:
     used = [w for chunk in _BOLD.findall(vyakhya) for w in _PUNCT.sub(" ", chunk).split()]
     bold = [fold(to_slp1(w)) for w in used]
@@ -220,11 +243,10 @@ def _vyakhya_report(entries: list[dict], vyakhya: str) -> tuple[list[str], list[
     sentences = [s for s in re.split(r"[।॥?!]", vyakhya.replace("**", "")) if s.strip()]
     if not MIN_SENTENCES <= len(sentences) <= MAX_SENTENCES:
         errs.append(f"vyākhyā: {len(sentences)} sentences (should be {MIN_SENTENCES}–{MAX_SENTENCES})")
-    long = [s.strip() for s in sentences if len(_PUNCT.sub(" ", s).split()) > MAX_WORDS]
-    if long:
-        errs.append(f"vyākhyā: a sentence has more than {MAX_WORDS} words: {long[0][:60]}…")
-    if vyakhya.count("अर्थात्") > MAX_ARTHAT:      # §5.7: gloss only the 2–3 hard words; do not repeat the padārtha
-        errs.append(f"vyākhyā: अर्थात् is used {vyakhya.count('अर्थात्')} times (at most {MAX_ARTHAT})")
+    dash_glosses = len(re.findall(r"[—–-]\s*अर्थात्", vyakhya))
+    if dash_glosses > MAX_DASH_GLOSSES:               # §5.4 rule 1: prose, not a chain of "X — अर्थात् Y —"
+        errs.append(f"vyākhyā: {dash_glosses} dash glosses with अर्थात् (explain a word inside the sentence: X इत्युक्ते Y)")
+    errs += _sandhi_errors(vyakhya)
     return errs, used
 
 

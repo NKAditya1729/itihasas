@@ -26,9 +26,8 @@ GOOD = {
          "vigraha": "मुनिषु पुङ्गवः", "artha": "मुनिश्रेष्ठम्", "anvita": "नारदम्"},
     ],
     "anvaya": "तपस्वी वाल्मीकिः तपःस्वाध्यायनिरतं वाग्विदां वरं मुनिपुङ्गवं नारदं परिपप्रच्छ ।",
-    "vyakhya_sa": "वाल्मीकिः नाम एकः मुनिः आसीत् । सः **तपस्वी** आसीत् । **नारदः** अपि महान् मुनिः । नारदः सदा **तपसि** **स्वाध्याये** च **निरतः** । "
-                  "सः **वाग्विदां वरः** — वचनं जानतां सर्वेषां मध्ये श्रेष्ठः । सः **मुनिपुङ्गवः** — मुनीनां श्रेष्ठः । "
-                  "तादृशं नारदं **वाल्मीकिः** एकं प्रश्नं **परिपप्रच्छ** — पृष्टवान् ।",
+    "vyakhya_sa": "पुरा **वाल्मीकिः** नाम **तपस्वी** मुनिः आसीत् । यः **तपसि** **स्वाध्याये** च **निरतः** आसीत्, तं **नारदं** सः **परिपप्रच्छ** । "
+                  "**नारदः** **वाग्विदां** **वरः** इति उच्यते । **मुनिपुङ्गवः** इत्युक्ते मुनिषु श्रेष्ठः ।",
 }
 
 
@@ -43,7 +42,7 @@ def good():
 def test_the_worked_example_of_claude_md_passes():
     r = check_layers(LINES, good())
     assert r["errors"] == []
-    assert r["vyakhya_used_padas"][:3] == ["तपस्वी", "नारदः", "तपसि"]      # recomputed from the bold words
+    assert r["vyakhya_used_padas"][:3] == ["वाल्मीकिः", "तपस्वी", "तपसि"]      # recomputed from the bold words
 
 
 # ---- one entry per pada, in verse order ------------------------------------------------
@@ -165,13 +164,20 @@ def test_vyakhya_must_reuse_most_significant_padas():
     assert any("vyākhyā" in e and "reuses" in e for e in errors(v))
 
 
-def test_vyakhya_sentences_are_few_and_short():
+def test_vyakhya_has_three_to_seven_sentences():
     v = good()
-    v["vyakhya_sa"] = GOOD["vyakhya_sa"] + " " + " ".join(["सः मुनिः आसीत् ।"] * 6)
+    v["vyakhya_sa"] = GOOD["vyakhya_sa"] + " " + " ".join(["सः मुनिः आसीत् ।"] * 4)        # 8 sentences
     assert any("sentences" in e for e in errors(v))
+    v["vyakhya_sa"] = "**वाल्मीकिः** **तपस्वी** **तपसि** **स्वाध्याये** **निरतं** **वाग्विदां** **वरं** **मुनिपुङ्गवं** **नारदं** **परिपप्रच्छ** ।"
+    assert any("sentences" in e for e in errors(v))
+
+
+def test_a_long_expository_sentence_is_allowed():
+    # §5.4 (2026-11-11): real clauses; no word limit per sentence
     v = good()
-    v["vyakhya_sa"] = GOOD["vyakhya_sa"].replace("सः **तपस्वी** आसीत् ।", "सः **तपस्वी** आसीत् च सदा वने वसति स्म च फलानि खादति स्म च जलं पिबति स्म च ।")
-    assert any("words" in e for e in errors(v))
+    v["vyakhya_sa"] = GOOD["vyakhya_sa"].replace("**मुनिपुङ्गवः** इत्युक्ते मुनिषु श्रेष्ठः ।",
+        "यः मुनिषु श्रेष्ठः भवति सः **मुनिपुङ्गवः** इति उच्यते, अतः नारदः अपि तथा उच्यते इति आशयः ।")
+    assert errors(v) == []
 
 
 @pytest.mark.parametrize("field", ["anvaya", "vyakhya_sa"])
@@ -219,7 +225,7 @@ def test_merge_writes_all_layers_and_marks_the_padaccheda_reviewed():
     assert v["padaccheda_status"] == "reviewed" and v["padaccheda_lines"] == GOOD["padaccheda_lines"]
     assert [g[:2] for g in v["groups"][0] if not isinstance(g, str)][0] == ["तपःस्वाध्यायनिरतं", "तपः-स्वाध्याय-निरतम्"]   # aligned to the corrected text
     assert len(v["padartha"]) == 8 and v["anvaya"].startswith("तपस्वी") and "**तपस्वी**" in v["vyakhya_sa"]
-    assert v["vyakhya_used_padas"][0] == "तपस्वी"
+    assert v["vyakhya_used_padas"][0] == "वाल्मीकिः"
     assert v["review"]["agent_review"] == "pass" and v["review"]["auto_checks"]["padartha_fit"] is True
     assert v["review"]["flags"] == ["mula_suspect"]            # the seed flag is settled by the review
     assert v["gen"]["prompt_version"] == "pilot-1" and v["lines"][0].startswith("तपः स्वाध्याय")
@@ -235,12 +241,29 @@ def test_merge_refuses_a_draft_that_fails_the_checks():
     assert v["padaccheda_status"] == "seed" and v["padartha"] == []     # nothing was written
 
 
-# ---- rulings after pilot verses 1–5 (Aditya, 2026-11-11; CLAUDE.md §5.7) ---------------------
+# ---- the expository style of CLAUDE.md §5.4 (Aditya, 2026-11-11) ---------------------------
 
-def test_vyakhya_may_gloss_at_most_three_words_with_arthat():
-    v = good()                                       # the old worked example glosses four words
-    v["vyakhya_sa"] = ("वाल्मीकिः **तपस्वी** मुनिः आसीत् । **नारदः** **तपसि** — अर्थात् तपःकर्मणि — **स्वाध्याये** — अर्थात् वेदपठने — च **निरतः** आसीत् । "
-                       "सः **वाग्विदां** — अर्थात् वाचं जानतां — **वरः** — अर्थात् श्रेष्ठः — **मुनिपुङ्गवः** च आसीत् । तं **नारदं** **वाल्मीकिः** **परिपप्रच्छ** ।")
+def test_a_chain_of_dash_glosses_is_an_error():
+    v = good()
+    v["vyakhya_sa"] = ("पुरा **वाल्मीकिः** नाम **तपस्वी** मुनिः आसीत् । **नारदः** **तपसि** — अर्थात् तपःकर्मणि — **स्वाध्याये** — अर्थात् वेदपठने — च **निरतः** आसीत् । "
+                       "सः **वाग्विदां** **वरः** **मुनिपुङ्गवः** च आसीत् । तं **नारदं** वाल्मीकिः **परिपप्रच्छ** ।")
     assert any("अर्थात्" in e for e in errors(v))
-    v["vyakhya_sa"] = v["vyakhya_sa"].replace(" — अर्थात् श्रेष्ठः —", "")
-    assert errors(v) == []
+
+
+@pytest.mark.parametrize("bad,why", [
+    ("सः **मुनिपुङ्गवः** इति उच्यते, सोऽपि महान् ।", "avagraha"),                 # सः अपि
+    ("**मुनिपुङ्गवः** इत्युक्ते मुनिषु श्रेष्ठं अस्ति ।", "anusvāra"),              # श्रेष्ठम् अस्ति
+    ("**मुनिपुङ्गवः** इत्युक्ते मुनिषु श्रेष्ठं ।", "anusvāra"),                    # before a pause
+    ("**मुनिपुङ्गवः** इत्युक्ते मुनिर्महान् भवति ।", None),                        # fused words: for the reviewer, not the machine
+    ("**मुनिपुङ्गवः** इत्युक्ते मुनिषु श्रेष्ठश् च ।", "pausal"),                    # श्रेष्ठः च
+])
+def test_words_stay_separate_in_the_vyakhya(bad, why):
+    v = good()
+    v["vyakhya_sa"] = GOOD["vyakhya_sa"].replace("**मुनिपुङ्गवः** इत्युक्ते मुनिषु श्रेष्ठः ।", bad)
+    found = [e for e in errors(v) if "sandhi" in e]
+    assert (why is None and not found) or (why is not None and any(why in e for e in found))
+
+
+def test_anusvara_before_a_consonant_is_fine():
+    v = good()                                       # तं नारदं सः, वाग्विदां वरः
+    assert not any("sandhi" in e for e in errors(v))
