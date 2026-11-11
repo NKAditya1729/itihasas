@@ -10,9 +10,49 @@
   "note": "श्रीमाञ्छ्त्रुनिबर्हणः: a stray virāma after छ; the verse has 31 syllables. Corrected in lines_corrected (approved by Aditya, 2026-11-11)."
  },
  {
+  "id": "VR.1.1.15",
+  "flag": "mula_suspect",
+  "note": "…तत्त्वज्ञो स्मृतिमान्: a final ओ before स् is not possible sandhi. Proposed, not applied: …तत्त्वज्ञः स्मृतिमान्."
+ },
+ {
+  "id": "VR.1.1.17",
+  "flag": "mula_suspect",
+  "note": "सर्व गुणोपेतः: a space inside the compound सर्वगुणोपेतः."
+ },
+ {
+  "id": "VR.1.1.29",
+  "flag": "mula_suspect",
+  "note": "शृङ्गवीरपुरे: the usual name is शृङ्गवेरपुर / शृङ्गिबेरपुर (so elsewhere in this text). Proposed, not applied: शृङ्गवेरपुरे."
+ },
+ {
+  "id": "VR.1.1.43",
+  "flag": "mula_suspect",
+  "note": "परम प्रीतः: a space inside the compound परमप्रीतः."
+ },
+ {
   "id": "VR.1.1.45",
   "flag": "mula_suspect",
   "note": "दण्डकारण्यवासीनाम्: long ī breaks the cadence of the pāda. Corrected in lines_corrected (approved by Aditya, 2026-11-11)."
+ },
+ {
+  "id": "VR.1.1.57",
+  "flag": "mula_suspect",
+  "note": "सोऽभ्य गच्छन्: a space inside the verb form सोऽभ्यगच्छन्."
+ },
+ {
+  "id": "VR.1.1.65",
+  "flag": "mula_suspect",
+  "note": "प्रेक्ष्य चास्ति महाबलः: very probably a slip for चास्थि (the bones of Dundubhi, the object of प्रेक्ष्य). Proposed, not applied: चास्थि. The verse is explained as printed."
+ },
+ {
+  "id": "VR.1.1.84",
+  "flag": "mula_suspect",
+  "note": "सर्वदेवतैः: देवत is not a regular a-stem; the Critical Edition reads सर्वदैवतैः."
+ },
+ {
+  "id": "VR.1.1.85",
+  "flag": "mula_suspect",
+  "note": "अभ्यषिच्य: an augment with ल्यप् is not a possible form; the Critical Edition reads अभ्यषिञ्चत्."
  },
  {
   "id": "VR.1.1.100",
@@ -28,21 +68,6 @@
   "id": "VR.1.31.14",
   "flag": "mula_suspect",
   "note": "Two verses stored as one: the source marker ॥१-३१-१३ lacks its closing ॥."
- },
- {
-  "id": "VR.3.73.41",
-  "flag": "mula_suspect",
-  "note": "Two verses stored as one: the source marker ॥ ॥ ४० is malformed."
- },
- {
-  "id": "VR.3.24.6",
-  "flag": "mula_suspect",
-  "note": "नोऽभयं: the Critical Edition (3.23.6) reads नो भयम्; the printed avagraha may be spurious."
- },
- {
-  "id": "VR.6.44.1",
-  "flag": "mula_suspect",
-  "note": "The first two lines are the page heading and the reciters' credit, not verse text."
  },
  {
   "id": "VR.2.90.5",
@@ -63,5 +88,20 @@
   "id": "VR.2.106.15",
   "flag": "not_mula",
   "note": "A commentary sentence numbered as a verse on Wikisource."
+ },
+ {
+  "id": "VR.3.24.6",
+  "flag": "mula_suspect",
+  "note": "नोऽभयं: the Critical Edition (3.23.6) reads नो भयम्; the printed avagraha may be spurious."
+ },
+ {
+  "id": "VR.3.73.41",
+  "flag": "mula_suspect",
+  "note": "Two verses stored as one: the source marker ॥ ॥ ४० is malformed."
+ },
+ {
+  "id": "VR.6.44.1",
+  "flag": "mula_suspect",
+  "note": "The first two lines are the page heading and the reciters' credit, not verse text."
  }
 ]
