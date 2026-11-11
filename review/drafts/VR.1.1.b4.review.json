@@ -1,0 +1,231 @@
+{
+ "VR.1.1.44": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the rewritten vyakhya is correct (तेषां प्रतिशुश्राव kept as in the verse and explained by तेभ्यः प्रतिज्ञां कृतवान्; अगस्त्यस्य वचनात् now matches verse 42). Scholar note kept: fit_note on असुर-रक्षसाम् verified. The word list knows only the a-stem असुररक्षस (whose genitive plural would be असुररक्षसानाम्), so the form in the verse can only be the s-stem dvandva असुररक्षस्, षष्ठी बहु, neuter by the last member; Govindaraja takes it as a dvandva too (from memory). अभ्यागमन् is rightly लुङ्; तेषाम् is rightly षष्ठी for the dative with प्रतिशुश्राव (the कस्य ruling).",
+  "fixes": []
+ },
+ "VR.1.1.45": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the rewritten vyakhya is correct (ये … ते clause, passive उच्यन्ते). It fits the approved corrected text (दण्डकारण्यवासिनाम्). Scholar notes kept: अग्निकल्पानाम् is rightly unhyphenated (कल्पप् is a taddhita suffix, not a compound member); संयत् as स्त्री follows the Amarakosa (स्त्रियः संयत्समित्याजिसमिद्युधः), quoted from memory.",
+  "fixes": []
+ },
+ "VR.1.1.46": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the rewritten vyakhya is correct. विरूपिता (not in the word list) is a sound form: क्त of the denominative विरूपयति, स्त्री प्रथमा एक. Nothing is added about how she was disfigured.",
+  "fixes": []
+ },
+ "VR.1.1.47": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the prescribed vyakhya is in, word for word; the names now stand in the nominative and the bold padas in a sentence that needs the accusative. Scholar note kept: सिद्ध in the sense of ready (padartha of उद्युक्तान्, vyakhya, context note) is spoken-Sanskrit usage; उद्यत would be the classical word.",
+  "fixes": []
+ },
+ "VR.1.1.48": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the vyakhya is now plain narrative with two stretching constructions (अनुसृत्य, निवसन्); जनस्थाननिवासिनः is the right accusative plural; the synonym is given by ते एव अनुचराः as suggested. The batch-level variety point of the first pass is resolved (इति आशयः now only in verse 51, इत्युक्ते only in 45, 47 and 59). Padaccheda (पद-अनुगान्), padartha (जनस्थाननिवासिनाम् as नपुं, agreeing with रक्षसाम् of verse 49) and the run-over anvaya are correct.",
+  "fixes": []
+ },
+ "VR.1.1.49": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the rewritten vyakhya is correct (ज्ञातयः, बन्धवः; मनः मूढम् इव जातम् with the right neuter). The anvaya closes the second half with (अभवत्), although रावणः क्रोधमूर्छितः is really the subject of वरयामास in verse 50; acceptable as a simplification.",
+  "fixes": []
+ },
+ "VR.1.1.50": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the run-over anvaya is in as suggested (मारीचेन सुबहुशः वार्यमाणः सः रावणः (तत् वाक्यम् अनादृत्य जगाम)), and the vyakhya no longer has वार्यमाणः अभवत्; the participle now stands with a finite verb. Three sentences, one stretching construction; grammar correct (निवारितवान्). Trifles, not faults: in the last sentence श्रुतवान् means only that he heard the words, which verse 51 then gives; the padartha still glosses the present participle वार्यमाणः with the past निषिद्धः (निवार्यमाणः would keep the tense).",
+  "fixes": []
+ },
+ "VR.1.1.51": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the gloss of अनादृत्य is corrected as prescribed (आदरम् अकृत्वा, अगणयित्वा), and the rewritten vyakhya is correct (गन्तुम् एव निश्चितवान् agrees with the जगाम supplied in the anvaya; the one इति आशयः of the batch is well used here). Scholar notes kept: तद्वाक्यम् is split तत् वाक्यम् (that speech); तत्-वाक्यम् (तस्य मारीचस्य वाक्यम्) is equally possible. काल is taken as the power that drives him; death and fate are both within the word.",
+  "fixes": []
+ },
+ "VR.1.1.52": {
+  "verdict": "flag",
+  "rules": [
+   "§5.4 rule 7",
+   "§5.4 rule 10"
+  ],
+  "note": "One definite fault remains, in the rewritten vyakhya only. Its last sentence (एवं तौ अपवाह्य सः स्वयम् आश्रमस्य समीपे अतिष्ठत्) tells something the verse does not say: that Ravana himself waited near the hermitage. That is brought in from the fuller story (rule 7: nothing added). In the verse the gerund अपवाह्य depends on जहार of verse 53, as the anvaya rightly shows. The corrected sentence is in fixes. Everything else is right: नायितवान् is the correct causative, and the instrumental तेन मायाविना for the one who is made to lead is exactly what the grammar requires with नी and वह् (नीवह्योर्न), as in the verse itself; सह-मारीचः and नृप-आत्म-जौ are split as the rulings require; nothing of the golden deer is brought in. Trifle: in the gloss of नृप-आत्म-जौ the supplied रामलक्ष्मणौ could stand in round brackets like दशरथस्य.",
+  "fixes": [
+   {
+    "where": "vyakhya_sa",
+    "problem": "The last sentence adds an event that is not in the verse (स्वयम् आश्रमस्य समीपे अतिष्ठत्); §5.4 rule 7.",
+    "replace_with": "एवं तौ **अपवाह्य** सः यत् कृतवान् तत् अग्रिमे श्लोके उच्यते ।"
+   }
+  ],
+  "round": "second review: the last sentence added an event not in the verse; the reviewer's exact replacement sentence was applied by the coordinator; kept as flag for the human reviewer"
+ },
+ "VR.1.1.53": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the rewritten vyakhya is correct; the सति-सप्तमी (रामलक्ष्मणयोः दूरं गतयोः सतोः) is rightly formed in the dual, and जटायुः is the right nominative. जटायुषम् (not in the word list) is the regular द्वितीया एक of जटायुस्. Trifle kept: with the stem जटायुस् the compound in the padartha gloss would be जटायुर्नामकम् (जटायुनामकम् presupposes the other stem जटायु).",
+  "fixes": []
+ },
+ "VR.1.1.54": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the suggested variation is in (विलापः नाम दुःखेन रोदनम्) and the rest of the vyakhya is correct. The bold दग्धवान् stands for the gerund दग्ध्वा of the verse, acceptable because the vyakhya ends the sentence here while the anvaya runs on into verse 55.",
+  "fixes": []
+ },
+ "VR.1.1.55": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the rewritten vyakhya is correct (अन्विष्यति स्म).",
+  "fixes": []
+ },
+ "VR.1.1.56": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the rewritten vyakhya is correct. Scholar notes kept: स्वः-गतः is the right split of स्वर्गतः (स्वर् + गत, first member in pausal form), not an accidental re-join; अस्य is handled by the कस्य ruling (अस्मै इति अर्थः); शरीरे दग्धे सति is well formed. Trifle: महा-बाहुः is glossed by another compound (दीर्घबाहुः); यस्य बाहू दीर्घौ सः would be simpler.",
+  "fixes": []
+ },
+ "VR.1.1.57": {
+  "verdict": "flag",
+  "rules": [
+   "§12",
+   "§5.1"
+  ],
+  "note": "No error in any layer; the vyakhya now defines only श्रमणा and शत्रुसूदनः, so the rule 10 point of the first pass is resolved. One point remains for the scholar, on the mula: the printed line reads सोऽभ्य गच्छन्महातेजाः with a stray space inside अभ्यगच्छत्. The padaccheda rightly treats it as one word, and under §12 a correction of the same kind as the one approved for VR.1.1.1 (space removed, no letter changed) could be proposed.",
+  "fixes": []
+ },
+ "VR.1.1.58": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the rewritten vyakhya is correct; पम्पां नाम सरः has the name in the case of its noun and the right neuter.",
+  "fixes": []
+ },
+ "VR.1.1.59": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the rewritten vyakhya is correct and now shows the regular form (शंसत् इत्युक्ते अशंसत्, उक्तवान्). Scholar note kept: fit_note on शंसत् verified. The word list knows शंसत् only as a neuter present participle, which cannot agree with रामः; here it is the augmentless imperfect अशंसत् (आर्ष अडभाव; so Govindaraja, from memory), लङ् प्रथम एक.",
+  "fixes": []
+ },
+ "VR.1.1.60": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the rewritten vyakhya is correct. Scholar notes kept: यथा-वृत्तम् is taken as an avyayibhava adverb; it can also be read as a neuter noun in apposition to तत्. रामस्य with श्रुत्वा is glossed as रामस्य (वृत्तम्); the epic genitive of the speaker (रामात्) is the other reading. Neither changes the sense. The anvaya honestly supplies शंसत् from 59 and सख्यं चकार from 61.",
+  "fixes": []
+ },
+ "VR.1.1.61": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the rewritten vyakhya is correct (मित्रे अभवताम्, कृतवन्तौ in the dual; सर्वम् उक्तम्). वैर-अनुकथनम् keeps अनु inside its member.",
+  "fixes": []
+ },
+ "VR.1.1.62": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10",
+   "§5.7"
+  ],
+  "note": "Second pass: the rewritten vyakhya is correct, and the context note now keeps one tense (प्रतिजानीते). Padaccheda judged on its merits: correct; the one re-join error is the known unjoined प्रणयात् दुःखितेन of the printed text. वाली is identified only as far as these verses go.",
+  "fixes": []
+ }
+}
