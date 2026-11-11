@@ -45,7 +45,7 @@ _DROP = re.compile(r"[\s\-'।॥|.0-9०-९]")
 _DROP_KEEP_AVAGRAHA = re.compile(r"[\s\-।॥|.0-9०-९]")
 _HOMORGANIC = re.compile(r"N(?=[kKgG])|Y(?=[cCjJ])|R(?=[wWqQ])|n(?=[tTdD])|m(?=[pPbB])")
 _DANDAS = re.compile(r"[।॥]")
-CHECKER_VERSION = 8   # bump when the rules change; seeds from older versions are redone
+CHECKER_VERSION = 9   # bump when the rules change; seeds from older versions are redone
 PRUNE_SLACK = 3   # a junction can rewrite at most the last 3 characters of the joined text
 
 
@@ -147,13 +147,16 @@ R_STEMS = {"punaH", "antaH", "prAtaH", "svaH", "ahaH", "pitaH", "mAtaH", "BrAtaH
 _R_STEMS_FOLDED = {fold(w) for w in R_STEMS}
 
 
+_BHO = {"BoH", "BagoH", "aGoH"}   # only these drop -oḥ before a vowel or voiced sound (8.3.17); any other -oḥ → -or
+
+
 def _visarga(L: str, R: str, left_word: str, mark: str = "required") -> list[tuple[str, int]]:
     b, prev, stem = R[0], L[-2] if len(L) > 1 else "", L[:-1]
     if prev not in VOWELS:                                   # ḥ after ṃ or a consonant is no word ending
         return []
     if left_word in ("saH", "ezaH") and b not in VOWELS:   # sa / eṣa before any consonant
         return [(stem + R, len(L) - 1)]
-    if prev == "o" and (b in VOWELS or b in VOICED):        # bhoḥ
+    if prev == "o" and (b in VOWELS or b in VOICED) and fold(left_word) in _BHO:   # bhoḥ, bhagoḥ, aghoḥ
         return [(stem + R, len(L) - 1)]
     if b in VOWELS or b in VOICED:
         if prev == "a":

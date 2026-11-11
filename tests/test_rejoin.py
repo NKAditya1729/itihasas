@@ -248,3 +248,22 @@ def test_sandhi_across_a_line_break_without_a_danda_still_rejoins():
     mula = ["उदारवृत्तार्थपदैर्मनोरमै-", "स्तदास्य रामस्य चकार कीर्तिमान् ।"]
     pada = ["उदार-वृत्त-अर्थ-पदैः मनः-रमैः", "तदा अस्य रामस्य चकार कीर्तिमान् ।"]
     assert check_rejoin(mula, pada)["ok"]
+
+
+# ---- Stage C: -oḥ before a vowel or a voiced sound becomes -or, except in भोः (found in VR.1.3.20) ----
+
+@pytest.mark.parametrize("mula,pada", [
+    (["खरत्रिशिरसोरुत्थानं रावणस्य च ॥"], ["खर-त्रिशिरसोः उत्थानम् रावणस्य च ॥"]),
+    (["गुरोरुत्थानम् ॥"], ["गुरोः उत्थानम् ॥"]),
+    (["भानोर्गमनम् ॥"], ["भानोः गमनम् ॥"]),
+])
+def test_visarga_after_o_becomes_r(mula, pada):
+    assert check_rejoin(mula, pada)["ok"]
+
+
+def test_bhoh_still_drops_its_visarga():
+    assert check_rejoin(["भो राजन् ॥"], ["भोः राजन् ॥"])["ok"]
+
+
+def test_visarga_after_o_is_not_dropped_outside_bhoh():
+    assert not check_rejoin(["गुरो उत्थानम् ॥"], ["गुरोः उत्थानम् ॥"])["ok"]
