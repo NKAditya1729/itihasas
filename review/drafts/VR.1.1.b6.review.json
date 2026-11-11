@@ -1,0 +1,216 @@
+{
+ "VR.1.1.82": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. सती is taken as पतिव्रता (not as the participle of अस् with अमृष्यमाणा), which is the usual commentarial reading (from memory). The opening sentence recaps verse 81 (continuity, rule 7) and adds nothing new.",
+  "fixes": []
+ },
+ "VR.1.1.83": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. The sentence runs on into 84 (ज्ञात्वा … बभौ; त्रैलोक्यं … तुष्टम्): the anvaya supplies the missing predicates in brackets, which is honest. तेन कर्मणा = रावणवधेन follows verse 81 and the commentators (from memory).",
+  "fixes": []
+ },
+ "VR.1.1.84": {
+  "verdict": "flag",
+  "rules": [
+   "§12",
+   "§5.2",
+   "§5.7 gender",
+   "§5.4 rule 10"
+  ],
+  "note": "Mūla सर्वदेवतैः is doubtful: the Critical Edition (local ce.jsonl, CE 1.1.68) reads pūjitaḥ sarvadaivataiḥ. देवत as an a-stem is not a regular word (देवता is स्त्री, instr. देवताभिः; दैवत is नपुं, पुंसि वा, by Amara, from memory). The draft records सर्वदेवत नपुं तृतीया बहु and glosses it honestly (दैवतानि; सर्वाभिः देवताभिः इति अर्थः), and the vyākhyā wisely uses सर्वाः देवताः. Scholar to decide: keep as an epic form, or mark mula_suspect and propose सर्वदैवतैः under §12. Padaccheda स-देव-ऋषि-गणम् (dvandva देवाः च ऋषयः च) is accepted. Minor: the first vyākhyā sentence ends in इति पूर्वम् उक्तम्, although तुष्टम् stands in this very verse; it could simply end at अभवत्. Not a grammatical fault.",
+  "fixes": []
+ },
+ "VR.1.1.85": {
+  "verdict": "flag",
+  "rules": [
+   "§12",
+   "§5.7 epic usage",
+   "§5.4 rule 7"
+  ],
+  "note": "अभ्यषिच्य (augment अ + ल्यप्) is not a possible form by grammar. CE 1.1.66 (local ce.jsonl) reads abhyaṣiñcat sa laṅkāyāṃ; some printed texts have अभिषिच्य च (from memory); the Wikisource reading looks like a mixture of the two. The draft records it the right way for §5.7 (avyaya, अभि + सिच्, ल्यप्, gloss: अभिषिच्य इति अर्थः; आर्षं रूपम्), but the reading is a candidate for mula_suspect (§12). प्रमुमोद is correctly recorded as लिट् प्रथम एक with the remark that परस्मैपद is ārṣa (मुद हर्षे is ātmanepadin; CE also has pramumoda). The vyākhyā renders the gerund as अभिषिक्तवान्, not in bold: acceptable for an avyaya; bolding it would show the link to the verse.",
+  "fixes": []
+ },
+ "VR.1.1.86": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. सु-हृत्-वृतः is split as the rulings require (सु-, pausal हृत्).",
+  "fixes": []
+ },
+ "VR.1.1.87": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. आश्रम पुं is right (Amara: आश्रमोऽस्त्री, from memory). अन्तिके with a verb of sending is glossed well (समीपं प्रति इति अर्थः).",
+  "fixes": []
+ },
+ "VR.1.1.88": {
+  "verdict": "flag",
+  "rules": [
+   "§5.3",
+   "§5.4 rule 7"
+  ],
+  "note": "पुनः: the anvaya and the vyākhyā take it with समारुह्य (boarded the Puṣpaka again after the halt at the hermitage). By its place in the verse it stands with आख्यायिकां जल्पन् (telling the past events over again), and I believe commentators read it so, but I cannot verify this offline. Both are grammatical and fit the story. Scholar to choose. If it goes with जल्पन्: anvaya = तदा सुग्रीवसहितः (रामः) पुनः आख्यायिकां जल्पन् तत् पुष्पकं समारुह्य तदा नन्दिग्रामं ययौ ; and in the vyākhyā **पुनः** moves to the sentence with जल्पन्. Everything else is correct.",
+  "fixes": []
+ },
+ "VR.1.1.89": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. हित्वा appears as त्यक्तवान् (avyaya, so not required in bold).",
+  "fixes": []
+ },
+ "VR.1.1.90": {
+  "verdict": "flag",
+  "rules": [
+   "§5.2",
+   "§5.7 gloss"
+  ],
+  "note": "निरामयः / अरोगः: आमय means रोग (Amara: रोगव्याधिगदामयाः, from memory), so the two words are synonyms. The draft separates them by glossing आमयः as पीडा in the vigraha (निर्गतः आमयः (पीडा) यस्मात् सः), which is not the dictionary sense. The commentators separate them as freedom from bodily and from mental illness (from memory; which word is which needs the commentary). Scholar to settle the two glosses. All else correct; the present tense (अस्ति) is rightly supplied.",
+  "fixes": []
+ },
+ "VR.1.1.91": {
+  "verdict": "pass",
+  "rules": [
+   "§5.7 gloss simpler than the word",
+   "§7.3"
+  ],
+  "note": "One padārtha gloss breaks the simpler-than-the-word rule. The rest is correct: futures द्रक्ष्यन्ति / भविष्यन्ति are लृट् प्रथम बहु, the vyākhyā keeps the future, पितरि जीवति is a correct सति-सप्तमी. Padaccheda केचित् द्रक्ष्यन्ति is right on its merits; the draft still needs a rejoin_note for this verse (the printed text leaves the two words unjoined), or the merge will refuse it.",
+  "fixes": [
+   {
+    "where": "padartha: भविष्यन्ति",
+    "problem": "artha (आगामिनि काले) स्थास्यन्ति glosses a common word by a rarer verb with a different sense (will stay). §5.7: a simple word gets a short paraphrase, never a rarer synonym.",
+    "replace_with": "artha = (आगामिनि काले) भविष्यन्ति"
+   }
+  ],
+  "round": "fix round 1: the reviewer's prescribed text was applied exactly (by the coordinator, mechanically) and passes the automated checks"
+ },
+ "VR.1.1.92": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean; present tense kept (मज्जन्ति). Padaccheda किञ्चित् न अपि is right on its merits; the draft needs a rejoin_note for this verse before merge.",
+  "fixes": []
+ },
+ "VR.1.1.93": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "",
+  "fixes": []
+ },
+ "VR.1.1.94": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 5, 7, 10"
+  ],
+  "note": "Correct. यक्ष्यते is right for what is meant: यज् is ubhayapadin, and रामः अश्वमेधशतैः यक्ष्यते is the active ātmanepada future (kartari, the sacrifice in the instrumental, as in अश्वमेधेन यजते), not a passive. करिष्यन्ते is a correct passive future. बहुसुवर्णक is also the name of a particular sacrifice (so पुं and (यज्ञैः) are sound). The last sentence (एवम् इष्ट्वा रामः यत् करिष्यति तत् अग्रे उच्यते) only bridges to 95-96, where the main verb stands; acceptable for a run-on sentence, though it speaks about the text.",
+  "fixes": []
+ },
+ "VR.1.1.95": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. दास्यते is a correct passive future. Trivial: सङ्ख्या and असंख्येयम् are spelt two ways in the same vyākhyā (the second follows the mūla).",
+  "fixes": []
+ },
+ "VR.1.1.96": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. नियोक्ष्यति (नि + युज्, लृट्) and the passive futures करिष्यन्ते, योजयिष्यते are correct. Padaccheda राज-वंशान् शत-गुणान् is right on its merits; the draft needs a rejoin_note for this verse before merge.",
+  "fixes": []
+ },
+ "VR.1.1.97": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 7",
+   "§5.4 rule 10",
+   "§5.4 rule 4"
+  ],
+  "note": "Padaccheda, padārtha and anvaya are correct (उपासित्वा rightly recorded as क्त्वा after an upasarga, ārṣa for उपास्य; CE has the same form; duration accusatives right). The vyākhyā has two sentences that talk about the verse instead of retelling it. The replacement was run through the checker in memory: no errors.",
+  "fixes": [
+   {
+    "where": "vyakhya_sa",
+    "problem": "Two sentences speak about the wording of the verse (… इति कालः श्लोके उक्तः ; श्लोके उपासित्वा इति पदम् अस्ति … इति तस्य अर्थः). A retelling states the content; a hard word is explained inside the sentence (rule 4).",
+    "replace_with": "**रामः** कियन्तं कालं **राज्यं** करिष्यति इति अपि नारदः वदति । सः **दशवर्षसहस्राणि** **दशवर्षशतानि** च राज्यं करिष्यति ; वर्षाणां दश सहस्राणि, दश शतानि च मिलित्वा एकादश सहस्राणि वर्षाणि भवन्ति । तावन्तं कालं रामेण प्रजाः पालयिष्यन्ते । एवं **राज्यम्** **उपासित्वा**, राज्यं सम्यक् पालयित्वा इति यावत्, सः **ब्रह्मलोकं** **प्रयास्यति**, ब्रह्मणः लोकं गमिष्यति ।"
+   }
+  ],
+  "round": "fix round 1: the reviewer's prescribed text was applied exactly (by the coordinator, mechanically) and passes the automated checks"
+ },
+ "VR.1.1.98": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. सर्वपापैः with प्रमुच्यते is recorded as तृतीया and explained (सर्वेभ्यः पापेभ्यः इति अर्थः), as §5.7 requires.",
+  "fixes": []
+ },
+ "VR.1.1.99": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-10"
+  ],
+  "note": "Clean. महीयते from महीङ् (कण्ड्वादि) is right. Two इत्युक्ते: at the limit of rule 9, not over it.",
+  "fixes": []
+ },
+ "VR.1.1.100": {
+  "verdict": "flag",
+  "rules": [
+   "§5.2",
+   "§5.1",
+   "§5.5"
+  ],
+  "note": "ईयात्: by Pāṇini the form is the आशीर्लिङ् of इण् (the विधिलिङ् is इयात्), and the draft records it so; but the sense here, and the draft's own gloss प्राप्नुयात्, is optative. The traditional way out is the root ई (read into वी गतिव्याप्ति… in the अदादि list), whose विधिलिङ् is ईयात्; I believe the commentators derive it so (from memory). Scholar to choose: इ, आशीर्लिङ् (a blessing) or ई, विधिलिङ्; the gloss can stay. वणिक् जनः: taken as two words in apposition, like जनः … शूद्रः in the next line; CE prints the compound vaṇigjanaḥ (then वणिक्-जनः, one pada, pratipadika वणिग्जन). Either is defensible with the printed text. The verse needs a rejoin_note before merge. Padārtha, anvaya (स्यात् (चेत्)) and vyākhyā are otherwise correct; प्राप्येत is a correct passive optative of प्र + आप्. TITLE: pass (नारदवाल्मीकिसंवादः — संक्षेपरामायणम्, as in CLAUDE.md §4). SUMMARY_SA: pass: four simple, correct sentences, no bold marks, words kept separate, covers the questions, Rāma's qualities, the story in brief, the reign and the fruit of reading; fit to open sarga 2. Trivial: the reported speech in sentence 2 is not closed with इति as in sentence 1.",
+  "fixes": []
+ }
+}
