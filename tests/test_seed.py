@@ -166,3 +166,26 @@ def test_untagged_sa_seed_comes_out_as_sah_and_passes_the_check():
     r = seed_verse(["स तच्छ्रुत्वा ।"], [w("sa"), w("tat"), w("SrutvA")])
     assert r["ok"] and r["padaccheda_lines"] == ["सः तत् श्रुत्वा ।"]
     assert check_rejoin(["स तच्छ्रुत्वा ।"], r["padaccheda_lines"])["ok"]
+
+
+# ---- Stage B review, M2: avagraha in seeding ------------------------------------
+
+def _w(form, comp=False, **tags):
+    return {"form": form, "lemma": form, "tags": tags, "comp": comp}
+
+
+def test_seed_accepts_a_printed_avagraha_and_aligns_the_groups():
+    r = seed_verse(["रामोऽब्रवीद्वचः ।"], [_w("rAmaH", pos="n", c="1", n="s", g="m"), _w("abravIt", pos="v"), _w("vacaH", pos="n")])
+    assert r["ok"] and r["padaccheda_lines"] == ["रामः अब्रवीत् वचः ।"]
+    assert [g[:2] for g in r["groups"][0] if not isinstance(g, str)] == [["रामोऽब्रवीद्वचः", "रामः अब्रवीत् वचः"]]
+
+
+def test_seed_rejects_an_elided_a_that_the_mula_does_not_print():
+    # VR.6.69.78: ते स्वस्थाः must not be seeded as ते अस्वस्थाः
+    r = seed_verse(["ते स्वस्था वानराः ।"], [_w("te", pos="n"), _w("asvasTAH", pos="a"), _w("vAnarAH", pos="n")])
+    assert not r["ok"]
+
+
+def test_seed_takes_a_compound_without_printed_avagraha():
+    r = seed_verse(["रक्षोधिपतेः ।"], [_w("rakzaH", comp=True, pos="n"), _w("aDipateH", pos="n")])
+    assert r["ok"] and r["padaccheda_lines"] == ["रक्षः-अधिपतेः ।"]

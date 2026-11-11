@@ -6,8 +6,15 @@ in ``rejoin`` keeps every candidate whose normalised form is still a prefix of
 the normalised mūla, and succeeds if one candidate equals it exactly.
 
 Comparison is deliberately narrow:
-  * ``norm``: spaces, hyphens, avagraha, daṇḍas and digits are removed and
+  * ``mula_norm``: spaces, hyphens, daṇḍas and digits are removed and
     candrabindu ~ is read as anusvāra M. Nothing else is folded in the mūla.
+  * Avagraha is significant (Stage B review, M2). Where the joiner elides an
+    initial a after e / o / aḥ it writes an avagraha, and the mūla must print
+    one there: ततो धर्मः is not ततः अधर्मः, and नोऽभयम् is not नः भयम्. Two
+    places are optional, because printed texts vary: inside a compound
+    (रक्षोधिपति / रक्षोऽधिपति), and after a long ā that came from a/ā + a/ā
+    (तथातिथ्यम् / तथाऽऽतिथ्यम्). ``norm`` (avagraha dropped) is kept for word
+    forms and for fuzzy comparison.
   * Inside each pada, a nasal before a stop of its own class is written as
     anusvāra M (पुङ्गव = पुंगव), and an anusvāra M in the joined text may match
     the mūla's M *or* the homorganic nasal of the next mūla letter (ंद = न्द,
@@ -35,9 +42,10 @@ LONG = {"a": "A", "i": "I", "u": "U", "f": "F", "x": "X"}
 SAVARNA = {"a": "aA", "A": "aA", "i": "iI", "I": "iI", "u": "uU", "U": "uU", "f": "fF", "F": "fF"}
 
 _DROP = re.compile(r"[\s\-'।॥|.0-9०-९]")
+_DROP_KEEP_AVAGRAHA = re.compile(r"[\s\-।॥|.0-9०-९]")
 _HOMORGANIC = re.compile(r"N(?=[kKgG])|Y(?=[cCjJ])|R(?=[wWqQ])|n(?=[tTdD])|m(?=[pPbB])")
 _DANDAS = re.compile(r"[।॥]")
-CHECKER_VERSION = 4   # bump when the rules change; seeds from older versions are redone
+CHECKER_VERSION = 5   # bump when the rules change; seeds from older versions are redone
 PRUNE_SLACK = 3   # a junction can rewrite at most the last 3 characters of the joined text
 
 
@@ -51,6 +59,12 @@ def to_deva(slp1: str) -> str:
 
 def norm(slp1: str) -> str:
     return _DROP.sub("", slp1).replace("~", "M")
+
+
+def mula_norm(slp1: str, avagraha: bool = True) -> str:
+    """The text the re-join check compares: ``norm``, but the avagraha stays (unless
+    ``avagraha`` is False, the loose mode of checker versions up to 4)."""
+    return (_DROP_KEEP_AVAGRAHA if avagraha else _DROP).sub("", slp1).replace("~", "M")
 
 
 def fold(slp1: str) -> str:
@@ -79,12 +93,25 @@ def same(cand: str, target: str) -> bool:
 
 
 # ---------------------------------------------------------------------------
-def _vowel_vowel(L: str, R: str) -> list[tuple[str, int]]:
+def _elided(head: str, tail: str, start: int, mark: str) -> list[tuple[str, int]]:
+    """head + (avagraha) + tail, for an initial a elided after e / o / aḥ.
+    mark: "required" (between words), "optional" (inside a compound), "none" (loose mode)."""
+    out = []
+    if mark != "none":
+        out.append((head + "'" + tail, start))
+    if mark != "required":
+        out.append((head + tail, start))
+    return out
+
+
+def _vowel_vowel(L: str, R: str, mark: str = "required") -> list[tuple[str, int]]:
     a, b, stem = L[-1], R[0], L[:-1]
     out: list[tuple[str, int]] = []
     if a in "aA":
         if b in "aA":
             out.append((stem + "A" + R[1:], len(stem)))
+            if mark != "none":       # printed texts may mark the lost vowel(s): तथाऽऽतिथ्यम्
+                out += [(stem + "A'" + R[1:], len(stem)), (stem + "A''" + R[1:], len(stem))]
         elif b in "iI":
             out.append((stem + "e" + R[1:], len(stem)))
         elif b in "uU":
@@ -102,7 +129,7 @@ def _vowel_vowel(L: str, R: str) -> list[tuple[str, int]]:
             out.append((stem + {"i": "y", "I": "y", "u": "v", "U": "v", "f": "r", "F": "r"}[a] + R, len(L)))
     elif a in "eo":
         if b == "a":         # e/o + a: the a is elided (avagraha)
-            out.append((L + R[1:], len(L)))
+            out += _elided(L, R[1:], len(L), mark)
         else:                # e/o + other vowel: a + hiatus, or ay/av
             out.append((stem + "a" + R, len(L)))
             out.append((stem + ("ay" if a == "e" else "av") + R, len(L) + 1))
@@ -118,7 +145,7 @@ R_STEMS = {"punaH", "antaH", "prAtaH", "svaH", "ahaH", "pitaH", "mAtaH", "BrAtaH
 _R_STEMS_FOLDED = {fold(w) for w in R_STEMS}
 
 
-def _visarga(L: str, R: str, left_word: str) -> list[tuple[str, int]]:
+def _visarga(L: str, R: str, left_word: str, mark: str = "required") -> list[tuple[str, int]]:
     b, prev, stem = R[0], L[-2] if len(L) > 1 else "", L[:-1]
     if prev not in VOWELS:                                   # ḥ after ṃ or a consonant is no word ending
         return []
@@ -130,7 +157,7 @@ def _visarga(L: str, R: str, left_word: str) -> list[tuple[str, int]]:
         if prev == "a":
             out = []
             if b == "a":
-                out.append((stem[:-1] + "o" + R[1:], len(L) - 1))
+                out += _elided(stem[:-1] + "o", R[1:], len(L) - 1, mark)
             elif b in VOWELS:
                 out.append((stem + R, len(L) - 1))          # aḥ + other vowel → a, hiatus
             else:
@@ -222,41 +249,45 @@ def _consonant(L: str, R: str) -> list[tuple[str, int]]:
     return [(L + R, n)]
 
 
-def junction(L: str, R: str, left_word: str = "") -> list[tuple[str, int]]:
-    """Possible joins of word R onto joined text L: (new text, index where R starts)."""
+def junction(L: str, R: str, left_word: str = "", comp: bool = False, avagraha: bool = True) -> list[tuple[str, int]]:
+    """Possible joins of word R onto joined text L: (new text, index where R starts).
+    ``comp``: R is the next member of the same compound (joined by a hyphen)."""
     if not L:
         return [(R, 0)]
     if not R:
         return [(L, len(L))]
+    mark = "none" if not avagraha else "optional" if comp else "required"
     a, b = L[-1], R[0]
     if a in VOWELS:
         if b in VOWELS:
-            return _vowel_vowel(L, R)
+            return _vowel_vowel(L, R, mark)
         if b == "C":                     # tuk: a short vowel doubles ch; after a long one it may
             return [(L + "c" + R, len(L))] + ([] if a in SHORT else [(L + R, len(L))])
         return [(L + R, len(L))]
     if a == "H":
-        return _visarga(L, R, left_word)
+        return _visarga(L, R, left_word, mark)
     return _consonant(L, R)
 
 
 # ---------------------------------------------------------------------------
-def rejoin(words: list[list[str]], target: str) -> dict:
+def rejoin(words: list[list[str]], target: str, comp: list[bool] | None = None, avagraha: bool = True) -> dict:
     """Search joins of ``words`` (each a list of alternative SLP1 forms, first =
-    preferred) that reproduce the normalised ``target``.
+    preferred) that reproduce ``target`` (``mula_norm`` of the mūla, with the same
+    ``avagraha`` setting). ``comp[i]``: word i continues the compound of word i-1.
 
     Returns {"ok", "starts" (index of each word in target), "choice" (alternative
     index per word), "best": longest matched prefix length, "got": best candidate}.
     """
     states: dict[str, tuple[tuple[int, ...], tuple[int, ...], str]] = {"": ((), (), "")}
     best, got = 0, ""
-    for alts in words:
+    for wi, alts in enumerate(words):
+        in_comp = bool(comp and comp[wi])
         nxt: dict[str, tuple[tuple[int, ...], tuple[int, ...], str]] = {}
         for acc, (starts, choice, last) in states.items():
             for ci, w0 in enumerate(alts):
                 w = _HOMORGANIC.sub("M", norm(w0))       # pada-internal spelling only
-                for new, st in junction(acc, w, last):
-                    n = norm(new)
+                for new, st in junction(acc, w, last, in_comp, avagraha):
+                    n = mula_norm(new, avagraha)
                     keep = n[:max(0, len(n) - PRUNE_SLACK)]
                     if match_len(keep, target) < len(keep):
                         lcp = match_len(n, target)
@@ -272,20 +303,30 @@ def rejoin(words: list[list[str]], target: str) -> dict:
         if not states:
             break
     for acc, (starts, choice, _) in sorted(states.items(), key=lambda x: sum(x[1][1])):
-        if same(norm(acc), target):
+        if same(mula_norm(acc, avagraha), target):
             return {"ok": True, "starts": list(starts), "choice": list(choice), "best": len(target), "got": acc}
-        lcp = match_len(norm(acc), target)
+        lcp = match_len(mula_norm(acc, avagraha), target)
         if lcp >= best:
-            best, got = lcp, norm(acc)
+            best, got = lcp, mula_norm(acc, avagraha)
     return {"ok": False, "starts": [], "choice": [], "best": best, "got": got}
+
+
+def pada_members(pada_line: str) -> list[tuple[str, bool]]:
+    """(SLP1 member, continues the previous member's compound) for a padaccheda line:
+    spaces separate padas, hyphens compound members. A pada that ends in a hyphen
+    carries its compound over to the next pada (तपः- स्वाध्याय-निरतम्)."""
+    out, carry = [], False
+    for word in _DANDAS.sub(" ", pada_line).split():
+        for i, m in enumerate(m for m in to_slp1(word).split("-") if m):
+            out.append((m, carry or i > 0))
+            carry = False
+        carry = word.endswith("-")
+    return out
 
 
 def pada_words(pada_line: str) -> list[str]:
     """SLP1 members of a padaccheda line: spaces separate padas, hyphens compound members."""
-    out = []
-    for word in _DANDAS.sub(" ", pada_line).split():
-        out += [m for m in to_slp1(word).split("-") if m]
-    return out
+    return [m for m, _ in pada_members(pada_line)]
 
 
 def _end_danda(line: str) -> str:
@@ -322,7 +363,7 @@ def non_pausal(pada_line: str) -> list[str]:
     return bad
 
 
-def check_rejoin(mula_lines: list[str], pada_lines: list[str]) -> dict:
+def check_rejoin(mula_lines: list[str], pada_lines: list[str], avagraha: bool = True) -> dict:
     failures = []
     if len(mula_lines) != len(pada_lines):
         return {"ok": False, "failures": [{"reason": "line_count", "mula": len(mula_lines), "pada": len(pada_lines)}]}
@@ -337,9 +378,9 @@ def check_rejoin(mula_lines: list[str], pada_lines: list[str]) -> dict:
     if failures:
         return {"ok": False, "failures": failures}
     for unit in units(mula_lines):
-        target = norm(to_slp1(" ".join(mula_lines[i] for i in unit)))
-        words = [[w] for i in unit for w in pada_words(pada_lines[i])]
-        r = rejoin(words, target)
+        target = mula_norm(to_slp1(" ".join(mula_lines[i] for i in unit)), avagraha)
+        members = [m for i in unit for m in pada_members(pada_lines[i])]
+        r = rejoin([[w] for w, _ in members], target, [c for _, c in members], avagraha)
         if not r["ok"]:
             pos = r["best"]
             failures.append({"reason": "mismatch", "line": unit[0], "pos": pos,

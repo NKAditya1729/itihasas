@@ -8,7 +8,7 @@ from __future__ import annotations
 import re
 
 from .dcs import pausal_candidates
-from .sandhi import _end_danda, non_pausal, norm, rejoin, to_deva, to_slp1, units
+from .sandhi import _end_danda, mula_norm, non_pausal, norm, rejoin, to_deva, to_slp1, units
 
 _STOP_NASAL = {"k": "N", "K": "N", "g": "N", "G": "N", "c": "Y", "C": "Y", "j": "Y", "J": "Y",
                "w": "R", "W": "R", "q": "R", "Q": "R", "t": "n", "T": "n", "d": "n", "D": "n",
@@ -33,6 +33,7 @@ def seed_verse(lines: list[str], words: list[dict], allow_trailing: bool = False
     last unit are ignored (``used`` says how many were taken)."""
     alts = [pausal_candidates(w) for w in words]
     sep_after = ["-" if w["comp"] else " " for w in words]
+    comp_before = [False] + [s == "-" for s in sep_after[:-1]]   # word i continues word i-1's compound
     mula_raw = to_slp1(" ".join(lines)).replace(" ", "")
     line_words: list[list[int]] = [[] for _ in lines]
     starts: dict[int, int] = {}
@@ -40,19 +41,19 @@ def seed_verse(lines: list[str], words: list[dict], allow_trailing: bool = False
     w0, failures = 0, []
     unit_list = units(lines)
     for ui, unit in enumerate(unit_list):
-        line_norm = [norm(to_slp1(lines[i])) for i in unit]
+        line_norm = [mula_norm(to_slp1(lines[i])) for i in unit]
         target = "".join(line_norm)
         # how many words belong to this unit: try every end point, prefer the one that matches
         found = None
         last = ui == len(unit_list) - 1
         ends = range(w0 + 1, len(words) + 1) if (not last or allow_trailing) else [len(words)]
         for w1 in ends:
-            r = rejoin(alts[w0:w1], target)
+            r = rejoin(alts[w0:w1], target, comp_before[w0:w1])
             if r["ok"]:
                 found = (w1, r)
                 break
         if not found:
-            r = rejoin(alts[w0:], target)
+            r = rejoin(alts[w0:], target, comp_before[w0:])
             failures.append({"reason": "mismatch", "line": unit[0], "pos": r["best"],
                              "expected": target[max(0, r["best"] - 8):r["best"] + 12],
                              "got": r["got"][max(0, r["best"] - 8):r["best"] + 12]})
@@ -112,7 +113,7 @@ def _groups(line: str, idx: list[int], starts: dict[int, int], chosen: list[str]
     offs, acc = [], 0
     for t in tokens:
         offs.append(acc)
-        acc += len(norm(to_slp1(t)))
+        acc += len(mula_norm(to_slp1(t)))
     owner: dict[int, list[int]] = {j: [] for j in range(len(tokens))}
     for wi in idx:
         j = max(k for k, o in enumerate(offs) if o <= starts[wi]) if tokens else 0

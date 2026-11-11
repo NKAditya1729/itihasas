@@ -151,3 +151,39 @@ def test_non_pausal_failure_names_the_word():
 def test_r_stem_written_with_anusvara_is_still_an_r_stem():
     # VR.2.30.14 वनान्तर्वनगोचरा, padaccheda spelled अंतः
     assert ok("वनान्तर्वनगोचरा ।", "वन-अंतः-वन-गोचरा ।")
+
+
+# ---- Stage B review, M2: avagraha is significant ---------------------------------
+
+@pytest.mark.parametrize("mula,pada", [
+    ("अग्रतो नोऽभयं प्राप्तम् ।", "अग्रतः नः भयम् प्राप्तम् ।"),   # ऽ printed, अ dropped (VR.3.24.6)
+    ("रामोऽब्रवीत् ।", "रामः ब्रवीत् ।"),
+    ("लोकेऽस्मिन् ।", "लोके स्मिन् ।"),
+    ("ततो धर्मः ।", "ततः अधर्मः ।"),                              # अ invented where no ऽ is printed
+    ("वने भयम् ।", "वने अभयम् ।"),
+    ("ते स्वस्था वानराः ।", "ते अस्वस्थाः वानराः ।"),              # VR.6.69.78
+    ("रक्षोधिपतेः ।", "रक्षः अधिपतेः ।"),                          # between two words the ऽ is required
+])
+def test_avagraha_mismatch_fails(mula, pada):
+    assert not ok(mula, pada)
+
+
+@pytest.mark.parametrize("mula,pada", [
+    ("सोऽहम् ।", "सः अहम् ।"),
+    ("लोकेऽस्मिन् ।", "लोके अस्मिन् ।"),
+    ("रामोऽब्रवीत् ।", "रामः अब्रवीत् ।"),
+    ("तथाऽऽतिथ्यं चकार ।", "तथा आतिथ्यम् चकार ।"),   # ऽऽ after a long ā from ā + ā (VR.1.49.18)
+    ("यथाऽसति ।", "यथा असति ।"),                    # ऽ after a long ā from ā + a (VR.2.106.4)
+    ("तथातिथ्यम् ।", "तथा आतिथ्यम् ।"),              # and no ऽ there is equally fine
+    ("रक्षोधिपतेः ।", "रक्षः-अधिपतेः ।"),            # inside a compound the ऽ is optional
+    ("रक्षोऽधिपतेः ।", "रक्षः-अधिपतेः ।"),
+    ("पुनरपि ।", "पुनः अपि ।"),                      # r-stem: no elision, no ऽ
+])
+def test_avagraha_agreement_passes(mula, pada):
+    assert ok(mula, pada)
+
+
+def test_loose_avagraha_mode_reports_what_the_old_checker_accepted():
+    # used only to tell "split and printed ऽ disagree" from any other failure
+    assert check_rejoin(["ततो धर्मः ।"], ["ततः अधर्मः ।"], avagraha=False)["ok"]
+    assert not check_rejoin(["ततो धर्मः ।"], ["ततः धर्मम् ।"], avagraha=False)["ok"]
