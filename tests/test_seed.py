@@ -126,3 +126,43 @@ def test_natva_alternative_for_dcs_forms_without_retroflex_n():
     assert "aprameyARi" in pausal_candidates({"form": "aprameyAni", "lemma": "aprameya", "tags": {"pos": "a"}, "comp": False})
     # blocked by an intervening dental (t): no ṇatva in रक्षितानि? (r … t … n)
     assert all("R" not in c for c in pausal_candidates({"form": "rakzitAni", "lemma": "rakz", "tags": {"pos": "va"}, "comp": False}))
+
+
+def test_pausal_review_fixes():
+    # tAMs (DCS) is tān before s; tAv is tau before a vowel; sa (nom.) is saḥ
+    assert pausal_candidates({"form": "tAMs", "lemma": "tad", "tags": {"pos": "n", "c": "2", "n": "p"}, "comp": False})[0] == "tAn"
+    assert pausal_candidates({"form": "tAv", "lemma": "tad", "tags": {"pos": "n", "c": "1", "n": "d"}, "comp": False})[0] == "tO"
+    assert pausal_candidates({"form": "sa", "lemma": "tad", "tags": {"pos": "n", "g": "m", "c": "1", "n": "s"}, "comp": False})[0] == "saH"
+    assert pausal_candidates({"form": "rAma", "lemma": "rAma", "tags": {"pos": "n", "g": "m", "c": "8", "n": "s"}, "comp": False})[0] == "rAma"
+
+
+def test_seed_window_finds_a_start_with_vowel_sandhi():
+    from vrtools.seed import seed_window
+    w = lambda f, comp=False, **t: {"form": f, "lemma": f, "tags": t, "comp": comp}
+    words = [w("x"), w("y"), w("na", pos="i"), w("api", pos="i"), w("rAmaH", pos="n"), w("vanam", pos="n"), w("gataH", pos="va")]
+    r = seed_window(["नापि रामो वनं गतः ।"], words)
+    assert r["ok"] and r["window"] == [2, 7]
+
+
+def test_mula_spelling_ignores_the_final_m():
+    r = seed_verse(VR_1_1_2, parse_dcs(DCS)["1.1.2"])
+    assert "साम्प्रतम्" in r["padaccheda_lines"][0]
+
+
+def test_dcs_prefix_sa_is_a_compound_member():
+    # DCS gives the prefix of सलीलम् as a separate indeclinable "sa"
+    d = parse_dcs("# id = R.1.66.9\nsa\tsa\tpos=i\nlIlam\tlIlam\tpos=i\nidam\tidam\tpos=n,g=n,c=2,n=s\nabravIt\tbrU\tpos=v,p=3,n=s,l=impf\n")
+    r = seed_verse(["सलीलमिदमब्रवीत् ॥"], d["1.66.9"])
+    assert r["ok"] and r["padaccheda_lines"] == ["स-लीलम् इदम् अब्रवीत् ॥"]
+
+
+def test_untagged_sa_prefers_sah():
+    assert pausal_candidates({"form": "sa", "lemma": "sa", "tags": {}, "comp": False})[0] == "saH"
+
+
+def test_untagged_sa_seed_comes_out_as_sah_and_passes_the_check():
+    from vrtools.sandhi import check_rejoin
+    w = lambda f: {"form": f, "lemma": f, "tags": {}, "comp": False}
+    r = seed_verse(["स तच्छ्रुत्वा ।"], [w("sa"), w("tat"), w("SrutvA")])
+    assert r["ok"] and r["padaccheda_lines"] == ["सः तत् श्रुत्वा ।"]
+    assert check_rejoin(["स तच्छ्रुत्वा ।"], r["padaccheda_lines"])["ok"]

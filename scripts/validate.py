@@ -3,7 +3,8 @@
 1 schema   every sarga file against schema/sarga.schema.json
 2 mūla     sha256 of every verse's lines equals data/meta/mula_hashes.json
 3 re-join  every stored padaccheda re-joins to its mūla; same line count
-5 hygiene  NFC; padaccheda lines Devanagari only (the schema pattern)
+5 hygiene  NFC; padaccheda lines Devanagari only (schema pattern); mūla lines with
+           characters outside Sanskrit Devanagari must carry the invalid_char flag
 """
 from __future__ import annotations
 
@@ -17,6 +18,7 @@ import jsonschema
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from vrtools.build import mula_hash  # noqa: E402
+from vrtools.normalize import invalid_chars  # noqa: E402
 from vrtools.sandhi import check_rejoin  # noqa: E402
 
 
@@ -34,6 +36,8 @@ def main() -> int:
                 errors.append(f"{v['id']}: mūla hash differs from ingest")
             if any(unicodedata.normalize("NFC", l) != l for l in v["lines"]):
                 errors.append(f"{v['id']}: mūla not NFC")
+            if any(invalid_chars(l) for l in v["lines"]) and "invalid_char" not in v["review"]["flags"]:
+                errors.append(f"{v['id']}: unflagged non-Sanskrit characters in the mūla")
             if v["padaccheda_lines"]:
                 n_pada += 1
                 if not check_rejoin(v["lines"], v["padaccheda_lines"])["ok"]:

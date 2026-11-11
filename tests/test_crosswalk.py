@@ -54,3 +54,9 @@ def test_sarga_map_finds_the_ce_sarga_by_shared_half_verses():
     m = map_sargas(vu_sargas, ce_by_sarga)
     assert m[(1, 1)] == [(1, 1)]
     assert m[(1, 2)] == []
+
+
+def test_short_half_verse_match_is_not_partial():
+    ce = [{"uid": "CE-1-001-001", "k": 1, "s": 1, "v": 1, "lines": [["rāmo rājā"], ["iti"]]}]
+    vu = [{"id": "VR.1.1.9", "lines": ["अयं श्लोकः समीक्षितग्रन्थे नास्ति ।", "इति ॥"]}]
+    assert align_sarga(vu, ce)["VR.1.1.9"]["relation"] == "absent"

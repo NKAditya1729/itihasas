@@ -5,7 +5,7 @@ too-loose checker would let through.
 """
 import pytest
 
-from vrtools.sandhi import check_rejoin, norm, to_slp1
+from vrtools.sandhi import check_rejoin, fold, norm, to_slp1
 
 
 def ok(mula, pada):
@@ -20,8 +20,8 @@ def test_norm_drops_spaces_hyphens_avagraha_and_dandas():
 
 
 def test_norm_treats_homorganic_nasal_and_anusvara_alike():
-    assert norm(to_slp1("मुनिपुङ्गवम्")) == norm(to_slp1("मुनिपुंगवम्"))
-    assert norm(to_slp1("सम्प्रहृष्टः")) == norm(to_slp1("संप्रहृष्टः"))
+    assert fold(to_slp1("मुनिपुङ्गवम्")) == fold(to_slp1("मुनिपुंगवम्"))
+    assert fold(to_slp1("सम्प्रहृष्टः")) == fold(to_slp1("संप्रहृष्टः"))
 
 
 def test_norm_keeps_word_final_m_before_pause():
@@ -105,3 +105,49 @@ def test_line_count_mismatch_fails():
 def test_danda_positions_must_match():
     r = check_rejoin(["रामः ।"], ["रामः ॥"])
     assert not r["ok"] and r["failures"][0]["reason"] == "danda"
+
+
+# ---- review findings (2026-11-11): the checker was too loose ---------------------
+
+@pytest.mark.parametrize("mula,pada", [
+    ("तांश्च ।", "तांः च ।"),                 # visarga after anusvāra is not a word ending
+    ("तां ददर्श ।", "तान् ददर्श ।"),          # final n stays n before d; ṃ can only come from m
+    ("सीतां ध्यायन्तीम् ।", "सीतान् ध्यायन्तीम् ।"),
+    ("स तच्छ्रुत्वा ।", "स तत् श्रुत्वा ।"),   # स is not a pausal form (सः)
+    ("नारदं परिपप्रच्छ ।", "नारदं परिपप्रच्छ ।"),   # pausal form ends in म्, not ं
+    ("वाल्मीकिर्मुनिः ।", "वाल्मीकिर् मुनिः ।"),   # र् is not a pausal ending
+    ("वाग्विदाम् ।", "वाग्-विदाम् ।"),
+    ("रामर्गच्छति ।", "रामः गच्छति ।"),         # aḥ → ar only for r-stems (punar, antar …)
+    ("नररस्ति ।", "नरः अस्ति ।"),
+    ("नदी अत्र ।", "नदी अत्र ।"),              # unjoined ī + vowel is not saṃhitā (unless a dual)
+    ("वने इति ।", "वने इति ।"),
+    ("भोर्गच्छ ।", "भोः गच्छ ।"),              # bhoḥ drops its visarga
+    ("तावगायताम् ।", "ताउ अगायताम् ।"),
+])
+def test_review_wrong_splits_fail(mula, pada):
+    assert not ok(mula, pada)
+
+
+@pytest.mark.parametrize("mula,pada", [
+    ("तान्ददर्श ।", "तान् ददर्श ।"),
+    ("तान्ददर्श ।", "ताम् ददर्श ।"),          # optional homorganic nasal for final m (parasavarṇa)
+    ("तां ददर्श ।", "ताम् ददर्श ।"),
+    ("किन्नु ।", "किम् नु ।"),                 # m before a nasal may be written as that nasal
+    ("अहम्माम् ।", "अहम् माम् ।"),
+    ("पुनर्गच्छति ।", "पुनः गच्छति ।"),        # r-stem
+    ("अन्तर्गतः ।", "अन्तः-गतः ।"),
+    ("भो गच्छ ।", "भोः गच्छ ।"),
+    ("तावगायताम् ।", "तौ अगायताम् ।"),
+])
+def test_review_correct_joins_pass(mula, pada):
+    assert ok(mula, pada)
+
+
+def test_non_pausal_failure_names_the_word():
+    r = check_rejoin(["स तच्छ्रुत्वा ।"], ["स तत् श्रुत्वा ।"])
+    assert r["failures"][0]["reason"] == "non_pausal" and r["failures"][0]["word"] == "स"
+
+
+def test_r_stem_written_with_anusvara_is_still_an_r_stem():
+    # VR.2.30.14 वनान्तर्वनगोचरा, padaccheda spelled अंतः
+    assert ok("वनान्तर्वनगोचरा ।", "वन-अंतः-वन-गोचरा ।")

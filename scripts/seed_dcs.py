@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from vrtools.dcs import parse_dcs, pausal_candidates  # noqa: E402
-from vrtools.sandhi import to_deva  # noqa: E402
+from vrtools.sandhi import CHECKER_VERSION, to_deva  # noqa: E402
 from vrtools.seed import seed_window  # noqa: E402
 
 DCS = ROOT / "sources" / "upstream" / "ambuda-dcs" / "ramayanam.txt"
@@ -42,7 +42,8 @@ def main() -> None:
         changed = False
         for v in d["verses"] + (d["appendix"]["verses"] if d["appendix"] else []):
             seed = v.get("seed") or {}
-            if seed.get("source") == "dcs" and seed.get("mula_hash") == hashes[v["id"]]:
+            if (seed.get("source") == "dcs" and seed.get("mula_hash") == hashes[v["id"]]
+                    and seed.get("checker") == CHECKER_VERSION):
                 stats["already"] += 1
                 continue
             cw = v["crosswalk"]
@@ -64,14 +65,21 @@ def main() -> None:
                     best = (keys, f0, " ".join(to_deva(pausal_candidates(w)[0]) for w in words))
             if result is None:
                 stats[f"fail_{cw['relation']}"] += 1
-                v["seed"] = {"source": None, "dcs_tried": True}
+                if seed.get("source") == "dcs":             # an older DCS seed no longer passes
+                    v["padaccheda_lines"], v["groups"] = None, None
+                v["seed"] = {**{k: x for k, x in seed.items() if k == "dharmamitra"},
+                             "source": None if seed.get("source") in (None, "dcs") else seed["source"],
+                             "dcs_tried": True}
                 if best:
                     v["seed"].update({"dcs_verses": best[0], "dcs_failure": best[1], "dcs_candidate": best[2]})
                 changed = True
                 continue
             keys, r = result
             v["padaccheda_lines"], v["groups"] = r["padaccheda_lines"], r["groups"]
-            v["seed"] = {"source": "dcs", "dcs_verses": keys, "mula_hash": hashes[v["id"]]}
+            v["seed"] = {**{k: x for k, x in seed.items() if k == "dharmamitra"},
+                         "source": "dcs", "dcs_verses": keys, "mula_hash": hashes[v["id"]], "checker": CHECKER_VERSION}
+            if "compound_boundaries_unknown" in v["review"]["flags"]:
+                v["review"]["flags"].remove("compound_boundaries_unknown")
             stats[f"ok_{cw['relation']}"] += 1
             changed = True
         if changed:

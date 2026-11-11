@@ -5,7 +5,9 @@ differ, the two sources restore different letters (e.g. ca eva vs ca iva), and
 the verse is flagged ``seed_disagreement`` and goes to the fix queue; its DCS
 padaccheda is kept (DCS has priority, CLAUDE.md §5.1). Differences only in where
 compounds are cut (DCS keeps lexicalised compounds such as kṛtajña whole) are
-counted as ``granularity_only`` and not flagged.
+counted as ``granularity_only``, spelling-only differences of a nasal as agreement, and
+a Dharmamitra output that dropped text (< 80% of the letters) as
+``dharmamitra_incomplete``; none of these is flagged.
 
 Usage: uv run python scripts/crosscheck_seeds.py   (after seed_dharmamitra.py)
 """
@@ -20,7 +22,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from scripts.seed_dharmamitra import BATCH, segment, verse_text, words_of  # noqa: E402
 from vrtools.dcs import pausal_candidates  # noqa: E402
-from vrtools.sandhi import norm, pada_words  # noqa: E402
+from vrtools.sandhi import fold, norm, pada_words  # noqa: E402
 
 
 def members_from_padaccheda(lines: list[str]) -> list[str]:
@@ -29,6 +31,20 @@ def members_from_padaccheda(lines: list[str]) -> list[str]:
 
 def members_from_dharmamitra(result: str) -> list[str]:
     return [norm(pausal_candidates(w)[0]) for w in words_of(result)]
+
+
+INCOMPLETE = 0.8   # Dharmamitra output shorter than this share of the DCS letters: it dropped text
+
+
+def classify(dcs: list[str], dm: list[str]) -> str:
+    a, b = [fold(x) for x in dcs], [fold(x) for x in dm]
+    if a == b:
+        return "agree"
+    if "".join(a) == "".join(b):
+        return "granularity_only"
+    if len("".join(b)) < INCOMPLETE * len("".join(a)):
+        return "dharmamitra_incomplete"
+    return "disagree"
 
 
 def main() -> None:
@@ -42,19 +58,17 @@ def main() -> None:
         for v, res in zip(chunk, segment([verse_text(v["lines"]) for v in chunk])):
             v["seed"]["dharmamitra"] = res
             a, b = members_from_padaccheda(v["padaccheda_lines"]), members_from_dharmamitra(res)
+            kind = classify(a, b)
+            stats[kind] += 1
             flags = v["review"]["flags"]
-            if a != b and "".join(a) == "".join(b):
-                stats["granularity_only"] += 1        # same letters, compounds cut differently
-            if "".join(a) != "".join(b):
+            if kind == "disagree":
                 v["seed"]["disagreement"] = {"dcs": a, "dharmamitra": b}
                 if "seed_disagreement" not in flags:
                     flags.append("seed_disagreement")
-                stats["disagree"] += 1
             else:
                 v["seed"].pop("disagreement", None)
                 if "seed_disagreement" in flags:
                     flags.remove("seed_disagreement")
-                stats["agree"] += 1
     for f, d in docs.items():
         f.write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")) + "\n")
     print(dict(stats))

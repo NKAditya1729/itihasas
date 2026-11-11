@@ -34,6 +34,7 @@ def strip_markup(text: str) -> str:
     text = re.sub(r"\[\[[^\]]*\]\]", "", text)            # files, categories, wiki links
     text = re.sub(r"\[https?://[^\]]*\]", "", text)        # external links
     text = re.sub(r"<br\s*/?>", "\n", text, flags=re.I)
+    text = re.sub(r"^[ \t]*:+", "", text, flags=re.M)        # wiki indentation (":", "::")
     text = re.sub(r"<[^>]+>", "", text)
     text = text.replace("'''", "").replace("''", "")
     return text

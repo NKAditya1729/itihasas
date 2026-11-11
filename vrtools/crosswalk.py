@@ -16,9 +16,10 @@ from difflib import SequenceMatcher
 
 from vidyut.lipi import Scheme, transliterate
 
-from .sandhi import norm, to_slp1
+from .sandhi import fold as norm, to_slp1
 
 SAME, HALF, VARIANT = 0.85, 0.85, 0.6
+MIN_HALF = 10   # a half-verse shorter than this (normalised letters) cannot make a link
 
 
 def ce_key(ce: dict) -> str:
@@ -54,7 +55,7 @@ def align_sarga(vu_verses: list[dict], ce_verses: list[dict]) -> dict[str, dict]
             out[v["id"]] = {"ce": best_key, "relation": "same", "score": round(best, 3)}
             continue
         half_key, half_best = None, 0.0
-        for h in halves:
+        for h in (h for h in halves if len(h) >= MIN_HALF):
             for key, _, ce_halves in ce:
                 for ch in ce_halves:
                     r = _ratio(h, ch)
@@ -96,6 +97,8 @@ def map_sargas(vu_sargas: dict[tuple[int, int], list[dict]],
         n = 0
         for v in verses:
             for h in _vu_text(v["lines"])[1]:
+                if len(h) < MIN_HALF:
+                    continue
                 n += 1
                 found = set().union(*(index.get(f"{k}|{key}", set()) for key in _keys(h)))
                 for ce in found:

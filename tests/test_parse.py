@@ -223,3 +223,11 @@ def test_systematically_broken_numbering_is_replaced_by_position():
 def test_missing_colophon_is_logged():
     s = parse_sarga("क ख ।\nग घ॥ १॥\n", 5, 61)
     assert any(a["type"] == "missing_colophon" for a in s["anomalies"])
+
+
+def test_wiki_indentation_colons_are_markup_not_text():
+    # VR.1.2.42: continuation pādas are indented with ":" / "::" in the wikitext
+    txt = "उदारवृत्तार्थपदैर्मनोरमै-\n::स्तदास्य रामस्य चकार कीर्तिमान् ।\nसमाक्षरैः श्लोकशतैर्यशस्विनो\n:::यशस्करं काव्यमुदारदर्शनः ॥१-२-४२॥\n"
+    v = parse_sarga(txt, 1, 2)["verses"][0]
+    assert v["lines"][1] == "स्तदास्य रामस्य चकार कीर्तिमान् ।"
+    assert v["lines"][3] == "यशस्करं काव्यमुदारदर्शनः ॥"

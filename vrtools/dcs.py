@@ -24,7 +24,8 @@ def parse_dcs(text: str) -> dict[str, list[dict]]:
         elif line and not line.startswith("#") and cur is not None:
             form, lemma, tags = line.split("\t")
             t = dict(kv.split("=", 1) for kv in tags.split(",") if "=" in kv)
-            cur.append({"form": form, "lemma": lemma, "tags": t, "comp": t.get("comp") == "y"})
+            comp = t.get("comp") == "y" or (form == "sa" and t.get("pos") == "i")   # prefix sa- (सलीलम्)
+            cur.append({"form": form, "lemma": lemma, "tags": t, "comp": comp})
     return out
 
 
@@ -52,7 +53,13 @@ def _pausal(w: dict) -> list[str]:
         return _pausal({**w, "form": "a" + f[1:]})
     if not f:
         return [f]
+    if f in ("sa", "eza") and not w["comp"] and tags.get("pos") != "i":
+        return [f + "H", f]                       # saḥ / eṣaḥ (sa, eṣa only before a consonant)
     last = f[-1]
+    if len(f) > 2 and f[-2] == "M" and last in "sSz":   # tAMs ← tān before s
+        return [f[:-2] + "n"]
+    if f[-2:] in ("Av", "Ay"):                          # tAv ← tau, tAy ← tai before a vowel
+        return [f[:-2] + ("O" if last == "v" else "E"), f[:-1] + ("u" if last == "v" else "i")]
     if last == "o":
         if f in GENUINE_O or (tags.get("pos") == "i" and lemma == f) or (tags.get("c") == "8" and lemma.endswith("u")):
             return [f]
@@ -81,5 +88,10 @@ def _pausal(w: dict) -> list[str]:
     if w["comp"] and f.endswith("n") and lemma.endswith("n"):
         return [f[:-1], f]                        # an/in-stems lose n in compounds
     if last in "aAiIuUeE" and not w["comp"] and tags.get("pos") in ("n", "a", "va", "v"):
-        return [f, f + "H"]                       # visarga lost before a vowel / voiced sound
+        # visarga lost before a vowel / voiced sound; the morphology says which is likelier
+        nom = tags.get("c") == "1"
+        visarga_first = ((last == "a" and nom and tags.get("n") == "s" and tags.get("g", "m") == "m")
+                         or (last == "A" and tags.get("c") in ("1", "8") and tags.get("n") == "p" and tags.get("g") != "n")
+                         or (last in "iu" and nom and tags.get("n") == "s" and tags.get("g") in ("m", "f")))
+        return [f + "H", f] if visarga_first else [f, f + "H"]
     return [f]

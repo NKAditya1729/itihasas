@@ -5,13 +5,16 @@ possible surface forms when a word follows the text joined so far; the search
 in ``rejoin`` keeps every candidate whose normalised form is still a prefix of
 the normalised mūla, and succeeds if one candidate equals it exactly.
 
-Normalisation for comparison (``norm``) is deliberately narrow:
-  * spaces, hyphens, avagraha, daṇḍas and digits are removed;
-  * candrabindu ~ is read as anusvāra M;
-  * a nasal before a stop of its own class is read as anusvāra M
-    (ङ्क = ंक, ञ्च = ंच, ण्ट = ंट, न्त = ंत, म्प = ंप).
-Nothing else is equated: word-final म् before a pause stays म्, visarga stays
-visarga, vowel length and every consonant must match.
+Comparison is deliberately narrow:
+  * ``norm``: spaces, hyphens, avagraha, daṇḍas and digits are removed and
+    candrabindu ~ is read as anusvāra M. Nothing else is folded in the mūla.
+  * Inside each pada, a nasal before a stop of its own class is written as
+    anusvāra M (पुङ्गव = पुंगव), and an anusvāra M in the joined text may match
+    the mūla's M *or* the homorganic nasal of the next mūla letter (ंद = न्द,
+    ंन = न्न). This direction matters: ताम् ददर्श may be written तान्ददर्श
+    (8.4.59), but a real final न् (तान्) must stay न् and never matches तां.
+Word-final म् before a pause stays म्, visarga stays visarga, vowel length and
+every other consonant must match. Every pada must also end in a pausal sound.
 
 Junction rules are the regular external sandhi of classical Sanskrit (vowel,
 visarga, final consonant). The few optional outcomes allowed are listed at the
@@ -34,6 +37,7 @@ SAVARNA = {"a": "aA", "A": "aA", "i": "iI", "I": "iI", "u": "uU", "U": "uU", "f"
 _DROP = re.compile(r"[\s\-'।॥|.0-9०-९]")
 _HOMORGANIC = re.compile(r"N(?=[kKgG])|Y(?=[cCjJ])|R(?=[wWqQ])|n(?=[tTdD])|m(?=[pPbB])")
 _DANDAS = re.compile(r"[।॥]")
+CHECKER_VERSION = 4   # bump when the rules change; seeds from older versions are redone
 PRUNE_SLACK = 3   # a junction can rewrite at most the last 3 characters of the joined text
 
 
@@ -46,8 +50,32 @@ def to_deva(slp1: str) -> str:
 
 
 def norm(slp1: str) -> str:
-    s = _DROP.sub("", slp1).replace("~", "M")
-    return _HOMORGANIC.sub("M", s)
+    return _DROP.sub("", slp1).replace("~", "M")
+
+
+def fold(slp1: str) -> str:
+    """norm plus nasal-before-stop → M everywhere (for fuzzy text comparison only)."""
+    return _HOMORGANIC.sub("M", norm(slp1))
+
+
+_NASAL_OF = {**{c: "N" for c in "kKgG"}, **{c: "Y" for c in "cCjJ"}, **{c: "R" for c in "wWqQ"},
+             **{c: "n" for c in "tTdD"}, **{c: "m" for c in "pPbB"}, **{c: c for c in "NYRnm"}}
+
+
+def match_len(cand: str, target: str) -> int:
+    """Length of the common prefix, where an anusvāra in ``cand`` also matches the
+    nasal that is homorganic with the following target letter."""
+    i, n = 0, min(len(cand), len(target))
+    while i < n:
+        c, t = cand[i], target[i]
+        if c != t and not (c == "M" and i + 1 < len(target) and _NASAL_OF.get(target[i + 1]) == t):
+            break
+        i += 1
+    return i
+
+
+def same(cand: str, target: str) -> bool:
+    return len(cand) == len(target) and match_len(cand, target) == len(target)
 
 
 # ---------------------------------------------------------------------------
@@ -72,25 +100,31 @@ def _vowel_vowel(L: str, R: str) -> list[tuple[str, int]]:
             out.append((stem + LONG[a.lower()] + R[1:], len(stem)))
         else:
             out.append((stem + {"i": "y", "I": "y", "u": "v", "U": "v", "f": "r", "F": "r"}[a] + R, len(L)))
-        if a in "IU":        # pragṛhya duals (ī, ū) stay unchanged before a vowel
-            out.append((L + R, len(L)))
     elif a in "eo":
         if b == "a":         # e/o + a: the a is elided (avagraha)
             out.append((L + R[1:], len(L)))
         else:                # e/o + other vowel: a + hiatus, or ay/av
             out.append((stem + "a" + R, len(L)))
             out.append((stem + ("ay" if a == "e" else "av") + R, len(L) + 1))
-        if a == "e":         # pragṛhya dual e
-            out.append((L + R, len(L)))
     elif a in "EO":
         out.append((stem + "A" + R, len(L)))
         out.append((stem + ("Ay" if a == "E" else "Av") + R, len(L) + 1))
     return out
 
 
+R_STEMS = {"punaH", "antaH", "prAtaH", "svaH", "ahaH", "pitaH", "mAtaH", "BrAtaH", "duhitaH", "BartaH"}
+
+
+_R_STEMS_FOLDED = {fold(w) for w in R_STEMS}
+
+
 def _visarga(L: str, R: str, left_word: str) -> list[tuple[str, int]]:
     b, prev, stem = R[0], L[-2] if len(L) > 1 else "", L[:-1]
+    if prev not in VOWELS:                                   # ḥ after ṃ or a consonant is no word ending
+        return []
     if left_word in ("saH", "ezaH") and b not in VOWELS:   # sa / eṣa before any consonant
+        return [(stem + R, len(L) - 1)]
+    if prev == "o" and (b in VOWELS or b in VOICED):        # bhoḥ
         return [(stem + R, len(L) - 1)]
     if b in VOWELS or b in VOICED:
         if prev == "a":
@@ -101,7 +135,8 @@ def _visarga(L: str, R: str, left_word: str) -> list[tuple[str, int]]:
                 out.append((stem + R, len(L) - 1))          # aḥ + other vowel → a, hiatus
             else:
                 out.append((stem[:-1] + "o" + R, len(L)))    # aḥ + voiced consonant → o
-            out.append((stem + "r" + R, len(L)))              # r-stems: punar, antar, prātar
+            if fold(left_word) in _R_STEMS_FOLDED:           # r-stems: punar, antar, prātar …
+                out.append((stem + "r" + R, len(L)))
             return out
         if prev == "A":
             return [(stem + R, len(L) - 1)]
@@ -218,16 +253,17 @@ def rejoin(words: list[list[str]], target: str) -> dict:
     for alts in words:
         nxt: dict[str, tuple[tuple[int, ...], tuple[int, ...], str]] = {}
         for acc, (starts, choice, last) in states.items():
-            for ci, w in enumerate(alts):
+            for ci, w0 in enumerate(alts):
+                w = _HOMORGANIC.sub("M", norm(w0))       # pada-internal spelling only
                 for new, st in junction(acc, w, last):
                     n = norm(new)
                     keep = n[:max(0, len(n) - PRUNE_SLACK)]
-                    if not target.startswith(keep):
-                        lcp = _lcp(n, target)
+                    if match_len(keep, target) < len(keep):
+                        lcp = match_len(n, target)
                         if lcp > best:
                             best, got = lcp, n
                         continue
-                    cand = (starts + (st,), choice + (ci,), w)
+                    cand = (starts + (st,), choice + (ci,), norm(w0))   # unfolded, for saḥ / r-stem lookups
                     if new not in nxt or sum(cand[1]) < sum(nxt[new][1]):
                         nxt[new] = cand
                     if len(keep) > best:
@@ -236,19 +272,12 @@ def rejoin(words: list[list[str]], target: str) -> dict:
         if not states:
             break
     for acc, (starts, choice, _) in sorted(states.items(), key=lambda x: sum(x[1][1])):
-        if norm(acc) == target:
+        if same(norm(acc), target):
             return {"ok": True, "starts": list(starts), "choice": list(choice), "best": len(target), "got": acc}
-        lcp = _lcp(norm(acc), target)
+        lcp = match_len(norm(acc), target)
         if lcp >= best:
             best, got = lcp, norm(acc)
     return {"ok": False, "starts": [], "choice": [], "best": best, "got": got}
-
-
-def _lcp(a: str, b: str) -> int:
-    i = 0
-    while i < min(len(a), len(b)) and a[i] == b[i]:
-        i += 1
-    return i
 
 
 def pada_words(pada_line: str) -> list[str]:
@@ -277,6 +306,22 @@ def units(lines: list[str]) -> list[list[int]]:
     return out
 
 
+NON_PAUSAL_FINAL = set("rszSMgGdDbBqQjJcCKTPWhyvl")
+_HIATUS = re.compile("[aAiIuUfFxXeEoO]{2}")   # two vowels side by side cannot occur inside a pada (ताउ)
+
+
+def non_pausal(pada_line: str) -> list[str]:
+    """Padas / compound members that do not end in a pausal sound (सः not स, -म् not -ं …)."""
+    bad = []
+    for word in _DANDAS.sub(" ", pada_line).split():
+        members = [m for m in to_slp1(word).split("-") if m]
+        if len(members) == 1 and members[0] in ("sa", "eza"):
+            bad.append(word)
+        elif any(m[-1] in NON_PAUSAL_FINAL or _HIATUS.search(m) for m in members):
+            bad.append(word)
+    return bad
+
+
 def check_rejoin(mula_lines: list[str], pada_lines: list[str]) -> dict:
     failures = []
     if len(mula_lines) != len(pada_lines):
@@ -284,6 +329,11 @@ def check_rejoin(mula_lines: list[str], pada_lines: list[str]) -> dict:
     for i, (m, p) in enumerate(zip(mula_lines, pada_lines)):
         if _DANDAS.findall(m) != _DANDAS.findall(p):
             failures.append({"reason": "danda", "line": i})
+    if failures:
+        return {"ok": False, "failures": failures}
+    for i, p in enumerate(pada_lines):
+        for word in non_pausal(p):
+            failures.append({"reason": "non_pausal", "line": i, "word": word})
     if failures:
         return {"ok": False, "failures": failures}
     for unit in units(mula_lines):

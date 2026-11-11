@@ -1,0 +1,21 @@
+{
+ "by_source": {
+  "dcs": {
+   "pass": 5778,
+   "fail": 2
+  },
+  "unseeded": {
+   "fail": 8299
+  },
+  "dharmamitra": {
+   "pass": 9533,
+   "fail": 3
+  }
+ },
+ "queued": 10609,
+ "queue_reasons": {
+  "no_seed_rejoins": 8299,
+  "seed_disagreement": 2305,
+  "stored_padaccheda_fails": 5
+ }
+}

@@ -2,45 +2,217 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "VR sarga file (CLAUDE.md §4)",
   "type": "object",
-  "required": ["schema_version", "work", "kanda", "kanda_name", "sarga", "colophon", "verse_count", "provenance", "verses", "status", "flags"],
+  "required": [
+    "schema_version",
+    "work",
+    "kanda",
+    "kanda_name",
+    "sarga",
+    "colophon",
+    "verse_count",
+    "provenance",
+    "verses",
+    "status",
+    "flags"
+  ],
   "properties": {
-    "schema_version": {"const": 1},
-    "work": {"const": "VR"},
-    "kanda": {"type": "integer", "minimum": 1, "maximum": 7},
-    "kanda_name": {"type": "string"},
-    "sarga": {"type": "integer", "minimum": 1},
-    "title": {"type": ["string", "null"]},
-    "colophon": {"type": ["string", "null"]},
-    "summary_sa": {"type": ["string", "null"]},
-    "context_in_sa": {"type": ["string", "null"]},
-    "verse_count": {"type": "integer"},
-    "flags": {"type": "array", "items": {"type": "string"}},
-    "verses": {"type": "array", "items": {"$ref": "#/$defs/verse"}},
-    "appendix": {"oneOf": [{"type": "null"}, {"type": "object", "required": ["heading", "verses"],
-                  "properties": {"verses": {"type": "array", "items": {"$ref": "#/$defs/verse"}}}}]},
-    "status": {"type": "object", "required": ["mula", "padaccheda", "padartha", "anvaya", "vyakhya", "human_review"]}
+    "schema_version": {
+      "const": 1
+    },
+    "work": {
+      "const": "VR"
+    },
+    "kanda": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 7
+    },
+    "kanda_name": {
+      "type": "string"
+    },
+    "sarga": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "colophon": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "summary_sa": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "context_in_sa": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "verse_count": {
+      "type": "integer"
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "verses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/verse"
+      }
+    },
+    "appendix": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "heading",
+            "verses"
+          ],
+          "properties": {
+            "verses": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/verse"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "status": {
+      "type": "object",
+      "required": [
+        "mula",
+        "padaccheda",
+        "padartha",
+        "anvaya",
+        "vyakhya",
+        "human_review"
+      ]
+    }
   },
   "$defs": {
-    "line": {"type": "string", "pattern": "^[\\u0900-\\u097F \\-]+$"},
+    "line": {
+      "type": "string",
+      "pattern": "^[\\u0900-\\u097F \\-]+$"
+    },
     "verse": {
       "type": "object",
-      "required": ["id", "n", "src_ref", "lines", "padaccheda_lines", "groups", "metre", "padartha", "anvaya",
-                   "vyakhya_sa", "en_simple", "en_mixed", "review", "crosswalk"],
+      "required": [
+        "id",
+        "n",
+        "src_ref",
+        "lines",
+        "padaccheda_lines",
+        "groups",
+        "metre",
+        "padartha",
+        "anvaya",
+        "vyakhya_sa",
+        "en_simple",
+        "en_mixed",
+        "review",
+        "crosswalk"
+      ],
       "properties": {
-        "id": {"type": "string", "pattern": "^VR\\.[1-7]\\.[0-9]+A?\\.[0-9]+[a-z]?$"},
-        "n": {"type": "integer"},
-        "lines": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/line"}},
-        "padaccheda_lines": {"oneOf": [{"type": "null"}, {"type": "array", "items": {"$ref": "#/$defs/line"}}]},
-        "groups": {"type": ["array", "null"]},
-        "metre": {"type": "object", "required": ["name", "ok", "syllables"]},
-        "padartha": {"type": "array"},
-        "anvaya": {"type": ["string", "null"]},
-        "vyakhya_sa": {"type": ["string", "null"]},
-        "en_simple": {"type": "null"},
-        "en_mixed": {"type": "null"},
-        "crosswalk": {"type": ["object", "null"]},
-        "review": {"type": "object", "required": ["auto_checks", "human", "flags"]}
+        "id": {
+          "type": "string",
+          "pattern": "^VR\\.[1-7]\\.[0-9]+A?\\.[0-9]+[a-z]?$"
+        },
+        "n": {
+          "type": "integer"
+        },
+        "lines": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/mula_line"
+          }
+        },
+        "padaccheda_lines": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/line"
+              }
+            }
+          ]
+        },
+        "groups": {
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "metre": {
+          "type": "object",
+          "required": [
+            "name",
+            "ok",
+            "syllables"
+          ]
+        },
+        "padartha": {
+          "type": "array"
+        },
+        "anvaya": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "vyakhya_sa": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "en_simple": {
+          "type": "null"
+        },
+        "en_mixed": {
+          "type": "null"
+        },
+        "crosswalk": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "review": {
+          "type": "object",
+          "required": [
+            "auto_checks",
+            "human",
+            "flags"
+          ]
+        }
       }
+    },
+    "mula_line": {
+      "type": "string",
+      "minLength": 1,
+      "description": "as in the source; characters outside Sanskrit Devanagari are flagged invalid_char, not edited"
     }
   }
 }

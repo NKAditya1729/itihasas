@@ -17,6 +17,7 @@ from __future__ import annotations
 import collections
 import hashlib
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -26,6 +27,7 @@ from vidyut.lipi import Scheme, transliterate
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from vrtools.sandhi import CHECKER_VERSION  # noqa: E402
 from vrtools.seed import seed_window  # noqa: E402
 
 API = "https://dharmamitra.org/api/tagging/"
@@ -38,12 +40,33 @@ def verse_text(lines: list[str]) -> str:
     return transliterate(" ".join(l.replace("।", " ").replace("॥", " ") for l in lines), Scheme.Devanagari, Scheme.Iast)
 
 
+def _load_store() -> dict[str, str]:
+    """Per-verse cache {iast text: result}, built from every cached response."""
+    store = {}
+    for f in sorted(CACHE.glob("*.json")):
+        d = json.loads(f.read_text())
+        store.update(zip(d["texts"], d["results"]))
+    return store
+
+
+_STORE: dict[str, str] | None = None
+
+
 def segment(texts: list[str]) -> list[str]:
+    """Results for ``texts``; only texts never segmented before are sent (≤ BATCH per request)."""
+    global _last, _STORE
+    if _STORE is None:
+        _STORE = _load_store()
+    missing = list(dict.fromkeys(t for t in texts if t not in _STORE))
+    for i in range(0, len(missing), BATCH):
+        _STORE.update(zip(missing[i:i + BATCH], _request(missing[i:i + BATCH])))
+    return [_STORE[t] for t in texts]
+
+
+def _request(texts: list[str]) -> list[str]:
     global _last
     key = hashlib.sha256(json.dumps(texts, ensure_ascii=False).encode()).hexdigest()[:20]
     path = CACHE / f"{key}.json"
-    if path.exists():
-        return json.loads(path.read_text())["results"]
     for attempt in range(5):
         wait = GAP - (time.monotonic() - _last)
         if wait > 0:
@@ -70,9 +93,8 @@ def segment(texts: list[str]) -> list[str]:
 
 def words_of(result: str) -> list[dict]:
     out = []
-    for tok in result.split("_"):
-        tok = tok.strip()
-        if tok:
+    for tok in re.split(r"[_\s]+", result):
+        if any(ch.isalpha() for ch in tok):          # drops "/" line-break markers
             slp = transliterate(tok, Scheme.Iast, Scheme.Slp1)
             out.append({"form": slp, "lemma": slp, "tags": {}, "comp": False})
     return out
@@ -83,32 +105,35 @@ def main() -> None:
     hashes = json.loads((ROOT / "data" / "meta" / "mula_hashes.json").read_text())
     stats = collections.Counter()
     files = sorted((ROOT / "data" / "vr").glob("*/*.json"))
-    for n, f in enumerate(files, 1):
-        d = json.loads(f.read_text())
-        todo = [v for v in d["verses"] + (d["appendix"]["verses"] if d["appendix"] else [])
-                if (v.get("seed") or {}).get("source") != "dcs"
-                and not ((v.get("seed") or {}).get("source") == "dharmamitra"
-                         and v["seed"].get("mula_hash") == hashes[v["id"]])]
-        for i in range(0, len(todo), BATCH):
-            chunk = todo[i:i + BATCH]
-            results = segment([verse_text(v["lines"]) for v in chunk])
-            for v, res in zip(chunk, results):
-                seed = v.get("seed") or {}
-                seed["dharmamitra"] = res
-                r = seed_window(v["lines"], words_of(res))
-                if r["ok"]:
-                    v["padaccheda_lines"], v["groups"] = r["padaccheda_lines"], r["groups"]
-                    seed.update({"source": "dharmamitra", "mula_hash": hashes[v["id"]]})
-                    if "compound_boundaries_unknown" not in v["review"]["flags"]:
-                        v["review"]["flags"].append("compound_boundaries_unknown")
-                    stats["ok"] += 1
-                else:
-                    seed.update({"source": None, "dharmamitra_failure": r["failures"][0] if r.get("failures") else None})
-                    stats["fail"] += 1
-                v["seed"] = seed
+    docs = {f: json.loads(f.read_text()) for f in files}
+    todo = [v for d in docs.values() for v in d["verses"] + (d["appendix"]["verses"] if d["appendix"] else [])
+            if (v.get("seed") or {}).get("source") != "dcs"
+            and not ((v.get("seed") or {}).get("source") == "dharmamitra"
+                     and v["seed"].get("mula_hash") == hashes[v["id"]]
+                     and v["seed"].get("checker") == CHECKER_VERSION)]
+    print(len(todo), "verses to seed", flush=True)
+    for i in range(0, len(todo), BATCH * 4):           # batches cross sarga boundaries
+        chunk = todo[i:i + BATCH * 4]
+        for v, res in zip(chunk, segment([verse_text(v["lines"]) for v in chunk])):
+            seed = v.get("seed") or {}
+            seed["dharmamitra"] = res
+            r = seed_window(v["lines"], words_of(res))
+            if r["ok"]:
+                v["padaccheda_lines"], v["groups"] = r["padaccheda_lines"], r["groups"]
+                seed.update({"source": "dharmamitra", "mula_hash": hashes[v["id"]], "checker": CHECKER_VERSION})
+                seed.pop("dharmamitra_failure", None)
+                if "compound_boundaries_unknown" not in v["review"]["flags"]:
+                    v["review"]["flags"].append("compound_boundaries_unknown")
+                stats["ok"] += 1
+            else:
+                v["padaccheda_lines"], v["groups"] = None, None
+                seed.update({"source": None, "dharmamitra_failure": r["failures"][0] if r.get("failures") else None})
+                stats["fail"] += 1
+            v["seed"] = seed
+        if (i // (BATCH * 4)) % 20 == 0:
+            print(i + len(chunk), "/", len(todo), dict(stats), flush=True)
+    for f, d in docs.items():
         f.write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")) + "\n")
-        if n % 25 == 0:
-            print(n, "/", len(files), dict(stats), flush=True)
     print(dict(stats))
     (ROOT / "data" / "meta" / "seed_dharmamitra.json").write_text(json.dumps(dict(stats), indent=1) + "\n")
 

@@ -8,7 +8,7 @@ from __future__ import annotations
 import re
 
 from .dcs import pausal_candidates
-from .sandhi import _end_danda, norm, rejoin, to_deva, to_slp1, units
+from .sandhi import _end_danda, non_pausal, norm, rejoin, to_deva, to_slp1, units
 
 _STOP_NASAL = {"k": "N", "K": "N", "g": "N", "G": "N", "c": "Y", "C": "Y", "j": "Y", "J": "Y",
                "w": "R", "W": "R", "q": "R", "Q": "R", "t": "n", "T": "n", "d": "n", "D": "n",
@@ -22,7 +22,7 @@ def _mula_spelling(word: str, mula_raw: str) -> str:
     nasal = re.sub(r"M(?=([kKgGcCjJwWqQtTdDpPbB]))", lambda m: _STOP_NASAL[m.group(1)], word)
     anus = re.sub(r"[NYRnm](?=[kKgGcCjJwWqQtTdDpPbB])", "M", word)
     for cand in (word, nasal, anus):
-        if cand in mula_raw:
+        if cand[:-1] in mula_raw:               # the final म् is usually ं in the mūla
             return cand
     return word
 
@@ -82,6 +82,8 @@ def seed_verse(lines: list[str], words: list[dict], allow_trailing: bool = False
         text = "".join(to_deva(chosen[wi]) + (sep_after[wi] if wi != idx[-1] else "") for wi in idx) if idx else ""
         d = _end_danda(line)
         pada_lines.append(text + (" " + d if d else ""))
+        if non_pausal(pada_lines[-1]):          # same pausal rule as check_rejoin
+            return {"ok": False, "failures": [{"reason": "non_pausal", "line": i, "word": non_pausal(pada_lines[-1])[0]}]}
         groups.append(_groups(line, idx, starts, chosen, sep_after))
     return {"ok": True, "padaccheda_lines": pada_lines, "groups": groups, "words": chosen, "used": w0}
 
@@ -94,7 +96,7 @@ def seed_window(lines: list[str], words: list[dict]) -> dict:
         return {**r, "window": [0, len(words)]}
     target = norm(to_slp1(lines[0])) if lines else ""
     for i in range(len(words)):
-        if not any(norm(a)[:2] == target[:min(2, len(norm(a)))] for a in pausal_candidates(words[i])):
+        if not any(norm(a)[:1] == target[:1] for a in pausal_candidates(words[i])):   # 1st letter is never changed
             continue
         ri = seed_verse(lines, words[i:], allow_trailing=True)
         if ri["ok"]:
