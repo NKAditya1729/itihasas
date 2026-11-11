@@ -59,9 +59,11 @@ CLAUDE.md where they differ), `CLAUDE.md` §11–§12, then `docs/STAGE_B_REVIEW
 - At a pāda break a bare form can still pass where the mūla has an irregular
   hiatus for a visarga form (VR.6.83.29 `भूत`, VR.7.78.19 `श्वेत`, VR.4.53.7 `प्राज्ञ`,
   VR.6.35.13 `पक्ष`). They stay `seed`.
-- A compound that runs over a line break inside a unit is seeded without its
-  hyphen and then cleared by `check_rejoin.py` (6 verses queued as
-  `stored_padaccheda_fails`).
+- A compound that runs over a line break inside a unit would be seeded without
+  its hyphen and then cleared by `check_rejoin.py` (found by a probe; no stored
+  verse is known to be affected). The 6 verses queued as `stored_padaccheda_fails`
+  are source slips: a stray or doubled daṇḍa (VR.1.2.27, 1.2.28, 1.34.18, 7.8.5)
+  and two typos (VR.2.57.11, 6.24.6).
 - Untagged Dharmamitra words in -o are kept as -o (vocatives, अहो, गो-); a
   sandhied nominative that Dharmamitra failed to split would pass as -o.
 - Where the mūla lacks an avagraha that the grammar expects, the right DCS split
