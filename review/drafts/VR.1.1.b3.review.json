@@ -1,0 +1,225 @@
+{
+ "VR.1.1.25": {
+  "verdict": "flag",
+  "rules": [
+   "§5.2",
+   "§5.4 rule 7"
+  ],
+  "note": "Second pass: the rewritten vyākhyā is correct (5 sentences; यदा ... तदा, अतएव, अतः; one stretching construction, पालयन्; प्रस्थितः, अनुसृतवान् rightly formed; तं सुमित्रानन्दवर्धनः इति वदति has the nominative before इति, as it should; all boundaries clean; every significant pada in bold; no gloss formula). No definite error. Counting standard for rule 5 in this batch: I count what the vyākhyā itself introduces; the verse's own participle or gerund repeated in bold, and a gerund that only glosses the verse's gerund, are not counted. STANDING POINT FOR THE SCHOLAR: प्रियः is glossed as dear to Rāma (यस्मिन् (रामस्य) स्नेहः अस्ति सः). Verse 26 says exactly that with दयितः भ्रातुः, so the two words would repeat each other. From memory (to be verified) Govindarāja takes प्रियः here actively, प्रीणाति इति प्रियः, that is रामे प्रीतिमान्. The active sense would also mend the logic of लक्ष्मणः रामस्य प्रियः भ्राता आसीत् ; अतएव सः स्नेहात् तम् अनुसृतवान्, which now derives Lakṣmaṇa's affection from Rāma's. If it is adopted: artha यस्य (रामे) स्नेहः अस्ति सः, and the sentence becomes लक्ष्मणः रामस्य **प्रियः** **भ्राता** आसीत्, तस्य रामे महान् स्नेहः आसीत् ; अतएव सः **स्नेहात्** तम् अनुसृतवान् ।",
+  "fixes": []
+ },
+ "VR.1.1.26": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 1",
+   "§5.4 rule 2",
+   "§5.4 rule 3",
+   "§5.4 rule 5",
+   "§5.4 rule 7",
+   "§5.4 rule 9",
+   "§5.4 rule 10"
+  ],
+  "note": "Rewritten vyākhyā correct: 5 sentences, plain story; the participle and the finite verb are exchanged (भ्रातरम् अनुगच्छन् सौभ्रात्रम् अनुदर्शयति स्म), which keeps the sense and gives the one stretching construction; अनुदर्शयति in bold stands for the pada अनुदर्शयन् in the form the sentence needs. Boundaries clean.",
+  "fixes": []
+ },
+ "VR.1.1.27": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 1",
+   "§5.4 rule 2",
+   "§5.4 rule 3",
+   "§5.4 rule 5",
+   "§5.4 rule 7",
+   "§5.4 rule 9",
+   "§5.4 rule 10"
+  ],
+  "note": "Rewritten vyākhyā correct: या ... तया matched, दृश्यन्ते the one passive, one इति आशयः, the needless definition of कुलम् is gone; वधूः, पुत्रस्य पत्नी, in apposition. देवमाया stays neutrally glossed (§5.2).",
+  "fixes": []
+ },
+ "VR.1.1.28": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 1",
+   "§5.4 rule 2",
+   "§5.4 rule 3",
+   "§5.4 rule 5",
+   "§5.4 rule 7",
+   "§5.4 rule 9",
+   "§5.4 rule 10"
+  ],
+  "note": "Correct. रामे गच्छति सति rightly formed; ये पुरे वसन्ति स्म as a relative clause now explains पौराः inside the sentence. The second half belongs to the sentence of verse 29; closing it with (अभवत्) in the anvaya is acceptable.",
+  "fixes": []
+ },
+ "VR.1.1.29": {
+  "verdict": "flag",
+  "rules": [
+   "§12",
+   "§5.4 rule 7"
+  ],
+  "note": "Second pass: the rewritten vyākhyā is correct and now reads as story (5 sentences, one इत्युक्ते; अनुज्ञातवान् rightly formed; नगरं प्रति is gone from the vyākhyā; धर्मात्मा explained by a plain sentence with अतएव). No definite error. STANDING POINT, MŪLA (§12): the text reads शृङ्गवीरपुरे. In the project's own Wikisource cache the town is शृङ्गिबेरपुर about 22 times, शृङ्गवेरपुर 4 times, शृङ्गिवेरपुर 3 times, and शृङ्गवीरपुर only here; the usual reading of this verse is शृङ्गिबेरपुरे. Candidate for the flag mula_suspect and for a lines_corrected proposal; the draft rightly follows the printed form and must be re-spelled if a correction is approved (padaccheda, padārtha, anvaya, vyākhyā). Minor, optional: the context note still says सूतं च नगरं प्रति प्रेषयति; the verse only says he dismissed the charioteer, so सूतं च प्रतिप्रेषयति would keep to it.",
+  "fixes": []
+ },
+ "VR.1.1.30": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 1",
+   "§5.4 rule 2",
+   "§5.4 rule 3",
+   "§5.4 rule 5",
+   "§5.4 rule 7",
+   "§5.4 rule 9",
+   "§5.4 rule 10"
+  ],
+  "note": "Rewritten vyākhyā correct: 4 sentences; सूते गते सति and अतीत्य are the stretching constructions; याः नदीः ते तीर्णवन्तः तासु ... is a well-formed relative clause (तीर्णवन्तः is right). Small remark, no change required: the padārtha of तीर्त्वा has (नद्याः) in the singular while the verse has नदीः; (नदीनां) परं तीरं गत्वा would match.",
+  "fixes": []
+ },
+ "VR.1.1.31": {
+  "verdict": "flag",
+  "rules": [
+   "grammar: agreement (§7.8)",
+   "§5.7 (gender: Amarakośa first)"
+  ],
+  "note": "The prescribed padārtha fix is in (कृत्वा → (आवसथस्य) निर्माणं कृत्वा). The rewritten vyākhyā is good story prose (4 sentences, one इत्युक्ते, gerund and passive sharing the agent in अनुप्राप्य तैः ... कृतः) but has ONE DEFINITE ERROR of agreement in its last sentence: तं सुन्दरं गृहं कृत्वा. गृह in the singular is neuter (Amarakośa: गृहं गेह ..., and गृहाः पुंसि च भूम्न्येव, masculine only in the plural; from memory), so the pronoun must be तत्, not तम्. The corrected sentence was checked in memory against the project checker (no errors). Gender of आवसथ (पुं) rests on Apte and the word list; I do not recall it in the Amarakośa.",
+  "fixes": [
+   {
+    "where": "vyakhya_sa",
+    "problem": "तं सुन्दरं गृहं: masculine pronoun with the neuter singular गृहम्.",
+    "replace_with": "तत् सुन्दरं गृहं **कृत्वा** ते **त्रयः** अपि तस्मिन् **वने** **रममाणाः** सुखेन कालं नीतवन्तः ।"
+   }
+  ],
+  "round": "second review: one definite error remained (तं for तत् with गृहम्); the reviewer's exact corrected sentence was applied by the coordinator; kept as flag for the human reviewer"
+ },
+ "VR.1.1.32": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 1",
+   "§5.4 rule 2",
+   "§5.4 rule 3",
+   "§5.4 rule 5",
+   "§5.4 rule 7",
+   "§5.4 rule 9",
+   "§5.4 rule 10"
+  ],
+  "note": "Rewritten vyākhyā correct: तान् देवगन्धर्वसंकाशाः इति वदति (nominative before इति), गते सति, 5 sentences, no gloss formula. The one checker error is the known unjoined संकाशाः तत्र of the printed text; the padaccheda is right on its merits.",
+  "fixes": []
+ },
+ "VR.1.1.33": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 1",
+   "§5.4 rule 2",
+   "§5.4 rule 3",
+   "§5.4 rule 5",
+   "§5.4 rule 7",
+   "§5.4 rule 9",
+   "§5.4 rule 10"
+  ],
+  "note": "The prescribed fix is in (कथा आरभ्यते). Rewritten vyākhyā correct: 4 sentences; स्मृत्वा and the passive उक्तः are the stretching constructions; one इत्युक्ते. भरतः राज्यं स्वीकर्तुम् उक्तः completes the sentence from verse 34, which is the same sentence.",
+  "fixes": []
+ },
+ "VR.1.1.34": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 1",
+   "§5.4 rule 2",
+   "§5.4 rule 3",
+   "§5.4 rule 5",
+   "§5.4 rule 7",
+   "§5.4 rule 9",
+   "§5.4 rule 10"
+  ],
+  "note": "Rewritten vyākhyā correct: भरतः द्विजैः उक्तः (passive) and प्रणम्य are the stretching constructions; one इति आशयः; 5 sentences. The one checker error is the known unjoined नैच्छत् राज्यं. Remarks, no change required. (1) Anvaya, §5.3: (भरतः द्विजैः) ... महाबलः (सन्) separates the supplied noun from its adjective; smoother: (द्विजैः) राज्याय नियुज्यमानः (अपि) महाबलः (भरतः) राज्यं न ऐच्छत् । (2) रामपादप्रसादकः: the gloss rightly gives the sense of purpose; from memory, Govindarāja also notes that पाद may be honorific here. The literal vigraha रामस्य पादौ is sound and matches verse 38.",
+  "fixes": []
+ },
+ "VR.1.1.35": {
+  "verdict": "flag",
+  "rules": [
+   "§5.1",
+   "§5.7 (padaccheda)",
+   "§5.2"
+  ],
+  "note": "Second pass: the rewritten vyākhyā is correct (5 sentences; यतः clauses, यः ... तं matched; gerunds प्राप्य and कृत्वा; the heavy आर्याणाम् इत्युक्ते gloss is gone). No definite error. STANDING POINTS FOR THE SCHOLAR. (1) आर्यभावपुरस्कृतः is analysed as a bahuvrīhi, आर्यभावः पुरस्कृतः येन सः. That requires the niṣṭhā to stand last against the general rule (the regular order would be पुरस्कृतार्यभावः; Pāṇini 2.2.36 निष्ठा, with the exception 2.2.37 for the आहिताग्नि class). From memory Govindarāja explains it exactly so, and Tilaka glosses आर्यभाव as विनय; the alternative is a tṛtīyā-tatpuruṣa, आर्यभावेन पुरस्कृतः. The draft's choice is defensible; the scholar should confirm. (2) Padaccheda: पुरस्कृतः is left unhyphenated. पुरस् is an indeclinable word, but with कृ it is a gati (1.4.67) and behaves like a prefix; the ruling's list of unsplit prefixes does not name such words. I judge the unsplit form right (a split पुरः-कृतः would need 8.3.40 to re-join); the owner may wish to add gati words to the ruling.",
+  "fixes": []
+ },
+ "VR.1.1.36": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 7",
+   "§5.3"
+  ],
+  "note": "The prescribed vyākhyā is in, word for word; 6 sentences, no checker error. Recorded for the scholar only, no change needed: some commentators take अपि concessively with the three adjectives (though so generous, he did not wish it).",
+  "fixes": []
+ },
+ "VR.1.1.37": {
+  "verdict": "flag",
+  "rules": [
+   "§5.2",
+   "§5.7 (epic usage)",
+   "§5.3"
+  ],
+  "note": "Second pass: vyākhyā correct (the न्यास sentence is now a plain यत् ... तत् clause; one इति आशयः; पित्रा सः ... आदिष्टः, ते पादुके ... दत्ते verified). The one checker error is the known unjoined आदेशात् राज्यं. No definite error. STANDING POINT FOR THE SCHOLAR: अस्य. The draft records it as षष्ठी and glosses एतस्य भरतस्य (भरताय इति अर्थः), a genitive in the sense of the dative, in the manner of the ruling on कस्य in verse 4; the vyākhyā says अस्य भरतस्य हस्ते. The other construction, which I recall from the commentaries (from memory), joins it to the next word: अस्य राज्याय = for his (Bharata's) conduct of the kingdom. The anvaya keeps अस्य राज्याय together and so fits both. If the second is chosen the gloss becomes एतस्य भरतस्य (राज्याय इति पदेन अन्वयः) and the vyākhyā sentence ते पादुके **अस्य** भरतस्य **राज्याय** दत्ते.",
+  "fixes": []
+ },
+ "VR.1.1.38": {
+  "verdict": "flag",
+  "rules": [
+   "§5.3",
+   "§5.4 rule 7",
+   "§5.2"
+  ],
+  "note": "Second pass: the rewritten vyākhyā is grammatically correct (5 sentences; यत् तेन इष्टं तत् न प्राप्तम् is a sound passive; तं भरताग्रजः इति वदति). No definite error of language. STANDING POINT FOR THE SCHOLAR, with an inconsistency inside the draft that remains: the anvaya rightly joins the present participle उपस्पृशन् to the verb of verse 39, सः ... रामपादौ उपस्पृशन् (नन्दिग्रामे राज्यम् अकरोत्); but the vyākhyā still says सः रामपादौ उपस्पृशन्, हस्ताभ्यां स्पृशन्, एव ततः गतवान्, supplying a verb of its own (touching the feet at leave-taking), and the vyākhyā of verse 39 does not mention the participle. If the participle goes with राज्यम् अकरोत्, Rāma's feet cannot be literally present at Nandigrāma: from memory, Govindarāja and Tilaka take रामपादौ as the two pādukās, which Bharata daily touched or worshipped while ruling. Either the anvaya or the vyākhyā must change once the scholar decides. If the commentators' reading is adopted, the last sentence could read: सः **रामपादौ** **उपस्पृशन्** एव राज्यम् अकरोत् इति अग्रिमे श्लोके उच्यते ; रामस्य पादुके एव अत्र रामपादौ । (and the gloss of उपस्पृशन् would lose (हस्ताभ्यां)).",
+  "fixes": []
+ },
+ "VR.1.1.39": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 1",
+   "§5.4 rule 2",
+   "§5.4 rule 3",
+   "§5.4 rule 5",
+   "§5.4 rule 7",
+   "§5.4 rule 9",
+   "§5.4 rule 10"
+  ],
+  "note": "Rewritten vyākhyā correct: 6 sentences, चिन्तयन् and गते सति, the compound unfolded in apposition (रामस्य आगमनस्य इच्छया), the two epithets explained by one plain sentence; no gloss formula.",
+  "fixes": []
+ },
+ "VR.1.1.40": {
+  "verdict": "flag",
+  "rules": [
+   "§5.2",
+   "§5.3"
+  ],
+  "note": "The prescribed padārtha fix is in (तु → किन्तु (भरतात् भेदं सूचयति)). Rewritten vyākhyā correct: 6 sentences; आगच्छेयुः, एकाग्रः सन्, one इति उच्यते. No definite error. STANDING POINT FOR THE SCHOLAR: च in नागरस्य जनस्य च. The draft takes नागरस्य as the adjective of जनस्य and leaves च as a loose connective. As far as I recall (from memory) the commentators make च join two groups (the townsmen and the country people, or the people and Bharata's party). If so, नागरस्य would not be anvita to जनस्य and the vyākhyā would name both groups.",
+  "fixes": []
+ },
+ "VR.1.1.41": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 2",
+   "§5.4 rule 5",
+   "§5.4 rule 10"
+  ],
+  "note": "Unchanged and correct: the events in order in short sentences, the epithet explained last.",
+  "fixes": []
+ },
+ "VR.1.1.42": {
+  "verdict": "flag",
+  "rules": [
+   "§5.2",
+   "§5.4 rule 7"
+  ],
+  "note": "Unchanged and correct in all layers (दृष्टौ passive dual, ग्रहीतुम्, क्षिप्यन्ते; इति यावत्; one इति आशयः). No definite error. STANDING POINT FOR THE SCHOLAR: the padārtha of ऐन्द्रम् adds इन्द्रेण दत्तम् to the plain taddhita sense इन्द्रस्य (इदम्). That goes beyond the word and rests on the commentaries and on the later Araṇyakāṇḍa account, where, as I recall (from memory), the bow Agastya hands over is called Viṣṇu's and it is the two quivers that Indra gave. The vyākhyā rightly keeps to यत् च इन्द्रस्य तत् ऐन्द्रम्. Decide whether इन्द्रेण दत्तम् stays in the gloss or is reduced to इन्द्रस्य (इदम्), इन्द्रसम्बन्धि.",
+  "fixes": []
+ },
+ "VR.1.1.43": {
+  "verdict": "flag",
+  "rules": [
+   "§5.7 (gender; epic usage)",
+   "§12",
+   "§5.4 rule 7"
+  ],
+  "note": "Second pass: the rewritten vyākhyā is correct (5 sentences; द्वौ तूणी गृहीतौ, तौ ... आस्ताम्, तयोः सायकाः ... न क्षीयन्ते; glosses in apposition, no formula). No definite error. STANDING POINTS FOR THE SCHOLAR. (1) तूणी: with the masculine dual अक्षयसायकौ the form can only be the dual of a masculine इ-stem, so the draft's तूणि, पुं, द्वितीया, द्वि is what the form requires. But the Amarakośa, as I recall it (from memory), has तूण (पुं) and तूणी (स्त्री: तूण्याम्), not तूणि; तूणि पुं rests on the epic usage and on the word list / Monier-Williams. Under the ruling on epic usage the entry is right; the gender should be verified in the kośa. (2) MŪLA (§12): the printed text has परम प्रीतस् with a space inside the compound, the same kind of slip as the approved correction in VR.1.1.1; the draft reads परम-प्रीतः as one compound, rightly. A lines_corrected proposal (space removed, no letter changed) is in order. (3) Rule 7, slight and optional: एतत् सर्वं प्राप्य सः परमप्रीतः ... अभवत् makes the gladness the result of the gift, while the verse has him take the weapons being already परमप्रीतः; सः **परमप्रीतः** सन् एतत् सर्वं गृहीतवान् would be closer.",
+  "fixes": []
+ }
+}
