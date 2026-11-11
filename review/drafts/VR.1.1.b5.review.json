@@ -1,0 +1,204 @@
+{
+ "VR.1.1.63": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-7, 9, 10"
+  ],
+  "note": "Second pass. Rewritten vyākhyā correct: 5 sentences; प्रतिज्ञाते सति the one stretching construction; शङ्कितः explained by a plain यस्य … सः clause; no gloss formula; boundaries clean; every significant pada in bold. The identifier of Vālin now stands in brackets (kept by the coordinator's decision).",
+  "fixes": []
+ },
+ "VR.1.1.64": {
+  "verdict": "flag",
+  "rules": [
+   "§5.2",
+   "§5.4 rule 7",
+   "§5.1",
+   "§7.3"
+  ],
+  "note": "Second pass. Rewritten vyākhyā correct: 5 sentences; सन्देहे वर्तमाने and दृश्यते स्म; one इत्युक्ते; तस्य कायः, शरीरम्, उत्तमः महापर्वतसन्निभः च आसीत् agrees rightly with कायः. No definite error. Padaccheda right on its merits; the one checker error is the unjoined सुग्रीवः महा… of the print, and the draft still carries no rejoin_note, which vrtools/padartha.py needs before the verse can be merged. POINTS FOR THE SCHOLAR: (1) राघवप्रत्ययार्थम् is taken as Sugrīva's own confidence in Rāma (राघवे प्रत्ययः; vyākhyā राघवे स्वस्य विश्वासः दृढः भवेत्), which fits 66 प्रत्ययं जनयन् and 67 विश्वस्तः; the other construction, to convince Rāma (of Vālin's strength), is from memory also found in the commentaries. (2) काय is पुं by the Amarakośa (from memory). (3) (मृतं देहम्) in the gloss of कायम् is an inference; it gains support if 65 is corrected to अस्थि. (4) तु is glossed पुनः, which a learner may read as again; verses 33–41 use अथ (कथायाः अग्रिमं भागं सूचयति).",
+  "fixes": []
+ },
+ "VR.1.1.65": {
+  "verdict": "flag",
+  "rules": [
+   "§12",
+   "§5.1",
+   "§5.2",
+   "§5.7 (epic usage)"
+  ],
+  "note": "MŪLA (§12). For the text as printed the draft is sound: अस्ति can only be the finite verb (अस् लट् प्रथम एक), so (सः) महाबलः अस्ति stands as a clause by itself; padaccheda, padārtha, anvaya and the rewritten vyākhyā (4 sentences, one इत्युक्ते, boundaries clean) agree with that reading, and the present अस्ति beside शक्नोति स्म is forced by the print. No checker error, no definite error. But चास्ति is very probably a slip for चास्थि (from memory the vulgate, Gita Press, reads प्रेक्ष्य चास्थि महाबलः: having looked at the bone / skeleton); every local source of the project has च अस्ति, so there is no witness inside the folder. With अस्थि, प्रेक्ष्य and चिक्षेप get their object and महाबलः becomes an epithet of Rāma. Recommend mula_suspect and a lines_corrected proposal. If it is approved: अस्थि, pratipadika अस्थि, नपुं द्वितीया एक, artha (दुन्दुभेः) अस्थि; महा-बलः anvita महा-बाहुः; anvaya महाबाहुः महाबलः (रामः) अस्थि प्रेक्ष्य उत्स्मयित्वा च (तत्) पादाङ्गुष्ठेन संपूर्णं दशयोजनं चिक्षेप ।; the last vyākhyā sentence must then be rewritten and कायः replaced. Smaller points: उत्स्मयित्वा is rightly marked ārṣa (क्त्वा after an upasarga, with इट् and guṇa; regular उत्स्मित्य); दशयोजनम् as a neuter samāhāra-dvigu (not दशयोजनी) presumes the पात्रादि class, which epic usage supports; the scholar may confirm.",
+  "fixes": []
+ },
+ "VR.1.1.66": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-7, 9, 10"
+  ],
+  "note": "Second pass. Rewritten vyākhyā correct: 5 sentences; no gloss formula (महता बाणेन in apposition, रसातलं … यत् पृथिव्याः अधः वर्तते as a relative clause); passive भिन्नः; boundaries clean. Remark, no change required: the anvaya ends with a participial phrase after the finite verb (… बिभेद, तथा प्रत्ययं जनयन्); the §5.3 order would put तथा प्रत्ययं जनयन् before the objects. The draft's order keeps तथा next to what it refers to, so it may stand.",
+  "fixes": []
+ },
+ "VR.1.1.67": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-7, 9, 10"
+  ],
+  "note": "Second pass. Rewritten vyākhyā correct: 4 sentences; सन्देहे गते सति; रामेण सह in apposition to रामसहितः; तौ … प्राप्तवन्तौ rightly dual; no gloss formula. Remark: वानराणां नगरीम् in the gloss of किष्किन्धाम् says a little more than the verse (गुहाम्); the vyākhyā says only काचित् गुहा.",
+  "fixes": []
+ },
+ "VR.1.1.68": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-7, 9, 10"
+  ],
+  "note": "Second pass. Rewritten vyākhyā correct and now in story order: the roar, then Vālin's coming out, then the epithets (5 sentences; प्राप्य and वर्ण्यते; हरयः अत्र वानराः ; तेषाम् ईश्वरः, राजा, वाली एव is well put; boundaries clean). The remark of the first pass is met.",
+  "fixes": []
+ },
+ "VR.1.1.69": {
+  "verdict": "pass",
+  "rules": [
+   "grammar: verb form (§7.8)",
+   "§5.4 rules 1-7, 9, 10"
+  ],
+  "note": "Second pass. The prescribed fix is in (context note युध्यते). Rewritten vyākhyā correct: 4 sentences; आगच्छन् and युध्यमानम् the two stretching constructions; एनं वालिनं rightly used; no gloss formula. Identifiers of Tārā and Sugrīva now in brackets (kept by decision).",
+  "fixes": []
+ },
+ "VR.1.1.70": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-7, 9, 10",
+   "§7.3"
+  ],
+  "note": "Second pass. Rewritten vyākhyā correct: 4 sentences; आहवे, युद्धे, in apposition; passives कृतम् and स्थापितः; यत् राज्यं … तस्मिन् matched. Padaccheda right on its merits; the one checker error is the unjoined …वचनात् हत्वा of the print, and the draft still carries no rejoin_note (needed for the merge).",
+  "fixes": []
+ },
+ "VR.1.1.71": {
+  "verdict": "pass",
+  "rules": [
+   "§5.7",
+   "§5.4 rule 10",
+   "§5.4 rules 1-7, 9, 10"
+  ],
+  "note": "Second pass. Both prescribed fixes are in: दिशः is glossed (सर्वाः) दिशः (प्रति), and the vyākhyā is the reordered text, word for word (5 sentences; the story first, the epithet वानरर्षभः last).",
+  "fixes": []
+ },
+ "VR.1.1.72": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-7, 9, 10"
+  ],
+  "note": "Second pass. Rewritten vyākhyā correct: 5 sentences; पुप्लुवे explained in apposition (कूर्दित्वा तीर्णवान्); बलवता हनुमता … तीर्णः a sound passive; no gloss formula. Remark: गृध्रनामकस्य reads as if गृध्र were a name; verses 53–54 have गृध्रजातीयं महापक्षिणम्, which is more exact.",
+  "fixes": []
+ },
+ "VR.1.1.73": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 3",
+   "§5.4 rules 1-7, 9, 10"
+  ],
+  "note": "Second pass. The prescribed vyākhyā is in, word for word (यदा हनुमान् सीताम् अपश्यत् तदा सा …); 5 sentences, one इत्युक्ते, one इति आशयः.",
+  "fixes": []
+ },
+ "VR.1.1.74": {
+  "verdict": "flag",
+  "rules": [
+   "§5.2",
+   "§5.4 rule 7",
+   "§5.7 (gender: Amarakośa first)"
+  ],
+  "note": "Second pass. Rewritten vyākhyā correct: 5 sentences; दृष्ट्वा and ज्ञायते; वार्ताम् in apposition to प्रवृत्तिम्; सान्त्वितवान्, भग्नम् rightly formed; no इत्युक्ते. No definite error. POINTS FOR THE SCHOLAR: (1) the gloss of अभिज्ञानम् adds (रामस्य अङ्गुलीयकम्); the ring is known only from the Sundarakāṇḍa, not from this sarga (the vyākhyā rightly does not name it). It is a thing, not a person; compare verse 42 ऐन्द्रम्. If it is to go: artha परिचयस्य चिह्नम् (येन रामस्य दूतः इति ज्ञायते). (2) तोरणम् is recorded as नपुं; the Amarakośa has तोरणोऽस्त्री (from memory), so पुं or नपुं; the form allows both. (3) (उद्यानस्य) in the gloss of तोरणम् and उद्यानस्य द्वारम् in the context note take the gate to be that of the Aśoka grove; the verse does not say whose gate; the commentators, from memory, take it so.",
+  "fixes": []
+ },
+ "VR.1.1.75": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-7, 9, 10",
+   "§7.4 (fit_note)"
+  ],
+  "note": "Second pass. Rewritten vyākhyā correct: 5 sentences; भग्ने सति and कृत्वा; मन्त्रिणां पुत्रान् in apposition; one इति आशयः. fit_note on पञ्च verified in the first pass (the word list has no stem पञ्चन्; द्वितीया बहु is right). Remarks: निष्पिष्य is no longer explained in the vyākhyā (the padārtha has चूर्णं कृत्वा); शूरम् is glossed वीरम् here and वीरः is glossed शूरः in 76, so the two glosses explain each other.",
+  "fixes": []
+ },
+ "VR.1.1.76": {
+  "verdict": "flag",
+  "rules": [
+   "§5.3",
+   "§5.2",
+   "§5.4 rule 7"
+  ],
+  "note": "Second pass. Rewritten vyākhyā correct: 5 sentences, one इत्युक्ते, ये तं बध्नन्ति स्म ते यन्त्रिणः, सोढवान् rightly formed. No definite error. POINTS FOR THE SCHOLAR: (1) the verse has no finite verb; its participle मर्षयन् leans on 77 (… ततः दग्ध्वा … पुनः आयात्). The draft closes the sentence with (अतिष्ठत्) in the anvaya and स्थितः in the vyākhyā, as verse 28 was closed with (अभवत्); the other convention in this sarga is the pointer of verses 19–21 (… इति अग्रे सम्बन्धः). Either is honest; please settle one. (2) यदृच्छया is taken with मर्षयन् as स्वस्य इच्छया (Amarakośa: यदृच्छा स्वैरिता, from memory); it can also go with यन्त्रिणः (who dragged him about as they pleased); a commentary should decide. (3) अस्त्रेण: the gloss adds (ब्रह्मणः), and the vyākhyā says येन अस्त्रेण हनुमान् बद्धः; that the weapon was Brahmā's and that it was the weapon that bound him are inferences from उन्मुक्तम् and पैतामहात् वरात्, strictly known from the Sundarakāṇḍa; likewise (तं रज्जुभिः) in the gloss of यन्त्रिणः. (4) पितामहः इत्युक्ते ब्रह्मा would be more exact with अत्र, since the learner knows the word as grandfather.",
+  "fixes": []
+ },
+ "VR.1.1.77": {
+  "verdict": "pass",
+  "rules": [
+   "§5.7",
+   "§5.4 rules 1-7, 9, 10"
+  ],
+  "note": "Second pass. The prescribed fix is in (पुनः glossed पुनः (यतः गतः आसीत् तत्र एव)). Rewritten vyākhyā correct: 5 sentences; ऋते सीताम्, सीतां विना, इति उच्यते (म् before the pause, anusvāra before व); ऐच्छत् rightly formed; the needless definition of प्रियम् is gone.",
+  "fixes": []
+ },
+ "VR.1.1.78": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-7, 9, 10"
+  ],
+  "note": "Unchanged and correct (5 sentences; यदा … तदा; passives उच्यते / वर्ण्यते / शक्यते; अन्यं परितः with the right case). Remark, optional: the gloss of कृत्वा still uses the sign = (प्रदक्षिणं कृत्वा = आदरेण परितः गत्वा); no other gloss uses a symbol; better प्रदक्षिणं कृत्वा इत्युक्ते आदरेण परितः गत्वा.",
+  "fixes": []
+ },
+ "VR.1.1.79": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-7, 9, 10"
+  ],
+  "note": "Second pass. Rewritten vyākhyā correct: 4 sentences; महोदधिः नाम महान् समुद्रः; रामेण बाणान् क्षिपता a well-formed participle in the instrumental; क्षुभ्यति right; no gloss formula. Remarks, no change required: समुद्रम् is glossed सागरम्, a synonym and not a simpler word (as on verse 16); महा-उदधेः keeps उदधि whole as a fixed word, though it is itself an upapada compound like आत्म-ज.",
+  "fixes": []
+ },
+ "VR.1.1.80": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-7, 9, 10"
+  ],
+  "note": "Second pass. Rewritten vyākhyā correct: 5 sentences; रामस्य पुरतः आत्मानं दर्शयामास (the dative / accusative question of the first pass no longer arises); सरितः नाम नद्यः ; तासां स्वामी agrees in the plural; रामः तं नलेन कारितवान्, न तु स्वयं कृतवान् teaches the causative well; one इति आशयः.",
+  "fixes": []
+ },
+ "VR.1.1.81": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4 rules 1-7, 9, 10"
+  ],
+  "note": "Second pass. Rewritten vyākhyā correct: 5 short sentences in the order of the events; सेतौ कृते सति; व्रीडा नाम लज्जा; nothing is said of the reason for the shame, rightly, since the verse gives none.",
+  "fixes": []
+ }
+}

@@ -50,6 +50,14 @@ def main() -> int:
     d["status"].update({"padaccheda": "reviewed" if all(v.get("padaccheda_status") == "reviewed" for v in d["verses"]) else "partial",
                         "padartha": layer, "anvaya": layer, "vyakhya": layer})
     f.write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")) + "\n")
+    index_file = ROOT / "data" / "vr" / "index.json"              # the sarga list shows the title and status
+    index = json.loads(index_file.read_text())
+    for entry in index["sargas"]:
+        if entry["k"] == d["kanda"] and entry["s"] == d["sarga"]:
+            entry["title"], entry["status"] = d.get("title"), d["status"]
+            if d.get("pilot"):
+                entry["pilot"] = True
+    index_file.write_text(json.dumps(index, ensure_ascii=False, separators=(",", ":")) + "\n")
     print(f"merged {len(merged)} verse(s) into {f.relative_to(ROOT)}; no verdict yet: {len(skipped)}")
     for vid, verdict, note, unverified in flagged:
         print(f"  for the human reviewer: {vid} [{verdict}] {note}" + (f" (forms not in the word list: {' '.join(unverified)})" if unverified else ""))

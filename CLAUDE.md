@@ -226,6 +226,28 @@ worked examples of §4 and §5.6 differ, **these rulings win**.
 **Anvaya (§5.3)**
 - Every pada exactly once. Anything supplied, even a च, stands in parentheses.
 
+**Conventions settled while finishing the pilot (the coordinator's; Aditya may change them)**
+- Split स-, सु-, महा- and upapada compounds at every member boundary (`सु-शिराः`,
+  `आत्म-जः`, `द्वि-जः`). Do not split prefixes that are not words on their own
+  (दुस्, निस्, वि, प्र …): `दुर्लभाः`, `निरामयः`. Proper names, fixed terms and
+  taddhitas stay whole; transparent epithets are split (`प्रजा-पति-समः`).
+- A feminine adjective or participle gives the feminine stem as `pratipadika`.
+  A causative is written `"dhatu": "वृत् (णिच्)"`.
+- A proper name gets a short identifier in the padārtha (§5.2), in brackets where
+  it goes beyond the pada, even if sarga 1 itself does not tell it. The vyākhyā
+  adds nothing beyond the verse.
+- **Declared exceptions** (each is listed by `make check`, judged by the reviewer
+  and entered in `review/queue.md`):
+  - `"fit_note"` on a padārtha entry: the word list wrongly rejects a correct form
+    (an ārṣa form such as शंसत् for अशंसत्; a stem it lacks).
+  - `"rejoin_note"` on a verse: the printed text cannot be re-joined from a correct
+    padaccheda (two words left without sandhi, as in नैच्छत् राज्यं; an impossible
+    sandhi). The mūla is not changed; a correction, if wanted, goes through §12.
+- When a verse still has a definite error after the one fix round, the reviewer
+  flags it and gives the corrected sentence; the coordinator applies that exact
+  text and keeps the flag for the human reviewer.
+- Sub-agents: at most three at a time (five in parallel hit the usage limit).
+
 **Vyākhyā:** the style is now given in §5.4 (expository prose; it replaced the
 earlier ruling "at most 2–3 अर्थात् glosses").
 

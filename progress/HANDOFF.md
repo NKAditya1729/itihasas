@@ -1,4 +1,4 @@
-# Handoff — Stage B, Step 4 (pilot) in progress (2026-11-11)
+# Handoff — Stage B: pilot of Bāla sarga 1 complete, waiting for review (2026-11-11)
 
 **Read first:** `docs/STAGE_B_BRIEF.md` (the working instructions; it overrides
 CLAUDE.md where they differ), `CLAUDE.md` §11–§12, then `docs/STAGE_B_REVIEW.md`.
@@ -50,40 +50,30 @@ CLAUDE.md where they differ), `CLAUDE.md` §11–§12, then `docs/STAGE_B_REVIEW
   `scripts/apply_corrections.py` (VR.1.1.1, 1.1.9, 1.1.45, 1.1.100). `lines` is
   untouched; the mūla hashes still pass.
 
-## Step 4 (pilot, Bāla sarga 1): state on 2026-11-11, evening
-- Branch **`pilot-1-1`** (local; `main` has verses 1–5 in the OLD vyākhyā style, live,
-  with the pilot mark). `make check` passes (290 tests, 5 verses with padārtha).
-- **Vyākhyā style changed** (CLAUDE.md §5.4, D15): connected expository prose in
-  the register of ashtadhyayi.com (reference file in git-ignored
-  `cache/ashtadhyayi/`; register only, never commit). Verses 1–5 are rewritten,
-  reviewed (1, 2, 4, 5 pass; 3 flag for the kośa points) and merged on the branch.
-  **Waiting for Aditya's OK on that style before writing the vyākhyā of 6–100.**
-- **Verses 6–100: padaccheda, padārtha, anvaya drafted** by five generator
-  sub-agents in `review/drafts/VR.1.1.b2.json` … `b6.json` (19 verses each;
-  `vyakhya_sa` is null; b6 also has the sarga title and `summary_sa`). Not yet
-  reviewed, not merged. Checker: 81 of 95 verses OK.
-- **Open questions put to Aditya:**
-  A. Ten verses where Wikisource prints two words unjoined, so the right split
-     cannot re-join: 32, 34, 37, 62, 64, 70, 91, 92, 96, 100. Recommended: let
-     the check accept an unjoined junction that the mūla itself prints, for
-     reviewed verses only (seeding stays strict).
-  B. Proposed corrections (not applied): VR.1.1.15 तत्त्वज्ञो → तत्त्वज्ञः;
-     VR.1.1.29 शृङ्गवीरपुरे → शृङ्गवेरपुरे; VR.1.1.65 चास्ति → चास्थि. Also doubtful,
-     left as printed: 84 सर्वदेवतैः, 85 अभ्यषिच्य, spaces inside compounds (17, 43, 57).
-  C. Delete the duplicate "… 2" / "… 3" files? (12 listed; nothing deleted.)
-- **Still to do after his answers:** harmonise the five batches (hyphenation of
-  सु- / दुस्- / निस्- / आत्म-ज, feminine stems, `fit_note` for असुर-रक्षसाम्, शंसत्,
-  पञ्च), write the vyākhyā of 6–100 in the new style (same generators), review
-  everything with separate reviewer sub-agents (one fix round), merge, 10% sample
-  and flags into `review/queue.md`, mark the sarga pilot, STOP. Run sub-agents two
-  at a time: five in parallel hit the usage limit.
-- Sub-agent ids are in the session only; if the session is new, start fresh
-  generators from the drafts on disk.
+## Step 4 (pilot, Bāla sarga 1): COMPLETE (2026-11-11)
+- **All 100 verses of VR.1.1 have every layer** (reviewed padaccheda, padārtha,
+  anvaya, expository vyākhyā per CLAUDE.md §5.4), the sarga title and
+  `summary_sa`; the sarga is marked `pilot`. Merged to `main` and live on
+  Aditya's word ("complete the first 100 verses and go live").
+- `make check`: 296 tests; 100 verses with padārtha; 11 declared re-join
+  exceptions; 0 errors.
+- Process: five generator sub-agents (drafts in `review/drafts/VR.1.1*.json`),
+  five separate reviewer sub-agents (`*.review.json`), one fix round per batch and
+  a final review pass. Final verdicts: 74 pass, 26 flag. Flags, exceptions, the
+  doubtful source readings and a 10% sample are in `review/queue.md`.
+- **STOP here for Aditya's and Swamiji's review. Do not start sarga 2.**
 
 ## Open, in order
-1. Aditya's answers (style of verses 1–5; questions A, B, C).
-2. Finish the pilot as above. Do not start sarga 2.
-3. Owed: `docs/AYODHYA_PRESPLIT_OPTIONS.md` (one page, options only).
+1. **Aditya's decisions** (all listed in `review/queue.md` §1): corrections for
+   VR.1.1.15, 29, 65, 84, 85 and the stray spaces in 17, 43, 57 (none applied;
+   all flagged `mula_suspect`); whether padārtha identifiers may go beyond what
+   sarga 1 tells; the duplicate "… 2" / "… 3" files (12 listed; nothing deleted;
+   never `git add -A` in this folder).
+2. Swamiji's review of the 26 flagged verses and the kośa genders.
+3. After that: package §5 and §7 as the project skill `ramayana-content-review`
+   (CLAUDE.md §10.3), then sarga 2 (its `context_in_sa` = this sarga's
+   `summary_sa` + the vyākhyā of verses 98–100).
+4. Owed: `docs/AYODHYA_PRESPLIT_OPTIONS.md` (one page, options only).
 
 ## Known limits of the Step 3 fixes (from the independent code review)
 - At a pāda break a bare form can still pass where the mūla has an irregular
