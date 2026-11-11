@@ -30,6 +30,10 @@ a.part:hover,a.part:focus-visible{background:var(--tint);outline:none;text-decor
 .mula-box .sarga-note{margin:2px 0 0;font-weight:400;line-height:1.6}
 .pada-pending{display:none}
 body.pada .pada-pending{display:block}
+/* Stage B: असमीक्षितम् on machine splits, seen only while the split is shown; same note style as above */
+.pada-seed{display:none}
+body.pada .pada-seed{display:block}
+#pada-toggle[hidden]{display:none}
 .appendix-head{text-align:center;color:var(--saffron);font-size:calc(var(--font-size)*.95);margin:30px 0 4px}
 
 /* per-verse अध्ययनसाहाय्यम् (base.css .vy-block.st-block, .study-tabs, .sec) */

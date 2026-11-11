@@ -52,3 +52,30 @@ def test_path_urls_are_thin_shells_opening_the_reader(site):
     shell = (site / "ramayanam" / "6" / "128" / "index.html").read_text()
     assert 'location.replace("../../#VR.6.128")' in shell
     assert 'href="../../#VR.6.128"' in shell   # works without JavaScript too
+
+
+# ---- Stage B review, M1: machine splits are marked as unreviewed ---------------------
+
+def test_published_verses_carry_padaccheda_status(site):
+    d = json.loads((site / "ramayanam" / "data" / "vr" / "1" / "001.json").read_text())
+    assert all("padaccheda_status" in v for v in d["verses"])
+    assert all((v["padaccheda_status"] is None) == (v["groups"] is None) for v in d["verses"])
+
+
+def test_reader_marks_seed_splits_and_shows_the_mark_only_in_pada_mode(site):
+    js = (site / "ramayanam" / "vr.js").read_text()
+    css = (site / "ramayanam" / "vr.css").read_text()
+    assert "padaccheda_status !== 'reviewed'" in js and "असमीक्षितम्" in js
+    assert ".pada-seed{display:none}" in css and "body.pada .pada-seed{display:block}" in css
+
+
+def test_reader_hides_the_toggle_on_a_sarga_without_any_split(site):
+    js = (site / "ramayanam" / "vr.js").read_text()
+    assert "$('#pada-toggle').hidden" in js
+    assert "#pada-toggle[hidden]{display:none}" in (site / "ramayanam" / "vr.css").read_text()
+
+
+def test_shell_and_reader_ask_for_the_new_files(site):
+    shell = (site / "ramayanam" / "index.html").read_text()
+    assert "vr.js?v=2" in shell and "vr.css?v=2" in shell
+    assert "'?v=2'" in (site / "ramayanam" / "vr.js").read_text()

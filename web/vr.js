@@ -17,7 +17,7 @@
   const ANUSHTUP = 'अनुष्टुप्';
   let index = null;
   const cache = {};
-  const load = f => (cache[f] = cache[f] || fetch('data/' + f + '?v=1').then(r => { if (!r.ok) throw new Error(f); return r.json(); }));
+  const load = f => (cache[f] = cache[f] || fetch('data/' + f + '?v=2').then(r => { if (!r.ok) throw new Error(f); return r.json(); }));
   const sargaFile = (k, s) => `vr/${k}/${String(s).padStart(3, '0')}.json`;
   const kanda = k => index.kandas.find(x => x.k === k);
 
@@ -50,9 +50,12 @@
     return h;
   }
   const num = v => v.id.split('.').pop();
+  /* a machine split (padaccheda_status "seed") is marked until a sarga review has finalised it */
+  const SEED_MARK = '<span class="sarga-note pada-seed" title="यन्त्रकृतः पदच्छेदः — अद्यापि न समीक्षितः">असमीक्षितम्</span>';
   function verse(v) {
     const pending = v.groups ? '' : '<span class="sarga-note pada-pending">पदच्छेदः सज्जीक्रियते</span>';
-    return `<div class="mula-box" id="${esc(v.id)}">${badges(v)}${vlines(v)}${pending}` +
+    const seed = v.groups && v.padaccheda_status !== 'reviewed' ? SEED_MARK : '';
+    return `<div class="mula-box" id="${esc(v.id)}">${badges(v)}${vlines(v)}${pending}${seed}` +
       `<a class="verse-ref" href="#${esc(v.id)}">${deva(num(v))}</a></div>${study(v)}`;
   }
 
@@ -139,10 +142,12 @@
       try { d = await load(sargaFile(r.k, r.s)); } catch { status.innerHTML = '<p>पाठः न लब्धः। पुनः प्रयतताम्।</p>'; return; }
       const all = d.verses.concat(d.appendix ? d.appendix.verses : []);
       state.sarga = { data: d, byId: Object.fromEntries(all.map(v => [v.id, v])) };
+      $('#pada-toggle').hidden = !all.some(v => v.groups);   // nothing to toggle in a sarga without any split
       html = sargaView(d); title = `${d.kanda_name} · सर्गः ${deva(d.sarga)}`;
       store.set('last', `VR.${r.k}.${r.s}`);
     } else {
       state.sarga = null;
+      $('#pada-toggle').hidden = false;
       html = r.view === 'kanda' ? kandaView(r.k) : home();
       title = r.view === 'kanda' ? kanda(r.k).name : '';
     }
