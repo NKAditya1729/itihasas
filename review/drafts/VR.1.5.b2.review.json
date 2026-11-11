@@ -1,0 +1,157 @@
+{
+  "VR.1.5.9": {
+    "verdict": "pass",
+    "rules": [
+      "§5.1",
+      "§5.2",
+      "§5.4 rule 12",
+      "§5.4 rule 13"
+    ],
+    "note": "महा-राष्ट्र-विवर्धनः and देव-पतिः are right. दशरथ has the names.json identifier at first use in the sarga, and दिव् is स्त्री. आवासयामास is read as a causative ('peopled'), which matches the sarga map and verse 22. The supplied (स्वां नगरीम्) and (तथा) in the anvaya are bracketed. Agreement: वासयामास, पूरितवान् (twice) and वर्धयति स्म are singular, and कीदृशी आसीत् is feminine with सा पुरी. All correct. The last sentence ('सा पुरी कीदृशी आसीत् इति कविः अग्रे वदति') is the one linking clause allowed because the sentence runs over 9→19. The precedent is VR.1.5.1. No इत्युक्ते.",
+    "fixes": []
+  },
+  "VR.1.5.10": {
+    "verdict": "pass",
+    "rules": [
+      "§5.1",
+      "§5.2",
+      "§5.4 rules 1, 10, 11",
+      "§5.4 rule 13"
+    ],
+    "note": "Hyphenation: कपाट-तोरणवतीम्, सर्व-यन्त्र-आयुधवतीम् and उच्च-अट्टाल-ध्वजवतीम् (VR.1.5.11) split the dvandva members and keep the taddhita (मतुप्/वतुप्) on the last member. This is the same as the precedent वाक्-ऋषभत्वम् (VR.1.1.100) and is right. सु-विभक्त-अन्तर-आपणाम् is right. उषिताम् (क्त, with an instrumental agent) is right. Agreement: कपाटाः … तोरणानि च आसन्, आपणाः … सुविभक्ताः आसन्, निवार्यन्ते (with शत्रवः), शिल्पिनः वसन्ति स्म, and सा … उषिता आसीत् are all right. 1 इत्युक्ते. BATCH NOTE on the list verses 10–19: the vyākhyās are connected prose made of real clauses (यतः, ये…ते, यथा…तथा, अतः), with no dash-gloss chains and no closing gloss sentences, so they pass rules 1 and 11. They do take each compound apart and then name it again with the formula '…, अतः सा [compound]', about a dozen times in 10–19. That comes close to glossing every word. Rule 7 (every pada in bold) almost forces this in a descriptive list, so it is not an error. A human may still want the formula varied.",
+    "fixes": []
+  },
+  "VR.1.5.11": {
+    "verdict": "pass",
+    "rules": [
+      "§5.1",
+      "§5.2",
+      "§5.7",
+      "§5.4 rule 13"
+    ],
+    "note": "अतुल-प्रभाम् is right: the नञ्-member अतुल is unhyphenated and its vigraha is given. शतघ्नी stays whole as a fixed weapon name, and its vigraha is given. Agreement: सम्बाधा आसीत्, स्तुवन्ति (with ये), the plural copula in अट्टालाः … गृहाणि आसन्, ध्वजाः उच्छ्रिताः आसन्, आयुधम् … हन्ति, and संकुला आसीत्. All correct. 1 इत्युक्ते. 4 sentences.",
+    "fixes": []
+  },
+  "VR.1.5.12": {
+    "verdict": "pass",
+    "rules": [
+      "§5.2",
+      "§5.1",
+      "§5.4 rule 13"
+    ],
+    "note": "Second pass. The fix is applied exactly: the artha of साल-मेखलाम् now reads 'यां परितः प्राकारः मेखला इव (वर्तते), ताम्' (accusative with परितः). Nothing else changed. The earlier remarks on वधू-नाटक-सङ्घैः and आम्र-वण still stand as acceptable. check_layers OK.",
+    "fixes": []
+  },
+  "VR.1.5.13": {
+    "verdict": "pass",
+    "rules": [
+      "§5.4 (grammar)",
+      "§5.2",
+      "§5.4 rule 13"
+    ],
+    "note": "Second pass. Both fixes are applied exactly: the vyākhyā has 'पुरीं परितः' and the artha has 'यां परितः'. No genitive with परितः is left in the batch. Agreement is unchanged and correct. check_layers OK.",
+    "fixes": []
+  },
+  "VR.1.5.14": {
+    "verdict": "pass",
+    "rules": [
+      "§5.1",
+      "§5.2",
+      "§5.4 rule 13"
+    ],
+    "note": "नाना-देश-निवासैः is a बहुव्रीहि with a correct vigraha. बलि-कर्मभिः is taken as a neuter noun in a sahārtha instrumental ('with tribute'), and the vyākhyā matches this. Some read it instead as a masculine बहुव्रीहि qualifying सामन्तराजसङ्घैः ('kings whose business is tribute'). Both give the same picture, so this is not an error. Agreement: उच्यन्ते (with सामन्तराजाः), आगच्छन्ति स्म (with सङ्घाः), आवृता आसीत्, कुर्वन्ति स्म (with वणिजः), and उपशोभिता अभवत् are all right. 1 इत्युक्ते. 4 sentences.",
+    "fixes": []
+  },
+  "VR.1.5.15": {
+    "verdict": "pass",
+    "rules": [
+      "§5.1",
+      "§5.2",
+      "§5.4 rule 13"
+    ],
+    "note": "कूट-आगारैः is नपुं, which is right for आगार. अमरावतीम् is the accusative of comparison with पुरीम्, and इन्द्र and अमरावती have identifiers. Agreement: प्रासादाः … आसन्, ये रत्नविकृताः … आसन्, दृश्यन्ते स्म, शोभिता आसीत्, कूटागाराणि … आसन्, सम्पूर्णा आसीत्, and शोभते स्म are all right. 1 इत्युक्ते. 4 sentences.",
+    "fixes": []
+  },
+  "VR.1.5.16": {
+    "verdict": "pass",
+    "rules": [
+      "§5.1",
+      "§5.2",
+      "§5.7",
+      "§5.4 rule 13"
+    ],
+    "note": "अष्टापद-आकाराम् is acceptable. अष्टापद stays whole as a fixed term (अष्टन्+पद, with 6.3.125 lengthening). The reading 'laid out like a dice board (अष्टापदं शारिफलम्, Amarakośa)' is the usual commentarial one, and the vigraha, artha and vyākhyā all agree with it. The other kośa sense, अष्टापद = gold ('of golden appearance'), is a recognised alternative, but not needed. वर-नारी-गण-आयुताम् and विमान-गृह-शोभिताम् are right. Agreement: दृश्यानि आसन्, कोष्ठाः क्रियन्ते, मार्गाः … विभक्ताः आसन्, नार्यः वसन्ति स्म, and समाकीर्णा … शोभिता आसीत् are all right. 1 इत्युक्ते. 4 sentences.",
+    "fixes": []
+  },
+  "VR.1.5.17": {
+    "verdict": "pass",
+    "rules": [
+      "§5.1",
+      "§5.2",
+      "§5.7",
+      "§5.4 rule 13"
+    ],
+    "note": "अविच्छिद्राम् is a नञ्-compound, correctly unhyphenated, and its vigraha is given. It is a declared word-list miss, and the form is correct. इक्षु-काण्ड-रस-उदकाम् and सम-भूमौ are right. Agreement: गृहाणि … निर्मितानि आसन्, स्थानं न आसीत्, निवेशिता आसीत्, सम्पूर्णा आसीत्, and उदकम् … मधुरम् आसीत् are all right. No इत्युक्ते. 4 sentences.",
+    "fixes": []
+  },
+  "VR.1.5.18": {
+    "verdict": "pass",
+    "rules": [
+      "§5.2",
+      "§5.7 (epic usage)",
+      "§5.4 rule 13"
+    ],
+    "note": "दुन्दुभीभिः is right as given. The Amarakośa has 'दुन्दुभिः पुमान्', so the classical form would be दुन्दुभिभिः. दुन्दुभीभिः requires a feminine ई-stem दुन्दुभी, and the padārtha records that stem and labels the form ārṣa. This follows the §5.7 rule for epic usages. The word list accepts the form, so no fit_note is needed. The gloss महतीभिः भेरीभिः is feminine instrumental plural, the same case as the pada. Agreement: नादः क्रियते स्म, नादिता आसीत्, पूर्णा अभवत्, पुरी न आसीत्, and दशरथः … आवासयामास are all right. The closing 'एवं ताम् अनुत्तमां पुरीं दशरथः जनैः आवासयामास' is the allowed link back to verse 9. 1 इत्युक्ते. 3 sentences.",
+    "fixes": []
+  },
+  "VR.1.5.19": {
+    "verdict": "pass",
+    "rules": [
+      "§5.1",
+      "§5.2",
+      "§5.4 rule 13"
+    ],
+    "note": "सु-निवेशित-वेश्म-अन्ताम् follows the सु- convention. विमानम् and अधिगतम् are accusative neuter, compared with पुरीम्. Agreement: यत् विमानं … अधिगतम्, शोभते स्म, ये … प्राप्ताः ते सिद्धाः, गच्छत् (neuter, with गृहम्) … आसीत्, वेश्मानि सुनिवेशितानि आसन्, and समावृता आसीत् are all right. The definition sentence comes in the middle, not at the end. No इत्युक्ते. 4 sentences.",
+    "fixes": []
+  },
+  "VR.1.5.20": {
+    "verdict": "pass",
+    "rules": [
+      "§5.2 (vigraha)",
+      "§5.1",
+      "§5.4 rule 13"
+    ],
+    "note": "Second pass. The fix is applied exactly: the vigraha of अपर-अपरम् is now the नञ्-बहुव्रीहि 'परः च अपरः च … परापरौ ; न विद्येते परापरौ यस्य सः अपरापरः, तम्', which agrees with the artha and the vyākhyā. The sarga map entry for n=20 is corrected (अपरापरं = पूर्वापरबन्धुरहितम्, विततं = पलायमानम्). check_layers OK.",
+    "fixes": []
+  },
+  "VR.1.5.21": {
+    "verdict": "pass",
+    "rules": [
+      "§5.1",
+      "§5.2",
+      "§5.4 rule 13"
+    ],
+    "note": "हन्तारः is तृच्, so the genitive object सिंहव्याघ्रवराहाणाम् is right. बलात् is an adverbial ablative. The anvaya's supplied (ये च) … (सन्ति) continues the relative clause of verse 20. Agreement: हन्तारः आसन्, घ्नन्ति स्म, मारयन्ति स्म, and अघ्नन् (लङ् प्रथम बहु, with ते) are all right. विना takes the accusative correctly (शस्त्रं विना). 1 इत्युक्ते. 3 sentences.",
+    "fixes": []
+  },
+  "VR.1.5.22": {
+    "verdict": "pass",
+    "rules": [
+      "§5.3 (order)",
+      "§5.4 rule 13"
+    ],
+    "note": "Second pass. The fix is applied exactly: the anvaya now reads 'तादृशानां सहस्रैः महारथैः अभिपूर्णां', with the genitive next to its head and महारथैः in apposition. Agreement (आवासयामास, अभिपूर्णा आसीत्, आसन्, अकरोत्) is right. check_layers OK.",
+    "fixes": []
+  },
+  "VR.1.5.23": {
+    "verdict": "pass",
+    "rules": [
+      "§5.1",
+      "§5.7",
+      "§5.2",
+      "§5.4 rule 13"
+    ],
+    "note": "Hyphenation, judged. (1) वेद-षट्-अङ्ग-पार-गैः is right. षट् is the pausal form of the member (§5.7: वाक्-विदाम्), and re-joining gives षडङ्ग by jaśtva. पार-ग is an upapada compound split like द्वि-ज and आत्म-ज. The precedent is वेद-वेद-अङ्ग (VR.1.1.14). (2) महा-ऋषिकल्पैः is right. कल्पप् (5.3.67) is a taddhita, so it stays on its base, as in the precedents अग्निकल्पानाम् (VR.1.1.45) and वाक्-ऋषभत्वम् (VR.1.1.100), and महा- is split by convention. The seed's महा-ऋषि-कल्पैः was wrong. (3) द्वि-ज-उत्तमैः, सहस्र-दैः, सत्य-रतैः and महा-आत्मभिः are right. The mūla breaks the word महात्मभि-/र्महर्षि across lines; the padaccheda keeps महा-आत्मभिः whole on line 3, and check_layers re-joins it. The daṇḍas match the mūla. Agreement: ब्राह्मणाः … व्याप्तवन्तः, आवृता आसीत्, रक्षन्ति स्म, कुर्वन्ति स्म, उच्यन्ते, अधीतवन्तः, आसन्, ददति स्म, and पूर्णा आसीत् are all right. No इत्युक्ते. 5 sentences.",
+    "fixes": []
+  }
+}

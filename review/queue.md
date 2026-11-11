@@ -194,3 +194,29 @@ VR.1.4.6 corrected under rule A (वेदोपबृह्मण, pending Adit
 ### 5. 10% sample of the verses that passed (fixed seed 20261111)
 
 VR.1.4.11, VR.1.4.18, VR.1.4.23, VR.1.4.29
+
+## Bāla-kāṇḍa, sarga 5 (Stage C; 23 verses)
+
+Reviewer verdicts: first pass 17 pass, 6 fix, 0 flag; final 22 pass, 1 flag (VR.1.5.2: the batch-2 reviewer found परितः with the genitive after batch 1 had passed; the coordinator applied the same fix and flags it).
+
+### 1. Flagged by the reviewers (points for Swamiji)
+
+| Verse | Reviewer's note (shortened) |
+|---|---|
+| VR.1.5.2 | षष्टि-पुत्र-सहस्राणि is now hyphenated and correctly marked नपुं बहु. पर्यवारयन् is plural with that neuter-plural subject, and so is the gloss स्थितानि आसन्. खानितः is correctly glossed as a causative participle. 1 इत्युक्ते. The last sentence ('सः एव सगरः, यं … पर्यवारयन्') is a nominal sentence with the copula understood, and … |
+
+### 2. Declared re-join exceptions
+
+None.
+
+### 3. Doubtful source readings
+
+None.
+
+### 4. Declared word-list exceptions (fit_note)
+
+7: त्रीणि
+
+### 5. 10% sample of the verses that passed (fixed seed 20261111)
+
+VR.1.5.10, VR.1.5.16

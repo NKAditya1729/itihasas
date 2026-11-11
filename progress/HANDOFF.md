@@ -5,9 +5,11 @@
 the caches, a clean `main`, `make check`; then take the next unticked sarga in `ORDER.md`. Never redo a ticked sarga.
 
 ## Where things stand
-- **Done:** VR.1.1 (pilot; corrections 15, 29, 65, 84 applied and re-done in Stage C) and **VR.1.2** (Stage C, all layers).
-- **STOP:** checkpoint after Bāla sarga 2 (brief §9). Waiting for Aditya's comparison with the pilot before sarga 3.
-- Next after "go": VR.1.3, 1.4, 1.5, then report time and tokens per verse and a projection (STOP).
+- **Done:** VR.1.1 (pilot; corrections 15, 29, 65, 84) and VR.1.2–1.5 (Stage C, all layers; rules D17, D18 from 1.3 on).
+- **STOP:** checkpoint after Bāla 3–5 (brief §9): time and tokens reported, with savings proposals and a per-kāṇḍa
+  projection. Waiting for Aditya's word before VR.1.6. After that, run without asking (brief §9), with an audit file
+  every 10 sargas.
+- Pending Aditya: the rule-A correction VR.1.4.6 (`review/mula_queue.md`); checker fixes v8, v9 (CONVENTION_LOG 6, 7).
 
 ## How a sarga is made (Stage C)
 - Coordinator: preflight, the sarga map (`working_notes.sarga_map` in the sarga file), `context_in_sa`.

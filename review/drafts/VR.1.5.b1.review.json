@@ -1,0 +1,79 @@
+{
+ "VR.1.5.1": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.7",
+   "§5.4 rule 13"
+  ],
+  "note": "Padaccheda सर्वा पूर्वम् इयम् is right (the seed's सर्व-अपूर्वम् was wrong) and re-joins to सर्वा पूर्वमियं. सर्वा gets the feminine stem, per §5.7. प्रजा-पतिम् is split like the precedent प्रजा-पति-समः (VR.1.1.13). Leaving प्रजापतिम् unnamed ('वंशस्य मूलपुरुषम्') is right: the verse does not say who he is, and commentators differ (Brahmā or Manu). वसुंधरा stays whole as a fixed term, and its vigraha is given. Agreement: कुरुतः and वदतः are dual with कुशीलवौ/तौ; ये … शोभन्ते स्म and ते राजानः … गण्यन्ते are plural; आरभेते in the context note is dual ātmanepada. All correct. The closing clause 'ते के राजानः इति तौ अग्रे वदतः' is the allowed one-clause link, since the sentence runs over verses 1–3.",
+  "fixes": []
+ },
+ "VR.1.5.2": {
+  "verdict": "flag",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.4 rule 13"
+  ],
+  "note": "षष्टि-पुत्र-सहस्राणि is now hyphenated and correctly marked नपुं बहु. पर्यवारयन् is plural with that neuter-plural subject, and so is the gloss स्थितानि आसन्. खानितः is correctly glossed as a causative participle. 1 इत्युक्ते. The last sentence ('सः एव सगरः, यं … पर्यवारयन्') is a nominal sentence with the copula understood, and the resumptive तस्य is a little loose. Both are acceptable style, not errors. | After the review: the batch-2 reviewer found 'तस्य परितः' (परितः needs the accusative, vārttika अभितःपरितः…). The coordinator applied 'तं परितः' (the same fix as in 12–13) and flags the verse for the human reviewer.",
+  "fixes": []
+ },
+ "VR.1.5.3": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.7",
+   "§5.4 rule 13"
+  ],
+  "note": "महा-आत्मनाम् follows the महा- convention. रामायणम् is correctly kept whole: it is a title, its ण comes from णत्व across the compound, and the precedents are VR.1.1.99 and VR.1.4.7. वदतः is dual, उच्यन्ते and जानन्ति are plural, and उत्पन्नम्/श्रुतम् are neuter with आख्यानम्. All correct. The anvaya's cross-verse note matches the existing practice.",
+  "fixes": []
+ },
+ "VR.1.5.4": {
+  "verdict": "pass",
+  "rules": [
+   "§5.2",
+   "§5.4 rule 13"
+  ],
+  "note": "वर्तयिष्यावः is लृट् उत्तम द्वि, with the dual subject (आवां) both in the anvaya and in the vyākhyā. कथयिष्यतः (लृट् प्रथम द्वि, with तौ) and वदतः are dual, and वर्ण्यन्ते is plural with धर्मः अर्थः कामः च. All correct. अनसूयता is a declared word-list miss: the form and its नञ् vigraha are right. 1 इत्युक्ते. 'न त्यक्त्वा' would read better as अत्यक्त्वा, but that is style, not an error.",
+  "fixes": []
+ },
+ "VR.1.5.5": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 13",
+   "§5.4 rule 4"
+  ],
+  "note": "Second pass. Both fixes are applied exactly: धनं धान्यं च प्रभूते आस्ताम् is now dual, and स्फीतः has समृद्धः as an apposition. All other agreement is right (आसीत्, वसन्ति स्म, आरभ्यते). 4 sentences. check_layers OK.",
+  "fixes": []
+ },
+ "VR.1.5.6": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.4 rule 13"
+  ],
+  "note": "लोक-विश्रुता and मानव-इन्द्रेण are right. मनु gets an identifier in brackets, per §5.7. In या पुरी निर्मिता and सा लोकविश्रुता आसीत् the feminine singular is right, and उच्यते is singular with सः. Three sentences, no इत्युक्ते.",
+  "fixes": []
+ },
+ "VR.1.5.7": {
+  "verdict": "pass",
+  "rules": [
+   "§5.4 rule 3",
+   "§5.4 rule 13"
+  ],
+  "note": "Second pass. The fix is applied exactly: 'एवं सा द्वादश योजनानि दीर्घा आसीत्' replaces the misused इति. The padārtha is unchanged and correct: the त्रीणि fit_note is valid, and दशन्/द्वि/त्रि are tagged नपुं with योजनानि. Agreement is right (आसीत्; विभक्ताः आसन्). 4 sentences. check_layers OK.",
+  "fixes": []
+ },
+ "VR.1.5.8": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.4 rule 13"
+  ],
+  "note": "राज-मार्गेण follows the precedent राज-मार्गेषु (VR.1.4.29). Its vigraha 'राज्ञां मार्गः' and its artha 'प्रधानेन मार्गेण' are both traditional readings. सु-विभक्तेन, मुक्त-पुष्प-अवकीर्णेन and जल-सिक्तेन are right. शोभिता (feminine) has the supplied (सा पुरी). Agreement checked: विकीर्णानि आसन् (neuter plural, with पुष्पाणि), जलं सिच्यते स्म (singular), and सः … रचितः and जलसिक्तः आसीत् (masculine, with मार्गः) are all right. Four sentences.",
+  "fixes": []
+ }
+}
