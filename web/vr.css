@@ -45,5 +45,6 @@ body.pada .pada-seed{display:block}
 .st-block .study-tabs{justify-content:flex-start;margin:4px 0 6px}
 .st-block .sec p{text-align:left}
 .pd-row b{color:var(--blue);font-weight:600;margin-right:.4em}
+.st-block .sec b{color:var(--blue);font-weight:600}
 
 @media(max-width:560px){.part{padding:10px 14px;gap:10px;flex-wrap:wrap}.part .num{flex-basis:2em}.part .note{flex-basis:100%;padding-left:2.6em;white-space:normal}.text-head{padding:14px 14px 10px}}

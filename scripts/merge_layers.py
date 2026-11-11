@@ -1,7 +1,7 @@
 """Merge a reviewed draft into its sarga file (Stage B, Step 4; CLAUDE.md §10.3).
 
 Reads review/drafts/<sarga>.json (the generator's draft: {"gen", "verses", optionally
-"title", "summary_sa"}) and review/drafts/<sarga>.review.json (the reviewer's verdicts:
+"title", "summary_sa", "pilot": true}) and review/drafts/<sarga>.review.json (the reviewer's verdicts:
 {verse id: {"verdict": "pass" | "flag", "rules": […], "note": "…"}}). A verse is merged
 only if it has a verdict and passes every automated check; its padaccheda becomes
 ``reviewed``. A verse with verdict "flag" is merged too and listed in review/queue.md
@@ -42,7 +42,7 @@ def main() -> int:
         merged.append(dv["id"])
         if verdict == "flag" or result["unverified"]:
             flagged.append((dv["id"], verdict, verdicts[dv["id"]].get("note", ""), result["unverified"]))
-    for key in ("title", "summary_sa"):
+    for key in ("title", "summary_sa", "pilot"):
         if draft.get(key):
             d[key] = draft[key]
     done = [v for v in d["verses"] if v.get("padartha")]

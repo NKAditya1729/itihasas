@@ -17,7 +17,7 @@
   const ANUSHTUP = 'अनुष्टुप्';
   let index = null;
   const cache = {};
-  const load = f => (cache[f] = cache[f] || fetch('data/' + f + '?v=3').then(r => { if (!r.ok) throw new Error(f); return r.json(); }));
+  const load = f => (cache[f] = cache[f] || fetch('data/' + f + '?v=4').then(r => { if (!r.ok) throw new Error(f); return r.json(); }));
   const sargaFile = (k, s) => `vr/${k}/${String(s).padStart(3, '0')}.json`;
   const kanda = k => index.kandas.find(x => x.k === k);
 
@@ -112,6 +112,7 @@
     let h = `<h1 class="chapter-heading">${esc(d.kanda_name)} · सर्गः ${deva(d.sarga)}</h1>`;
     h += `<p class="chapter-sub">${d.title ? esc(d.title) + ' · ' : ''}${deva(d.verse_count)} श्लोकाः</p>`;
     if (d.flags.includes('source_presplit')) h += '<p class="sarga-note">अस्य सर्गस्य मूलपाठः स्रोतसि अंशतः पदच्छेदरूपेण दत्तः; शोधनं पश्चात् भविष्यति।</p>';
+    if (d.pilot) h += '<p class="sarga-note">प्रायोगिकः पाठः — अस्य सर्गस्य पदार्थः, अन्वयः, सरलव्याख्या च समीक्षाधीनाः सन्ति।</p>';
     h += d.verses.map(verse).join('');
     if (d.colophon) h += `<p class="colophon">${esc(d.colophon)}</p>`;
     if (d.appendix) {
