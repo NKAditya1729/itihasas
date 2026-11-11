@@ -12,7 +12,7 @@
  {
   "id": "VR.1.1.15",
   "flag": "mula_suspect",
-  "note": "…तत्त्वज्ञो स्मृतिमान्: a final ओ before स् is not possible sandhi. Proposed, not applied: …तत्त्वज्ञः स्मृतिमान्."
+  "note": "…तत्त्वज्ञो स्मृतिमान्: a final ओ before स् is not possible sandhi. Corrected to …तत्त्वज्ञः स्मृतिमान् in lines_corrected (approved by Aditya, 2026-11-11)."
  },
  {
   "id": "VR.1.1.17",
@@ -22,7 +22,7 @@
  {
   "id": "VR.1.1.29",
   "flag": "mula_suspect",
-  "note": "शृङ्गवीरपुरे: the usual name is शृङ्गवेरपुर / शृङ्गिबेरपुर (so elsewhere in this text). Proposed, not applied: शृङ्गवेरपुरे."
+  "note": "शृङ्गवीरपुरे: the usual name is शृङ्गवेरपुर / शृङ्गिबेरपुर (so elsewhere in this text). Corrected to शृङ्गवेरपुरे in lines_corrected (approved by Aditya, 2026-11-11); the alternative शृङ्गिबेरपुरे is noted."
  },
  {
   "id": "VR.1.1.43",
@@ -42,12 +42,12 @@
  {
   "id": "VR.1.1.65",
   "flag": "mula_suspect",
-  "note": "प्रेक्ष्य चास्ति महाबलः: very probably a slip for चास्थि (the bones of Dundubhi, the object of प्रेक्ष्य). Proposed, not applied: चास्थि. The verse is explained as printed."
+  "note": "प्रेक्ष्य चास्ति महाबलः: a slip for चास्थि (the bones of Dundubhi, the object of प्रेक्ष्य). Corrected to चास्थि in lines_corrected (approved by Aditya, 2026-11-11)."
  },
  {
   "id": "VR.1.1.84",
   "flag": "mula_suspect",
-  "note": "सर्वदेवतैः: देवत is not a regular a-stem; the Critical Edition reads सर्वदैवतैः."
+  "note": "सर्वदेवतैः: देवत is not a regular a-stem; the Critical Edition reads सर्वदैवतैः. Corrected to सर्वदैवतैः in lines_corrected (approved by Aditya, 2026-11-11)."
  },
  {
   "id": "VR.1.1.85",
@@ -103,5 +103,25 @@
   "id": "VR.6.44.1",
   "flag": "mula_suspect",
   "note": "The first two lines are the page heading and the reciters' credit, not verse text."
+ },
+ {
+  "id": "VR.1.2.27",
+  "flag": "mula_suspect",
+  "note": "Line 2 ends in a stray । before ॥ (… लोकपितामहे । ॥). Kept as printed; proposed (Class B, not applied): the stray । removed."
+ },
+ {
+  "id": "VR.1.2.28",
+  "flag": "mula_suspect",
+  "note": "Line 2 ends in a stray । before ॥ (… वैरग्रहणबुद्धिना । ॥). Kept as printed; proposed (Class B, not applied): the stray । removed."
+ },
+ {
+  "id": "VR.1.2.38",
+  "flag": "mula_suspect",
+  "note": "Line 3: a stray र् in भगवान् र्मुनिर्… (no such word). Explained as printed (भगवान् मुनिः). Proposed (Class B, not applied): भगवान्मुनिर्विस्मयमाययौ. The Critical Edition (1.2.37) reads vālmīkir munir here, so rule A does not apply."
+ },
+ {
+  "id": "VR.1.2.43",
+  "flag": "mula_suspect",
+  "note": "रघुवरकरितं and दशशिरसश्क are not possible words (probably रघुवरचरितं and दशशिरसश्च). Explained as printed with that sense. Class B, not applied: the verse is not in the Critical Edition, so rule A does not apply."
  }
 ]

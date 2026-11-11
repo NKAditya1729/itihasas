@@ -17,7 +17,7 @@
   const ANUSHTUP = 'अनुष्टुप्';
   let index = null;
   const cache = {};
-  const load = f => (cache[f] = cache[f] || fetch('data/' + f + '?v=4').then(r => { if (!r.ok) throw new Error(f); return r.json(); }));
+  const load = f => (cache[f] = cache[f] || fetch('data/' + f + '?v=5').then(r => { if (!r.ok) throw new Error(f); return r.json(); }));
   const sargaFile = (k, s) => `vr/${k}/${String(s).padStart(3, '0')}.json`;
   const kanda = k => index.kandas.find(x => x.k === k);
 
@@ -100,10 +100,13 @@
       `<p class="chapter-sub">कथया संस्कृतम् — मूलश्लोकाः, पदच्छेदः, पदार्थः, अन्वयः, सरलसंस्कृतव्याख्या च।</p>` +
       `<section class="text"><div class="text-head"><h2>काण्डानि</h2><p>सप्त काण्डानि · ${deva(index.sargas.length)} सर्गाः</p></div><ul class="parts">${rows}</ul></section>`;
   }
+  /* Stage C: a sarga with generated layers carries a standing note; a finished one a mark on the index */
+  const generated = st => !!st && ['padartha', 'anvaya', 'vyakhya'].some(l => st[l] && st[l] !== 'pending');
+  const complete = st => !!st && st.padaccheda === 'reviewed' && ['padartha', 'anvaya', 'vyakhya'].every(l => st[l] === 'draft' || st[l] === 'done');
   function kandaView(k) {
     const kd = kanda(k);
     const rows = index.sargas.filter(x => x.k === k).map(x => `<li><a class="part" href="#${x.id}"><span class="num">${deva(x.s)}</span>` +
-      `<span class="name">${esc(x.title || x.incipit + '…')}</span><span class="note">${deva(x.verses)} श्लोकाः →</span></a></li>`).join('');
+      `<span class="name">${esc(x.title || x.incipit + '…')}</span><span class="note">${deva(x.verses)} श्लोकाः${complete(x.status) ? ' · ✓ सम्पूर्णः' : ''} →</span></a></li>`).join('');
     const note = k === 7 ? '<p class="sarga-note">उत्तरकाण्डम् — सप्तमं काण्डम्; युद्धकाण्डात् परं रामस्य उत्तरकथा।</p>' : '';
     return `<h1 class="chapter-heading">${esc(kd.name)}</h1><p class="chapter-sub">${deva(kd.sargas)} सर्गाः · ${deva(kd.verses)} श्लोकाः</p>${note}` +
       `<section class="text"><ul class="parts">${rows}</ul></section>`;
@@ -112,7 +115,7 @@
     let h = `<h1 class="chapter-heading">${esc(d.kanda_name)} · सर्गः ${deva(d.sarga)}</h1>`;
     h += `<p class="chapter-sub">${d.title ? esc(d.title) + ' · ' : ''}${deva(d.verse_count)} श्लोकाः</p>`;
     if (d.flags.includes('source_presplit')) h += '<p class="sarga-note">अस्य सर्गस्य मूलपाठः स्रोतसि अंशतः पदच्छेदरूपेण दत्तः; शोधनं पश्चात् भविष्यति।</p>';
-    if (d.pilot) h += '<p class="sarga-note">प्रायोगिकः पाठः — अस्य सर्गस्य पदार्थः, अन्वयः, सरलव्याख्या च समीक्षाधीनाः सन्ति।</p>';
+    if (generated(d.status)) h += '<p class="sarga-note">अस्य सर्गस्य पदच्छेदः, पदार्थः, अन्वयः, सरलव्याख्या च यन्त्रेण लिखिताः; विदुषां समीक्षा अद्यापि अपेक्षिता।</p>';
     h += d.verses.map(verse).join('');
     if (d.colophon) h += `<p class="colophon">${esc(d.colophon)}</p>`;
     if (d.appendix) {

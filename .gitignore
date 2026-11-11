@@ -9,3 +9,9 @@ __pycache__/
 cache/vidyut-data/
 site/
 cache/ashtadhyayi/
+
+# macOS / iCloud duplicate copies ("name 2.ext", "name 3.ext")
+* 2
+* 3
+* 2.*
+* 3.*

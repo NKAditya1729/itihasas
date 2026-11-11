@@ -77,8 +77,8 @@ def test_reader_hides_the_toggle_on_a_sarga_without_any_split(site):
 
 def test_shell_and_reader_ask_for_the_new_files(site):
     shell = (site / "ramayanam" / "index.html").read_text()
-    assert "vr.js?v=4" in shell and "vr.css?v=4" in shell
-    assert "'?v=4'" in (site / "ramayanam" / "vr.js").read_text()
+    assert "vr.js?v=5" in shell and "vr.css?v=5" in shell
+    assert "'?v=5'" in (site / "ramayanam" / "vr.js").read_text()
 
 
 # ---- approved corrections on the site (CLAUDE.md §12.5) -------------------------------
@@ -88,7 +88,7 @@ def test_reader_shows_the_corrected_text_with_a_mark_and_the_source_text_on_tap(
     css = (site / "ramayanam" / "vr.css").read_text()
     assert "v.lines_corrected || v.lines" in js and "संशोधितम्" in js and "corr-orig" in js
     assert "aria-expanded" in js and ".corr-mark" in css
-    assert "vr.js?v=4" in (site / "ramayanam" / "index.html").read_text() and "'?v=4'" in js
+    assert "vr.js?v=5" in (site / "ramayanam" / "index.html").read_text() and "'?v=5'" in js
 
 
 def test_published_data_carries_the_corrections_beside_the_untouched_source(site):
@@ -100,10 +100,21 @@ def test_published_data_carries_the_corrections_beside_the_untouched_source(site
 
 # ---- pilot sarga (Stage B, Step 4) -------------------------------------------------------
 
-def test_reader_marks_a_pilot_sarga(site):
+# ---- Stage C: generated sargas (brief §10) ------------------------------------------------
+
+def test_reader_puts_a_standing_machine_note_on_every_generated_sarga(site):
     js = (site / "ramayanam" / "vr.js").read_text()
-    assert "d.pilot" in js and "प्रायोगिकः पाठः" in js
-    assert "vr.js?v=4" in (site / "ramayanam" / "index.html").read_text() and "'?v=4'" in js
+    assert "प्रायोगिकः पाठः" not in js and "d.pilot" not in js          # the pilot note is replaced
+    assert "generated(d.status)" in js
+    assert "यन्त्रेण लिखिताः" in js and "विदुषां समीक्षा" in js
+
+
+def test_sarga_index_marks_a_completed_sarga(site):
+    js = (site / "ramayanam" / "vr.js").read_text()
+    assert "complete(x.status)" in js and "✓ सम्पूर्णः" in js
+    idx = json.loads((site / "ramayanam" / "data" / "vr" / "index.json").read_text())
+    first = next(x for x in idx["sargas"] if x["id"] == "VR.1.1")
+    assert first["status"]["vyakhya"] != "pending" and first["status"]["padaccheda"] == "reviewed"
 
 
 def test_reused_words_stand_out_in_the_vyakhya(site):

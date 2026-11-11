@@ -26,6 +26,32 @@
   }
  },
  {
+  "id": "VR.1.1.15",
+  "lines_corrected": [
+   "सर्वशास्त्रार्थतत्त्वज्ञः स्मृतिमान् प्रतिभानवान् ।",
+   "सर्वलोकप्रियः साधुरदीनात्मा विचक्षणः ॥"
+  ],
+  "correction": {
+   "what": "Line 1: सर्वशास्त्रार्थतत्त्वज्ञो स्मृतिमान् → सर्वशास्त्रार्थतत्त्वज्ञः स्मृतिमान् (ओ → ः; a final ओ before स् is not possible sandhi).",
+   "evidence": "Sandhi: before स् a final -aḥ stays visarga (or becomes स्), never ओ. Critical Edition 1.1.14 has the same word (sarvaśāstrārthatattvajña smṛtimān, with the visarga lost before s-). Metre unaffected (anuṣṭubh, 32 syllables).",
+   "approved_by": "Aditya",
+   "date": "2026-11-11"
+  }
+ },
+ {
+  "id": "VR.1.1.29",
+  "lines_corrected": [
+   "शृङ्गवेरपुरे सूतं गङ्गाकूले व्यसर्जयत् ।",
+   "गुहमासाद्य धर्मात्मा निषादाधिपतिं प्रियम् ॥"
+  ],
+  "correction": {
+   "what": "Line 1: शृङ्गवीरपुरे → शृङ्गवेरपुरे (वी → वे). The alternative spelling शृङ्गिबेरपुरे, the commonest in this Wikisource text, is noted.",
+   "evidence": "The town is शृङ्गवेरपुर / शृङ्गिबेरपुर; शृङ्गवीरपुर is not found elsewhere. Critical Edition 1.1.25 reads śṛṅgaverapure. Metre unaffected (anuṣṭubh, 32 syllables).",
+   "approved_by": "Aditya",
+   "date": "2026-11-11"
+  }
+ },
+ {
   "id": "VR.1.1.45",
   "lines_corrected": [
    "प्रतिज्ञातश्च रामेण वधः संयति रक्षसाम् ।",
@@ -34,6 +60,32 @@
   "correction": {
    "what": "Line 2: दण्डकारण्यवासीनाम् → दण्डकारण्यवासिनाम् (long ī → short i).",
    "evidence": "Metre: with the long ī the fourth pāda breaks the śloka cadence (syllables 5–7 short–long–short); corrected, the verse passes as anuṣṭubh. Grammar: the genitive plural of -वासिन् is -वासिनाम्. The Critical Edition has no counterpart of this verse, so there is no Critical Edition evidence.",
+   "approved_by": "Aditya",
+   "date": "2026-11-11"
+  }
+ },
+ {
+  "id": "VR.1.1.65",
+  "lines_corrected": [
+   "उत्स्मयित्वा महाबाहुः प्रेक्ष्य चास्थि महाबलः ।",
+   "पादाङ्गुष्ठेन चिक्षेप संपूर्णं दशयोजनम् ॥"
+  ],
+  "correction": {
+   "what": "Line 1: प्रेक्ष्य चास्ति महाबलः → प्रेक्ष्य चास्थि महाबलः (ति → थि).",
+   "evidence": "अस्थि (the bones of Dundubhi) is the object of प्रेक्ष्य and of चिक्षेप; अस्ति (the verb) leaves the sentence without its object. The Critical Edition (1.1.51) lacks this line, so the evidence is sense and grammar. Metre unaffected (anuṣṭubh, 32 syllables).",
+   "approved_by": "Aditya",
+   "date": "2026-11-11"
+  }
+ },
+ {
+  "id": "VR.1.1.84",
+  "lines_corrected": [
+   "सदेवर्षिगणं तुष्टं राघवस्य महात्मनः ॥",
+   "बभौ रामः सम्प्रहृष्टः पूजितः सर्वदैवतैः ॥"
+  ],
+  "correction": {
+   "what": "Line 2: सर्वदेवतैः → सर्वदैवतैः (दे → दै).",
+   "evidence": "देवत is not a regular a-stem (देवता is feminine); दैवत is. Critical Edition 1.1.68 reads pūjitaḥ sarvadaivataiḥ. Metre unaffected (anuṣṭubh, 32 syllables).",
    "approved_by": "Aditya",
    "date": "2026-11-11"
   }

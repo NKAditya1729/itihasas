@@ -1,0 +1,26 @@
+{
+  "VR.1.1.15": {
+    "verdict": "pass",
+    "rules": ["§12", "§5.1", "§5.7 padaccheda ruling", "§5.4"],
+    "note": "Layers are unchanged from the pilot and were already right for the corrected text: सर्व-शास्त्र-अर्थ-तत्त्व-ज्ञः re-joins to सर्वशास्त्रार्थतत्त्वज्ञः स्मृतिमान् (check_layers OK on lines_corrected). अदीन-आत्मा as ruled (नञ् not hyphenated, vigraha given). Padārtha cases and glosses right; anvaya has every pada once; vyākhyā 6 sentences, one इत्युक्ते, all padas bold, continues 14 (रामस्य गुणाः). Coordinator only: the sarga file's review.auto_checks.rejoin for this verse is still false from before the correction and should be re-run.",
+    "fixes": []
+  },
+  "VR.1.1.29": {
+    "verdict": "pass",
+    "rules": ["§12", "§5.1", "§5.2", "§5.3", "§5.4"],
+    "note": "शृङ्गवेरपुरे is carried through all four layers (padaccheda, padārtha stem शृङ्गवेरपुर नपुं सप्तमी एक, anvaya, vyākhyā शृङ्गवेरपुरं नाम नगरम्); no trace of शृङ्गवीर- remains in the draft. Gloss follows names.json at first use. Rest is the passed pilot text (गुहम् … आसाद्य; व्यसर्जयत् वि+सृज् णिच् लङ्; निषाद-अधिपतिम्, प्रियम् anvita गुहम्). Style only, not an error: the identifier's (गङ्गायाः तीरे) repeats the next pada गङ्गा-कूले.",
+    "fixes": []
+  },
+  "VR.1.1.65": {
+    "verdict": "pass",
+    "rules": ["§12", "§5.1", "§5.2", "§5.3", "§5.4"],
+    "note": "Rebuilt correctly on चास्थि. Padaccheda प्रेक्ष्य च अस्थि महा-बलः re-joins. अस्थि: अस्थि नपुं द्वितीया एक, object of प्रेक्ष्य and चिक्षेप; gloss (दुन्दुभेः शरीरस्य) अस्थिसमूहम् in the same case, name already introduced in 64. महा-बलः is now an epithet of the supplied रामः beside महा-बाहुः (the old clause (सः) महाबलः अस्ति is gone). Anvaya has every pada once, supplied (रामः) (दुन्दुभेः) in brackets; दशयोजनम् is the accusative of distance. Vyākhyā: 5 sentences, one इत्युक्ते, no इति आशयः, neuter agreement right (दर्शितं … तत् अस्थि; क्षिप्तं तत् अस्थि … पतितम्), links to 64 (the कायः shown there is here called अस्थि). Context note updated. Style only: सुखेन in the last sentence is a light inference from पादाङ्गुष्ठेन, acceptable.",
+    "fixes": []
+  },
+  "VR.1.1.84": {
+    "verdict": "pass",
+    "rules": ["§12", "§5.2", "§5.7 gender", "§5.4"],
+    "note": "सर्व-दैवतैः: stem सर्वदैवत नपुं तृतीया बहु, right by Amarakośa (दैवतानि पुंसि वा; देवताः स्त्रियाम्); vigraha सर्वाणि दैवतानि, तैः; gloss सर्वैः देवैः is simpler and in the same case. Anvaya सर्वदैवतैः पूजितः रामः सम्प्रहृष्टः (सन्) बभौ; first sentence continues 83 consistently. Vyākhyā: 5 sentences, one इत्युक्ते (दैवतम् इत्युक्ते देवः), one इति आशयः, तैः सर्वदैवतैः agrees (neuter pl.); the old सर्वाः देवताः / ताभिः is correctly replaced. Inner ॥ kept as printed. Carried-over style point, not an error: the first sentence's इति पूर्वम् उक्तम् refers to 83's vyākhyā although तुष्टम् is a pada of this verse.",
+    "fixes": []
+  }
+}

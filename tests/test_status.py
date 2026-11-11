@@ -243,17 +243,18 @@ def test_set_flag_note_replaces_the_earlier_note_of_the_same_flag():
 
 def test_the_approved_corrections_file_is_well_formed():
     entries = json.loads((ROOT / "data" / "meta" / "corrections.json").read_text())
-    assert {e["id"] for e in entries} == {"VR.1.1.1", "VR.1.1.9", "VR.1.1.45", "VR.1.1.100"}
+    assert {e["id"] for e in entries} == {"VR.1.1.1", "VR.1.1.9", "VR.1.1.15", "VR.1.1.29", "VR.1.1.45",
+                                          "VR.1.1.65", "VR.1.1.84", "VR.1.1.100"}
     for e in entries:
         assert set(e["correction"]) == {"what", "evidence", "approved_by", "date"} and e["correction"]["approved_by"] == "Aditya"
 
 
-def test_the_four_corrected_verses_keep_their_source_text_and_pass_the_metre():
+def test_the_corrected_verses_keep_their_source_text_and_pass_the_metre():
     from vrtools.build import mula_hash
     hashes = json.loads((ROOT / "data" / "meta" / "mula_hashes.json").read_text())
     d = json.loads((ROOT / "data" / "vr" / "1" / "001.json").read_text())
     by = {v["id"]: v for v in d["verses"]}
-    for vid in ("VR.1.1.1", "VR.1.1.9", "VR.1.1.45", "VR.1.1.100"):
+    for vid in ("VR.1.1.1", "VR.1.1.9", "VR.1.1.15", "VR.1.1.29", "VR.1.1.45", "VR.1.1.65", "VR.1.1.84", "VR.1.1.100"):
         v = by[vid]
         assert mula_hash(v["lines"]) == hashes[vid]
         assert v["lines_corrected"] != v["lines"] and v["metre"]["ok"] and v["correction"]["approved_by"] == "Aditya"
@@ -261,4 +262,8 @@ def test_the_four_corrected_verses_keep_their_source_text_and_pass_the_metre():
     assert by["VR.1.1.9"]["lines_corrected"][0].endswith("श्रीमाञ्छत्रुनिबर्हणः ।")
     assert by["VR.1.1.45"]["lines_corrected"][1].startswith("ऋषीणामग्निकल्पानां दण्डकारण्यवासिनाम्")
     assert by["VR.1.1.100"]["lines_corrected"][1].startswith("स्यात् क्षत्रियो भूमिपतित्वमीयात्")
-    assert sum("lines_corrected" in v for v in d["verses"]) == 4
+    assert by["VR.1.1.15"]["lines_corrected"][0].startswith("सर्वशास्त्रार्थतत्त्वज्ञः स्मृतिमान्")
+    assert by["VR.1.1.29"]["lines_corrected"][0].startswith("शृङ्गवेरपुरे")
+    assert "प्रेक्ष्य चास्थि महाबलः" in by["VR.1.1.65"]["lines_corrected"][0]
+    assert by["VR.1.1.84"]["lines_corrected"][1].endswith("सर्वदैवतैः ॥")
+    assert sum("lines_corrected" in v for v in d["verses"]) == 8
