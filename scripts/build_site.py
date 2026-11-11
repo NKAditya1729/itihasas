@@ -1,6 +1,8 @@
 """Build the static site into site/ (or --out DIR).
 
-site/
+site/                                           the इतिहासाः site
+  index.html                                    (web/home.html)
+  ramayanam/                                    the Rāmāyaṇa reader:
   index.html, aadharah.html, vr.js, vr.css      (web/)
   base.css, favicon.svg, assets/, vendor/       (web/from-sarala-vedanta/, unchanged)
   data/vr/index.json, data/vr/{k}/{sss}.json    (data/vr/)
@@ -28,10 +30,14 @@ SHELL = """<!doctype html>
 DIG = str.maketrans("0123456789", "०१२३४५६७८९")
 
 
-def build(out: Path) -> None:
-    if out.exists():
-        shutil.rmtree(out)
-    out.mkdir(parents=True)
+def build(site: Path) -> None:
+    if site.exists():
+        shutil.rmtree(site)
+    site.mkdir(parents=True)
+    shutil.copy2(WEB / "home.html", site / "index.html")
+    (site / ".nojekyll").write_text("")
+    out = site / "ramayanam"
+    out.mkdir()
     for f in ["index.html", "aadharah.html", "vr.js", "vr.css"]:
         shutil.copy2(WEB / f, out / f)
     shutil.copy2(DESIGN / "vsn.css", out / "base.css")
@@ -39,7 +45,6 @@ def build(out: Path) -> None:
     shutil.copytree(DESIGN / "assets", out / "assets")
     shutil.copytree(DESIGN / "vendor", out / "vendor")
     shutil.copytree(ROOT / "data" / "vr", out / "data" / "vr")
-    (out / ".nojekyll").write_text("")
     index = json.loads((ROOT / "data" / "vr" / "index.json").read_text())
     names = {x["k"]: x["name"] for x in index["kandas"]}
     for k, name in names.items():
