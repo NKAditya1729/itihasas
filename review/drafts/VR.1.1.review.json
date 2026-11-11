@@ -1,0 +1,67 @@
+{
+ "VR.1.1.1": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4"
+  ],
+  "note": "Correct as it stands; every entry, the anvaya and all seven vyākhyā sentences were checked by hand. Three departures from the §4 worked example, and in each the draft is the better one. (1) Padaccheda वाक्-विदाम् against the example's unsplit वाग्विदाम्: §5.1 asks for a hyphen at every member boundary, and the first member is a pada inside the compound (वाच् → वाक् by चोः कुः, voiced to ग् only before वि), so वाक्- is the correct restored member, parallel to महा-ऋषे in verse 5. The example should be brought into line. (2) मुनि-पुङ्गवम्: the draft's मुनिः पुङ्गवः इव is the regular upamita-karmadhāraya (उपमितं व्याघ्रादिभिः 2.1.56); the example's मुनिषु पुङ्गवः is only a loose paraphrase (a nirdhāraṇa compound is barred by 2.2.10). Optional, for the beginner: gloss the member, मुनिः पुङ्गवः (वृषभः) इव श्रेष्ठः, तम्. (3) तपः-स्वाध्याय-निरतम्: the draft's dvandva-then-tatpuruṣa vigraha is the full traditional one and is right; तयोः is a dual locative that a beginner may read as genitive, so the example's simpler तपसि स्वाध्याये च निरतः, तम् is an acceptable alternative. No change required.",
+  "fixes": []
+ },
+ "VR.1.1.2": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4"
+  ],
+  "note": "Correct as it stands. Where it departs from the §5.6 worked example the draft is right and the example is not: (a) the example's anvaya writes four च outside parentheses (… दृढव्रतः च (कः)) although the verse has only three; the draft correctly puts the fourth inside the parentheses (§5.3: every pada exactly once, supplied words in parentheses). (b) the example glosses धर्मज्ञः, कृतज्ञः, सत्यवाक्यः with finite clauses (धर्मं जानाति इति), which are vigrahas and not in the pada's vibhakti; the draft's धर्मं जानन् / उपकारं स्मरन् / सत्यं वदन् obey §5.2 and keeps the clause form in the vigraha field. Small remarks, no change needed: नु glossed खलु (प्रश्ने) follows the example; the operative part is प्रश्ने (नु पृच्छायां विकल्पे च), खलु alone would mislead. The vyākhyā has no quotation marks around the speech (the example has them); harmless.",
+  "fixes": []
+ },
+ "VR.1.1.3": {
+  "verdict": "flag",
+  "rules": [
+   "§5.2",
+   "§5.4"
+  ],
+  "note": "Everything checks (चारित्र neuter, तृतीया; सर्वभूतेषु karmadhāraya, neuter सप्तमी बहु; five कः and three च all placed once in the anvaya; vyākhyā faultless). One point for the scholar: एक-प्रिय-दर्शनः. The draft takes it as a karmadhāraya, एकः (अद्वितीयः) प्रियदर्शनः, 'the one man who is pleasing to see' (एक compounding by 2.1.49). That is sound. The alternative is a bahuvrīhi in which एक qualifies प्रिय or दर्शन: एकम् (केवलम् / सदा एकरूपम्) प्रियं दर्शनं यस्य सः, 'whose appearance is solely, always equally pleasing'; a third reading is एकम् (मुख्यम्) प्रियं दर्शनं यस्य. The traditional commentaries are divided between these. For a beginner the draft's reading is the simplest and I would keep it, but the artha adds सर्वेषाम्, which the word does not say; the scholar should confirm the reading, and if the second is preferred the vigraha becomes एकम् (सदा) प्रियं दर्शनं यस्य सः and the artha यस्य दर्शनं सदा प्रियम् एव सः. Optional tidy-ups, not errors: in the vyākhyā write प्रियम्, (pausal म् before the comma), and introduce the last explanation with अर्थात् like the others; several questions have fewer than the 4 words of §5.4, which is natural for a list of questions.",
+  "fixes": []
+ },
+ "VR.1.1.4": {
+  "verdict": "flag",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.3",
+   "§5.4"
+  ],
+  "note": "No definite error. Three points for the scholar. (1) कस्य with बिभ्यति: the rule is पञ्चमी (भीत्रार्थानां भयहेतुः 1.4.25). The draft records षष्ठी, as the form requires, and explains it as कस्मात् इति अर्थः (sambandha-sāmānya / epic genitive for the ablative); the vyākhyā restates it with क्रुद्धात् कस्मात्. This is the usual reading and the right one to show a learner. Alternative: construe कस्य जातरोषस्य with संयुगे ('in battle with whom, when he is enraged'), with बिभ्यति used absolutely; then the gloss कस्मात् would go. Keep the draft unless the scholar prefers the second. (2) Gender of संयुग: the draft says नपुं. The form संयुगे does not decide it and no check can. Amarakośa lists it among the masculines (… कलिसंस्फोटसंयुगाः) and Apte, Śabdakalpadruma and Vācaspatyam follow; Monier-Williams gives neuter, 'in MBh. also m.'. Both are attested; for a reader using the traditional kośas पुं is the safer label. Scholar to decide, and the decision should hold for the whole work. (3) अनसूयकः is left unhyphenated although it is given a vigraha (न असूयकः). That is the sensible convention, since neither अ/अन् nor नसूयक is a free word and no clean split exists, but §5.1 says 'every member boundary', so the project should record that नञ्-compounds are not hyphenated. Minor, optional: देवाः glossed सुराः explains an everyday word by a less common one (§5.2); देवताः or leaving देवाः would serve better. The anvaya groups the first line as two questions of two qualities each, the vyākhyā asks four separate questions; both are legitimate, but they should agree — simplest is to leave the anvaya (it follows the verse's two कः) and accept the vyākhyā's unpacking. च = अपि is right.",
+  "fixes": []
+ },
+ "VR.1.1.5": {
+  "verdict": "pass",
+  "rules": [
+   "§5.1",
+   "§5.2",
+   "§5.4",
+   "§7.8"
+  ],
+  "note": "Analysis, anvaya and sense are all correct (एतत् द्वितीया as object of श्रोतुम्; परम् नपुं प्रथमा with कौतूहलम्; हि = यतः; महा-ऋषे and एवम्-विधम् rightly split, the seed's unsplit एवंविधम् was wrong by §5.1; मे, not the Dharmamitra मम, fits the mūla). Two small but definite faults, both mechanical. Optional besides: इच्छामि glossed वाञ्छामि and ज्ञातुम् glossed अवगन्तुम् explain an everyday word by a rarer one (§5.2 'prefer everyday words'); इच्छां करोमि and बोद्धुम् / ज्ञानं प्राप्तुम् would be plainer. Speaker and context note are right.",
+  "fixes": [
+   {
+    "where": "vyakhya_sa",
+    "problem": "Anusvāra is written where pausal म् is required: परं and एवंविधं stand before a dash and the vowel-initial अर्थात्, and युक्तं before a dash. मोऽनुस्वारः applies only before a consonant in connected speech; at a pause or before a vowel the word ends in म्. The vyākhyā is meant to show minimal external sandhi (§5.4) and the pausal forms taught in §5.1.",
+    "replace_with": "एवं पृष्ट्वा वाल्मीकिः नारदं वदति । हे **महर्षे**, **अहम्** **एतत्** **श्रोतुम्** **इच्छामि** । **मे** हि **परम्** — अर्थात् महत् — **कौतूहलम्** अस्ति । कौतूहलं नाम ज्ञातुं तीव्रा इच्छा । **त्वम्** **एवंविधम्** — अर्थात् एतैः गुणैः युक्तम् — **नरं** **ज्ञातुं** **समर्थः** **असि** ।"
+   },
+   {
+    "where": "padartha: महा-ऋषे",
+    "problem": "§5.2 prescribes the form of a vocative gloss: हे …, (सम्बोधनम्). The artha has only हे महामुने नारद; the label sits in the vigraha instead.",
+    "replace_with": "artha: हे महामुने नारद, (सम्बोधनम्) — vigraha may stay महान् ऋषिः, तस्य सम्बोधनम्"
+   }
+  ],
+  "round": "fix round 1: both fixes applied by the generator exactly as the reviewer prescribed (verified mechanically); no second review needed"
+ }
+}
